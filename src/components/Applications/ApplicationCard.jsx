@@ -3,9 +3,13 @@ import Button from "../Shared/Button.jsx";
 /**
  * One application-guide card. `wide` switches to the 2-up layout where
  * the CTA buttons sit in a .btn-row instead of stacked block buttons.
+ * `accent` (green | blue | red) themes the index number, divider,
+ * APPLICATION TYPE + WHY THIS MATTERS labels, and PRO TIP.
  */
 export default function ApplicationCard({
   wide = false,
+  accent = "red",
+  number,
   photoClass,
   title,
   projectTypes,
@@ -16,10 +20,26 @@ export default function ApplicationCard({
   primaryCta,
   secondaryCta,
 }) {
+  const className = [
+    "card",
+    "app-card",
+    `app-card--${accent}`,
+    wide ? "wide" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <article className={wide ? "card app-card wide" : "card app-card"}>
+    <article className={className}>
       <div className={`app-photo ${photoClass}`}></div>
-      <p className="micro-label red">APPLICATION TYPE</p>
+
+      {number && (
+        <div className="app-index">
+          <span>{number}</span>
+        </div>
+      )}
+
+      <p className="micro-label acc">APPLICATION TYPE</p>
       <h3>{title}</h3>
 
       <div className="app-block">
@@ -35,11 +55,12 @@ export default function ApplicationCard({
       </div>
 
       <div className="app-block">
-        <p className="micro-label">WHY THIS MATTERS</p>
+        <p className="micro-label acc">WHY THIS MATTERS</p>
         <p>{whyItMatters}</p>
-        <p className="pro-tip">
-          <strong>PRO TIP:</strong> {proTip}
-        </p>
+        <div className="pro-tip">
+          <p className="micro-label acc">PRO TIP</p>
+          <p>{proTip}</p>
+        </div>
       </div>
 
       <div className="app-block">

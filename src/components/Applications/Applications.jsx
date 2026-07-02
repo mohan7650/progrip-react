@@ -3,6 +3,8 @@ import "./Applications.css";
 
 const APP_CARDS = [
   {
+    accent: "green",
+    number: "02",
     photoClass: "photo-a",
     title: <>MULTI-FAMILY<br />FRAMING</>,
     projectTypes:
@@ -24,6 +26,8 @@ const APP_CARDS = [
     secondaryCta: "CONTACT FOR VOLUME PRICING →",
   },
   {
+    accent: "blue",
+    number: "01",
     photoClass: "photo-b",
     title: <>COMMERCIAL DRYWALL<br />INSTALLATION</>,
     projectTypes:
@@ -42,6 +46,8 @@ const APP_CARDS = [
     secondaryCta: "VIEW INSTALLATION GUIDE →",
   },
   {
+    accent: "red",
+    number: "03",
     photoClass: "photo-c",
     title: <>RENOVATION &amp;<br />REMODEL</>,
     projectTypes:
@@ -67,6 +73,7 @@ const APP_CARDS = [
 const WIDE_CARDS = [
   {
     wide: true,
+    accent: "red",
     photoClass: "photo-d",
     title: "LIGHT-GAUGE STEEL CONSTRUCTION",
     projectTypes:
@@ -88,6 +95,7 @@ const WIDE_CARDS = [
   },
   {
     wide: true,
+    accent: "red",
     photoClass: "photo-e",
     title: "WOOD-FRAMED RESIDENTIAL",
     projectTypes:
@@ -113,14 +121,15 @@ export default function Applications() {
   return (
     <section className="section section-apps" id="applications">
       <div className="container">
-        {/* Red angled banner heading */}
+        {/* Angled red/dark stripe banner heading */}
         <div className="app-head">
           <p className="eyebrow light">
-            <span className="tick white"></span> APPLICATION GUIDE
+            <span className="tick"></span> APPLICATION GUIDE
           </p>
-          <h2 className="section-title on-red">
-            CHOOSE THE RIGHT SCREW<br />FOR YOUR APPLICATION
-            <span className="ghost-num light">04</span>
+          <h2 className="app-title">
+            CHOOSE THE RIGHT SCREW <span className="ghost-num">04</span>
+            <br />
+            <span className="red">FOR YOUR APPLICATION</span>
           </h2>
           <p className="section-sub">
             Professional contractors match fasteners to substrates for optimal
