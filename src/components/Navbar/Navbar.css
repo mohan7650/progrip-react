@@ -1,0 +1,259 @@
+/* ============================================================
+   HEADER / NAVIGATION
+   Figma desktop: 1920px frame, 1440px inner container
+   Laptop: 1280px viewport, 1200px inner container
+   ============================================================ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  width: 100%;
+  height: 130px;
+
+  background: #030904;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 1920px FIGMA */
+.header-inner {
+  width: 1440px;
+  height: 130px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.site-logo,
+.logo {
+  width: 314.27px;
+  height: 60px;
+  flex: 0 0 314.27px;
+  display: block;
+}
+
+.site-logo img,
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Right side group */
+.header-right {
+  width: 865px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 32px;
+}
+
+/* Nav links group */
+.main-nav {
+  width: 387px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.main-nav a {
+  font-family: var(--font-cond, "Teko", sans-serif);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.main-nav a:hover {
+  color: #ffffff;
+}
+
+
+
+/* Buttons group */
+.header-actions {
+  width: 446px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-actions .btn,
+.header-actions a {
+  width: 215px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: var(--font-cond, "Teko", sans-serif);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  border-radius: 0;
+}
+
+/* Button colors */
+.header-actions .btn-white,
+.header-actions .btn.white {
+  background: #ffffff;
+  color: #151515;
+}
+
+.header-actions .btn-red,
+.header-actions .btn.red {
+  background: #d90d12;
+  color: #ffffff;
+}
+
+/* Mobile icon hidden on desktop */
+.nav-toggle {
+  display: none;
+}
+
+/* ============================================================
+   1280px LAPTOP RATIO
+   Scale ratio: 1280 / 1920 = 0.6667
+   Figma 1440 container becomes around 1200px for laptop
+   ============================================================ */
+
+@media (max-width: 1280px) {
+  .site-header {
+    height: 86.67px;
+  }
+
+  .header-inner {
+    width: 1200px;
+    max-width: calc(100% - 80px);
+    height: 86.67px;
+  }
+
+  .site-logo,
+  .logo {
+    width: 209.5px;
+    height: 40px;
+    flex: 0 0 209.5px;
+  }
+
+  .header-right {
+    width: 576.67px;
+    height: 40px;
+    gap: 21.33px;
+  }
+
+  .main-nav {
+    width: 258px;
+    height: 20px;
+    gap: 21.33px;
+  }
+
+  .main-nav a {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+
+  .header-actions {
+    width: 297.33px;
+    height: 40px;
+    gap: 10.67px;
+  }
+
+  .header-actions .btn,
+  .header-actions a {
+    width: 143.33px;
+    height: 40px;
+    font-size: 15px;
+  }
+}
+
+/* ============================================================
+   TABLET / MOBILE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .site-header {
+    height: 82px;
+  }
+
+  .header-inner {
+    width: calc(100% - 32px);
+    height: 82px;
+  }
+
+  .site-logo,
+  .logo {
+    width: 210px;
+    height: auto;
+    flex: 0 0 210px;
+  }
+
+  .header-right {
+    width: auto;
+    height: auto;
+    gap: 12px;
+  }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 82px;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: auto;
+
+    background: #030904;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .main-nav a {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .header-actions {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+    background: transparent;
+    border: 1px solid #333;
+    color: #fff;
+    font-size: 24px;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+}

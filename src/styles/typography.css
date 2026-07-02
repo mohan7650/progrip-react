@@ -1,0 +1,131 @@
+/* ============================================================
+   TYPOGRAPHY — eyebrows, taglines, section titles, ghost
+   numbers, micro / data labels
+   Reconciled with FIGMA_DESIGN_SPECIFICATIONS_PRO.md
+   ------------------------------------------------------------
+   CHANGES:
+   - .section-title max size 48 -> 60px (Figma section headings)
+   - added .section-title--display (Russo One variant)
+   - .ghost-num -> Russo One / 60px (Figma "01" numerals)
+   - added .tagline (Oswald 16/600 + tick — Figma "01 — Installer")
+   - added .lead (Barlow 20 — Figma section subtitles)
+   - added .data-label (Inter 12/700 — Figma card labels)
+   ============================================================ */
+
+/* --- Eyebrow labels (small condensed uppercase tags) --- */
+.eyebrow {
+  font-family: var(--font-cond);
+  font-size: var(--text-md);            /* 13px */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.eyebrow-red { color: var(--red); justify-content: center; }
+.eyebrow.light { color: rgba(255, 255, 255, 0.85); }
+
+/* --- Taglines (Figma "01 — Installer" — Oswald 16/600 with a red tick) --- */
+.tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-xl);            /* 16px */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.tagline::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--red);
+}
+.tagline.light { color: var(--text); }
+
+/* --- Section titles --- */
+.section-head { max-width: 760px; margin-bottom: 56px; position: relative; }
+.section-head.left { text-align: left; }
+
+.section-title {
+  font-family: var(--font-display);     /* Oswald */
+  font-weight: 700;
+  font-size: clamp(32px, 4.6vw, 60px);  /* Figma section headings top out at 60px */
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  position: relative;
+}
+/* Russo One variant for sections that use the primary display face */
+.section-title--display {
+  font-family: var(--font-primary);
+  text-transform: none;
+}
+
+/* Lead / section subtitle (Figma Barlow 20px) */
+.lead {
+  font-family: var(--font-body);
+  font-size: var(--text-3xl);           /* 20px */
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.section-sub {
+  color: var(--muted);
+  margin-top: 18px;
+  max-width: 640px;
+  font-size: var(--text-lg);            /* 15px */
+}
+
+/* Large ghost section numbers (01–05) — Russo One per Figma */
+.ghost-num {
+  position: absolute;
+  right: -110px;
+  top: -6px;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: var(--display-lg);         /* 60px */
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--red);
+  opacity: 0.9;
+  pointer-events: none;
+}
+.ghost-num.light { -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.7); }
+
+/* --- Micro labels (condensed) --- */
+.micro-label {
+  font-family: var(--font-cond);
+  font-size: var(--text-sm);            /* 12px */
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+.micro-label.red { color: var(--red); }
+.micro-label.light { color: var(--text); }
+
+/* Data label (Figma card labels — Inter 12/700) */
+.data-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);            /* 12px */
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.micro { font-size: 12.5px; color: var(--muted); }
+.micro.dim { color: var(--dim); }
+
+/* ----------------------------------------------
+   RESPONSIVE — TABLET (≤1024px)
+   ---------------------------------------------- */
+@media (max-width: 1024px) {
+  .ghost-num { position: static; display: inline-block; margin-left: 16px; font-size: 40px; }
+}

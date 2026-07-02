@@ -1,0 +1,81 @@
+/* ============================================================
+   SECTION 03 — TESTIMONIALS
+   ============================================================ */
+.section-testimonials { background: var(--bg-alt); }
+
+.t-card { display: flex; flex-direction: column; }
+
+/* Photo placeholders — swap for real <img> or background-image URLs.
+   Each .photo-* uses a different tinted gradient so the layout reads
+   like the screenshot until you add photography. */
+.t-photo, .app-photo {
+  height: 190px;
+  border-radius: var(--radius);
+  margin-bottom: 18px;
+  background:
+    linear-gradient(160deg, rgba(225,29,43,0.25), rgba(0,0,0,0.6)),
+    linear-gradient(120deg, #2c2c31, #141416);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.t-photo::after, .app-photo::after {
+  content: "PHOTO";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-cond);
+  letter-spacing: 0.4em;
+  color: rgba(255,255,255,0.18);
+  font-size: 13px;
+}
+.photo-2 { background: linear-gradient(160deg, rgba(230,140,30,0.25), rgba(0,0,0,0.6)), linear-gradient(120deg, #2c2c31, #141416); }
+.photo-3 { background: linear-gradient(160deg, rgba(255,90,20,0.28), rgba(0,0,0,0.6)), linear-gradient(120deg, #2c2c31, #141416); }
+
+/* card headings shared with persona + application cards */
+.t-card h3, .p-card h3, .app-card h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+}
+
+/* quotes shared with persona cards */
+.t-card blockquote, .p-card blockquote {
+  font-size: 13.5px;
+  color: var(--muted);
+  border-left: 3px solid var(--red);
+  padding-left: 14px;
+  margin-bottom: 16px;
+}
+
+.t-stat {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.t-stat strong { color: var(--red); font-size: 14px; }
+
+.t-person { font-size: 12.5px; margin-bottom: 18px; }
+.t-person strong {
+  font-family: var(--font-cond);
+  letter-spacing: 0.1em;
+  display: block;
+}
+.t-person span { color: var(--dim); }
+
+.t-highlight {
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: auto;
+}
+.t-highlight h5 {
+  font-family: var(--font-cond);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}

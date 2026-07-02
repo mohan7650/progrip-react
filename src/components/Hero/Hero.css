@@ -1,0 +1,410 @@
+/* ==========================================================================
+   Pro+Grip — Hero section
+   Built to FIGMA_DESIGN_SPECIFICATIONS_PRO.md (1920px base frame).
+
+   Sources in the spec:
+     Frame 37  (1792x578, vertical, gap 24) ... hero copy
+     Frame 2   (1190x135, horizontal) ......... persona strip
+     Retângulo 7 (275x1106) x2 ................ slanted stripes
+
+   Responsive model
+   ----------------
+   Every dimension is  calc(<figma_px> * var(--scale)).
+   `--scale` is a LENGTH equal to 1/1920 of the viewport width, capped at 1px:
+
+       1920px viewport -> --scale = 1px      -> 1 figma unit = 1px  (exact)
+       1280px viewport -> --scale = 0.6667px -> everything * 0.6667
+                          (275->183, 1106->737, -93->-62, 1412->941, 1492->995)
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;700;900&family=Oswald:wght@400;500;600;700&display=swap");
+
+.hero {
+  /* --- palette --- */
+  --pg-red: #cc1010;           /* eyebrow / accent / primary btn / persona nums */
+  --pg-red-hover: #b00d0d;
+  --pg-hero-bg: #0f0f0f;
+  --pg-strip-bg: #1c1c1c;      /* --color-bg-frame-2 */
+  --pg-gray-stripe: #333333;
+  --pg-white: #ffffff;
+  --pg-subtitle: #d2d2d2;
+  --pg-body: #b4b4b4;
+  --pg-green: #5cb84a;         /* persona 01 border */
+  --pg-blue: #2970c5;          /* persona 02 border */
+
+  /* --- responsive scale; 1 unit === 1px at 1920 --- */
+  --scale: min(1px, calc(100vw / 1920));
+
+  /* --- type faces (from the spec) --- */
+  --pg-font-heading: "Oswald", "Arial Narrow", sans-serif;
+  --pg-font-eyebrow: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --pg-font-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden; /* clips the stripe bleed above the top edge */
+  width: 100%;
+  background-color: var(--pg-hero-bg);
+}
+
+/* The 1920x1080 Figma canvas, centered and scaled as one unit. */
+.hero__stage {
+  position: relative;
+  width: calc(1920 * var(--scale));
+  height: calc(1080 * var(--scale));
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Retângulo 7 — slanted stripes (pure CSS clip-path parallelograms)
+   -------------------------------------------------------------------------- */
+.hero__stripe {
+  position: absolute;
+  top: calc(-93 * var(--scale));
+  width: calc(275 * var(--scale));
+  height: calc(1106 * var(--scale));
+  opacity: 0.8;
+  /* Parallelogram leaning left as it descends (measured from the export). */
+  clip-path: polygon(46.5% 0, 95.3% 0, 48.7% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.hero__stripe--red {
+  left: calc(1412 * var(--scale));
+  background-color: var(--pg-red);
+}
+
+.hero__stripe--gray {
+  left: calc(1492 * var(--scale));
+  background-color: var(--pg-gray-stripe);
+}
+
+/* --------------------------------------------------------------------------
+   Frame 37 — hero copy  (1792x578, vertical stack, gap 24, centered)
+   top 202 / left 64  ->  centered with 64px side margins
+   -------------------------------------------------------------------------- */
+.hero__content {
+  position: absolute;
+  top: calc(202 * var(--scale));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(24 * var(--scale)); /* Frame 37 vertical gap */
+  width: calc(1792 * var(--scale));
+  text-align: center;
+}
+
+/* Frame 1: eyebrow + 32x2 divider (internal gap 12) */
+.hero__eyebrow {
+  margin: 0;
+  font-family: var(--pg-font-eyebrow);
+  font-weight: 700;
+  font-size: calc(20 * var(--scale));
+  letter-spacing: calc(1 * var(--scale));
+  text-transform: uppercase;
+  color: var(--pg-red);
+}
+
+.hero__eyebrow::after {
+  content: "";
+  display: block;
+  width: calc(32 * var(--scale));
+  height: calc(2 * var(--scale));
+  margin: calc(12 * var(--scale)) auto 0;
+  background-color: var(--pg-red);
+}
+
+/* Heading: Oswald 700 / 128px, line-height 1.0 (box 1130x384 = 3 x 128) */
+.hero__title {
+  margin: 0;
+  font-family: var(--pg-font-heading);
+  font-weight: 700;
+  font-size: calc(128 * var(--scale));
+  line-height: 1;
+  letter-spacing: calc(0.5 * var(--scale));
+  text-transform: uppercase;
+  color: var(--pg-white);
+}
+
+.hero__title-accent {
+  color: var(--pg-red);
+}
+
+/* Subtitle: Barlow 400 / 20px */
+.hero__subtitle {
+  margin: 0;
+  max-width: calc(1792 * var(--scale));
+  font-family: var(--pg-font-body);
+  font-weight: 400;
+  font-size: calc(20 * var(--scale));
+  line-height: 1.4;
+  color: var(--pg-subtitle);
+}
+
+/* Actions: two 215x60 buttons, gap 24 */
+.hero__actions {
+  display: flex;
+  gap: calc(24 * var(--scale));
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: calc(215 * var(--scale));
+  height: calc(60 * var(--scale));
+  padding: calc(18 * var(--scale)) calc(28 * var(--scale));
+  border: none;
+  font-family: var(--pg-font-heading);
+  font-weight: 600;
+  font-size: calc(20 * var(--scale));
+  letter-spacing: calc(0.5 * var(--scale));
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.hero__btn--primary {
+  background-color: var(--pg-red);
+  color: var(--pg-white);
+}
+
+.hero__btn--primary:hover {
+  background-color: var(--pg-red-hover);
+}
+
+.hero__btn--outline {
+  background-color: transparent;
+  border: calc(2 * var(--scale)) solid rgba(255, 255, 255, 0.65);
+  color: var(--pg-white);
+}
+
+.hero__btn--outline:hover {
+  border-color: var(--pg-white);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.hero__btn:focus-visible {
+  outline: calc(2 * var(--scale)) solid var(--pg-white);
+  outline-offset: calc(3 * var(--scale));
+}
+
+/* --------------------------------------------------------------------------
+   Frame 2 — persona strip  (1190x135, top 945, left 365 -> centered)
+   3 cells (357 wide) with a colored vertical border, space-between
+   -------------------------------------------------------------------------- */
+.hero__personas {
+  position: absolute;
+  top: calc(945 * var(--scale));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: calc(1190 * var(--scale));
+  height: calc(135 * var(--scale));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: var(--pg-strip-bg);
+}
+
+.hero__persona {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(24 * var(--scale)); /* number -> text block */
+  width: calc(357 * var(--scale));
+  padding: calc(16 * var(--scale)) 0 calc(16 * var(--scale))
+    calc(19 * var(--scale));
+  border-left: calc(3 * var(--scale)) solid var(--pg-red);
+  box-sizing: border-box;
+}
+
+/* Vertical accent lines: green / blue / red */
+.hero__persona--installer {
+  border-left-color: var(--pg-green);
+}
+.hero__persona--distributor {
+  border-left-color: var(--pg-blue);
+}
+.hero__persona--contractor {
+  border-left-color: var(--pg-red);
+}
+
+/* Persona number: Barlow Condensed 900 / 28px */
+.hero__persona-num {
+  flex: none;
+  font-family: var(--pg-font-eyebrow);
+  font-weight: 900;
+  font-size: calc(28 * var(--scale));
+  line-height: 1;
+  color: var(--pg-red);
+}
+
+.hero__persona-text {
+  display: flex;
+  flex-direction: column;
+  gap: calc(12 * var(--scale)); /* title -> body */
+}
+
+/* Persona title: Oswald 700 / 24px */
+.hero__persona-title {
+  margin: 0;
+  font-family: var(--pg-font-heading);
+  font-weight: 700;
+  font-size: calc(24 * var(--scale));
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--pg-white);
+}
+
+/* Persona body: Barlow 400 / 16px */
+.hero__persona-body {
+  margin: 0;
+  font-family: var(--pg-font-body);
+  font-weight: 400;
+  font-size: calc(16 * var(--scale));
+  line-height: 1.35;
+  color: var(--pg-body);
+}
+
+/* ==========================================================================
+   LAPTOP CHECKPOINT — max-width: 1280px
+   1280 / 1920 = 0.6667. At exactly 1280px, --scale resolves to 0.6667px,
+   so every calc(N * var(--scale)) becomes N x 0.6667
+   (275->183, 1106->737, -93->-62, 1412->941, 1492->995).
+   The scale stays fluid below 1280 so the layout never overflows.
+   ========================================================================== */
+@media (max-width: 1280px) {
+  .hero {
+    --scale: calc(100vw / 1920);
+  }
+}
+
+/* ==========================================================================
+   MOBILE — below 768px the scaled desktop canvas is too small,
+   so switch to a natural stacked flow layout.
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    overflow: visible;
+    padding: 56px 20px 40px;
+  }
+
+  .hero__stage {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero__stripe {
+    display: none; /* decorative; removed on small screens */
+  }
+
+  .hero__content {
+    position: static;
+    transform: none;
+    width: 100%;
+    gap: 22px;
+  }
+
+  .hero__eyebrow {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .hero__eyebrow::after {
+    width: 30px;
+    margin-top: 10px;
+  }
+
+  .hero__title {
+    font-size: clamp(40px, 13vw, 72px);
+    line-height: 1.02;
+  }
+
+  .hero__subtitle {
+    max-width: 92%;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+
+  .hero__actions {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .hero__btn {
+    width: 100%;
+    max-width: 320px;
+    height: 52px;
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+
+  .hero__personas {
+    position: static;
+    transform: none;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin-top: 44px;
+  }
+
+  .hero__persona {
+    width: 100%;
+    gap: 16px;
+    padding: 18px 0 18px 16px;
+  }
+
+  .hero__persona:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .hero__persona-num {
+    font-size: 24px;
+  }
+
+  .hero__persona-title {
+    font-size: 20px;
+  }
+
+  .hero__persona-body {
+    font-size: 15px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero__btn {
+    transition: none;
+  }
+}
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero__video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  z-index: 1;
+}
+
+.hero__stage {
+  z-index: 2;
+}

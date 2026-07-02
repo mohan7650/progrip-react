@@ -1,0 +1,174 @@
+/* ============================================================
+   GLOBAL — reset, layout utilities, buttons, grids, cards
+   Reconciled with FIGMA_DESIGN_SPECIFICATIONS_PRO.md
+   ------------------------------------------------------------
+   CHANGES:
+   - added .btn-lg           (Figma 215x60 / Oswald 20 buttons)
+   - .stripe: added opacity 0.8 + .stripe.red / .stripe.gray / .stripe.wide
+              (Figma Retângulo 7 — red + gray decorative stripes)
+   - added .container-wide   (Figma 1440 product grid)
+   - added .rule hairline + .pill (Figma dividers / rounded pills)
+   ============================================================ */
+
+/* ----------------------------------------------
+   RESET
+   ---------------------------------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--text-lg);   /* 15px */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.container-wide {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ----------------------------------------------
+   SHARED UTILITIES
+   ---------------------------------------------- */
+.text-red { color: var(--red); }
+
+.tick { width: 22px; height: 3px; display: inline-block; }
+.tick.red { background: var(--red); }
+.tick.white { background: #fff; }
+.tick.lg { width: 32px; height: 2px; }   /* Figma eyebrow divider */
+
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.dot.red { background: var(--red); }
+
+.rule { width: 100%; height: 1px; background: var(--border); border: 0; }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+}
+
+/* --- Sections --- */
+.section { padding: var(--section-pad) 0; position: relative; }
+
+/* --- Buttons --- */
+.btn {
+  font-family: var(--font-cond);
+  font-weight: 600;
+  font-size: var(--text-base);   /* 14px */
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.btn:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+.btn-red { background: var(--red); color: #fff; }
+.btn-red:hover { background: var(--red-dark); }
+
+.btn-white { background: #fff; color: #111; }
+.btn-white:hover { background: #e6e6e6; }
+
+.btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.35); }
+.btn-outline:hover { border-color: #fff; }
+
+.btn-ghost { background: var(--card-2); color: var(--text); border-color: var(--border); }
+.btn-ghost:hover { border-color: var(--muted); }
+
+/* Sizes */
+.btn-sm { padding: 10px 20px; font-size: 13px; }
+.btn-xs { padding: 8px 14px; font-size: 12px; }
+/* Large — Figma hero / nav / CTA buttons (215 x 60, Oswald 20) */
+.btn-lg {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-3xl);    /* 20px */
+  letter-spacing: 0.06em;
+  min-width: 215px;
+  min-height: 60px;
+  padding: 18px 28px;
+}
+.btn-block { width: 100%; margin-top: 12px; }
+
+.btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-row.center { justify-content: center; }
+
+/* --- Grids --- */
+.grid { display: grid; gap: 24px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* --- Cards (base) --- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* --- Diagonal decorative stripes (Retângulo 7 — Hero + CTA) --- */
+.stripe {
+  position: absolute;
+  top: -20%;
+  height: 140%;
+  width: 90px;
+  opacity: 0.8;                 /* Figma stripe opacity */
+  transform: skewX(-24deg);
+  pointer-events: none;
+}
+.stripe.red  { background: var(--red); }
+.stripe.gray { background: var(--stripe-gray); }
+.stripe.wide { width: clamp(90px, 12vw, 220px); }  /* closer to Figma 275px */
+
+/* ----------------------------------------------
+   RESPONSIVE — TABLET (≤1024px)
+   ---------------------------------------------- */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ----------------------------------------------
+   RESPONSIVE — MOBILE (≤680px)
+   ---------------------------------------------- */
+@media (max-width: 680px) {
+  body { font-size: var(--text-base); }   /* 14px */
+
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ----------------------------------------------
+   ACCESSIBILITY — reduced motion
+   ---------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}

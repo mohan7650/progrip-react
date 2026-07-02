@@ -1,0 +1,352 @@
+/* ==========================================================================
+   PERSONA TESTIMONIALS  (Frame 32)
+   Base design: 1920px  |  Breakpoints: 1280px, 900px (single column)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Section shell
+   -------------------------------------------------------------------------- */
+.personas {
+  width: 100%;
+  padding: 40px 0;
+  background: #191919;
+  color: #ffffff;
+}
+
+.personas__frame {
+  position: relative;
+  width: 1439px;
+  max-width: calc(100% - 80px);
+  margin: 0 auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* --------------------------------------------------------------------------
+   Corner brackets (Group 19) - top + bottom, corner-style only
+   -------------------------------------------------------------------------- */
+.corner {
+  position: absolute;
+  width: 79px;
+  height: 79px;
+  border-color: #ff151f;
+  pointer-events: none;
+}
+.corner--tl { top: 0; left: 0; border-top: 5px solid; border-left: 5px solid; }
+.corner--tr { top: 0; right: 0; border-top: 5px solid; border-right: 5px solid; }
+.corner--bl { bottom: 0; left: 0; border-bottom: 5px solid; border-left: 5px solid; }
+.corner--br { bottom: 0; right: 0; border-bottom: 5px solid; border-right: 5px solid; }
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.personas__head {
+  display: flex;
+  flex-direction: column;
+}
+
+.personas__kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d6d6d6;
+}
+.personas__kicker span {
+  width: 28px;
+  height: 4px;
+  background: #ff151f;
+}
+
+.personas__title {
+  margin: 0;
+  font-family: var(--font-display, "Russo One", sans-serif);
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.personas__title .red { color: #ff151f; }
+.personas__title .num { color: #3a3a3a; }
+
+.personas__lead {
+  width: 700px;
+  max-width: 100%;
+  margin: 34px 0 0;
+  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-size: 15px;
+  line-height: 1.75;
+  color: #cfcfcf;
+}
+
+/* --------------------------------------------------------------------------
+   Cards grid
+   -------------------------------------------------------------------------- */
+.personas__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   Persona card
+   -------------------------------------------------------------------------- */
+.persona-card {
+  display: flex;
+  flex-direction: column;
+  background: #101612;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.persona-card__image {
+  display: block;
+  width: 100%;
+  height: 234px;
+  object-fit: cover;
+}
+
+.persona-card__body {
+  display: flex;
+  flex-direction: column;
+  padding: 36px 34px 40px;
+}
+
+/* Accent theming ------------------------------------------------------------ */
+.persona-card--green { --accent: #5ee15a; }
+.persona-card--blue  { --accent: #2f9bff; }
+.persona-card--red   { --accent: #ff151f; }
+
+.persona-card__eyebrow,
+.persona-card__index-row span,
+.persona-card__matters p { color: var(--accent); }
+.persona-card__matters { border-left-color: var(--accent); }
+
+/* Card eyebrow -------------------------------------------------------------- */
+.persona-card__eyebrow {
+  margin: 0 0 30px;
+  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Index + divider ----------------------------------------------------------- */
+.persona-card__index-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+.persona-card__index-row span {
+  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+}
+.persona-card__index-row::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.7;
+}
+
+/* Title --------------------------------------------------------------------- */
+.persona-card h3 {
+  margin: 0 0 24px;
+  font-family: var(--font-display, "Russo One", sans-serif);
+  font-size: 37px;
+  font-weight: 400;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Quote --------------------------------------------------------------------- */
+.persona-card__quote {
+  margin: 0 0 28px;
+  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: justify;
+  color: #dcdcdc;
+}
+
+/* Project ------------------------------------------------------------------- */
+.persona-card__project {
+  margin: 0 0 34px;
+  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.55;
+  color: #ffffff;
+}
+
+/* Person -------------------------------------------------------------------- */
+.persona-card__person {
+  margin-bottom: 36px;
+}
+.persona-card__person strong {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.persona-card__person span {
+  display: block;
+  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #a8a8a8;
+}
+
+/* What matters -------------------------------------------------------------- */
+.persona-card__matters {
+  margin-bottom: 26px;
+  padding-left: 18px;
+  border-left: 4px solid;
+}
+.persona-card__matters p {
+  margin: 0 0 10px;
+  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.persona-card__matters h4 {
+  margin: 0;
+  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Bullet list --------------------------------------------------------------- */
+.persona-card__list {
+  margin: 0 0 40px;
+  padding-left: 18px;
+}
+.persona-card__list li {
+  margin-bottom: 12px;
+  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #cfcfcf;
+}
+
+/* CTA button ---------------------------------------------------------------- */
+.persona-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  height: 64px;
+  margin-top: auto;
+  padding: 0 28px;
+  font-family: var(--font-display, "Russo One", sans-serif);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.persona-card__btn--outline {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: transparent;
+  color: #ffffff;
+}
+.persona-card__btn--red {
+  border: 1px solid #ff151f;
+  background: #ff151f;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   1280px  (proportional scale ~0.6667)
+   ========================================================================== */
+@media (max-width: 1280px) {
+  .personas__frame {
+    width: 960px;
+    max-width: calc(100% - 64px);
+    padding: 28px;
+    gap: 28px;
+  }
+
+  .corner { width: 53px; height: 53px; }
+  .corner--tl { border-top-width: 4px; border-left-width: 4px; }
+  .corner--tr { border-top-width: 4px; border-right-width: 4px; }
+  .corner--bl { border-bottom-width: 4px; border-left-width: 4px; }
+  .corner--br { border-bottom-width: 4px; border-right-width: 4px; }
+
+  .personas__kicker { font-size: 11px; margin-bottom: 14px; }
+  .personas__kicker span { width: 20px; height: 3px; }
+  .personas__title { font-size: 35px; }
+  .personas__lead { width: 467px; margin-top: 24px; font-size: 12px; }
+
+  .personas__grid { gap: 14px; }
+
+  .persona-card__image { height: 156px; }
+  .persona-card__body { padding: 24px 22px 26px; }
+
+  .persona-card__eyebrow { font-size: 9px; margin-bottom: 20px; }
+  .persona-card__index-row { gap: 12px; margin-bottom: 20px; }
+  .persona-card__index-row span { font-size: 11px; }
+  .persona-card h3 { font-size: 24px; margin-bottom: 18px; }
+  .persona-card__quote { font-size: 12px; margin-bottom: 20px; }
+  .persona-card__project { font-size: 12px; margin-bottom: 24px; }
+  .persona-card__person { margin-bottom: 24px; }
+  .persona-card__person strong { font-size: 15px; }
+  .persona-card__person span { font-size: 11px; }
+  .persona-card__matters { margin-bottom: 18px; padding-left: 12px; border-left-width: 3px; }
+  .persona-card__matters p { font-size: 9px; }
+  .persona-card__matters h4 { font-size: 13px; }
+  .persona-card__list { margin-bottom: 28px; padding-left: 14px; }
+  .persona-card__list li { font-size: 11px; margin-bottom: 9px; }
+  .persona-card__btn { height: 46px; font-size: 13px; }
+}
+
+/* ==========================================================================
+   900px  (single column)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .personas { padding: 28px 0; }
+
+  .personas__frame {
+    width: 100%;
+    max-width: calc(100% - 32px);
+    padding: 26px 20px;
+    gap: 32px;
+  }
+
+  .corner { width: 40px; height: 40px; }
+  .corner--tl { border-top-width: 4px; border-left-width: 4px; }
+  .corner--tr { border-top-width: 4px; border-right-width: 4px; }
+  .corner--bl { border-bottom-width: 4px; border-left-width: 4px; }
+  .corner--br { border-bottom-width: 4px; border-right-width: 4px; }
+
+  .personas__title { font-size: 34px; }
+  .personas__lead { width: 100%; max-width: 100%; font-size: 15px; }
+
+  .personas__grid { grid-template-columns: 1fr; gap: 20px; }
+
+  .persona-card__image { height: 220px; }
+  .persona-card__body { padding: 30px 26px 34px; }
+  .persona-card h3 { font-size: 34px; }
+  .persona-card__btn { align-self: stretch; }
+}

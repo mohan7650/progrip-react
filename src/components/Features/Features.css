@@ -1,0 +1,340 @@
+/* ============================================================
+   SECTION 02 — WHY PROGRIP
+   Updated with featurebolt_bg.jpg background
+   Base design: 1920px desktop
+   Laptop check: 1280px
+   ============================================================ */
+
+.features {
+  position: relative;
+  width: 100%;
+  min-height: 1440px;
+  overflow: hidden;
+  color: #ffffff;
+  padding-top: 96px;
+  padding-bottom: 120px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.86) 45%,
+      rgba(0, 0, 0, 0.96) 100%
+    ),
+    url("../../assets/images/featurebolt_bg.jpg");
+
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.features::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 75% 10%, rgba(255, 255, 255, 0.04), transparent 45%),
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.025), transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.features__inner {
+  position: relative;
+  z-index: 1;
+  width: 1440px;
+  max-width: calc(100% - 128px);
+  margin: 0 auto;
+}
+
+.features__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 46px;
+  font-family: var(--font-body, "Barlow", sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d5d5d5;
+}
+
+.features__eyebrow span {
+  width: 26px;
+  height: 3px;
+  background: #5cb84a;
+}
+
+.features__title {
+  margin: 0;
+  font-family: var(--font-display, "Oswald", sans-serif);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.features__title strong {
+  color: #cc1010;
+  font-weight: 700;
+}
+
+.features__num {
+  color: #333333;
+  margin-left: 12px;
+}
+
+.features__sub {
+  width: 720px;
+  max-width: 100%;
+  margin: 64px 0 32px;
+  font-family: var(--font-body, "Barlow", sans-serif);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #c6c6c6;
+}
+
+.features__rule {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 42px;
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(28, 28, 28, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.why-card {
+  min-height: 600px;
+  padding: 38px 34px 36px;
+  background: rgba(31, 31, 31, 0.82);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.25s ease;
+}
+
+.why-card:hover {
+  background: rgba(38, 38, 38, 0.92);
+}
+
+.why-card:last-child {
+  border-right: none;
+}
+
+.why-card__index {
+  display: block;
+  margin-bottom: 48px;
+  font-family: var(--font-cond, "Barlow Condensed", sans-serif);
+  font-size: 14px;
+  font-weight: 900;
+  color: #cc1010;
+}
+
+.why-card__title {
+  margin: 0 0 28px;
+  font-family: var(--font-display, "Oswald", sans-serif);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.why-card__text {
+  margin: 0 0 34px;
+  font-family: var(--font-body, "Barlow", sans-serif);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #c4c4c4;
+}
+
+.why-card__result {
+  margin-bottom: 24px;
+  padding-left: 18px;
+  border-left: 4px solid #cc1010;
+  font-family: var(--font-body, "Barlow", sans-serif);
+  font-size: 14px;
+  line-height: 1.45;
+  color: #ffffff;
+}
+
+.why-card__result strong {
+  color: #cc1010;
+}
+
+.why-card__stats {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.why-card__stats li {
+  margin-bottom: 12px;
+  font-family: var(--font-body, "Barlow", sans-serif);
+  font-size: 14px;
+  line-height: 1.45;
+  color: #d0d0d0;
+}
+
+@media (max-width: 1280px) {
+  .features {
+    min-height: 960px;
+    padding-top: 64px;
+    padding-bottom: 80px;
+    background-size: cover;
+    background-position: center top;
+  }
+
+  .features__inner {
+    width: 960px;
+    max-width: calc(100% - 80px);
+  }
+
+  .features__eyebrow {
+    margin-bottom: 31px;
+    gap: 8px;
+    font-size: 8px;
+  }
+
+  .features__eyebrow span {
+    width: 17px;
+    height: 2px;
+  }
+
+  .features__title {
+    font-size: 38px;
+  }
+
+  .features__sub {
+    margin-top: 42px;
+    margin-bottom: 21px;
+    font-size: 11px;
+    width: 520px;
+  }
+
+  .features__rule {
+    margin-bottom: 28px;
+  }
+
+  .features__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .why-card {
+    min-height: 400px;
+    padding: 26px 22px;
+  }
+
+  .why-card__index {
+    margin-bottom: 32px;
+    font-size: 10px;
+  }
+
+  .why-card__title {
+    font-size: 21px;
+    margin-bottom: 20px;
+  }
+
+  .why-card__text {
+    margin-bottom: 23px;
+  }
+
+  .why-card__text,
+  .why-card__result,
+  .why-card__stats li {
+    font-size: 10px;
+  }
+
+  .why-card__result {
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left-width: 3px;
+  }
+
+  .why-card__stats {
+    padding-left: 12px;
+  }
+
+  .why-card__stats li {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 900px) {
+  .features {
+    min-height: auto;
+  }
+
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-card {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .why-card:nth-child(2n) {
+    border-right: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .features {
+    min-height: auto;
+    padding: 64px 0;
+    background-position: center top;
+  }
+
+  .features__inner {
+    max-width: calc(100% - 32px);
+  }
+
+  .features__eyebrow {
+    margin-bottom: 28px;
+    font-size: 10px;
+  }
+
+  .features__title {
+    font-size: 34px;
+  }
+
+  .features__sub {
+    margin: 32px 0 28px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .features__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-card {
+    min-height: auto;
+    border-right: none;
+    padding: 34px 26px;
+  }
+
+  .why-card__index {
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+
+  .why-card__title {
+    font-size: 28px;
+  }
+
+  .why-card__text,
+  .why-card__result,
+  .why-card__stats li {
+    font-size: 14px;
+  }
+}
