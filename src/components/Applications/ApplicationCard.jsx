@@ -11,6 +11,8 @@ export default function ApplicationCard({
   accent = "red",
   number,
   photoClass,
+   image,
+  imageAlt,
   title,
   projectTypes,
   products,
@@ -31,8 +33,9 @@ export default function ApplicationCard({
 
   return (
     <article className={className}>
-      <div className={`app-photo ${photoClass}`}></div>
-
+      <div className={`app-photo ${photoClass}`}>
+        {image && <img src={image} alt={imageAlt || ""} />}
+      </div>
       {number && (
         <div className="app-index">
           <span>{number}</span>

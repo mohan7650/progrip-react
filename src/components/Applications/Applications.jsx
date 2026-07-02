@@ -1,11 +1,16 @@
 import ApplicationCard from "./ApplicationCard.jsx";
 import "./Applications.css";
+import multiFamilyImage from "../../assets/images/MULTI-FAMILY.jpg";
+import commercialDrywallImage from "../../assets/images/COMMERCIAL DRYWALL.jpg";
+import renovationImage from "../../assets/images/RENOVATION.jpg";
 
 const APP_CARDS = [
   {
     accent: "green",
     number: "02",
     photoClass: "photo-a",
+    image: multiFamilyImage,
+    imageAlt: "Multi-family framing application",
     title: <>MULTI-FAMILY<br />FRAMING</>,
     projectTypes:
       "Apartments, condos, townhomes with mixed wood and metal framing systems.",
@@ -29,6 +34,8 @@ const APP_CARDS = [
     accent: "blue",
     number: "01",
     photoClass: "photo-b",
+    image: commercialDrywallImage,
+    imageAlt: "Commercial drywall installation application",
     title: <>COMMERCIAL DRYWALL<br />INSTALLATION</>,
     projectTypes:
       "Office build-outs, retail spaces, commercial interior partition systems.",
@@ -49,6 +56,8 @@ const APP_CARDS = [
     accent: "red",
     number: "03",
     photoClass: "photo-c",
+    image: renovationImage,
+    imageAlt: "Renovation and remodel application",
     title: <>RENOVATION &amp;<br />REMODEL</>,
     projectTypes:
       "Existing building retrofit, tenant improvements, selective demolition and rebuild.",

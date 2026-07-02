@@ -106,8 +106,13 @@
 .app-photo {
   height: 220px;
   margin: 0 -34px 34px;
+ overflow: hidden;}
+.app-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
 /* index number + accent divider */
 .app-index {
   display: flex;
