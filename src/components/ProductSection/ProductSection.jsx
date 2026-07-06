@@ -10,7 +10,7 @@ import "./ProductSection.css";
     screw-01.png … screw-06.png / box-04.png … box-06.png
 */
 
-const IMG = "/images/product-section";
+const IMG = "src/assets/images/product-section";
 
 const CATEGORIES = [
   {
