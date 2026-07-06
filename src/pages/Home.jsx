@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Hero from "../components/Hero/Hero.jsx";
-//import ProductSection from "../components/ProductSection/ProductSection.jsx";
+import ProductSection from "../components/ProductSection/ProductSection.jsx";
 import Features from "../components/Features/Features.jsx";
 //import Testimonials from "../components/Testimonials/Testimonials.jsx";
 import Applications from "../components/Applications/Applications.jsx";
@@ -15,7 +15,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        {/* <ProductSection /> */}
+         <ProductSection /> 
         <Features />
         <Personas />
         {/* <Testimonials /> */}

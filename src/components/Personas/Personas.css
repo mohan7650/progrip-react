@@ -52,7 +52,7 @@
   align-items: center;
   gap: 14px;
   margin-bottom: 20px;
-  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-family: var(--font-body, "Oswald", sans-serif);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -71,7 +71,7 @@
   font-size: 52px;
   font-weight: 400;
   line-height: 1.08;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
   color: #ffffff;
 }
@@ -82,7 +82,7 @@
   width: 700px;
   max-width: 100%;
   margin: 34px 0 0;
-  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-family: var(--font-body, "Oswald", sans-serif);
   font-size: 15px;
   line-height: 1.75;
   color: #cfcfcf;
@@ -133,7 +133,7 @@
 /* Card eyebrow -------------------------------------------------------------- */
 .persona-card__eyebrow {
   margin: 0 0 30px;
-  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-family: var(--font-body, "Oswald", sans-serif);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -148,7 +148,7 @@
   margin-bottom: 30px;
 }
 .persona-card__index-row span {
-  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-family: var(--font-body, "Oswald", sans-serif);
   font-size: 13px;
   font-weight: 700;
 }
@@ -174,7 +174,7 @@
 /* Quote --------------------------------------------------------------------- */
 .persona-card__quote {
   margin: 0 0 28px;
-  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-family: var(--font-body, "Oswald", sans-serif);
   font-size: 14px;
   line-height: 1.6;
   text-align: justify;
@@ -184,7 +184,7 @@
 /* Project ------------------------------------------------------------------- */
 .persona-card__project {
   margin: 0 0 34px;
-  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-family: var(--font-body, "Oswald", sans-serif);
   font-size: 15px;
   font-weight: 700;
   line-height: 1.55;
@@ -198,7 +198,7 @@
 .persona-card__person strong {
   display: block;
   margin-bottom: 4px;
-  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-family: var(--font-body, "Oswald", sans-serif);
   font-size: 19px;
   font-weight: 700;
   line-height: 1.1;
@@ -207,7 +207,7 @@
 }
 .persona-card__person span {
   display: block;
-  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-family: var(--font-body, "Oswald", sans-serif);
   font-size: 14px;
   line-height: 1.5;
   color: #a8a8a8;
@@ -221,7 +221,7 @@
 }
 .persona-card__matters p {
   margin: 0 0 10px;
-  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-family: var(--font-body, "Oswald", sans-serif);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -229,9 +229,9 @@
 }
 .persona-card__matters h4 {
   margin: 0;
-  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-family: var(--font-display, "Russo One", sans-serif);
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.25;
   text-transform: uppercase;
   color: #ffffff;
@@ -244,7 +244,7 @@
 }
 .persona-card__list li {
   margin-bottom: 12px;
-  font-family: var(--font-body, "Inter", "Helvetica Neue", Arial, sans-serif);
+  font-family: var(--font-body, "Oswald", sans-serif);
   font-size: 14px;
   line-height: 1.5;
   color: #cfcfcf;

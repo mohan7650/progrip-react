@@ -2,39 +2,22 @@
    PRO+GRIP SCREWS — DESIGN TOKENS
    Reconciled with FIGMA_DESIGN_SPECIFICATIONS_PRO.md
    ------------------------------------------------------------
-   TYPOGRAPHY (families actually used across the Figma file)
-   - Section display  : "Russo One"        (60px headings, ghost numbers)
-   - Headline / UI    : "Oswald"           (hero 128, persona/nav/buttons)
-   - Body             : "Barlow"           (hero subtitle, paragraphs)
-   - Eyebrow / micro  : "Barlow Condensed" (letter-spaced tags)
-   - Data / cards     : "Inter"            (product-card labels & lists)
+   TYPOGRAPHY
+   - Headings / titles / buttons : "Russo One"  (H1–H4, all display text)
+   - Body / labels / descriptions : "Oswald"    (paragraphs, tags, captions)
 
-   CHANGES FROM THE PREVIOUS TOKENS (all sourced from the spec):
-   - Added  --font-primary (Russo One) and --font-ui (Inter)
-   - Added  full --text-* scale + --display-* sizes
-   - --red      #e11d2b -> #e50914  (Figma backgroundborder accent)
-   - --red-dark #b3121e -> #b3070f
-   - --bg       #0a0a0b -> #050904  (Figma "refined-version-new" root)
-   - --card     #17171a -> #171717  (Figma "product")
-   - --card-2   #1d1d21 -> #1c1c1c  (Figma "frame-2" / persona strip)
-   - --section-pad 96 -> 112        (Figma section vertical padding)
-   - Added  --gutter, --container-wide, radius scale, accent + stripe colors
-   Revert any single line if you prefer the earlier value.
-
-   NOTE: Russo One and Inter must be loaded alongside the others, e.g.
-   https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700
-     &family=Barlow+Condensed:wght@400;600;700;900
-     &family=Inter:wght@400;600;700&family=Oswald:wght@400;500;600;700
-     &family=Russo+One&display=swap
+   Google Fonts:
+   https://fonts.googleapis.com/css2?family=Russo+One
+     &family=Oswald:wght@400;500;600;700&display=swap
    ============================================================ */
 
 :root {
   /* ---------- Fonts ---------- */
-  --font-primary: "Russo One", "Oswald", sans-serif;      /* section headings, ghost numbers */
-  --font-display: "Oswald", "Arial Narrow", sans-serif;   /* hero + persona titles + nav + buttons */
-  --font-body:    "Barlow", "Helvetica Neue", sans-serif; /* subtitle + body copy */
-  --font-cond:    "Barlow Condensed", "Arial Narrow", sans-serif; /* eyebrows + micro labels */
-  --font-ui:      "Inter", "Helvetica Neue", sans-serif;  /* product-card body + data labels */
+  --font-primary: "Russo One", sans-serif;   /* section headings, ghost numbers */
+  --font-display: "Russo One", sans-serif;   /* hero + persona titles + nav + buttons */
+  --font-body:    "Oswald", sans-serif;      /* subtitle + body copy */
+  --font-cond:    "Oswald", sans-serif;      /* eyebrows + micro labels */
+  --font-ui:      "Oswald", sans-serif;      /* product-card body + data labels */
 
   /* ---------- Type scale (Figma) ---------- */
   --text-xs: 11px;

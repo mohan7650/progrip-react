@@ -1,142 +1,213 @@
-import SectionHead from "../Shared/SectionHead.jsx";
-import Button from "../Shared/Button.jsx";
+import React, { useState } from "react";
 import "./ProductSection.css";
 
-const RAIL_ITEMS = [
+/*
+  ProductSection — "PRODUCTS BUILT FOR SPEED."
+  Responsive: pixel-close at 1920px, correct at 1280px.
+  Required image assets (public/images/product-section/):
+    stripes.png     angled decorative stripes
+    hero-screw.png  large hero screw (709.6 × 403.48)
+    screw-01.png … screw-06.png / box-04.png … box-06.png
+*/
+
+const IMG = "/images/product-section";
+
+const CATEGORIES = [
   {
+    id: 1,
     num: "01",
-    title: "FRAMING SCREWS",
-    text: "Self drilling for quick penetration.",
-    active: true,
+    title: "Framing Screws",
+    desc: "Self-drilling for quick penetration.",
   },
   {
+    id: 2,
     num: "02",
-    title: "DRYWALL SCREWS",
-    text: "Fast bite performance for stronger day-to-day applications.",
+    title: "Drywall Screws",
+    desc: "Fast bite performance for stronger day-to-day applications.",
   },
   {
+    id: 3,
     num: "03",
-    title: "METAL STUD SCREWS",
-    text: "Built for penetrating installation where strength matters most.",
+    title: "Metal Stud Screws",
+    desc: "Built for demanding assemblies where strength matters most.",
   },
 ];
 
-const DIAGRAM_NODES = [
-  { symbol: "⊕", position: "node-1" },
-  { symbol: "◎", position: "node-2" },
-  { symbol: "▤", position: "node-3" },
+const PRODUCTS = [
+  { id: 1, label: '01 — Fine 6×2"',        img: `${IMG}/screw-01.png`, alt: 'Fine thread 6×2" drywall screw' },
+  { id: 2, label: '02 — Coarse 6×1-1/4"',  img: `${IMG}/screw-02.png`, alt: 'Coarse thread 6×1-1/4" drywall screw' },
+  { id: 3, label: '03 — Fine 6×1-1/4"',    img: `${IMG}/screw-03.png`, alt: 'Fine thread 6×1-1/4" drywall screw' },
+  { id: 4, label: "04 — Drywall Screw",    img: `${IMG}/box-04.png`,   alt: "Coarse thread drywall screws box" },
+  { id: 5, label: "05 — Drywall Screw",    img: `${IMG}/box-05.png`,   alt: "Fine thread drywall screws box" },
+  { id: 6, label: "06 — Drywall Screw",    img: `${IMG}/box-06.png`,   alt: "Fine thread drywall screws box" },
 ];
 
-const DIAGRAM_LABELS = ['01 — Fine 6x2"', '02 — Coarse 8x1 1/4"', '03 — Fine 8x1 5/8"'];
-
-const THUMBS = [
-  { label: "04 — Drywall Screw" },
-  { label: "05 — Drywall Screw", box: true },
-  { label: "06 — Drywall Screw" },
+const HIGHLIGHTS = [
+  { id: 1, title: "Coarse Thread Screws", detail: "# 6×1 - 7/8″" },
+  { id: 2, title: "8000 PCS",             detail: "Weight : 22 lb" },
 ];
 
-const SPECS = [
-  "Fine Thread",
-  "Coarse Thread",
-  "Self Drilling",
-  "Pan Head",
-  "Bugle Head",
-  "Hex Head",
-];
+function CategoryItem({ cat, isActive, onClick }) {
+  return (
+    <li
+      className={`product-section__cat-item${isActive ? " product-section__cat-item--active" : ""}`}
+      onClick={onClick}
+    >
+      <span className="product-section__cat-num">{cat.num}</span>
+      <h3 className="product-section__cat-title">{cat.title}</h3>
+      <p className="product-section__cat-desc">{cat.desc}</p>
+    </li>
+  );
+}
+
+function ProductCard({ product, isActive, onClick }) {
+  return (
+    <button
+      type="button"
+      className={`product-section__card${isActive ? " product-section__card--active" : ""}`}
+      onClick={onClick}
+    >
+      <span className="product-section__card-media">
+        <img src={product.img} alt={product.alt} />
+      </span>
+      <span className="product-section__card-caption">{product.label}</span>
+    </button>
+  );
+}
 
 export default function ProductSection() {
+  const [activeCategory, setActiveCategory] = useState(2);
+  const [activeProduct, setActiveProduct]   = useState(2);
+
   return (
-    <section className="section section-products" id="products">
-      <div className="container">
-        <SectionHead
-          eyebrow="COMPLETE"
-          title={<>PRODUCTS BUILT<br />FOR SPEED.</>}
-          num="01"
-          sub="The full range of Pro-Grip fasteners for every job."
-        />
+    <section className="product-section" id="products">
+      {/* Side-padding wrapper — keeps content off the viewport edges */}
+      <div className="product-section__wrap">
+        {/* Centered max-width container (1440px at 1920px, ~1174px at 1280px) */}
+        <div className="product-section__inner">
 
-        {/* Decorative screw visual */}
-        <div className="screw-visual" aria-hidden="true">
-          <div className="screw-shaft"></div>
-          <div className="screw-head"></div>
-        </div>
+          {/* ── Hero row: heading left · screw right ── */}
+          <div className="product-section__hero-row">
+            <header className="product-section__header">
+              <span className="product-section__badge">
+                <i className="product-section__badge-dash" aria-hidden="true" />
+                Complete
+              </span>
 
-        {/* Product viewer panel */}
-        <div className="product-panel">
-          {/* Left rail: categories */}
-          <aside className="panel-rail">
-            {RAIL_ITEMS.map((item) => (
-              <div
-                className={item.active ? "rail-item active" : "rail-item"}
-                key={item.num}
-              >
-                <span className="rail-num">{item.num}</span>
-                <h5>{item.title}</h5>
-                <p>{item.text}</p>
-              </div>
-            ))}
-          </aside>
+              <h2 className="product-section__heading">
+                Products Built{" "}
+                <span className="product-section__heading-index">01</span>
+                <br />
+                For Speed.
+              </h2>
 
-          {/* Center: interactive view */}
-          <div className="panel-view">
-            <p className="panel-label">
-              <span className="dot red"></span> INTERACTIVE VIEW
-            </p>
+              <p className="product-section__subtitle">
+                The full range of Pro-Grip fasteners for every job
+              </p>
+            </header>
 
-            {/* Screw diagram (CSS placeholder — replace with product image) */}
-            <div className="screw-diagram">
-              <div className="diagram-line"></div>
-              {DIAGRAM_NODES.map((node) => (
-                <div className={`diagram-node ${node.position}`} key={node.position}>
-                  {node.symbol}
-                </div>
-              ))}
-            </div>
-            <div className="diagram-labels">
-              {DIAGRAM_LABELS.map((label) => (
-                <span key={label}>{label}</span>
-              ))}
-            </div>
-
-            {/* Thumbnails row */}
-            <div className="thumb-row">
-              {THUMBS.map((thumb) => (
-                <div className="thumb" key={thumb.label}>
-                  <div className={thumb.box ? "thumb-img box" : "thumb-img"}></div>
-                  <span>{thumb.label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Selected product + CTAs */}
-            <div className="panel-cta">
-              <div>
-                <p className="micro-label">CENTER INSTALLATION</p>
-                <h4>COARSE THREAD<br />DRYWALL SCREWS</h4>
-                <p className="micro">8x1 1/4"</p>
-              </div>
-              <div className="btn-row">
-                <Button href="#" variant="red" size="sm">BUY NOW</Button>
-                <Button href="#" variant="outline" size="sm">BUILD SUBMITTAL</Button>
-              </div>
+            {/* Screw + decorative stripes (stripes are absolute, screw is normal flow) */}
+            <div className="product-section__hero-media">
+              <img
+                className="product-section__stripes"
+                src={`${IMG}/stripes.png`}
+                alt=""
+                aria-hidden="true"
+              />
+              <img
+                className="product-section__screw"
+                src={`${IMG}/hero-screw.png`}
+                alt="Pro-Grip coarse thread drywall screw"
+              />
             </div>
           </div>
 
-          {/* Right rail: specs */}
-          <aside className="panel-specs">
-            <ul className="spec-list">
-              {SPECS.map((spec) => (
-                <li key={spec}>{spec}</li>
-              ))}
-            </ul>
-            <div className="spec-card">
-              <p className="micro-label light">COARSE THREAD<br />SCREWS</p>
-              <p className="micro">6-in-1 — 1/8"</p>
-              <p className="micro">Weight : 25 lb</p>
-              <p className="micro"><strong>5000 PCS</strong></p>
-              <Button href="#" variant="outline" size="xs">LEARN MORE</Button>
+          {/* ── Bottom row: sidebar · panel · highlights ── */}
+          <div className="product-section__content">
+
+            {/* Category sidebar */}
+            <aside className="product-section__sidebar">
+              <span className="product-section__cat-pill">Categories</span>
+              <ul className="product-section__cat-list">
+                {CATEGORIES.map((cat) => (
+                  <CategoryItem
+                    key={cat.id}
+                    cat={cat}
+                    isActive={activeCategory === cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                  />
+                ))}
+              </ul>
+            </aside>
+
+            {/* Interactive product panel */}
+            <div className="product-section__panel">
+              <div className="product-section__panel-label">
+                <i className="product-section__dot" aria-hidden="true" />
+                Interactive View
+              </div>
+
+              <span className="product-section__panel-index">01</span>
+
+              <div className="product-section__grid">
+                {PRODUCTS.map((p) => (
+                  <ProductCard
+                    key={p.id}
+                    product={p}
+                    isActive={activeProduct === p.id}
+                    onClick={() => setActiveProduct(p.id)}
+                  />
+                ))}
+              </div>
+
+              <div className="product-section__panel-footer">
+                <div className="product-section__details">
+                  <span className="product-section__details-eyebrow">
+                    Faster Installation
+                  </span>
+                  <h3 className="product-section__details-title">
+                    Coarse Thread
+                    <br />
+                    Drywall Screws
+                  </h3>
+                  <span className="product-section__details-size">6×1-1/4″</span>
+                </div>
+
+                <div className="product-section__actions">
+                  <button type="button" className="product-section__btn">
+                    Buy Now
+                  </button>
+                  <button type="button" className="product-section__btn product-section__btn--ghost">
+                    Build Submittal
+                  </button>
+                </div>
+              </div>
             </div>
-          </aside>
+
+            {/* Highlights card */}
+            <aside className="product-section__highlights">
+              <span className="product-section__highlights-title">Highlights</span>
+
+              <ul className="product-section__highlights-list">
+                {HIGHLIGHTS.map((h) => (
+                  <li key={h.id} className="product-section__highlight">
+                    <i className="product-section__dot" aria-hidden="true" />
+                    <div>
+                      <h4>{h.title}</h4>
+                      <p>{h.detail}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <hr className="product-section__highlights-divider" />
+
+              <button type="button" className="product-section__btn-outline">
+                Learn More
+              </button>
+            </aside>
+
+          </div>
         </div>
       </div>
     </section>

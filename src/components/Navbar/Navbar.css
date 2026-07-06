@@ -67,7 +67,7 @@
 }
 
 .main-nav a {
-  font-family: var(--font-cond, "Teko", sans-serif);
+  font-family: var(--font-cond, "Oswald", sans-serif);
   font-size: 22px;
   font-weight: 500;
   line-height: 30px;
@@ -103,7 +103,7 @@
   align-items: center;
   justify-content: center;
 
-  font-family: var(--font-cond, "Teko", sans-serif);
+  font-family: var(--font-cond, "Oswald", sans-serif);
   font-size: 22px;
   font-weight: 700;
   line-height: 1;

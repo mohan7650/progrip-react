@@ -8,8 +8,8 @@
    - added .section-title--display (Russo One variant)
    - .ghost-num -> Russo One / 60px (Figma "01" numerals)
    - added .tagline (Oswald 16/600 + tick — Figma "01 — Installer")
-   - added .lead (Barlow 20 — Figma section subtitles)
-   - added .data-label (Inter 12/700 — Figma card labels)
+   - added .lead (Oswald 20px — section subtitles)
+   - added .data-label (Oswald 12/700 — card labels)
    ============================================================ */
 
 /* --- Eyebrow labels (small condensed uppercase tags) --- */
@@ -33,7 +33,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: var(--text-xl);            /* 16px */
   letter-spacing: 0.08em;
@@ -53,21 +53,16 @@
 .section-head.left { text-align: left; }
 
 .section-title {
-  font-family: var(--font-display);     /* Oswald */
-  font-weight: 700;
+  font-family: var(--font-display);     /* Russo One */
+  font-weight: 400;
   font-size: clamp(32px, 4.6vw, 60px);  /* Figma section headings top out at 60px */
   line-height: 1.08;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
   position: relative;
 }
-/* Russo One variant for sections that use the primary display face */
-.section-title--display {
-  font-family: var(--font-primary);
-  text-transform: none;
-}
 
-/* Lead / section subtitle (Figma Barlow 20px) */
+/* Lead / section subtitle (Oswald 20px) */
 .lead {
   font-family: var(--font-body);
   font-size: var(--text-3xl);           /* 20px */
@@ -110,7 +105,7 @@
 .micro-label.red { color: var(--red); }
 .micro-label.light { color: var(--text); }
 
-/* Data label (Figma card labels — Inter 12/700) */
+/* Data label (Oswald 12/700) */
 .data-label {
   font-family: var(--font-ui);
   font-size: var(--text-sm);            /* 12px */

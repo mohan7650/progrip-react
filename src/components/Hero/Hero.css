@@ -17,7 +17,7 @@
                           (275->183, 1106->737, -93->-62, 1412->941, 1492->995)
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;700;900&family=Oswald:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&family=Oswald:wght@400;500;600;700&display=swap");
 
 .hero {
   /* --- palette --- */
@@ -35,10 +35,10 @@
   /* --- responsive scale; 1 unit === 1px at 1920 --- */
   --scale: min(1px, calc(100vw / 1920));
 
-  /* --- type faces (from the spec) --- */
-  --pg-font-heading: "Oswald", "Arial Narrow", sans-serif;
-  --pg-font-eyebrow: "Barlow Condensed", "Arial Narrow", sans-serif;
-  --pg-font-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* --- type faces --- */
+  --pg-font-heading: "Russo One", sans-serif;
+  --pg-font-eyebrow: "Oswald", sans-serif;
+  --pg-font-body: "Oswald", sans-serif;
 
   position: relative;
   display: flex;
@@ -118,7 +118,7 @@
   background-color: var(--pg-red);
 }
 
-/* Heading: Oswald 700 / 128px, line-height 1.0 (box 1130x384 = 3 x 128) */
+/* Heading: Russo One 400 / 128px, line-height 1.0 (box 1130x384 = 3 x 128) */
 .hero__title {
   margin: 0;
   font-family: var(--pg-font-heading);
@@ -134,7 +134,7 @@
   color: var(--pg-red);
 }
 
-/* Subtitle: Barlow 400 / 20px */
+/* Subtitle: Oswald 400 / 20px */
 .hero__subtitle {
   margin: 0;
   max-width: calc(1792 * var(--scale));
@@ -239,7 +239,7 @@
   border-left-color: var(--pg-red);
 }
 
-/* Persona number: Barlow Condensed 900 / 28px */
+/* Persona number: Oswald 700 / 28px */
 .hero__persona-num {
   flex: none;
   font-family: var(--pg-font-eyebrow);
@@ -255,7 +255,7 @@
   gap: calc(12 * var(--scale)); /* title -> body */
 }
 
-/* Persona title: Oswald 700 / 24px */
+/* Persona title: Russo One 400 / 24px */
 .hero__persona-title {
   margin: 0;
   font-family: var(--pg-font-heading);
@@ -266,7 +266,7 @@
   color: var(--pg-white);
 }
 
-/* Persona body: Barlow 400 / 16px */
+/* Persona body: Oswald 400 / 16px */
 .hero__persona-body {
   margin: 0;
   font-family: var(--pg-font-body);
