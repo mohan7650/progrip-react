@@ -25,43 +25,63 @@
   inset: 0;
   display: grid;
   place-items: center;
-  font-family: var(--font-cond);
+  font-family: var(--font-cond, "Oswald", sans-serif);
+  font-size: 13px;
+  font-weight: 700;
   letter-spacing: 0.4em;
   color: rgba(255,255,255,0.18);
-  font-size: 13px;
 }
 .photo-2 { background: linear-gradient(160deg, rgba(230,140,30,0.25), rgba(0,0,0,0.6)), linear-gradient(120deg, #2c2c31, #141416); }
 .photo-3 { background: linear-gradient(160deg, rgba(255,90,20,0.28), rgba(0,0,0,0.6)), linear-gradient(120deg, #2c2c31, #141416); }
 
-/* card headings shared with persona + application cards */
-.t-card h3, .p-card h3, .app-card h3 {
-  font-family: var(--font-display);
-  font-size: 22px;
+/* Card heading — Russo One/22px/400 display heading */
+.t-card h3, .p-card h3 {
+  font-family: var(--font-display, "Russo One", sans-serif);
+  font-size: clamp(18px, 1.15vw, 22px);
   font-weight: 400;
   letter-spacing: -0.01em;
   margin-bottom: 12px;
 }
 
-/* quotes shared with persona cards */
+/* Quotes — Inter/14px/400 body copy (Figma: testimonial quote text) */
 .t-card blockquote, .p-card blockquote {
-  font-size: 13.5px;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
   color: var(--muted);
   border-left: 3px solid var(--red);
   padding-left: 14px;
   margin-bottom: 16px;
 }
 
+/* Stat line — Inter/13px/400 */
 .t-stat {
-  font-size: 12.5px;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 13px;
+  font-weight: 400;
   color: var(--muted);
   margin-bottom: 16px;
 }
-.t-stat strong { color: var(--red); font-size: 14px; }
+.t-stat strong {
+  color: var(--red);
+  font-size: 14px;
+  font-weight: 700;
+}
 
-.t-person { font-size: 12.5px; margin-bottom: 18px; }
+/* Person name/company — Inter/13px/400 */
+.t-person {
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+/* Person name — Inter/13px/700 uppercase */
 .t-person strong {
-  font-family: var(--font-cond);
-  letter-spacing: 0.1em;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   display: block;
 }
 .t-person span { color: var(--dim); }
@@ -73,10 +93,12 @@
   padding: 16px;
   margin-top: auto;
 }
+/* Highlight heading — Oswald/13px/700 label */
 .t-highlight h5 {
-  font-family: var(--font-cond);
+  font-family: var(--font-cond, "Oswald", sans-serif);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1em;
+  text-transform: uppercase;
   margin-bottom: 8px;
 }

@@ -44,11 +44,11 @@
 .o-card--distributor::before { background: #3b82f6; }
 .o-card--contractor::before  { background: var(--red); }
 
-/* ---------- Category tag ---------- */
+/* ---------- Category tag — Oswald/11px/700 condensed label ---------- */
 .o-tag {
   display: inline-block;
   width: fit-content;
-  font-family: var(--font-cond);
+  font-family: var(--font-cond, "Oswald", sans-serif);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -70,10 +70,10 @@
   color: var(--red);
 }
 
-/* ---------- Card typography ---------- */
+/* ---------- Card title — Oswald/16px/700 ---------- */
 .o-title {
-  font-family: var(--font-cond);
-  font-size: 15px;
+  font-family: var(--font-cond, "Oswald", sans-serif);
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -81,9 +81,12 @@
   margin: 0;
 }
 
+/* ---------- Card description — Inter/14px/400 ---------- */
 .o-desc {
-  font-size: 13px;
-  line-height: 1.55;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
   color: var(--muted);
   margin: 0 0 4px;
 }
@@ -97,12 +100,15 @@
   flex-direction: column;
   gap: 8px;
 }
+/* List items — Inter/14px/400 body copy */
 .mini-list li {
   position: relative;
-  font-size: 13px;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 14px;
+  font-weight: 400;
   color: var(--text);
   padding-left: 16px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 .mini-list li::before {
   content: "•";
@@ -124,10 +130,12 @@
   gap: 40px;
   flex-wrap: wrap;
 }
+/* Footer note — Inter/14px/600 */
 .order-foot-text {
-  font-size: 13px;
-  color: #fff;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 14px;
   font-weight: 600;
+  color: #fff;
   max-width: 900px;
   margin: 0;
 }

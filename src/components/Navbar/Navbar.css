@@ -68,8 +68,8 @@
 
 .main-nav a {
   font-family: var(--font-cond, "Oswald", sans-serif);
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 400;
   line-height: 30px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -104,8 +104,8 @@
   justify-content: center;
 
   font-family: var(--font-cond, "Oswald", sans-serif);
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -169,7 +169,7 @@
   }
 
   .main-nav a {
-    font-size: 15px;
+    font-size: clamp(13px, 1.17vw, 15px);
     line-height: 20px;
   }
 
@@ -184,7 +184,7 @@
   .header-actions a {
     width: 143.33px;
     height: 40px;
-    font-size: 15px;
+    font-size: clamp(13px, 1.17vw, 15px);
   }
 }
 

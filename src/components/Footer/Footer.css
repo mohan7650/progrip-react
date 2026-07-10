@@ -23,6 +23,7 @@
 .footer-brand .micro { margin: 16px 0 12px; }
 
 .subscribe { display: flex; gap: 10px; }
+/* Subscribe input — Inter/13px/400 */
 .subscribe input {
   flex: 1;
   background: var(--card);
@@ -30,25 +31,30 @@
   border-radius: 0;
   padding: 10px 14px;
   color: var(--text);
-  font-family: var(--font-body);
+  font-family: var(--font-inter, "Inter", sans-serif);
   font-size: 13px;
+  font-weight: 400;
 }
 .subscribe input::placeholder { color: var(--dim); }
 .subscribe input:focus { outline: none; border-color: var(--red); }
 .subscribe .btn { border-radius: 0; }
 .subscribe + .micro { margin-top: 10px; }
 
+/* Column heading — Oswald/13px/700 label (Figma: uppercase condensed nav labels) */
 .footer-col h6 {
-  font-family: var(--font-cond);
+  font-family: var(--font-cond, "Oswald", sans-serif);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin-bottom: 14px;
 }
+/* Column links — Inter/14px/400 body copy */
 .footer-col a {
   display: block;
-  font-size: 13px;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 14px;
+  font-weight: 400;
   color: var(--muted);
   padding: 5px 0;
   transition: color 0.2s;
@@ -73,17 +79,25 @@
   height: 18px;
 }
 
+/* Legal bar — Inter/12px/400 (Figma: --font--2026-pro-grip-all-rights-reserved: 400) */
 .footer-legal {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
   padding-top: 22px;
+  font-family: var(--font-inter, "Inter", sans-serif);
   font-size: 12px;
+  font-weight: 400;
   color: var(--dim);
   flex-wrap: wrap;
 }
 .legal-links { display: flex; gap: 22px; }
+.legal-links a {
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 12px;
+  font-weight: 400;
+}
 .legal-links a:hover { color: #fff; }
 
 /* ----------------------------------------------

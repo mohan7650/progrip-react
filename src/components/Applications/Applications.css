@@ -39,13 +39,15 @@
   transform-origin: top center;
 }
 
+/* Eyebrow — Oswald/13px/600 label */
 .app-head .eyebrow {
   display: flex;
   align-items: center;
   gap: 14px;
   margin: 0 0 14px;
+  font-family: var(--font-cond, "Oswald", sans-serif);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.9);
@@ -56,11 +58,12 @@
   background: var(--red, #ff151f);
 }
 
+/* Section title — Figma: Russo One/60px/400 */
 .app-title {
   margin: 0;
   font-family: var(--font-display, "Russo One", sans-serif);
   font-weight: 400;
-  font-size: 62px;
+  font-size: clamp(36px, 3.125vw, 60px);
   line-height: 1.0;
   letter-spacing: 0.005em;
   text-transform: uppercase;
@@ -72,10 +75,13 @@
   margin-left: 14px;
 }
 
+/* Section subtitle — Inter/14px/400 body text */
 .app-head .section-sub {
   max-width: 670px;
   margin: 26px 0 0;
-  font-size: 15px;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: clamp(13px, 0.73vw, 14px);
+  font-weight: 400;
   line-height: 1.7;
   color: var(--muted, #9a9a9a);
 }
@@ -113,7 +119,7 @@
   height: 100%;
   object-fit: cover;
 }
-/* index number + accent divider */
+/* index number + accent divider — Oswald/13px/700 label */
 .app-index {
   display: flex;
   align-items: center;
@@ -121,8 +127,11 @@
   margin-bottom: 30px;
 }
 .app-index span {
+  font-family: var(--font-cond, "Oswald", sans-serif);
   font-size: 13px;
   font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--acc);
 }
 .app-index::after {
@@ -136,20 +145,28 @@
 /* accent labels (APPLICATION TYPE, WHY THIS MATTERS, PRO TIP) */
 .app-card .micro-label.acc { color: var(--acc); }
 
-/* card title */
+/* card title — Figma: Russo One/32px/400 "COMMERCIAL DRYWALL INSTALLATION" */
 .app-card h3 {
   margin: 6px 0 22px;
   font-family: var(--font-display, "Russo One", sans-serif);
   font-weight: 400;
-  font-size: 30px;
-  line-height: 1.14;
+  font-size: clamp(24px, 1.667vw, 32px);
+  line-height: 1.1;
   letter-spacing: -0.01em;
   text-transform: uppercase;
   color: #fff;
 }
 
+/* App block body — Figma: Inter/14px/400 */
 .app-block { margin-bottom: 22px; }
-.app-block p { font-size: 12.5px; line-height: 1.55; color: var(--muted, #b6b6b6); text-align: justify; }
+.app-block p {
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: clamp(13px, 0.73vw, 14px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--muted, #b6b6b6);
+  text-align: justify;
+}
 .app-block p + p { margin-top: 8px; }
 
 /* pro tip: accent left rule + label above text */
@@ -161,7 +178,14 @@
   border-radius: 0 var(--radius, 4px) var(--radius, 4px) 0;
 }
 .pro-tip .micro-label { margin-bottom: 8px; }
-.pro-tip p { color: var(--dim, #9a9a9a); text-align: justify; }
+/* Pro tip body — Inter/14px/400 */
+.pro-tip p {
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: clamp(13px, 0.73vw, 14px);
+  font-weight: 400;
+  color: var(--dim, #9a9a9a);
+  text-align: justify;
+}
 
 /* stacked CTA buttons pinned to the card bottom */
 .app-card .btn-block:first-of-type { margin-top: auto; }
@@ -181,17 +205,23 @@
 }
 .details-row h4 {
   font-family: var(--font-display, "Russo One", sans-serif);
-  font-size: 20px;
+  font-size: clamp(16px, 1.04vw, 20px);
+  font-weight: 400;
   letter-spacing: 0.02em;
 }
-.details-row p { font-size: 12.5px; color: var(--dim, #9a9a9a); }
+/* Details row body — Inter/14px/400 */
+.details-row p {
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: clamp(13px, 0.73vw, 14px);
+  font-weight: 400;
+  color: var(--dim, #9a9a9a);
+}
 
 /* ----------------------------------------------
    RESPONSIVE — TABLET (≤1024px)
    ---------------------------------------------- */
 @media (max-width: 1024px) {
   .details-row { grid-template-columns: 1fr; }
-  .app-title { font-size: 48px; }
 }
 
 /* ----------------------------------------------

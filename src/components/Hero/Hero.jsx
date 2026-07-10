@@ -20,11 +20,9 @@ function Hero() {
           </p>
 
           <h1 className="hero__title">
-            Pro Hold.
-            <br />
-            Pro Speed.
-            <br />
-            <span className="hero__title-accent">Pro+Grip.</span>
+            <span className="hero__title-line">Pro Hold.</span>
+            <span className="hero__title-line">Pro Speed.</span>
+            <span className="hero__title-line">Pro+Grip.</span>
           </h1>
 
           <p className="hero__subtitle">

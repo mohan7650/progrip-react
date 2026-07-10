@@ -17,7 +17,7 @@
                           (275->183, 1106->737, -93->-62, 1412->941, 1492->995)
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Russo+One&family=Oswald:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap");
 
 .hero {
   /* --- palette --- */
@@ -36,9 +36,11 @@
   --scale: min(1px, calc(100vw / 1920));
 
   /* --- type faces --- */
-  --pg-font-heading: "Russo One", sans-serif;
-  --pg-font-eyebrow: "Oswald", sans-serif;
-  --pg-font-body: "Oswald", sans-serif;
+  --pg-font-heading:   "Russo One", sans-serif;
+  --pg-font-eyebrow:   "Oswald", sans-serif;
+  --pg-font-body:      "Oswald", sans-serif;
+  --pg-font-subtitle:  "Barlow Condensed", sans-serif;
+  --pg-font-inter:     "Inter", sans-serif;
 
   position: relative;
   display: flex;
@@ -134,11 +136,11 @@
   color: var(--pg-red);
 }
 
-/* Subtitle: Oswald 400 / 20px */
+/* Subtitle: Barlow Condensed / 20px (Figma: section subtitles use Barlow Condensed/20px/400) */
 .hero__subtitle {
   margin: 0;
   max-width: calc(1792 * var(--scale));
-  font-family: var(--pg-font-body);
+  font-family: var(--pg-font-subtitle);
   font-weight: 400;
   font-size: calc(20 * var(--scale));
   line-height: 1.4;
@@ -160,8 +162,8 @@
   height: calc(60 * var(--scale));
   padding: calc(18 * var(--scale)) calc(28 * var(--scale));
   border: none;
-  font-family: var(--pg-font-heading);
-  font-weight: 600;
+  font-family: var(--pg-font-subtitle);   /* Barlow Condensed — Figma CTA buttons */
+  font-weight: 700;
   font-size: calc(20 * var(--scale));
   letter-spacing: calc(0.5 * var(--scale));
   text-transform: uppercase;
@@ -266,13 +268,13 @@
   color: var(--pg-white);
 }
 
-/* Persona body: Oswald 400 / 16px */
+/* Persona body: Inter 400 / 14px (Figma: body copy uses Inter/14px/400) */
 .hero__persona-body {
   margin: 0;
-  font-family: var(--pg-font-body);
+  font-family: var(--pg-font-inter);
   font-weight: 400;
-  font-size: calc(16 * var(--scale));
-  line-height: 1.35;
+  font-size: calc(14 * var(--scale));
+  line-height: 1.55;
   color: var(--pg-body);
 }
 
@@ -335,6 +337,7 @@
     max-width: 92%;
     margin: 0 auto;
     font-size: 16px;
+    font-family: "Barlow Condensed", sans-serif;
   }
 
   .hero__actions {
@@ -383,10 +386,52 @@
   }
 }
 
+/* ==========================================================================
+   Heading shimmer — moving light sweep across each title line
+   ========================================================================== */
+@keyframes heroTextShimmer {
+  0%        { background-position: 100% 0; }
+  50%, 100% { background-position: 0% 0;   }
+}
+
+.hero__title-line {
+  display: block;
+  color: transparent;
+  background-image: linear-gradient(
+    105deg,
+    #ffffff 0%,
+    #ffffff 38%,
+    #ff1f3d 48%,
+    #ffffff 58%,
+    #ffffff 100%
+  );
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: heroTextShimmer 3s infinite ease-in-out;
+}
+
+.hero__title-line:nth-child(1) { animation-delay: 0s;     }
+.hero__title-line:nth-child(2) { animation-delay: 0.18s;  }
+.hero__title-line:nth-child(3) { animation-delay: 0.36s;  }
+
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .hero__btn {
     transition: none;
+  }
+
+  .hero__title-line {
+    animation: none;
+    color: var(--pg-white);
+    background-clip: unset;
+    -webkit-background-clip: unset;
+    background-image: none;
+  }
+
+  .hero__title-line:last-child {
+    color: var(--pg-red);
   }
 }
 .hero__video {
