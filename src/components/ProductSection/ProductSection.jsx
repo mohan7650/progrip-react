@@ -1,18 +1,14 @@
 import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
 import "./ProductSection.css";
 
+import screw01 from "../../assets/images/product-section/screw-01.png";
+import screw02 from "../../assets/images/product-section/screw-02.png";
+import screw03 from "../../assets/images/product-section/screw-03.png";
+import box04   from "../../assets/images/product-section/box-04.png";
+import box05   from "../../assets/images/product-section/box-05.png";
+import box06   from "../../assets/images/product-section/box-06.png";
+
 const ScrewCanvas = lazy(() => import("./ScrewCanvas"));
-
-/*
-  ProductSection — "PRODUCTS BUILT FOR SPEED."
-  Responsive: pixel-close at 1920px, correct at 1280px.
-  Required image assets (public/images/product-section/):
-    stripes.png     angled decorative stripes
-    hero-screw.png  large hero screw (709.6 × 403.48)
-    screw-01.png … screw-06.png / box-04.png … box-06.png
-*/
-
-const IMG = "src/assets/images/product-section";
 
 const CATEGORIES = [
   {
@@ -36,12 +32,12 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
-  { id: 1, label: '01 — Fine 6×2"',        img: `${IMG}/screw-01.png`, alt: 'Fine thread 6×2" drywall screw' },
-  { id: 2, label: '02 — Coarse 6×1-1/4"',  img: `${IMG}/screw-02.png`, alt: 'Coarse thread 6×1-1/4" drywall screw' },
-  { id: 3, label: '03 — Fine 6×1-1/4"',    img: `${IMG}/screw-03.png`, alt: 'Fine thread 6×1-1/4" drywall screw' },
-  { id: 4, label: "04 — Drywall Screw",    img: `${IMG}/box-04.png`,   alt: "Coarse thread drywall screws box" },
-  { id: 5, label: "05 — Drywall Screw",    img: `${IMG}/box-05.png`,   alt: "Fine thread drywall screws box" },
-  { id: 6, label: "06 — Drywall Screw",    img: `${IMG}/box-06.png`,   alt: "Fine thread drywall screws box" },
+  { id: 1, label: '01 — Fine 6×2"',        img: screw01, alt: 'Fine thread 6×2" drywall screw' },
+  { id: 2, label: '02 — Coarse 6×1-1/4"',  img: screw02, alt: 'Coarse thread 6×1-1/4" drywall screw' },
+  { id: 3, label: '03 — Fine 6×1-1/4"',    img: screw03, alt: 'Fine thread 6×1-1/4" drywall screw' },
+  { id: 4, label: "04 — Drywall Screw",    img: box04,   alt: "Coarse thread drywall screws box" },
+  { id: 5, label: "05 — Drywall Screw",    img: box05,   alt: "Fine thread drywall screws box" },
+  { id: 6, label: "06 — Drywall Screw",    img: box06,   alt: "Fine thread drywall screws box" },
 ];
 
 const HIGHLIGHTS = [
