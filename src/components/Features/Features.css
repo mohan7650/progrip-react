@@ -52,9 +52,9 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 46px;
-  font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: 11px;
-  font-weight: 700;
+  font-family: var(--font-cond, "Oswald", sans-serif);
+  font-size: 13px;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #d5d5d5;
@@ -66,10 +66,11 @@
   background: #5cb84a;
 }
 
+/* Figma: section heading tops at 60px — Russo One/400 */
 .features__title {
   margin: 0;
   font-family: var(--font-display, "Russo One", sans-serif);
-  font-size: 56px;
+  font-size: clamp(40px, 3.125vw, 60px);
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.01em;
@@ -87,12 +88,13 @@
   margin-left: 12px;
 }
 
+/* Figma: section subtitle — Inter/14px/400 body text */
 .features__sub {
   width: 720px;
   max-width: 100%;
   margin: 64px 0 32px;
-  font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: 15px;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: clamp(13px, 0.73vw, 14px);
   font-weight: 400;
   line-height: 1.7;
   color: #c6c6c6;
@@ -130,46 +132,54 @@
   border-right: none;
 }
 
+/* Card index — Oswald/14px/700 label */
 .why-card__index {
   display: block;
   margin-bottom: 48px;
   font-family: var(--font-cond, "Oswald", sans-serif);
   font-size: 14px;
   font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: #cc1010;
 }
 
+/* Card title — Russo One/30px display heading */
 .why-card__title {
   margin: 0 0 28px;
   font-family: var(--font-display, "Russo One", sans-serif);
-  font-size: 30px;
+  font-size: clamp(22px, 1.5625vw, 30px);
   font-weight: 400;
-  line-height: 0.95;
+  line-height: 1.05;
   text-transform: uppercase;
   color: #ffffff;
 }
 
+/* Card body text — Inter/14px/400 (Figma body copy) */
 .why-card__text {
   margin: 0 0 34px;
-  font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: 15px;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: clamp(13px, 0.73vw, 14px);
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.65;
   color: #c4c4c4;
 }
 
+/* Result highlight — Inter/14px/400 with red left border */
 .why-card__result {
   margin-bottom: 24px;
   padding-left: 18px;
   border-left: 4px solid #cc1010;
-  font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: 14px;
-  line-height: 1.45;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: clamp(13px, 0.73vw, 14px);
+  font-weight: 400;
+  line-height: 1.55;
   color: #ffffff;
 }
 
 .why-card__result strong {
   color: #cc1010;
+  font-weight: 700;
 }
 
 .why-card__stats {
@@ -177,11 +187,13 @@
   padding-left: 16px;
 }
 
+/* Stats list — Inter/14px/400 */
 .why-card__stats li {
   margin-bottom: 12px;
-  font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: 14px;
-  line-height: 1.45;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: clamp(13px, 0.73vw, 14px);
+  font-weight: 400;
+  line-height: 1.55;
   color: #d0d0d0;
 }
 
@@ -202,7 +214,6 @@
   .features__eyebrow {
     margin-bottom: 31px;
     gap: 8px;
-    font-size: 8px;
   }
 
   .features__eyebrow span {
@@ -210,14 +221,9 @@
     height: 2px;
   }
 
-  .features__title {
-    font-size: 38px;
-  }
-
   .features__sub {
     margin-top: 42px;
     margin-bottom: 21px;
-    font-size: 11px;
     width: 520px;
   }
 
@@ -236,22 +242,14 @@
 
   .why-card__index {
     margin-bottom: 32px;
-    font-size: 10px;
   }
 
   .why-card__title {
-    font-size: 21px;
     margin-bottom: 20px;
   }
 
   .why-card__text {
     margin-bottom: 23px;
-  }
-
-  .why-card__text,
-  .why-card__result,
-  .why-card__stats li {
-    font-size: 10px;
   }
 
   .why-card__result {

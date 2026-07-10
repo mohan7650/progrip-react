@@ -12,9 +12,9 @@
    - added .data-label (Oswald 12/700 — card labels)
    ============================================================ */
 
-/* --- Eyebrow labels (small condensed uppercase tags) --- */
+/* --- Eyebrow labels (Figma: Oswald/13px/600 uppercase condensed tags) --- */
 .eyebrow {
-  font-family: var(--font-cond);
+  font-family: var(--font-cond);        /* Oswald */
   font-size: var(--text-md);            /* 13px */
   font-weight: 600;
   text-transform: uppercase;
@@ -28,12 +28,12 @@
 .eyebrow-red { color: var(--red); justify-content: center; }
 .eyebrow.light { color: rgba(255, 255, 255, 0.85); }
 
-/* --- Taglines (Figma "01 — Installer" — Oswald 16/600 with a red tick) --- */
+/* --- Taglines (Figma "01 — Installer" — Oswald/16px/600 with a red tick) --- */
 .tagline {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-body);
+  font-family: var(--font-body);        /* Oswald */
   font-weight: 600;
   font-size: var(--text-xl);            /* 16px */
   letter-spacing: 0.08em;
@@ -48,33 +48,48 @@
 }
 .tagline.light { color: var(--text); }
 
-/* --- Section titles --- */
+/* --- Section titles (Figma: Russo One/60px/400) --- */
 .section-head { max-width: 760px; margin-bottom: 56px; position: relative; }
 .section-head.left { text-align: left; }
 
 .section-title {
   font-family: var(--font-display);     /* Russo One */
   font-weight: 400;
-  font-size: clamp(32px, 4.6vw, 60px);  /* Figma section headings top out at 60px */
+  font-size: clamp(36px, 3.125vw, 60px);
   line-height: 1.08;
   letter-spacing: -0.01em;
   text-transform: uppercase;
   position: relative;
 }
 
-/* Lead / section subtitle (Oswald 20px) */
+/* Section title variant for Oswald headings (e.g. Personas, Layout 394) */
+.section-title--oswald {
+  font-family: var(--font-body);        /* Oswald */
+  font-weight: 700;
+  font-size: clamp(36px, 3.125vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+/* Lead / section subtitle (Figma: Barlow Condensed/20px/400) */
 .lead {
-  font-family: var(--font-body);
-  font-size: var(--text-3xl);           /* 20px */
-  line-height: 1.45;
+  font-family: var(--font-barlow-cnd);  /* Barlow Condensed */
+  font-size: clamp(16px, 1.04vw, 20px);
+  font-weight: 400;
+  line-height: 1.5;
   color: var(--muted);
 }
 
+/* Section subtitle — body copy (Figma: Inter/14px/400) */
 .section-sub {
+  font-family: var(--font-inter);       /* Inter */
   color: var(--muted);
   margin-top: 18px;
   max-width: 640px;
-  font-size: var(--text-lg);            /* 15px */
+  font-size: var(--text-base);          /* 14px */
+  font-weight: 400;
+  line-height: 1.65;
 }
 
 /* Large ghost section numbers (01–05) — Russo One per Figma */
@@ -82,7 +97,7 @@
   position: absolute;
   right: -110px;
   top: -6px;
-  font-family: var(--font-primary);
+  font-family: var(--font-primary);     /* Russo One */
   font-weight: 400;
   font-size: var(--display-lg);         /* 60px */
   color: transparent;
@@ -92,9 +107,9 @@
 }
 .ghost-num.light { -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.7); }
 
-/* --- Micro labels (condensed) --- */
+/* --- Micro labels (Figma: Oswald/12px/600 condensed) --- */
 .micro-label {
-  font-family: var(--font-cond);
+  font-family: var(--font-cond);        /* Oswald */
   font-size: var(--text-sm);            /* 12px */
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -105,9 +120,9 @@
 .micro-label.red { color: var(--red); }
 .micro-label.light { color: var(--text); }
 
-/* Data label (Oswald 12/700) */
+/* Data label (Figma: Inter/12px/700) */
 .data-label {
-  font-family: var(--font-ui);
+  font-family: var(--font-inter);       /* Inter */
   font-size: var(--text-sm);            /* 12px */
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -115,7 +130,12 @@
   color: var(--text);
 }
 
-.micro { font-size: 12.5px; color: var(--muted); }
+/* Micro utility */
+.micro {
+  font-family: var(--font-inter);       /* Inter */
+  font-size: 12px;
+  color: var(--muted);
+}
 .micro.dim { color: var(--dim); }
 
 /* ----------------------------------------------

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import "./ProductSection.css";
+
+const ScrewCanvas = lazy(() => import("./ScrewCanvas"));
 
 /*
   ProductSection — "PRODUCTS BUILT FOR SPEED."
@@ -106,19 +108,16 @@ export default function ProductSection() {
               </p>
             </header>
 
-            {/* Screw + decorative stripes (stripes are absolute, screw is normal flow) */}
+            {/* Screw + decorative stripes (stripes absolute z-index 1, screw absolute z-index 2) */}
             <div className="product-section__hero-media">
-              <img
-                className="product-section__stripes"
-                src={`${IMG}/stripes.png`}
-                alt=""
-                aria-hidden="true"
-              />
-              <img
-                className="product-section__screw"
-                src={`${IMG}/hero-screw.png`}
-                alt="Pro-Grip coarse thread drywall screw"
-              />
+              <div className="product-section__stripes" aria-hidden="true">
+                <span className="product-section__stripe product-section__stripe--red" />
+                <span className="product-section__stripe product-section__stripe--gray" />
+                <span className="product-section__stripe product-section__stripe--red" />
+              </div>
+              <Suspense fallback={null}>
+                <ScrewCanvas />
+              </Suspense>
             </div>
           </div>
 

@@ -1,23 +1,29 @@
 /* ============================================================
    PRO+GRIP SCREWS — DESIGN TOKENS
-   Reconciled with FIGMA_DESIGN_SPECIFICATIONS_PRO.md
+   Source of truth: FIGMA_DESIGN_SPECIFICATIONS.md
    ------------------------------------------------------------
-   TYPOGRAPHY
-   - Headings / titles / buttons : "Russo One"  (H1–H4, all display text)
-   - Body / labels / descriptions : "Oswald"    (paragraphs, tags, captions)
+   TYPOGRAPHY (from Figma audit)
+   - Russo One      → display headings (section titles, product names)
+   - Oswald         → UI: nav links, buttons, eyebrows, taglines, labels
+   - Inter          → body copy, paragraph text, list items, data labels
+   - Barlow Condensed → section subtitles / lead text
+   - Barlow         → screw spec text, select body items
 
-   Google Fonts:
-   https://fonts.googleapis.com/css2?family=Russo+One
-     &family=Oswald:wght@400;500;600;700&display=swap
+   Google Fonts (see index.html):
+   Russo One | Oswald 400;500;600;700 | Inter 400;500;600;700
+   Barlow Condensed 400;500;600;700 | Barlow 400;500;600;700
    ============================================================ */
 
 :root {
   /* ---------- Fonts ---------- */
-  --font-primary: "Russo One", sans-serif;   /* section headings, ghost numbers */
-  --font-display: "Russo One", sans-serif;   /* hero + persona titles + nav + buttons */
-  --font-body:    "Oswald", sans-serif;      /* subtitle + body copy */
-  --font-cond:    "Oswald", sans-serif;      /* eyebrows + micro labels */
-  --font-ui:      "Oswald", sans-serif;      /* product-card body + data labels */
+  --font-primary:    "Russo One", sans-serif;           /* section headings, ghost numbers */
+  --font-display:    "Russo One", sans-serif;           /* display headings (section titles) */
+  --font-body:       "Oswald", sans-serif;              /* UI labels, eyebrows, nav, buttons */
+  --font-cond:       "Oswald", sans-serif;              /* condensed eyebrows + micro labels */
+  --font-ui:         "Oswald", sans-serif;              /* product-card labels + data labels */
+  --font-inter:      "Inter", sans-serif;               /* body copy, paragraph text, list items */
+  --font-barlow-cnd: "Barlow Condensed", sans-serif;   /* section subtitles / lead text */
+  --font-barlow:     "Barlow", sans-serif;              /* screw specs, some body items */
 
   /* ---------- Type scale (Figma) ---------- */
   --text-xs: 11px;
