@@ -61,7 +61,7 @@ function makeThreadGeometry() {
 
 // ─── Screw mesh ───────────────────────────────────────────────────────────────
 
-function Screw() {
+function Screw({ spinning }) {
   const tumbleRef = useRef(null);
 
   // Honour prefers-reduced-motion (pause animation, don't remove it)
@@ -75,7 +75,7 @@ function Screw() {
   // At rotation.y = π/2  → +X end (head) faces +Z camera  ✓
   // At rotation.y = 3π/2 → −X end (tip)  faces +Z camera  ✓
   useFrame((_, delta) => {
-    if (!reduced && tumbleRef.current) {
+    if (!reduced && spinning && tumbleRef.current) {
       tumbleRef.current.rotation.y += delta * SPEED;
     }
   });
@@ -161,7 +161,7 @@ function Screw() {
 
 // ─── Canvas wrapper ───────────────────────────────────────────────────────────
 
-export default function ScrewCanvas() {
+export default function ScrewCanvas({ spinning = false }) {
   return (
     <Canvas
       style={{
@@ -194,7 +194,7 @@ export default function ScrewCanvas() {
       {/* HDR studio environment for realistic metallic sheen */}
       <Environment preset="studio" />
 
-      <Screw />
+      <Screw spinning={spinning} />
     </Canvas>
   );
 }

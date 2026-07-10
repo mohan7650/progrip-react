@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
 import "./ProductSection.css";
 
 const ScrewCanvas = lazy(() => import("./ScrewCanvas"));
@@ -80,9 +80,52 @@ function ProductCard({ product, isActive, onClick }) {
 export default function ProductSection() {
   const [activeCategory, setActiveCategory] = useState(2);
   const [activeProduct, setActiveProduct]   = useState(2);
+  const [spinning, setSpinning]             = useState(false);
+
+  const sectionRef = useRef(null);
+  const stripsRef  = useRef([]);
+
+  useEffect(() => {
+    const prefersReducedMotion =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      stripsRef.current.forEach(el => { if (el) el.style.opacity = "0"; });
+      return;
+    }
+
+    const STRIP_DURATION = 600;   // ms — must match CSS transition duration
+    const STRIP_GAP      = 150;   // ms pause between consecutive strips
+    const N              = 3;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+
+        stripsRef.current.forEach((strip, i) => {
+          if (!strip) return;
+          setTimeout(
+            () => strip.classList.add("product-section__stripe--exit"),
+            i * (STRIP_DURATION + STRIP_GAP),
+          );
+        });
+
+        // Start screw after last strip finishes (+50 ms buffer)
+        setTimeout(
+          () => setSpinning(true),
+          (N - 1) * (STRIP_DURATION + STRIP_GAP) + STRIP_DURATION + 50,
+        );
+      },
+      { threshold: 0.25 },
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="product-section" id="products">
+    <section className="product-section" id="products" ref={sectionRef}>
       {/* Side-padding wrapper — keeps content off the viewport edges */}
       <div className="product-section__wrap">
         {/* Centered max-width container (1440px at 1920px, ~1174px at 1280px) */}
@@ -111,12 +154,12 @@ export default function ProductSection() {
             {/* Screw + decorative stripes (stripes absolute z-index 1, screw absolute z-index 2) */}
             <div className="product-section__hero-media">
               <div className="product-section__stripes" aria-hidden="true">
-                <span className="product-section__stripe product-section__stripe--red" />
-                <span className="product-section__stripe product-section__stripe--gray" />
-                <span className="product-section__stripe product-section__stripe--red" />
+                <span className="product-section__stripe product-section__stripe--red"  ref={el => { stripsRef.current[0] = el; }} />
+                <span className="product-section__stripe product-section__stripe--gray" ref={el => { stripsRef.current[1] = el; }} />
+                <span className="product-section__stripe product-section__stripe--red"  ref={el => { stripsRef.current[2] = el; }} />
               </div>
               <Suspense fallback={null}>
-                <ScrewCanvas />
+                <ScrewCanvas spinning={spinning} />
               </Suspense>
             </div>
           </div>
