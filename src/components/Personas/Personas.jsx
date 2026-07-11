@@ -13,7 +13,7 @@ const PERSONAS = [
     index: "01",
     title: "THE INSTALLER",
     quote:
-      "“Switched to PROGRIP after the third callback on a 40-unit multi-family project. Stripped screws were killing our schedule and burning labor hours on rework. Six months in, we've had zero fastener failures across three buildings. Crews are faster, callbacks are down, and we're back on budget.”",
+      "\u201cSwitched to PROGRIP after the third callback on a 40-unit multi-family project. Stripped screws were killing our schedule and burning labor hours on rework. Six months in, we\u2019ve had zero fastener failures across three buildings. Crews are faster, callbacks are down, and we\u2019re back on budget.\u201d",
     project: "200,000 sq ft multi-family complex, mixed wood and metal framing",
     name: "MIKE TORRES",
     role: "Framing Foreman",
@@ -36,7 +36,7 @@ const PERSONAS = [
     index: "02",
     title: "THE DISTRIBUTOR",
     quote:
-      "“Consistent quality means I can order by the pallet without worrying about bad batches. We used to have the 'hot batch, cold batch' problem where one pallet would drive perfectly and the next would strip constantly. With PROGRIP, every order performs exactly like the last one. That predictability is worth more than shaving a few dollars per box.”",
+      "\u201cConsistent quality means I can order by the pallet without worrying about bad batches. We used to have the \u2018hot batch, cold batch\u2019 problem where one pallet would drive perfectly and the next would strip constantly. With PROGRIP, every order performs exactly like the last one. That predictability is worth more than shaving a few dollars per box.\u201d",
     project: "$45M annual volume across 15-20 active projects, centralized purchasing",
     name: "SARAH CHEN",
     role: "Materials Manager",
@@ -59,7 +59,7 @@ const PERSONAS = [
     index: "03",
     title: "THE CONTRACTOR",
     quote:
-      "“I include PROGRIP in specifications now because I know it won't cause delays or warranty callbacks. Fastener failures don't show up in my critical path analysis until they've already cost me days. The submittal builder makes documentation easy for architects, and having technical data sheets on hand eliminates inspector questions. One less thing to worry about means I can focus on bigger project risks.”",
+      "\u201cI include PROGRIP in specifications now because I know it won\u2019t cause delays or warranty callbacks. Fastener failures don\u2019t show up in my critical path analysis until they\u2019ve already cost me days. The submittal builder makes documentation easy for architects, and having technical data sheets on hand eliminates inspector questions. One less thing to worry about means I can focus on bigger project risks.\u201d",
     project:
       "Commercial and light-industrial GC, 12-person team, $15M annual revenue",
     name: "JAMES RODRIGUEZ",
@@ -100,7 +100,7 @@ export default function Personas() {
           </h2>
 
           <p className="personas__lead">
-            Real contractors. Real projects. Real results. Here's how
+            Real contractors. Real projects. Real results. Here&apos;s how
             professionals across the supply chain rely on PROGRIP to keep
             projects on schedule and under budget.
           </p>
