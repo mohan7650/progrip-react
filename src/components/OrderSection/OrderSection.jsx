@@ -1,6 +1,7 @@
 import SectionHead from "../Shared/SectionHead.jsx";
 import Button from "../Shared/Button.jsx";
 import OrderCard from "./OrderCard.jsx";
+import Reveal from "../Reveal.jsx";
 import "./OrderSection.css";
 
 const ORDER_FEATURES = [
@@ -70,31 +71,35 @@ export default function OrderSection() {
   return (
     <section className="section section-order" id="order">
       <div className="container">
-        <SectionHead
-          eyebrow="THE PRO ORDERING SYSTEM"
-          title={
-            <>
-              ORDER LIKE A PRO, <span className="text-red">EVERY TIME</span>
-            </>
-          }
-          sub="A platform built around how your crew actually works — from the foreman on his phone at 6am to the buyer managing five jobs from a desk. Fast, transparent, and built to keep you building."
-        />
+        <Reveal>
+          <SectionHead
+            eyebrow="THE PRO ORDERING SYSTEM"
+            title={
+              <>
+                ORDER LIKE A PRO, <span className="text-red">EVERY TIME</span>
+              </>
+            }
+            sub="A platform built around how your crew actually works — from the foreman on his phone at 6am to the buyer managing five jobs from a desk. Fast, transparent, and built to keep you building."
+          />
+        </Reveal>
 
         <div className="order-grid">
-          {ORDER_FEATURES.map((feature) => (
-            <OrderCard key={feature.title} {...feature} />
+          {ORDER_FEATURES.map((feature, i) => (
+            <OrderCard key={feature.title} {...feature} delay={i * 0.1} />
           ))}
         </div>
 
-        <div className="order-foot">
-          <p className="order-foot-text">
-            "This is a dedicated section promoting web and app features.{" "}
-            <span className="text-red">
-              The platform is not a feature — it's the retention strategy."
-            </span>
-          </p>
-          <Button href="#" variant="red">ORDER NOW</Button>
-        </div>
+        <Reveal delay={0.15}>
+          <div className="order-foot">
+            <p className="order-foot-text">
+              "This is a dedicated section promoting web and app features.{" "}
+              <span className="text-red">
+                The platform is not a feature — it's the retention strategy."
+              </span>
+            </p>
+            <Button href="#" variant="red">ORDER NOW</Button>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

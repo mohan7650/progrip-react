@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
+import { motion } from "framer-motion";
 import "./ProductSection.css";
 
 import screw01 from "../../assets/images/product-section/screw-01.png";
@@ -44,6 +45,17 @@ const HIGHLIGHTS = [
   { id: 1, title: "Coarse Thread Screws", detail: "# 6×1 - 7/8″" },
   { id: 2, title: "8000 PCS",             detail: "Weight : 22 lb" },
 ];
+
+const REVEAL = {
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.25 },
+};
+const revealTransition = (delay = 0) => ({
+  duration: 0.7,
+  ease: [0.25, 0.1, 0.25, 1],
+  delay,
+});
 
 function CategoryItem({ cat, isActive, onClick }) {
   return (
@@ -129,7 +141,12 @@ export default function ProductSection() {
 
           {/* ── Hero row: heading left · screw right ── */}
           <div className="product-section__hero-row">
-            <header className="product-section__header">
+            {/* motion applied directly — avoids adding a wrapper inside the flex row */}
+            <motion.header
+              className="product-section__header"
+              {...REVEAL}
+              transition={revealTransition(0)}
+            >
               <span className="product-section__badge">
                 <i className="product-section__badge-dash" aria-hidden="true" />
                 Complete
@@ -145,9 +162,9 @@ export default function ProductSection() {
               <p className="product-section__subtitle">
                 The full range of Pro-Grip fasteners for every job
               </p>
-            </header>
+            </motion.header>
 
-            {/* Screw + decorative stripes (stripes absolute z-index 1, screw absolute z-index 2) */}
+            {/* Stripes + ScrewCanvas — managed by IntersectionObserver, never wrapped */}
             <div className="product-section__hero-media">
               <div className="product-section__stripes" aria-hidden="true">
                 <span className="product-section__stripe product-section__stripe--red"  ref={el => { stripsRef.current[0] = el; }} />
@@ -164,7 +181,11 @@ export default function ProductSection() {
           <div className="product-section__content">
 
             {/* Category sidebar */}
-            <aside className="product-section__sidebar">
+            <motion.aside
+              className="product-section__sidebar"
+              {...REVEAL}
+              transition={revealTransition(0)}
+            >
               <span className="product-section__cat-pill">Categories</span>
               <ul className="product-section__cat-list">
                 {CATEGORIES.map((cat) => (
@@ -176,10 +197,14 @@ export default function ProductSection() {
                   />
                 ))}
               </ul>
-            </aside>
+            </motion.aside>
 
             {/* Interactive product panel */}
-            <div className="product-section__panel">
+            <motion.div
+              className="product-section__panel"
+              {...REVEAL}
+              transition={revealTransition(0.15)}
+            >
               <div className="product-section__panel-label">
                 <i className="product-section__dot" aria-hidden="true" />
                 Interactive View
@@ -220,10 +245,14 @@ export default function ProductSection() {
                   </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Highlights card */}
-            <aside className="product-section__highlights">
+            <motion.aside
+              className="product-section__highlights"
+              {...REVEAL}
+              transition={revealTransition(0.3)}
+            >
               <span className="product-section__highlights-title">Highlights</span>
 
               <ul className="product-section__highlights-list">
@@ -243,7 +272,7 @@ export default function ProductSection() {
               <button type="button" className="product-section__btn-outline">
                 Learn More
               </button>
-            </aside>
+            </motion.aside>
 
           </div>
         </div>

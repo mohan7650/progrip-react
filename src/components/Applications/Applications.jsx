@@ -1,4 +1,5 @@
 import ApplicationCard from "./ApplicationCard.jsx";
+import Reveal from "../Reveal.jsx";
 import "./Applications.css";
 import multiFamilyImage from "../../assets/images/MULTI-FAMILY.jpg";
 import commercialDrywallImage from "../../assets/images/COMMERCIAL DRYWALL.jpg";
@@ -130,47 +131,61 @@ export default function Applications() {
   return (
     <section className="section section-apps" id="applications">
       <div className="container">
-        {/* Angled red/dark stripe banner heading */}
+        {/* Angled red/dark stripe banner heading — ::before/::after have skewX transforms;
+            wrap only the text children inside, never app-head itself */}
         <div className="app-head">
-          <p className="eyebrow light">
-            <span className="tick"></span> APPLICATION GUIDE
-          </p>
-          <h2 className="app-title">
-            CHOOSE THE RIGHT SCREW <span className="ghost-num">04</span>
-            <br />
-            <span className="red">FOR YOUR APPLICATION</span>
-          </h2>
-          <p className="section-sub">
-            Professional contractors match fasteners to substrates for optimal
-            performance and code compliance. Here's how to spec PROGRIP screws
-            across common construction applications.
-          </p>
+          <Reveal>
+            <p className="eyebrow light">
+              <span className="tick"></span> APPLICATION GUIDE
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="app-title">
+              CHOOSE THE RIGHT SCREW <span className="ghost-num">04</span>
+              <br />
+              <span className="red">FOR YOUR APPLICATION</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className="section-sub">
+              Professional contractors match fasteners to substrates for optimal
+              performance and code compliance. Here's how to spec PROGRIP screws
+              across common construction applications.
+            </p>
+          </Reveal>
         </div>
+      </div>
 
-        {/* Row of 3 application cards */}
+      {/* Row of 3 standard cards */}
+      <div className="app-3card-container">
         <div className="grid grid-3 app-grid">
-          {APP_CARDS.map((card) => (
-            <ApplicationCard key={card.photoClass} {...card} />
+          {APP_CARDS.map((card, i) => (
+            <ApplicationCard key={card.photoClass} {...card} delay={i * 0.15} />
           ))}
         </div>
+      </div>
 
-        {/* Row of 2 wide application cards */}
+      {/* Row of 2 wide application cards */}
+      <div className="app-wide-container">
         <div className="grid grid-2 app-grid-wide">
-          {WIDE_CARDS.map((card) => (
-            <ApplicationCard key={card.photoClass} {...card} />
+          {WIDE_CARDS.map((card, i) => (
+            <ApplicationCard key={card.photoClass} {...card} delay={i * 0.15} />
           ))}
         </div>
+      </div>
 
-        {/* Details footnote row */}
-        <div className="card details-row">
-          <h4>GRAPHICAL SYSTEM<br />DETAILS</h4>
-          <p>
-            And here's one more trick to see a few more application shortcuts from
-            the friendly investing Guide bits into the industry: it will always
-            take app-friendly to be shared. Add tags here to see "Thread among
-            Service crack Targeting / center" from center to the site.
-          </p>
-        </div>
+      <div className="container">
+        <Reveal>
+          <div className="card details-row">
+            <h4>GRAPHICAL SYSTEM<br />DETAILS</h4>
+            <p>
+              And here's one more trick to see a few more application shortcuts from
+              the friendly investing Guide bits into the industry: it will always
+              take app-friendly to be shared. Add tags here to see "Thread among
+              Service crack Targeting / center" from center to the site.
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

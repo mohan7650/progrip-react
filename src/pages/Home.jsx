@@ -3,7 +3,7 @@ import Hero from "../components/Hero/Hero.jsx";
 import ProductSection from "../components/ProductSection/ProductSection.jsx";
 import Features from "../components/Features/Features.jsx";
 //import Testimonials from "../components/Testimonials/Testimonials.jsx";
-import Applications from "../components/Applications/Applications.jsx";
+//import Applications from "../components/Applications/Applications.jsx";
 import ProSystem from "../components/ProSystem/ProSystem.jsx";
 import Personas from "../components/Personas/Personas.jsx";
 import OrderSection from "../components/OrderSection/OrderSection.jsx";
@@ -20,7 +20,7 @@ export default function Home() {
         <Features />
         <Personas />
         {/* <Testimonials /> */}
-        <Applications />
+        {/* <Applications /> */}
         <ProSystem />
         <OrderSection />
         <CTA />

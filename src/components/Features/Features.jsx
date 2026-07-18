@@ -1,4 +1,5 @@
 import FeatureCard from "./FeatureCard.jsx";
+import Reveal from "../Reveal.jsx";
 import "./Features.css";
 
 const FEATURES = [
@@ -52,28 +53,34 @@ export default function Features() {
   return (
     <section className="features" id="why">
       <div className="features__inner">
-        <div className="features__eyebrow">
-          <span></span>
-          WHY PROGRIP
-        </div>
+        <Reveal>
+          <div className="features__eyebrow">
+            <span></span>
+            WHY PROGRIP
+          </div>
+        </Reveal>
 
-        <h2 className="features__title">
-          WHY PROFESSIONAL CONTRACTORS <span className="features__num">02</span>
-          <br />
-          <strong>CHOOSE PROGRIP</strong>
-        </h2>
+        <Reveal delay={0.1}>
+          <h2 className="features__title">
+            WHY PROFESSIONAL CONTRACTORS <span className="features__num">02</span>
+            <br />
+            <strong>CHOOSE PROGRIP</strong>
+          </h2>
+        </Reveal>
 
-        <p className="features__sub">
-          When project timelines are tight and callbacks kill profit, you need
-          fasteners that perform exactly as expected, every single time. Here’s
-          what sets PROGRIP apart from retail-grade alternatives.
-        </p>
+        <Reveal delay={0.2}>
+          <p className="features__sub">
+            When project timelines are tight and callbacks kill profit, you need
+            fasteners that perform exactly as expected, every single time. Here's
+            what sets PROGRIP apart from retail-grade alternatives.
+          </p>
+        </Reveal>
 
         <div className="features__rule"></div>
 
         <div className="features__grid">
-          {FEATURES.map((feature) => (
-            <FeatureCard key={feature.index} {...feature} />
+          {FEATURES.map((feature, i) => (
+            <FeatureCard key={feature.index} {...feature} delay={i * 0.15} />
           ))}
         </div>
       </div>
