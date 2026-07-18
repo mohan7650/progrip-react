@@ -1,4 +1,5 @@
 import ProSystemCard from "./ProSystemCard.jsx";
+import Reveal from "../Reveal.jsx";
 import "./ProSystem.css";
 import pro05Img from "../../assets/images/Pro_05.png";
 
@@ -55,25 +56,31 @@ export default function ProSystem() {
         <span className="pro-system__ghost-num" aria-hidden="true">05</span>
 
         <div className="pro-system__head">
-          <div className="pro-system__kicker">
-            <span></span>
-            THE PRO SYSTEM
-          </div>
+          <Reveal>
+            <div className="pro-system__kicker">
+              <span></span>
+              THE PRO SYSTEM
+            </div>
+          </Reveal>
 
-          <h2 className="pro-system__title">
-            THE RIGHT SCREW
-            <br />
-            <span className="pro-system__title-red">RIGHT WHEN YOU NEED IT</span>
-          </h2>
+          <Reveal delay={0.1}>
+            <h2 className="pro-system__title">
+              THE RIGHT SCREW
+              <br />
+              <span className="pro-system__title-red">RIGHT WHEN YOU NEED IT</span>
+            </h2>
+          </Reveal>
 
-          <p className="pro-system__lead">
-            Three proven fasteners engineered for the work that matters
-          </p>
+          <Reveal delay={0.2}>
+            <p className="pro-system__lead">
+              Three proven fasteners engineered for the work that matters
+            </p>
+          </Reveal>
         </div>
 
         <div className="pro-system__grid">
-          {PRO_CARDS.map((card) => (
-            <ProSystemCard key={card.eyebrow} {...card} />
+          {PRO_CARDS.map((card, i) => (
+            <ProSystemCard key={card.eyebrow} {...card} delay={i * 0.15} />
           ))}
         </div>
       </div>

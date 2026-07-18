@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export default function PersonaCard({
   accent,
   image,
@@ -14,9 +16,16 @@ export default function PersonaCard({
   items,
   ctaLabel,
   ctaType,
+  delay = 0,
 }) {
   return (
-    <article className={`persona-card persona-card--${accent}`}>
+    <motion.article
+      className={`persona-card persona-card--${accent}`}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay }}
+    >
       <img className="persona-card__image" src={image} alt={imageAlt} />
 
       <div className="persona-card__body">
@@ -60,6 +69,6 @@ export default function PersonaCard({
           {ctaLabel} →
         </a>
       </div>
-    </article>
+    </motion.article>
   );
 }

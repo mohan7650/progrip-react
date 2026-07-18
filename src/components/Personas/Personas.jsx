@@ -1,4 +1,5 @@
 import PersonaCard from "./PersonaCard.jsx";
+import Reveal from "../Reveal.jsx";
 import "./Personas.css";
 import installerImg from "../../assets/images/installer.jpg";
 import distributorImg from "../../assets/images/distributor.jpg";
@@ -87,28 +88,34 @@ export default function Personas() {
         <span className="corner corner--br"></span>
 
         <div className="personas__head">
-          <div className="personas__kicker">
-            <span></span>
-            PERSONA TESTIMONIALS
-          </div>
+          <Reveal>
+            <div className="personas__kicker">
+              <span></span>
+              PERSONA TESTIMONIALS
+            </div>
+          </Reveal>
 
-          <h2 className="personas__title">
-            THE RIGHT SCREW. <span className="red">RIGHT WHEN</span>{" "}
-            <span className="num">03</span>
-            <br />
-            <span className="red">YOU NEED IT.</span>
-          </h2>
+          <Reveal delay={0.1}>
+            <h2 className="personas__title">
+              THE RIGHT SCREW. <span className="red">RIGHT WHEN</span>{" "}
+              <span className="num">03</span>
+              <br />
+              <span className="red">YOU NEED IT.</span>
+            </h2>
+          </Reveal>
 
-          <p className="personas__lead">
-            Real contractors. Real projects. Real results. Here&apos;s how
-            professionals across the supply chain rely on PROGRIP to keep
-            projects on schedule and under budget.
-          </p>
+          <Reveal delay={0.2}>
+            <p className="personas__lead">
+              Real contractors. Real projects. Real results. Here&apos;s how
+              professionals across the supply chain rely on PROGRIP to keep
+              projects on schedule and under budget.
+            </p>
+          </Reveal>
         </div>
 
         <div className="personas__grid">
-          {PERSONAS.map((persona) => (
-            <PersonaCard key={persona.index} {...persona} />
+          {PERSONAS.map((persona, i) => (
+            <PersonaCard key={persona.index} {...persona} delay={i * 0.15} />
           ))}
         </div>
       </div>
