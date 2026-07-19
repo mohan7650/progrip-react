@@ -121,6 +121,7 @@
 .persona-card__body {
   display: flex;
   flex-direction: column;
+  flex: 1;
   padding: 36px 34px 40px;
 }
 
@@ -266,10 +267,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  align-self: stretch;
-  height: 64px;
+  align-self: flex-start;
+  width: 215px;
+  height: 60px;
+  flex-shrink: 0;
   margin-top: auto;
-  padding: 0 28px;
+  padding: 16px 23px;
+  box-sizing: border-box;
   font-family: var(--font-body, "Oswald", sans-serif);
   font-size: clamp(16px, 1.04vw, 20px);
   font-weight: 600;
@@ -286,6 +290,12 @@
   border: 1px solid #ff151f;
   background: #ff151f;
   color: #ffffff;
+  width: 215px;
+  height: 60px;
+  padding: 16px 23px;
+  box-sizing: border-box;
+  align-self: flex-start;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -322,7 +332,8 @@
   .persona-card__matters { margin-bottom: 18px; padding-left: 12px; border-left-width: 3px; }
   .persona-card__list { margin-bottom: 28px; padding-left: 14px; }
   .persona-card__list li { margin-bottom: 9px; }
-  .persona-card__btn { height: 46px; }
+  .persona-card__btn { width: 215px; height: 60px; padding: 16px 23px; }
+  .persona-card__btn--red { width: 215px; height: 60px; padding: 16px 23px; }
 }
 
 /* ==========================================================================
