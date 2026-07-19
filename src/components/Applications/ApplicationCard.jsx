@@ -1,95 +1,81 @@
 import { motion } from "framer-motion";
 import Button from "../Shared/Button.jsx";
 
-/**
- * One application-guide card. `wide` switches to the 2-up layout where
- * the CTA buttons sit in a .btn-row instead of stacked block buttons.
- * `accent` (green | blue | red) themes the index number, divider,
- * APPLICATION TYPE + WHY THIS MATTERS labels, and PRO TIP.
- */
 export default function ApplicationCard({
   wide = false,
   accent = "red",
   number,
-  photoClass,
   image,
   imageAlt,
   title,
   projectTypes,
   products,
-  whyItMatters,
-  proTip,
-  quantities,
   primaryCta,
   secondaryCta,
   delay = 0,
 }) {
-  const className = [
-    "card",
+  const cls = [
     "app-card",
     `app-card--${accent}`,
-    wide ? "wide" : "",
+    wide ? "app-card--wide" : "",
   ]
     .filter(Boolean)
     .join(" ");
 
   return (
     <motion.article
-      className={className}
+      className={cls}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay }}
     >
-      <div className={`app-photo ${photoClass}`}>
-        {image && <img src={image} alt={imageAlt || ""} />}
-      </div>
-      {number && (
-        <div className="app-index">
-          <span>{number}</span>
-        </div>
-      )}
-
-      <p className="micro-label acc">APPLICATION TYPE</p>
-      <h3>{title}</h3>
-
-      <div className="app-block">
-        <p className="micro-label">PROJECT TYPES</p>
-        <p>{projectTypes}</p>
+      {/* 1. Image */}
+      <div className="app-photo">
+        <img src={image} alt={imageAlt || ""} />
       </div>
 
-      <div className="app-block">
-        <p className="micro-label">RECOMMENDED PRODUCTS</p>
-        {products.map((product, i) => (
-          <p key={i}>{product}</p>
-        ))}
-      </div>
+      {/* Card body — flex: 1 pushes CTAs to bottom */}
+      <div className="app-card__body">
+        {number && (
+          <div className="app-index">
+            <span>{number}</span>
+          </div>
+        )}
 
-      <div className="app-block">
-        <p className="micro-label acc">WHY THIS MATTERS</p>
-        <p>{whyItMatters}</p>
-        <div className="pro-tip">
-          <p className="micro-label acc">PRO TIP</p>
-          <p>{proTip}</p>
+        {/* 2. Application title */}
+        <h3 className="app-card__title">{title}</h3>
+
+        {/* 3. Supporting description */}
+        <p className="app-card__desc">{projectTypes}</p>
+
+        {/* 4. Recommended products */}
+        <div className="app-products-block">
+          <p className="app-micro-label">RECOMMENDED PRODUCTS</p>
+          <ul className="app-products">
+            {products.map((product, i) => (
+              <li key={i}>{product}</li>
+            ))}
+          </ul>
         </div>
       </div>
 
-      <div className="app-block">
-        <p className="micro-label">TYPICAL QUANTITIES</p>
-        <p>{quantities}</p>
+      {/* 5 & 6. CTA buttons */}
+      <div className="app-card__ctas">
+        {wide ? (
+          <div className="btn-row">
+            <Button href="#" variant="red">{primaryCta}</Button>
+            {secondaryCta && <Button href="#" variant="ghost">{secondaryCta}</Button>}
+          </div>
+        ) : (
+          <>
+            <Button href="#" variant="red" block>{primaryCta}</Button>
+            {secondaryCta && (
+              <Button href="#" variant="ghost" block>{secondaryCta}</Button>
+            )}
+          </>
+        )}
       </div>
-
-      {wide ? (
-        <div className="btn-row">
-          <Button href="#" variant="red">{primaryCta}</Button>
-          <Button href="#" variant="ghost">{secondaryCta}</Button>
-        </div>
-      ) : (
-        <>
-          <Button href="#" variant="red" block>{primaryCta}</Button>
-          <Button href="#" variant="ghost" block>{secondaryCta}</Button>
-        </>
-      )}
     </motion.article>
   );
 }
