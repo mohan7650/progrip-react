@@ -278,6 +278,17 @@
   color: var(--pg-body);
 }
 
+/* Crosshair icon — inline between "Pro" and "Speed" in the hero title */
+.hero__crosshair {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  vertical-align: middle;
+  margin: 0;
+  position: relative;
+  top: -0.05em;
+}
+
 /* ==========================================================================
    LAPTOP CHECKPOINT — max-width: 1280px
    1280 / 1920 = 0.6667. At exactly 1280px, --scale resolves to 0.6667px,

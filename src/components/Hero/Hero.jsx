@@ -1,6 +1,32 @@
 import heroVideo from "../../assets/video/Pro Grip Hero Video.mp4";
 import "./Hero.css";
 
+function CrosshairIcon() {
+  return (
+    <svg
+      className="hero__crosshair"
+      viewBox="0 0 85.09 85.09"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      {/* Red filled background circle */}
+      <circle cx="42.545" cy="42.545" r="42.545" fill="transparent" />
+      {/* Outer ring */}
+      <circle cx="42.545" cy="42.545" r="39.085" fill="none" stroke="#CC1010" strokeWidth="5" />
+      {/* Inner small circle */}
+      <circle cx="42.545" cy="42.545" r="11.8" fill="#CC1010" stroke="#CC1010" strokeWidth="5" />
+      {/* Left horizontal tick */}
+      <line x1="0.96" y1="41.59" x2="15.3" y2="41.59" stroke="#CC1010" strokeWidth="5" strokeLinecap="round" />
+      {/* Right horizontal tick */}
+      <line x1="69.79" y1="41.59" x2="84.13" y2="41.59" stroke="#CC1010" strokeWidth="5" strokeLinecap="round" />
+      {/* Top vertical tick */}
+      <line x1="42.545" y1="0.96" x2="42.545" y2="15.3" stroke="#CC1010" strokeWidth="5" strokeLinecap="round" />
+      {/* Bottom vertical tick */}
+      <line x1="42.545" y1="69.79" x2="42.545" y2="84.13" stroke="#CC1010" strokeWidth="5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 function Hero() {
   return (
     <section className="hero" aria-label="Pro+Grip hero">
@@ -21,7 +47,7 @@ function Hero() {
 
           <h1 className="hero__title">
             <span className="hero__title-line">Pro Hold.</span>
-            <span className="hero__title-line">Pro Speed.</span>
+            <span className="hero__title-line">Pro<CrosshairIcon />Speed.</span>
             <span className="hero__title-line">Pro+Grip.</span>
           </h1>
 
