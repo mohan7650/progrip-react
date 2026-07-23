@@ -1,15 +1,14 @@
-import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./ProductSection.css";
 
+import heroScrew from "../../assets/images/product-section/hero-screw-rotation.png";
 import screw01 from "../../assets/images/product-section/screw-01.png";
 import screw02 from "../../assets/images/product-section/screw-02.png";
 import screw03 from "../../assets/images/product-section/screw-03.png";
-import box04   from "../../assets/images/product-section/box-04.png";
-import box05   from "../../assets/images/product-section/box-05.png";
-import box06   from "../../assets/images/product-section/box-06.png";
-
-const ScrewCanvas = lazy(() => import("./ScrewCanvas"));
+import box04 from "../../assets/images/product-section/box-04.png";
+import box05 from "../../assets/images/product-section/box-05.png";
+import box06 from "../../assets/images/product-section/box-06.png";
 
 const CATEGORIES = [
   {
@@ -33,17 +32,47 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
-  { id: 1, label: '01 — Fine 6×2"',        img: screw01, alt: 'Fine thread 6×2" drywall screw' },
-  { id: 2, label: '02 — Coarse 6×1-1/4"',  img: screw02, alt: 'Coarse thread 6×1-1/4" drywall screw' },
-  { id: 3, label: '03 — Fine 6×1-1/4"',    img: screw03, alt: 'Fine thread 6×1-1/4" drywall screw' },
-  { id: 4, label: "04 — Drywall Screw",    img: box04,   alt: "Coarse thread drywall screws box" },
-  { id: 5, label: "05 — Drywall Screw",    img: box05,   alt: "Fine thread drywall screws box" },
-  { id: 6, label: "06 — Drywall Screw",    img: box06,   alt: "Fine thread drywall screws box" },
+  {
+    id: 1,
+    label: '01 — Fine 6×2"',
+    img: screw01,
+    alt: 'Fine thread 6×2" drywall screw',
+  },
+  {
+    id: 2,
+    label: '02 — Coarse 6×1-1/4"',
+    img: screw02,
+    alt: 'Coarse thread 6×1-1/4" drywall screw',
+  },
+  {
+    id: 3,
+    label: '03 — Fine 6×1-1/4"',
+    img: screw03,
+    alt: 'Fine thread 6×1-1/4" drywall screw',
+  },
+  {
+    id: 4,
+    label: "04 — Drywall Screw",
+    img: box04,
+    alt: "Coarse thread drywall screws box",
+  },
+  {
+    id: 5,
+    label: "05 — Drywall Screw",
+    img: box05,
+    alt: "Fine thread drywall screws box",
+  },
+  {
+    id: 6,
+    label: "06 — Drywall Screw",
+    img: box06,
+    alt: "Fine thread drywall screws box",
+  },
 ];
 
 const HIGHLIGHTS = [
   { id: 1, title: "Coarse Thread Screws", detail: "# 6×1 - 7/8″" },
-  { id: 2, title: "8000 PCS",             detail: "Weight : 22 lb" },
+  { id: 2, title: "8000 PCS", detail: "Weight : 22 lb" },
 ];
 
 const REVEAL = {
@@ -51,6 +80,7 @@ const REVEAL = {
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.25 },
 };
+
 const revealTransition = (delay = 0) => ({
   duration: 0.7,
   ease: [0.25, 0.1, 0.25, 1],
@@ -60,7 +90,9 @@ const revealTransition = (delay = 0) => ({
 function CategoryItem({ cat, isActive, onClick }) {
   return (
     <li
-      className={`product-section__cat-item${isActive ? " product-section__cat-item--active" : ""}`}
+      className={`product-section__cat-item${
+        isActive ? " product-section__cat-item--active" : ""
+      }`}
       onClick={onClick}
     >
       <span className="product-section__cat-num">{cat.num}</span>
@@ -74,7 +106,9 @@ function ProductCard({ product, isActive, onClick }) {
   return (
     <button
       type="button"
-      className={`product-section__card${isActive ? " product-section__card--active" : ""}`}
+      className={`product-section__card${
+        isActive ? " product-section__card--active" : ""
+      }`}
       onClick={onClick}
     >
       <span className="product-section__card-media">
@@ -87,68 +121,23 @@ function ProductCard({ product, isActive, onClick }) {
 
 export default function ProductSection() {
   const [activeCategory, setActiveCategory] = useState(2);
-  const [activeProduct, setActiveProduct]   = useState(2);
-  const [spinning, setSpinning]             = useState(false);
-
-  const sectionRef = useRef(null);
-  const stripsRef  = useRef([]);
-
-  useEffect(() => {
-    const prefersReducedMotion =
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReducedMotion) {
-      stripsRef.current.forEach(el => { if (el) el.style.opacity = "0"; });
-      return;
-    }
-
-    const STRIP_DURATION = 600;   // ms — must match CSS transition duration
-    const STRIP_GAP      = 150;   // ms pause between consecutive strips
-    const N              = 3;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        observer.disconnect();
-
-        stripsRef.current.forEach((strip, i) => {
-          if (!strip) return;
-          setTimeout(
-            () => strip.classList.add("product-section__stripe--exit"),
-            i * (STRIP_DURATION + STRIP_GAP),
-          );
-        });
-
-        // Start screw after last strip finishes (+50 ms buffer)
-        setTimeout(
-          () => setSpinning(true),
-          (N - 1) * (STRIP_DURATION + STRIP_GAP) + STRIP_DURATION + 50,
-        );
-      },
-      { threshold: 0.25 },
-    );
-
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const [activeProduct, setActiveProduct] = useState(2);
 
   return (
-    <section className="product-section" id="products" ref={sectionRef}>
-      {/* Side-padding wrapper — keeps content off the viewport edges */}
+    <section className="product-section" id="products">
       <div className="product-section__wrap">
-        {/* Centered max-width container (1440px at 1920px, ~1174px at 1280px) */}
         <div className="product-section__inner">
-
-          {/* ── Hero row: heading left · screw right ── */}
           <div className="product-section__hero-row">
-            {/* motion applied directly — avoids adding a wrapper inside the flex row */}
             <motion.header
               className="product-section__header"
               {...REVEAL}
               transition={revealTransition(0)}
             >
               <span className="product-section__badge">
-                <i className="product-section__badge-dash" aria-hidden="true" />
+                <i
+                  className="product-section__badge-dash"
+                  aria-hidden="true"
+                />
                 Complete
               </span>
 
@@ -164,29 +153,28 @@ export default function ProductSection() {
               </p>
             </motion.header>
 
-            {/* Stripes + ScrewCanvas — managed by IntersectionObserver, never wrapped */}
-            <div className="product-section__hero-media">
-              <div className="product-section__stripes" aria-hidden="true">
-                <span className="product-section__stripe product-section__stripe--red"  ref={el => { stripsRef.current[0] = el; }} />
-                <span className="product-section__stripe product-section__stripe--gray" ref={el => { stripsRef.current[1] = el; }} />
-                <span className="product-section__stripe product-section__stripe--red"  ref={el => { stripsRef.current[2] = el; }} />
+            <div className="product-section__hero-media" aria-hidden="true">
+              <div className="product-visual">
+                <div className="product-strips">
+                  <span className="product-strip product-strip--red-left" />
+                  <span className="product-strip product-strip--gray" />
+                  <span className="product-strip product-strip--red-right" />
+                </div>
+
+                <img src={heroScrew} alt="" className="screw-reflection" />
+                <img src={heroScrew} alt="" className="screw-main" />
               </div>
-              <Suspense fallback={null}>
-                <ScrewCanvas spinning={spinning} />
-              </Suspense>
             </div>
           </div>
 
-          {/* ── Bottom row: sidebar · panel · highlights ── */}
           <div className="product-section__content">
-
-            {/* Category sidebar */}
             <motion.aside
               className="product-section__sidebar"
               {...REVEAL}
               transition={revealTransition(0)}
             >
               <span className="product-section__cat-pill">Categories</span>
+
               <ul className="product-section__cat-list">
                 {CATEGORIES.map((cat) => (
                   <CategoryItem
@@ -199,7 +187,6 @@ export default function ProductSection() {
               </ul>
             </motion.aside>
 
-            {/* Interactive product panel */}
             <motion.div
               className="product-section__panel"
               {...REVEAL}
@@ -213,12 +200,12 @@ export default function ProductSection() {
               <span className="product-section__panel-index">01</span>
 
               <div className="product-section__grid">
-                {PRODUCTS.map((p) => (
+                {PRODUCTS.map((product) => (
                   <ProductCard
-                    key={p.id}
-                    product={p}
-                    isActive={activeProduct === p.id}
-                    onClick={() => setActiveProduct(p.id)}
+                    key={product.id}
+                    product={product}
+                    isActive={activeProduct === product.id}
+                    onClick={() => setActiveProduct(product.id)}
                   />
                 ))}
               </div>
@@ -228,40 +215,53 @@ export default function ProductSection() {
                   <span className="product-section__details-eyebrow">
                     Faster Installation
                   </span>
+
                   <h3 className="product-section__details-title">
                     Coarse Thread
                     <br />
                     Drywall Screws
                   </h3>
-                  <span className="product-section__details-size">6×1-1/4″</span>
+
+                  <span className="product-section__details-size">
+                    6×1-1/4″
+                  </span>
                 </div>
 
                 <div className="product-section__actions">
                   <button type="button" className="product-section__btn">
                     Buy Now
                   </button>
-                  <button type="button" className="product-section__btn product-section__btn--ghost">
+
+                  <button
+                    type="button"
+                    className="product-section__btn product-section__btn--ghost"
+                  >
                     Build Submittal
                   </button>
                 </div>
               </div>
             </motion.div>
 
-            {/* Highlights card */}
             <motion.aside
               className="product-section__highlights"
               {...REVEAL}
               transition={revealTransition(0.3)}
             >
-              <span className="product-section__highlights-title">Highlights</span>
+              <span className="product-section__highlights-title">
+                Highlights
+              </span>
 
               <ul className="product-section__highlights-list">
-                {HIGHLIGHTS.map((h) => (
-                  <li key={h.id} className="product-section__highlight">
+                {HIGHLIGHTS.map((highlight) => (
+                  <li
+                    key={highlight.id}
+                    className="product-section__highlight"
+                  >
                     <i className="product-section__dot" aria-hidden="true" />
+
                     <div>
-                      <h4>{h.title}</h4>
-                      <p>{h.detail}</p>
+                      <h4>{highlight.title}</h4>
+                      <p>{highlight.detail}</p>
                     </div>
                   </li>
                 ))}
@@ -269,11 +269,13 @@ export default function ProductSection() {
 
               <hr className="product-section__highlights-divider" />
 
-              <button type="button" className="product-section__btn-outline">
+              <button
+                type="button"
+                className="product-section__btn-outline"
+              >
                 Learn More
               </button>
             </motion.aside>
-
           </div>
         </div>
       </div>
