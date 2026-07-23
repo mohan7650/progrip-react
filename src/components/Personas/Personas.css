@@ -47,17 +47,15 @@
   flex-direction: column;
 }
 
-/* Kicker eyebrow — Figma: Oswald/16px/600 tagline */
+/* Kicker eyebrow — Figma: Arial/12px/w400 */
 .personas__kicker {
   display: flex;
   align-items: center;
   gap: 14px;
   margin-bottom: 20px;
-  font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
   color: #d6d6d6;
 }
 .personas__kicker span {
@@ -66,27 +64,25 @@
   background: #ff151f;
 }
 
-/* Section title — Figma: Oswald/60px/700 "The right screw Right when you need it" */
+/* Section title — Figma: Russo One/60px/w400 */
 .personas__title {
   margin: 0;
-  font-family: var(--font-body, "Oswald", sans-serif);
+  font-family: var(--font-display, "Russo One", sans-serif);
   font-size: clamp(36px, 3.125vw, 60px);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.05;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
   color: #ffffff;
 }
 .personas__title .red { color: #ff151f; }
 .personas__title .num { color: #3a3a3a; }
 
-/* Section lead — Figma: Barlow Condensed/20px/400 subtitle */
+/* Section lead — Figma: Inter/15px/w400 */
 .personas__lead {
-  width: 700px;
+  width: 704px;
   max-width: 100%;
   margin: 34px 0 0;
-  font-family: var(--font-barlow-cnd, "Barlow Condensed", sans-serif);
-  font-size: clamp(16px, 1.04vw, 20px);
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.55;
   color: #cfcfcf;
@@ -135,14 +131,12 @@
 .persona-card__matters p { color: var(--accent); }
 .persona-card__matters { border-left-color: var(--accent); }
 
-/* Card eyebrow — Figma: Oswald/16px/600 tagline "01 — Installer" */
+/* Card eyebrow — Figma: Arial/11px/w700 */
 .persona-card__eyebrow {
   margin: 0 0 30px;
-  font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 /* Index + divider ----------------------------------------------------------- */
@@ -153,7 +147,7 @@
   margin-bottom: 30px;
 }
 .persona-card__index-row span {
-  font-family: var(--font-body, "Oswald", sans-serif);
+  font-family: Arial, sans-serif;
   font-size: 13px;
   font-weight: 700;
 }
@@ -165,34 +159,33 @@
   opacity: 0.7;
 }
 
-/* Title — Figma: Oswald/50px/700 "THE INSTALLER" */
+/* Title — Figma: Arial/38px/w700 */
 .persona-card h3 {
   margin: 0 0 24px;
-  font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: clamp(30px, 2.604vw, 50px);
+  font-family: Arial, sans-serif;
+  font-size: 38px;
   font-weight: 700;
   line-height: 1.0;
-  text-transform: uppercase;
   color: #ffffff;
 }
 
-/* Quote — Figma: Inter/14px/400 body copy */
+/* Quote — Figma: Arial/15px/w400 / justify */
 .persona-card__quote {
   margin: 0 0 28px;
-  font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: 14px;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.65;
   text-align: justify;
   color: #dcdcdc;
 }
 
-/* Project — Inter/14px/700 (emphasis body) */
+/* Project — Figma: Arial/15px/w400 (same block as quote) */
 .persona-card__project {
   margin: 0 0 34px;
-  font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: 14px;
-  font-weight: 700;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
   line-height: 1.55;
   color: #ffffff;
 }
@@ -201,15 +194,14 @@
 .persona-card__person {
   margin-bottom: 36px;
 }
-/* Name — Inter/16px/700 */
+/* Name — Figma: Inter/18px/w700 */
 .persona-card__person strong {
   display: block;
   margin-bottom: 4px;
   font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 1.2;
-  text-transform: uppercase;
+  line-height: 1.22;
   color: #ffffff;
 }
 /* Company — Inter/14px/400 */
@@ -228,23 +220,20 @@
   padding-left: 18px;
   border-left: 4px solid;
 }
-/* "What Matters" micro label — Oswald/11px/700 condensed */
+/* "What Matters" micro label — Figma: Inter/11px/w400 */
 .persona-card__matters p {
   margin: 0 0 10px;
-  font-family: var(--font-cond, "Oswald", sans-serif);
+  font-family: var(--font-inter, "Inter", sans-serif);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-weight: 400;
 }
-/* Matters heading — Russo One/17px/400 */
+/* Matters heading — Figma: Inter/16px/w700 */
 .persona-card__matters h4 {
   margin: 0;
-  font-family: var(--font-display, "Russo One", sans-serif);
-  font-size: clamp(14px, 0.885vw, 17px);
-  font-weight: 400;
-  line-height: 1.3;
-  text-transform: uppercase;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.375;
   color: #ffffff;
 }
 
@@ -262,7 +251,7 @@
   color: #cfcfcf;
 }
 
-/* CTA button — Figma: Oswald/20px/600 "Installer App →" */
+/* CTA button — Figma: Oswald/20px/w700 */
 .persona-card__btn {
   display: inline-flex;
   align-items: center;
@@ -275,11 +264,12 @@
   padding: 16px 23px;
   box-sizing: border-box;
   font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: clamp(16px, 1.04vw, 20px);
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
+  white-space: nowrap;
 }
 .persona-card__btn--outline {
   border: 1px solid rgba(255, 255, 255, 0.55);
@@ -290,7 +280,8 @@
   border: 1px solid #ff151f;
   background: #ff151f;
   color: #ffffff;
-  width: 215px;
+  width: auto;
+  min-width: 215px;
   height: 60px;
   padding: 16px 23px;
   box-sizing: border-box;
@@ -317,7 +308,7 @@
 
   .personas__kicker { margin-bottom: 14px; }
   .personas__kicker span { width: 20px; height: 3px; }
-  .personas__lead { width: 467px; margin-top: 24px; }
+  .personas__lead { width: 467px; margin-top: 24px; font-size: 14px; }
 
   .personas__grid { gap: 14px; }
 
@@ -333,7 +324,7 @@
   .persona-card__list { margin-bottom: 28px; padding-left: 14px; }
   .persona-card__list li { margin-bottom: 9px; }
   .persona-card__btn { width: 215px; height: 60px; padding: 16px 23px; }
-  .persona-card__btn--red { width: 215px; height: 60px; padding: 16px 23px; }
+  .persona-card__btn--red { width: auto; min-width: 215px; height: 60px; padding: 16px 23px; }
 }
 
 /* ==========================================================================
@@ -356,12 +347,12 @@
   .corner--br { border-bottom-width: 4px; border-right-width: 4px; }
 
   .personas__title { font-size: 34px; }
-  .personas__lead { width: 100%; max-width: 100%; font-size: 15px; }
+  .personas__lead { width: 100%; max-width: 100%; font-size: 14px; }
 
   .personas__grid { grid-template-columns: 1fr; gap: 20px; }
 
   .persona-card__image { height: 220px; }
   .persona-card__body { padding: 30px 26px 34px; }
-  .persona-card h3 { font-size: 34px; }
+  .persona-card h3 { font-size: 30px; }
   .persona-card__btn { align-self: stretch; }
 }
