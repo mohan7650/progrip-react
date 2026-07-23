@@ -185,15 +185,16 @@
 
 .screw-main {
   position: absolute;
-  top: 103px;
-  left: 19px;
+  top: 75px;
+  left: -35px;
   z-index: 3;
   width: 688.76px;
   height: 213.58px;
   object-fit: contain;
-  transform: rotate(-173.02deg);
+  transform: rotate(-176deg) scaleX(-1);
   transform-origin: center;
   opacity: 1;
+  filter: brightness(1.8) contrast(1.2) drop-shadow(0 4px 16px rgba(255,255,255,0.2));
   pointer-events: none;
   user-select: none;
 }
@@ -202,13 +203,13 @@
 
 .screw-reflection {
   position: absolute;
-  top: 239.44px;
-  left: 22px;
+  top: 180.44px;
+  left: -35px;
   z-index: 2;
   width: 688.76px;
   height: 213.58px;
   object-fit: contain;
-  transform: rotate(175.49deg);
+  transform: rotate(-176deg) scaleX(-1) scaleY(-1);
   transform-origin: center;
   opacity: 0.56;
   pointer-events: none;
