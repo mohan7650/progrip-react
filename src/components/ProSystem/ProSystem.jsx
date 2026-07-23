@@ -15,7 +15,7 @@ const PRO_CARDS = [
       "Delivery confirmation with ETA \u2014 right on his screen",
       "No price visibility required \u2014 just order",
     ],
-    ctaLabel: "INSTALLER APP \u2192",
+    ctaLabel: "Installer App \u2192",
   },
   {
     accent: "blue",
@@ -28,7 +28,7 @@ const PRO_CARDS = [
       "Dynamic pricing locked to her category + volume",
       "PO upload maps automatically \u2014 no manual entry",
     ],
-    ctaLabel: "OPEN COMPANY ACCOUNT \u2192",
+    ctaLabel: "Open Company Account \u2192",
   },
   {
     accent: "red",
@@ -41,7 +41,7 @@ const PRO_CARDS = [
       "SDS, LEED, ISO docs always current, alwaysdownloadable",
       "Spec ProGrip once \u2014 every sub on the job follows",
     ],
-    ctaLabel: "BUILD A SUBMITTAL",
+    ctaLabel: "Build a Submittal \u2192",
   },
 ];
 
@@ -59,23 +59,25 @@ export default function ProSystem() {
           <Reveal>
             <div className="pro-system__kicker">
               <span></span>
-              THE PRO SYSTEM
+              The Pro system
             </div>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <h2 className="pro-system__title">
-              THE RIGHT SCREW
-              <br />
-              <span className="pro-system__title-red">RIGHT WHEN YOU NEED IT</span>
-            </h2>
-          </Reveal>
+          <div className="pro-system__head-content">
+            <Reveal delay={0.1}>
+              <h2 className="pro-system__title">
+                The right screw
+                <br />
+                <span className="pro-system__title-red">Right when you need it</span>
+              </h2>
+            </Reveal>
 
-          <Reveal delay={0.2}>
-            <p className="pro-system__lead">
-              Three proven fasteners engineered for the work that matters
-            </p>
-          </Reveal>
+            <Reveal delay={0.2}>
+              <p className="pro-system__lead">
+                Three proven fasteners engineered for the work that matters
+              </p>
+            </Reveal>
+          </div>
         </div>
 
         <div className="pro-system__grid">

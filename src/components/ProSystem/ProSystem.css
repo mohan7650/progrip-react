@@ -10,7 +10,7 @@
   position: relative;
   width: 100%;
   min-height: 903px;
-  padding: var(--section-pad, 112px) var(--gutter, 64px);
+  padding: 112px 64px;
   background:
     linear-gradient(0deg, rgba(5, 9, 4, 0.35), rgba(5, 9, 4, 0.35)),
     linear-gradient(180deg, rgba(0, 0, 0, 0) 85.11%, #000000 100%),
@@ -38,37 +38,43 @@
 }
 
 /* --------------------------------------------------------------------------
-   Ghost section number "05"
+   Ghost section number "05"  — Russo One / 60px / w400
    -------------------------------------------------------------------------- */
 .pro-system__ghost-num {
   position: absolute;
   top: -0.15em;
   right: 0;
-  font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: clamp(80px, 10.4vw, 200px);
-  font-weight: 700;
+  font-family: 'Russo One', sans-serif;
+  font-size: 60px;
+  font-weight: 400;
   line-height: 1;
   color: rgba(255, 255, 255, 0.07);
-  letter-spacing: -0.02em;
   pointer-events: none;
   user-select: none;
 }
 
 /* --------------------------------------------------------------------------
-   Header block  (max 768px)
+   Header block
    -------------------------------------------------------------------------- */
 .pro-system__head {
   display: flex;
   flex-direction: column;
-  max-width: 768px;
+  max-width: 927px;
   gap: 16px;
 }
 
-/* Kicker */
+/* Content wrapper (heading + lead) — gap 24px between them */
+.pro-system__head-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Kicker — Tagline Wrapper: gap 5px, Rectangle 4 = 24×2 */
 .pro-system__kicker {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 5px;
   font-family: var(--font-body, "Oswald", sans-serif);
   font-size: 16px;
   font-weight: 600;
@@ -77,17 +83,17 @@
   color: #d6d6d6;
 }
 .pro-system__kicker span {
-  width: 28px;
-  height: 4px;
+  width: 24px;
+  height: 2px;
   background: #2f9bff;
   flex-shrink: 0;
 }
 
-/* Section title */
+/* Section title — Oswald / 60px / w700 */
 .pro-system__title {
   margin: 0;
   font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: clamp(42px, 4.6875vw, 90px);
+  font-size: 60px;
   font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.01em;
@@ -96,23 +102,23 @@
 }
 .pro-system__title-red { color: #ff151f; }
 
-/* Section lead */
+/* Section lead — Barlow Condensed / 20px / w400 */
 .pro-system__lead {
   margin: 0;
   font-family: var(--font-barlow-cnd, "Barlow Condensed", sans-serif);
-  font-size: clamp(16px, 1.04vw, 20px);
+  font-size: 20px;
   font-weight: 400;
   line-height: 1.55;
   color: #cfcfcf;
 }
 
 /* --------------------------------------------------------------------------
-   Cards grid
+   Cards grid — Component: gap 32px | Row (card-to-card): gap 2px
    -------------------------------------------------------------------------- */
 .pro-system__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px;
+  gap: 2px;
   align-items: stretch;
 }
 
@@ -137,29 +143,28 @@
   padding: 32px;
 }
 
-/* Eyebrow  "01 — Installer" */
+/* Eyebrow  "01 — Installer" — Oswald / 16px / w600 */
 .pro-card__eyebrow {
-  margin: 0 0 16px;
+  margin: 0 0 25px;
   font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--accent);
 }
 
-/* Card title */
+/* Card title — Oswald / 50px / w700 */
 .pro-card h3 {
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: clamp(28px, 2.6vw, 50px);
+  font-size: 50px;
   font-weight: 700;
   line-height: 1.0;
   text-transform: uppercase;
   color: #ffffff;
 }
 
-/* Short description */
+/* Short description — Inter / 14px / w400 */
 .pro-card__desc {
   margin: 0 0 24px;
   font-family: var(--font-inter, "Inter", sans-serif);
@@ -169,7 +174,7 @@
   color: #cfcfcf;
 }
 
-/* Bullet list */
+/* Bullet list — › arrow + Inter / 14px / w400 */
 .pro-card__list {
   margin: 0 0 auto;
   padding: 0;
@@ -180,7 +185,7 @@
   padding-left: 18px;
   margin-bottom: 10px;
   font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.55;
   color: #cfcfcf;
@@ -191,29 +196,28 @@
   left: 0;
   top: -1px;
   color: var(--accent);
-  font-size: 17px;
-  line-height: 1.3;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.55;
 }
 
 /* Divider above CTA */
 .pro-card__divider {
   height: 1px;
   background: rgba(255, 255, 255, 0.12);
-  margin: 28px 0 0;
+  margin-top: 28px;
 }
 
-/* CTA */
+/* CTA — Frame 10: pad 20px top/bottom | Oswald / 20px / w600 */
 .pro-card__btn {
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 56px;
-  margin-top: 20px;
+  justify-content: flex-start;
+  padding: 20px 0;
   font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: clamp(14px, 1.04vw, 18px);
+  font-size: 20px;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   text-decoration: none;
   color: #ffffff;
   background: transparent;
@@ -227,72 +231,79 @@
 @media (max-width: 1280px) {
   .pro-system {
     min-height: 602px;
-    padding: 80px 40px;
+    padding: 75px 43px;
   }
 
   .pro-system__inner {
     max-width: 1200px;
-    gap: 56px;
+    gap: 54px;
   }
 
   .pro-system__ghost-num {
-    font-size: 133px;
+    font-size: 40px;
   }
 
   .pro-system__head {
-    max-width: 512px;
-    gap: 12px;
+    max-width: 618px;
+    gap: 11px;
   }
 
+  .pro-system__head-content {
+    gap: 16px;
+  }
+
+  .pro-system__kicker {
+    font-size: 11px;
+    gap: 4px;
+  }
   .pro-system__kicker span {
-    width: 20px;
-    height: 3px;
+    width: 16px;
+    height: 2px;
   }
 
   .pro-system__title {
-    font-size: clamp(38px, 3.75vw, 60px);
+    font-size: 40px;
   }
 
   .pro-system__lead {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .pro-system__grid {
-    gap: 20px;
+    gap: 2px;
   }
 
   .pro-card__body {
-    padding: 24px 22px 28px;
+    padding: 21px;
   }
 
   .pro-card__eyebrow {
-    margin-bottom: 12px;
-    font-size: 13px;
+    margin-bottom: 17px;
+    font-size: 11px;
   }
 
   .pro-card h3 {
-    margin-bottom: 14px;
-    font-size: clamp(24px, 2.5vw, 34px);
+    margin-bottom: 11px;
+    font-size: 33px;
   }
 
   .pro-card__desc {
-    margin-bottom: 18px;
-    font-size: 13px;
+    margin-bottom: 16px;
+    font-size: 9px;
   }
 
   .pro-card__list li {
-    font-size: 12px;
-    margin-bottom: 8px;
+    font-size: 9px;
+    margin-bottom: 7px;
   }
 
   .pro-card__divider {
-    margin-top: 20px;
+    margin-top: 19px;
   }
 
   .pro-card__btn {
-    height: 48px;
-    margin-top: 16px;
-    font-size: 14px;
+    padding: 14px 0;
+    font-size: 13px;
   }
 }
 
@@ -302,14 +313,18 @@
 @media (max-width: 900px) {
   .pro-system {
     min-height: auto;
-    padding: var(--section-pad, 72px) var(--gutter, 32px);
+    padding: 72px 32px;
   }
   .pro-system__inner { gap: 48px; }
+  .pro-system__head { max-width: 100%; }
+  .pro-system__title { font-size: clamp(36px, 5vw, 50px); }
+  .pro-system__lead { font-size: 16px; }
   .pro-system__grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 2px;
   }
-  .pro-system__ghost-num { font-size: 80px; }
+  .pro-system__ghost-num { font-size: 40px; }
+  .pro-card h3 { font-size: clamp(28px, 4vw, 40px); }
 }
 
 /* ==========================================================================
@@ -317,7 +332,8 @@
    ========================================================================== */
 @media (max-width: 680px) {
   .pro-system {
-    padding: var(--section-pad, 48px) var(--gutter, 20px);
+    padding: 48px 20px;
   }
   .pro-card__body { padding: 24px 20px; }
+  .pro-card__btn { font-size: 16px; }
 }
