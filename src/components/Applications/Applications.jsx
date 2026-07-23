@@ -19,8 +19,14 @@ const APP_CARDS = [
     products: [
       "For Wood Studs: Coarse Thread Drywall Screws",
       "For Metal Studs: Self-Drilling Screws (20-gauge) or Fine Thread (25-gauge)",
-      'For Structural: Structural Framing Screws with 1" Fit ratings',
+      'For Structural: Structural Framing Screws (#9 × 3" typical)',
     ],
+    whyMatters:
+      'Mixed-material projects require reliable fasteners across all substrates without switching suppliers or dealing with inconsistent quality. Stocking PROGRIP across product types means consistent performance, simplified ordering, and one supplier relationship for the entire project. Eliminates the "good for wood, bad for metal" problem with generic fasteners.',
+    proTip:
+      "Order by building section to avoid mixing screws on the jobsite. Label material staging areas with application-specific fastener types. Color-coded labels (green for wood, blue for metal) reduce installation errors on mixed-framing projects.",
+    typicalQuantities:
+      "40-60 units: 100,000–150,000 drywall screws plus 10,000–20,000 structural screws",
     primaryCta: "PLAN MULTI-FAMILY PROJECT →",
     secondaryCta: "CONTACT FOR VOLUME PRICING →",
   },
@@ -48,10 +54,16 @@ const APP_CARDS = [
     projectTypes:
       "Existing building retrofit, tenant improvements, selective demolition and rebuild.",
     products: [
-      "Fine Thread Drywall Screws (for existing metal stud systems, 25-gauge)",
+      "Fine Thread Drywall Screws (for existing metal stud systems, often 25-gauge in older buildings)",
       "Coarse Thread Screws (for wood framing additions and repairs)",
       "Structural Framing Screws (for blocking and reinforcement)",
     ],
+    whyMatters:
+      "Renovation work means unknown or mixed framing conditions behind existing finishes. You can't reliably predict what substrate you'll encounter until demo is complete. PROGRIP's consistent performance eliminates surprises across all materials. When you're not sure what's behind the wall, you need fasteners you can trust in any substrate without callbacks.",
+    proTip:
+      "Keep a variety pack in the truck: 2,000 fine thread, 2,000 coarse thread, 500 structural. Better to have three types on hand than make a supply run mid-day when you discover mixed framing. Most renovation delays come from material trips, not installation time.",
+    typicalQuantities:
+      "Varies widely by project; 5,000–10,000 screws typical for commercial tenant improvement",
     primaryCta: "SHOP VARIETY PACKS →",
     secondaryCta: "RENOVATION PROJECT GUIDE →",
   },
@@ -65,11 +77,17 @@ const WIDE_CARDS = [
     imageAlt: "Light-gauge steel construction application",
     title: "LIGHT-GAUGE STEEL CONSTRUCTION",
     projectTypes:
-      "Steel construction, medical offices, any project with engineered light-gauge steel systems.",
+      "Retail storefronts, medical offices, any project with engineered light-gauge steel systems.",
     products: [
       "Primary: Fine Thread Drywall Screws (for 25-gauge systems)",
       "Secondary: Self-Drilling Screws (for 20-gauge track and stud connections)",
     ],
+    whyMatters:
+      "Light-gauge steel systems are extremely unforgiving. Over-torque by even small amounts and you strip out the thin metal. Under-torque and you get movement, cracks, and fastener pop. PROGRIP's precision thread design and consistent hardness (HRC 52–56) provide the narrow torque window these engineered systems require. Generic screws with batch variation cause constant stripping.",
+    proTip:
+      "Set drill clutch between 15–18 for optimal depth control on 25-gauge systems. Replace Phillips bits every 1,000 screws to maintain consistent drive performance. Worn bits increase cam-out frequency and damage screw heads. Test clutch settings on scrap material before production driving.",
+    typicalQuantities:
+      "12–15 screws per sheet, 8,000–12,000 per 1,000 sq ft depending on system",
     primaryCta: "SHOP FINE THREAD SCREWS →",
     secondaryCta: "LIGHT-GAUGE INSTALLATION TIPS →",
   },
@@ -133,15 +151,15 @@ export default function Applications() {
           ))}
         </div>
 
-        {/* Footer details row */}
+        {/* Brand guide note (Figma: 1440×158) */}
         <Reveal>
-          <div className="card details-row">
+          <div className="details-row">
             <h4>GRAPHICAL SYSTEM<br />DETAILS</h4>
             <p>
-              And here's one more trick to see a few more application shortcuts from
-              the friendly investing Guide bits into the industry: it will always
-              take app-friendly to be shared. Add tags here to see "Thread among
-              Service crack Targeting / center" from center to the site.
+              And lastly we would like to see a few more graphical elements from the
+              ProGrip branding Guide into this website design. Specifically we would
+              like to see Thread texture, Reticle mark Targeting / action icon,
+              Split panel.
             </p>
           </div>
         </Reveal>

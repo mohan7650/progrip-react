@@ -6,6 +6,9 @@
   background: var(--bg, #191919);
   overflow: hidden;
   position: relative;
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Background decorative overlay — responsive, centered, no rotation */
@@ -129,8 +132,14 @@
 .app-grid--3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
+.app-grid--3 .app-card {
+  min-height: 1405px;
+}
 .app-grid--2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.app-grid--2 .app-card {
+  min-height: 1193px;
 }
 
 /* -------------------------------------------------------
@@ -168,10 +177,16 @@
   height: 240px;
 }
 
-/* Card body — flex: 1 so CTAs always land at the bottom */
+/* Card body — Figma: pad:34,32,40,32 | gap:16 (narrow) / gap:11 (wide) */
 .app-card__body {
   flex: 1;
-  padding: 24px 24px 0;
+  padding: 34px 32px 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.app-card--wide .app-card__body {
+  gap: 11px;
 }
 
 /* Index number + accent divider */
@@ -179,7 +194,6 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 14px;
 }
 .app-index span {
   font-family: var(--font-cond, "Oswald", sans-serif);
@@ -197,42 +211,91 @@
   opacity: 0.5;
 }
 
+/* Application Type meta-label (Figma: Arial/11px/w700, pad:13,0,0,0) */
+.app-type-label {
+  margin: 0;
+  padding-top: 13px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted, #9a9a9a);
+}
+
 /* Application title */
 .app-card__title {
-  margin: 0 0 10px;
+  margin: 0;
   font-family: var(--font-display, "Russo One", sans-serif);
   font-weight: 400;
-  font-size: clamp(17px, 1.15vw, 22px);
-  line-height: 1.15;
+  font-size: clamp(17px, 1.67vw, 32px);
+  line-height: 1.1;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: #fff;
 }
 
-/* Supporting description */
+/* Body copy (description text) */
 .app-card__desc {
-  margin: 0 0 16px;
+  margin: 0;
   font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.6;
   color: var(--muted, #9a9a9a);
+  text-align: justify;
 }
 
-/* Recommended products */
-.app-products-block {
-  margin-bottom: 8px;
+/* Section group wrappers (Figma pad:13,0,0,0 | gap:7) */
+.app-section-group,
+.app-products-block,
+.app-quantities {
+  padding-top: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
 }
-.app-micro-label {
-  display: block;
-  margin-bottom: 8px;
-  font-family: var(--font-cond, "Oswald", sans-serif);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+
+/* Why This Matters (Figma pad:13,0,13,0 | gap:8) */
+.app-why-matters {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Pro Tip — VerticalBorder (Figma pad:0,0,0,19 | gap:8, left accent line) */
+.app-pro-tip {
+  padding-left: 19px;
+  border-left: 2px solid var(--acc);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Section headings (Figma: Inter/14px/w400 for Project Types / Recommended / Why) */
+.app-section-label {
+  margin: 0;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--muted, #9a9a9a);
 }
+/* Accent variant — WHY THIS MATTERS (uses card accent color) */
+.app-section-label--accent {
+  color: var(--acc);
+}
+/* Small variant — Pro Tip / Typical Quantities (Figma: Inter/11px or Arial/11px) */
+.app-section-label--sm {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* Recommended products list */
 .app-products {
   list-style: none;
   padding: 0;
@@ -243,7 +306,7 @@
   padding-left: 14px;
   margin-bottom: 6px;
   font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.55;
   color: #c4c4c4;
@@ -257,17 +320,16 @@
   line-height: 1.3;
 }
 
-/* CTA buttons — always at the card bottom */
+/* CTA buttons — Figma: Frame 24 | 460×132 | gap:12 */
 .app-card__ctas {
-  padding: 20px 24px 24px;
+  padding: 20px 32px 24px 32px;
 }
-/* Reset global btn-block margin-top on first button */
 .app-card__ctas .btn-block:first-child,
 .app-card__ctas .btn-block:first-of-type {
   margin-top: 0;
 }
 .app-card__ctas .btn-block + .btn-block {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 .app-card--wide .app-card__ctas .btn-row {
   gap: 12px;
@@ -278,7 +340,7 @@
 }
 
 /* -------------------------------------------------------
-   Footer details row
+   Footer details row (Figma: Brand guide note 1440×158)
    ------------------------------------------------------- */
 .details-row {
   display: grid;
@@ -288,7 +350,7 @@
   background: var(--card, #171717);
   border: 1px solid var(--border, #2a2a2e);
   border-radius: var(--radius, 4px);
-  padding: 28px;
+  padding: 34px 36px;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
 }
 .details-row h4 {
@@ -314,7 +376,9 @@
 @media (max-width: 1024px) {
   .apps-container { padding: 0 24px; }
   .app-grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .app-grid--3 .app-card { min-height: auto; }
   .app-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .app-grid--2 .app-card { min-height: auto; }
   .details-row { grid-template-columns: 1fr; }
 }
 
