@@ -78,7 +78,7 @@ const APP_CARDS = [
 const WIDE_CARDS = [
   {
     wide: true,
-    accent: "red",
+    accent: "blue",
     image: lightGaugeImage,
     imageAlt: "Light-gauge steel construction application",
     title: "LIGHT-GAUGE STEEL CONSTRUCTION",
@@ -107,8 +107,14 @@ const WIDE_CARDS = [
       "Single-family homes, additions, wood-framed townhomes and multi-family.",
     products: [
       "For Drywall: Coarse Thread Drywall Screws (all drywall-to-stud applications)",
-      "For Structural: Structural Framing Screws (blocking, rim boards, subfloor, ledgers)",
+      "For Structure: Structural Framing Screws (blocking, rim boards, subfloor, ledgers)",
     ],
+    whyMatters:
+      "Wood construction requires aggressive thread engagement and clean cutting action without splitting dimensional lumber. PROGRIP's coarse thread design (17 TPI) prevents spinning and provides superior holding power in SPF, SYP, engineered lumber, and wood composites. Fine thread screws (designed for metal) will spin in wood and fail to hold properly.",
+    proTip:
+      'For standard 2×4 framing with 1/2" drywall, 1-1/4" screws meet code minimum. Use 1-5/8" for ceiling applications to ensure adequate penetration accounting for potential insulation compression. On engineered lumber (I-joists, LVL), verify fastener schedules as some manufacturers require specific lengths.',
+    typicalQuantities:
+      "2,000 sq ft house: 8,000–10,000 drywall screws plus 1,000–2,000 structural screws",
     primaryCta: "SHOP COARSE THREAD SCREWS →",
     secondaryCta: "RESIDENTIAL FRAMING GUIDE →",
   },
