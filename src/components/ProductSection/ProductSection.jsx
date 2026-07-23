@@ -1,15 +1,15 @@
-import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./ProductSection.css";
 
+import heroScrew from "../../assets/images/product-section/hero-screw.png";
+import heroScrewRotation from "../../assets/images/product-section/hero-screw-rotation.png";
 import screw01 from "../../assets/images/product-section/screw-01.png";
 import screw02 from "../../assets/images/product-section/screw-02.png";
 import screw03 from "../../assets/images/product-section/screw-03.png";
 import box04   from "../../assets/images/product-section/box-04.png";
 import box05   from "../../assets/images/product-section/box-05.png";
 import box06   from "../../assets/images/product-section/box-06.png";
-
-const ScrewCanvas = lazy(() => import("./ScrewCanvas"));
 
 const CATEGORIES = [
   {
@@ -88,52 +88,23 @@ function ProductCard({ product, isActive, onClick }) {
 export default function ProductSection() {
   const [activeCategory, setActiveCategory] = useState(2);
   const [activeProduct, setActiveProduct]   = useState(2);
-  const [spinning, setSpinning]             = useState(false);
-
-  const sectionRef = useRef(null);
-  const stripsRef  = useRef([]);
-
-  useEffect(() => {
-    const prefersReducedMotion =
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReducedMotion) {
-      stripsRef.current.forEach(el => { if (el) el.style.opacity = "0"; });
-      return;
-    }
-
-    const STRIP_DURATION = 600;   // ms — must match CSS transition duration
-    const STRIP_GAP      = 150;   // ms pause between consecutive strips
-    const N              = 3;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        observer.disconnect();
-
-        stripsRef.current.forEach((strip, i) => {
-          if (!strip) return;
-          setTimeout(
-            () => strip.classList.add("product-section__stripe--exit"),
-            i * (STRIP_DURATION + STRIP_GAP),
-          );
-        });
-
-        // Start screw after last strip finishes (+50 ms buffer)
-        setTimeout(
-          () => setSpinning(true),
-          (N - 1) * (STRIP_DURATION + STRIP_GAP) + STRIP_DURATION + 50,
-        );
-      },
-      { threshold: 0.25 },
-    );
-
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <section className="product-section" id="products" ref={sectionRef}>
+    <section className="product-section" id="products">
+      {/* Static screw layers — absolutely positioned relative to the full section canvas */}
+      <img
+        src={heroScrewRotation}
+        alt=""
+        className="product-section__screw-reflection"
+        aria-hidden="true"
+      />
+      <img
+        src={heroScrew}
+        alt=""
+        className="product-section__screw-main"
+        aria-hidden="true"
+      />
+
       {/* Side-padding wrapper — keeps content off the viewport edges */}
       <div className="product-section__wrap">
         {/* Centered max-width container (1440px at 1920px, ~1174px at 1280px) */}
@@ -164,16 +135,13 @@ export default function ProductSection() {
               </p>
             </motion.header>
 
-            {/* Stripes + ScrewCanvas — managed by IntersectionObserver, never wrapped */}
+            {/* Decorative stripes — static background strips */}
             <div className="product-section__hero-media">
               <div className="product-section__stripes" aria-hidden="true">
-                <span className="product-section__stripe product-section__stripe--red"  ref={el => { stripsRef.current[0] = el; }} />
-                <span className="product-section__stripe product-section__stripe--gray" ref={el => { stripsRef.current[1] = el; }} />
-                <span className="product-section__stripe product-section__stripe--red"  ref={el => { stripsRef.current[2] = el; }} />
+                <span className="product-section__stripe product-section__stripe--red" />
+                <span className="product-section__stripe product-section__stripe--gray" />
+                <span className="product-section__stripe product-section__stripe--red" />
               </div>
-              <Suspense fallback={null}>
-                <ScrewCanvas spinning={spinning} />
-              </Suspense>
             </div>
           </div>
 
