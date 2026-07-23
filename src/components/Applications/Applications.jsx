@@ -42,6 +42,12 @@ const APP_CARDS = [
       "Primary: Self-Drilling Drywall Screws (20-gauge steel studs and heavier)",
       "Alternative: Fine Thread Drywall Screws (25-gauge light-gauge steel studs)",
     ],
+    whyMatters:
+      "Eliminates callbacks from stripped fasteners on high-square-footage projects. Self-drilling point saves 30–40% installation time vs pre-drilling. Consistent performance means predictable labor costs and on-schedule completion. Wrong thread type causes stripped screws in metal studs, resulting in rework and schedule delays.",
+    proTip:
+      'Use 1-1/4" length for standard 1/2" drywall to 20-gauge studs. Bump to 1-5/8" for 5/8" fire-rated board. Always verify stud gauge before ordering; mixing fine thread and self-drilling products on the same project causes inventory confusion.',
+    typicalQuantities:
+      "10,000–15,000 screws per 1,000 sq ft depending on stud spacing and code requirements",
     primaryCta: "SHOP SELF-DRILLING SCREWS →",
     secondaryCta: "VIEW INSTALLATION GUIDE →",
   },
