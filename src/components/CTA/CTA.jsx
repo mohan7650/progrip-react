@@ -1,14 +1,12 @@
 import Button from "../Shared/Button.jsx";
 import Reveal from "../Reveal.jsx";
+import ctaStrip from "../../assets/images/cta_strip.png";
 import "./CTA.css";
 
 export default function CTA() {
   return (
     <section className="cta-band">
-      <div className="cta-stripes" aria-hidden="true">
-        <span className="stripe stripe-grey"></span>
-        <span className="stripe stripe-red"></span>
-      </div>
+<img className="cta-strip" src={ctaStrip} alt="" aria-hidden="true" />
       <div className="container cta-inner">
         <Reveal>
           <h2 className="cta-title">

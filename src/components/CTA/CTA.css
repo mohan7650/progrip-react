@@ -5,16 +5,23 @@
   position: relative;
   overflow: hidden;
   text-align: center;
-  padding: 110px 0;
+  min-height: 506px;
+  padding: 120px 0;
   background:
-    radial-gradient(800px 400px at 50% 120%, rgba(225,29,43,0.12), transparent 60%),
-    var(--bg-deep);
+    radial-gradient(43.86% 122.97% at 80.58% 90.12%, #990000 0%, rgba(0, 0, 0, 0) 100%),
+    #000000;
   border-bottom: 1px solid var(--border);
 }
 
-.cta-stripes { position: absolute; inset: 0; }
-.cta-stripes .stripe-grey { left: 6%; background: linear-gradient(#3a3a3e, #232326); }
-.cta-stripes .stripe-red  { left: 14%; width: 56px; background: linear-gradient(var(--red), var(--red-dark)); }
+
+.cta-strip {
+  position: absolute;
+  top: 0;
+  right: 70px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
 
 .cta-inner { position: relative; z-index: 2; }
 
