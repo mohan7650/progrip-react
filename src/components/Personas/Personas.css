@@ -315,16 +315,20 @@
   .persona-card__image { height: 156px; }
   .persona-card__body { padding: 24px 22px 26px; }
 
-  .persona-card__eyebrow { margin-bottom: 20px; }
+  .persona-card__eyebrow { margin-bottom: 20px; font-size: 10px; }
   .persona-card__index-row { gap: 12px; margin-bottom: 20px; }
-  .persona-card__quote { margin-bottom: 20px; }
-  .persona-card__project { margin-bottom: 24px; }
+  .persona-card h3 { font-size: 26px; margin-bottom: 16px; }
+  .persona-card__quote { margin-bottom: 20px; font-size: 13px; }
+  .persona-card__project { margin-bottom: 24px; font-size: 13px; }
   .persona-card__person { margin-bottom: 24px; }
+  .persona-card__person strong { font-size: 14px; }
+  .persona-card__person span { font-size: 12px; }
   .persona-card__matters { margin-bottom: 18px; padding-left: 12px; border-left-width: 3px; }
+  .persona-card__matters h4 { font-size: 13px; }
   .persona-card__list { margin-bottom: 28px; padding-left: 14px; }
-  .persona-card__list li { margin-bottom: 9px; }
-  .persona-card__btn { width: 215px; height: 60px; padding: 16px 23px; }
-  .persona-card__btn--red { width: auto; min-width: 215px; height: 60px; padding: 16px 23px; }
+  .persona-card__list li { margin-bottom: 9px; font-size: 13px; }
+  .persona-card__btn { width: 160px; height: 48px; padding: 12px 18px; font-size: 15px; }
+  .persona-card__btn--red { width: auto; min-width: 160px; height: 48px; padding: 12px 18px; font-size: 15px; }
 }
 
 /* ==========================================================================
