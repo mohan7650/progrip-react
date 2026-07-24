@@ -205,7 +205,7 @@
 /* Divider above CTA */
 .pro-card__divider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--accent);
   margin-top: 28px;
 }
 
