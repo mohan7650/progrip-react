@@ -1,6 +1,7 @@
 import ApplicationCard from "./ApplicationCard.jsx";
 import Reveal from "../Reveal.jsx";
 import "./Applications.css";
+import subtractImg from "../../assets/images/Subtract.png";
 import multiFamilyImage from "../../assets/images/MULTI-FAMILY.jpg";
 import commercialDrywallImage from "../../assets/images/COMMERCIAL DRYWALL.jpg";
 import renovationImage from "../../assets/images/RENOVATION.jpg";
@@ -128,18 +129,32 @@ export default function Applications() {
 
         {/* Section heading */}
         <div className="app-head">
-          <Reveal>
-            <p className="app-eyebrow">
-              <span className="app-tick"></span> APPLICATION GUIDE
-            </p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className="app-title">
-              CHOOSE THE RIGHT SCREW <span className="ghost-num">04</span>
-              <br />
-              <span className="red">FOR YOUR APPLICATION</span>
-            </h2>
-          </Reveal>
+
+          {/* Right side: 04 badge + screw icon grouped together */}
+          <div className="app-head-right" aria-hidden="true">
+            <div className="app-section-badge">04</div>
+            <img src={subtractImg} alt="" width="150" height="150" />
+          </div>
+
+          {/* Figma: Header — horizontal layout, gap:80 */}
+          <div className="app-head-row">
+            <div className="app-head-content">
+              <Reveal>
+                <p className="app-eyebrow">
+                  <span className="app-tick"></span> APPLICATION GUIDE
+                </p>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <h2 className="app-title">
+                  CHOOSE THE RIGHT SCREW
+                  <br />
+                  <span className="red">FOR YOUR APPLICATION</span>
+                </h2>
+              </Reveal>
+            </div>
+          </div>
+
+          {/* Figma: paragraph below header | Inter/18px */}
           <Reveal delay={0.2}>
             <p className="app-sub">
               Professional contractors match fasteners to substrates for optimal

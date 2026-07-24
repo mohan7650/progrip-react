@@ -74,6 +74,20 @@
   transform-origin: top center;
 }
 
+/* Right side group: 04 badge + screw icon */
+.app-head-right {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 250px;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+
 .app-eyebrow {
   display: flex;
   align-items: center;
@@ -105,18 +119,41 @@
   color: #fff;
 }
 .app-title .red     { color: var(--red, #e50914); }
-.app-title .ghost-num {
-  color: #3a3a3a;
-  margin-left: 14px;
+/* Figma: Header — horizontal flex row (title content + 04 badge), gap:80 */
+.app-head-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+}
+.app-head-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Figma: 04 badge | 118×72 | Russo One/60px/w400 | bg #FFFFFF1F */
+.app-section-badge {
+  flex-shrink: 0;
+  width: 118px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display, "Russo One", sans-serif);
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 72px;
+  color: #fff;
+  background: transparent;
+  align-self: center;
 }
 
 .app-sub {
-  max-width: 670px;
+  max-width: 691px;
   margin: 26px 0 0;
   font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: clamp(13px, 0.73vw, 14px);
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.6;
   color: var(--muted, #9a9a9a);
 }
 
