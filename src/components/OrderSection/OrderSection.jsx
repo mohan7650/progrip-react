@@ -2,6 +2,7 @@ import SectionHead from "../Shared/SectionHead.jsx";
 import Button from "../Shared/Button.jsx";
 import OrderCard from "./OrderCard.jsx";
 import Reveal from "../Reveal.jsx";
+import crosshairIcon from "../../assets/images/crosshair.png";
 import "./OrderSection.css";
 
 const ORDER_FEATURES = [
@@ -76,7 +77,8 @@ export default function OrderSection() {
             eyebrow="THE PRO ORDERING SYSTEM"
             title={
               <>
-                ORDER LIKE A PRO, <span className="text-red">EVERY TIME</span>
+                <span>ORDER LIKE A PRO, <span className="text-red">EVERY TIME</span></span>
+                <img src={crosshairIcon} alt="" className="order-title-icon" />
               </>
             }
             sub="A platform built around how your crew actually works — from the foreman on his phone at 6am to the buyer managing five jobs from a desk. Fast, transparent, and built to keep you building."
