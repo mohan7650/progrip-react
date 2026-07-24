@@ -11,7 +11,7 @@ import woodFramedImage from "../../assets/images/WOOD-FRAMED.jpg";
 const APP_CARDS = [
   {
     accent: "green",
-    number: "02",
+    number: "01",
     image: multiFamilyImage,
     imageAlt: "Multi-family framing application",
     title: <>MULTI-FAMILY<br />FRAMING</>,
@@ -33,7 +33,7 @@ const APP_CARDS = [
   },
   {
     accent: "blue",
-    number: "01",
+    number: "02",
     image: commercialDrywallImage,
     imageAlt: "Commercial drywall installation application",
     title: <>COMMERCIAL DRYWALL<br />INSTALLATION</>,
