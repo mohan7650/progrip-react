@@ -15,8 +15,7 @@ export default function CTA() {
         </Reveal>
         <Reveal delay={0.15}>
           <p className="cta-sub">
-            Pro-Grip screws are engineered to help you land faster, smarter, and
-            with total confidence.
+            Pro-Grip screws are engineered to help you work faster, smarter, and with total confidence.
           </p>
         </Reveal>
         <Reveal delay={0.3}>
