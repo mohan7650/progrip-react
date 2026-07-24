@@ -6,11 +6,11 @@ import "./CTA.css";
 export default function CTA() {
   return (
     <section className="cta-band">
-<img className="cta-strip" src={ctaStrip} alt="" aria-hidden="true" />
+      <img className="cta-strip" src={ctaStrip} alt="" aria-hidden="true" />
       <div className="container cta-inner">
         <Reveal>
           <h2 className="cta-title">
-            BUILT FOR PROS, READY<br />FOR THE JOB!
+            Built for pros, Ready<br />for the job!
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
@@ -20,8 +20,8 @@ export default function CTA() {
         </Reveal>
         <Reveal delay={0.3}>
           <div className="btn-row center">
-            <Button href="#" variant="red">ORDER</Button>
-            <Button href="#" variant="outline">CONTACT</Button>
+            <Button href="#" variant="red">Order</Button>
+            <Button href="#" variant="outline">Contact</Button>
           </div>
         </Reveal>
       </div>
