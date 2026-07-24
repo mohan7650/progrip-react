@@ -9,71 +9,96 @@ import screw03 from "../../assets/images/product-section/screw-03.png";
 import box04 from "../../assets/images/product-section/box-04.png";
 import box05 from "../../assets/images/product-section/box-05.png";
 import box06 from "../../assets/images/product-section/box-06.png";
+import coarse01 from "../../assets/images/product-section/Coarse Thread Drywall Screw_01.png";
+import coarse02 from "../../assets/images/product-section/Coarse Thread Drywall Screw_02.png";
+import coarse03 from "../../assets/images/product-section/Coarse Thread Drywall Screw_03.png";
+import coarse04 from "../../assets/images/product-section/Coarse Thread Drywall Screw_04.png";
+import coarse05 from "../../assets/images/product-section/Coarse Thread Drywall Screw_05.png";
+import coarse06 from "../../assets/images/product-section/Coarse Thread Drywall Screw_06.png";
 
 const CATEGORIES = [
   {
     id: 1,
     num: "01",
-    title: "Framing Screws",
+    title: "Sharp Point - Fine Thread",
     desc: "Self-drilling for quick penetration.",
   },
   {
     id: 2,
     num: "02",
-    title: "Drywall Screws",
+    title: "Sharp Point - Coarse Thread",
     desc: "Fast bite performance for stronger day-to-day applications.",
   },
   {
     id: 3,
     num: "03",
-    title: "Metal Stud Screws",
+    title: "Self Drilling",
     desc: "Built for demanding assemblies where strength matters most.",
   },
 ];
 
-const PRODUCTS = [
-  {
-    id: 1,
-    label: '01 — Fine 6×2"',
-    img: screw01,
-    alt: 'Fine thread 6×2" drywall screw',
+const VIEWS = {
+  1: {
+    index: "01",
+    products: [
+      { id: 1, label: '01 — Fine 6×2"', img: screw01, alt: 'Fine thread 6×2" drywall screw' },
+      { id: 2, label: '02 — Coarse 6×1-1/4"', img: screw02, alt: 'Coarse thread 6×1-1/4" drywall screw' },
+      { id: 3, label: '03 — Fine 6×1-1/4"', img: screw03, alt: 'Fine thread 6×1-1/4" drywall screw' },
+      { id: 4, label: "04 — Drywall Screw", img: box04, alt: "Coarse thread drywall screws box" },
+      { id: 5, label: "05 — Drywall Screw", img: box05, alt: "Fine thread drywall screws box" },
+      { id: 6, label: "06 — Drywall Screw", img: box06, alt: "Fine thread drywall screws box" },
+    ],
+    details: {
+      eyebrow: "Faster Installation",
+      title: <>Coarse Thread<br />Drywall Screws</>,
+      size: "6×1-1/4″",
+    },
+    highlights: [
+      { id: 1, title: "Coarse Thread Screws", detail: "# 6×1 - 7/8″" },
+      { id: 2, title: "8000 PCS", detail: "Weight : 22 lb" },
+    ],
   },
-  {
-    id: 2,
-    label: '02 — Coarse 6×1-1/4"',
-    img: screw02,
-    alt: 'Coarse thread 6×1-1/4" drywall screw',
+  2: {
+    index: "02",
+    products: [
+      { id: 1, label: "01 — Coarse Thread Drywall Screw", img: coarse01, alt: "Coarse thread drywall screw 01" },
+      { id: 2, label: "02 — Coarse Thread Drywall Screw", img: coarse02, alt: "Coarse thread drywall screw 02" },
+      { id: 3, label: "03 — Coarse Thread Drywall Screw", img: coarse03, alt: "Coarse thread drywall screw 03" },
+      { id: 4, label: "04 — Coarse Thread Drywall Screw", img: coarse04, alt: "Coarse thread drywall screw 04" },
+      { id: 5, label: "05 — Coarse Thread Drywall Screw", img: coarse05, alt: "Coarse thread drywall screw 05" },
+      { id: 6, label: "06 — Coarse Thread Drywall Screw", img: coarse06, alt: "Coarse thread drywall screw 06" },
+    ],
+    details: {
+      eyebrow: "Strong Day-to-Day",
+      title: <>Sharp Point<br />Coarse Thread</>,
+      size: "6×1-5/8″",
+    },
+    highlights: [
+      { id: 1, title: "Coarse Thread Screws", detail: "# 6×1 - 5/8″" },
+      { id: 2, title: "8000 PCS", detail: "Weight : 24 lb" },
+    ],
   },
-  {
-    id: 3,
-    label: '03 — Fine 6×1-1/4"',
-    img: screw03,
-    alt: 'Fine thread 6×1-1/4" drywall screw',
+  3: {
+    index: "03",
+    products: [
+      { id: 1, label: '01 — Self Drill 8×1"', img: screw01, alt: 'Self drilling 8×1" screw' },
+      { id: 2, label: '02 — Self Drill 8×1-1/4"', img: screw02, alt: 'Self drilling 8×1-1/4" screw' },
+      { id: 3, label: '03 — Self Drill 8×2"', img: screw03, alt: 'Self drilling 8×2" screw' },
+      { id: 4, label: "04 — Self Drill Box", img: box04, alt: "Self drilling screws box" },
+      { id: 5, label: "05 — Self Drill Box", img: box05, alt: "Self drilling screws box" },
+      { id: 6, label: "06 — Self Drill Box", img: box06, alt: "Self drilling screws box" },
+    ],
+    details: {
+      eyebrow: "Maximum Strength",
+      title: <>Self Drilling<br />Screws</>,
+      size: "8×1-1/4″",
+    },
+    highlights: [
+      { id: 1, title: "Self Drilling Screws", detail: "# 8×1 - 1/4″" },
+      { id: 2, title: "5000 PCS", detail: "Weight : 18 lb" },
+    ],
   },
-  {
-    id: 4,
-    label: "04 — Drywall Screw",
-    img: box04,
-    alt: "Coarse thread drywall screws box",
-  },
-  {
-    id: 5,
-    label: "05 — Drywall Screw",
-    img: box05,
-    alt: "Fine thread drywall screws box",
-  },
-  {
-    id: 6,
-    label: "06 — Drywall Screw",
-    img: box06,
-    alt: "Fine thread drywall screws box",
-  },
-];
-
-const HIGHLIGHTS = [
-  { id: 1, title: "Coarse Thread Screws", detail: "# 6×1 - 7/8″" },
-  { id: 2, title: "8000 PCS", detail: "Weight : 22 lb" },
-];
+};
 
 const REVEAL = {
   initial: { opacity: 0, y: 40 },
@@ -120,8 +145,10 @@ function ProductCard({ product, isActive, onClick }) {
 }
 
 export default function ProductSection() {
-  const [activeCategory, setActiveCategory] = useState(2);
-  const [activeProduct, setActiveProduct] = useState(2);
+  const [activeCategory, setActiveCategory] = useState(1);
+  const [activeProduct, setActiveProduct] = useState(1);
+
+  const view = VIEWS[activeCategory];
 
   return (
     <section className="product-section" id="products">
@@ -181,7 +208,7 @@ export default function ProductSection() {
                     key={cat.id}
                     cat={cat}
                     isActive={activeCategory === cat.id}
-                    onClick={() => setActiveCategory(cat.id)}
+                    onClick={() => { setActiveCategory(cat.id); setActiveProduct(1); }}
                   />
                 ))}
               </ul>
@@ -197,10 +224,10 @@ export default function ProductSection() {
                 Interactive View
               </div>
 
-              <span className="product-section__panel-index">01</span>
+              <span className="product-section__panel-index">{view.index}</span>
 
               <div className="product-section__grid">
-                {PRODUCTS.map((product) => (
+                {view.products.map((product) => (
                   <ProductCard
                     key={product.id}
                     product={product}
@@ -213,17 +240,15 @@ export default function ProductSection() {
               <div className="product-section__panel-footer">
                 <div className="product-section__details">
                   <span className="product-section__details-eyebrow">
-                    Faster Installation
+                    {view.details.eyebrow}
                   </span>
 
                   <h3 className="product-section__details-title">
-                    Coarse Thread
-                    <br />
-                    Drywall Screws
+                    {view.details.title}
                   </h3>
 
                   <span className="product-section__details-size">
-                    6×1-1/4″
+                    {view.details.size}
                   </span>
                 </div>
 
@@ -252,7 +277,7 @@ export default function ProductSection() {
               </span>
 
               <ul className="product-section__highlights-list">
-                {HIGHLIGHTS.map((highlight) => (
+                {view.highlights.map((highlight) => (
                   <li
                     key={highlight.id}
                     className="product-section__highlight"
