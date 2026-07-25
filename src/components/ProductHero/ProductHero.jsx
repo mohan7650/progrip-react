@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import heroScrew from "../../assets/images/product-section/hero-screw.png";
+import crosshair from "../../assets/images/crosshair.png";
 import "./ProductHero.css";
 
 const REVEAL = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } };
@@ -11,10 +12,10 @@ export default function ProductHero({ product }) {
       <img src={heroScrew} alt="" className="ph__bg" aria-hidden="true" />
       <div className="ph__overlay" aria-hidden="true" />
 
-      <div className="container ph__inner">
+      <div className="container-wide ph__inner">
         <motion.div className="ph__left" {...REVEAL} transition={t(0)}>
           <span className="ph__badge">
-            <i className="ph__badge-dot" aria-hidden="true" />
+            <img src={crosshair} alt="" className="ph__badge-icon" aria-hidden="true" />
             {product.badge}
           </span>
 
@@ -41,8 +42,8 @@ export default function ProductHero({ product }) {
           </ul>
 
           <div className="btn-row ph__btns">
-            <button type="button" className="btn btn-red btn-lg">Buy Now</button>
-            <button type="button" className="btn btn-outline btn-lg">Build Submittal</button>
+            <button type="button" className="btn btn-red">Buy Now</button>
+            <button type="button" className="btn btn-outline">Build Submittal</button>
           </div>
         </motion.div>
       </div>

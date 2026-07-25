@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import crosshair from "../../assets/images/crosshair.png";
 import "./ProductOrder.css";
 
 const REVEAL = {
@@ -14,7 +15,7 @@ export default function ProductOrder({ product }) {
       <div className="container po__inner">
         <motion.div className="po__head" {...REVEAL} transition={t(0)}>
           <span className="po__eyebrow">
-            <i className="po__eyebrow-dot" aria-hidden="true" />
+            <img src={crosshair} alt="" className="po__eyebrow-icon" aria-hidden="true" />
             Order Like a Pro
           </span>
 

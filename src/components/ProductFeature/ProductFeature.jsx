@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import crosshair from "../../assets/images/crosshair.png";
 import "./ProductFeature.css";
 
 const REVEAL = {
@@ -21,7 +22,7 @@ export default function ProductFeature({ product }) {
 
         <motion.div className="pf__content" {...REVEAL} transition={t(0.15)}>
           <span className="pf__eyebrow">
-            <i className="pf__eyebrow-dot" aria-hidden="true" />
+            <img src={crosshair} alt="" className="pf__eyebrow-icon" aria-hidden="true" />
             {feature.eyebrow}
           </span>
 
