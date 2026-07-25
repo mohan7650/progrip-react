@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./ProductSection.css";
 
@@ -145,6 +146,7 @@ function ProductCard({ product, isActive, onClick }) {
 }
 
 export default function ProductSection() {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState(1);
   const [activeProduct, setActiveProduct] = useState(1);
 
@@ -232,7 +234,10 @@ export default function ProductSection() {
                     key={product.id}
                     product={product}
                     isActive={activeProduct === product.id}
-                    onClick={() => setActiveProduct(product.id)}
+                    onClick={() => {
+                      setActiveProduct(product.id);
+                      navigate(`/product/${activeCategory}/${product.id}`);
+                    }}
                   />
                 ))}
               </div>
