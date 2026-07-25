@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import crosshair from "../../assets/images/crosshair.png";
+import heroScrew from "../../assets/images/product-section/hero-screw-rotation.png";
 import "./ProductFeature.css";
 
 const REVEAL = {
