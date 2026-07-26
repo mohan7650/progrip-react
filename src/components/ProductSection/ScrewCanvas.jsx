@@ -61,21 +61,21 @@ function makeThreadGeometry() {
 
 // ─── Screw mesh ───────────────────────────────────────────────────────────────
 
-function Screw({ spinning }) {
+function Screw({ spinning, rotationY }) {
   const tumbleRef = useRef(null);
 
-  // Honour prefers-reduced-motion (pause animation, don't remove it)
   const reduced = useMemo(
     () => typeof window !== "undefined" &&
           window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     [],
   );
 
-  // Tumble: Y-axis rotation sweeps the screw's long axis (X) past the camera.
-  // At rotation.y = π/2  → +X end (head) faces +Z camera  ✓
-  // At rotation.y = 3π/2 → −X end (tip)  faces +Z camera  ✓
   useFrame((_, delta) => {
-    if (!reduced && spinning && tumbleRef.current) {
+    if (!tumbleRef.current) return;
+    if (rotationY !== undefined) {
+      // Controlled mode: external angle drives the rotation
+      tumbleRef.current.rotation.y = rotationY;
+    } else if (!reduced && spinning) {
       tumbleRef.current.rotation.y += delta * SPEED;
     }
   });
@@ -161,7 +161,7 @@ function Screw({ spinning }) {
 
 // ─── Canvas wrapper ───────────────────────────────────────────────────────────
 
-export default function ScrewCanvas({ spinning = false }) {
+export default function ScrewCanvas({ spinning = false, rotationY, style }) {
   return (
     <Canvas
       style={{
@@ -173,28 +173,18 @@ export default function ScrewCanvas({ spinning = false }) {
         display:       "block",
         pointerEvents: "none",
         zIndex:        2,
+        ...style,
       }}
       gl={{ alpha: true, antialias: true }}
       dpr={[1, 2]}
-      // Slightly elevated camera shows thread ridges on top AND head face at 90°
       camera={{ position: [0, 1.5, 6.2], fov: 30 }}
     >
-      {/* Soft ambient fill */}
       <ambientLight intensity={0.28} />
-
-      {/* Main key light — upper right front */}
       <directionalLight position={[3, 5, 4]} intensity={1.6} color="#ffffff" />
-
-      {/* Cool rim light from back-left (accentuates thread edges) */}
       <pointLight position={[-5, -1, -3]} intensity={0.55} color="#3a4fcc" />
-
-      {/* Subtle warm fill from below */}
       <pointLight position={[0, -4, 2]}   intensity={0.16} color="#ffeecc" />
-
-      {/* HDR studio environment for realistic metallic sheen */}
       <Environment preset="studio" />
-
-      <Screw spinning={spinning} />
+      <Screw spinning={spinning} rotationY={rotationY} />
     </Canvas>
   );
 }
