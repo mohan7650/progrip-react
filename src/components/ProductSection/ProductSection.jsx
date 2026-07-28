@@ -17,6 +17,14 @@ import coarse04 from "../../assets/images/product-section/Coarse Thread Drywall 
 import coarse05 from "../../assets/images/product-section/Coarse Thread Drywall Screw_05.png";
 import coarse06 from "../../assets/images/product-section/Coarse Thread Drywall Screw_06.png";
 
+const FILTERS = [
+  { id: 0, label: "All Products", count: 51 },
+  { id: 1, label: "Sharp Point - Fine Thread", count: 14 },
+  { id: 2, label: "Sharp Point - Coarse Thread", count: 12 },
+  { id: 3, label: "Self Drilling", count: 15 },
+  { id: 4, label: "Concrete & Cement Board", count: 10 },
+];
+
 const CATEGORIES = [
   {
     id: 1,
@@ -149,6 +157,7 @@ export default function ProductSection() {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState(1);
   const [activeProduct, setActiveProduct] = useState(1);
+  const [activeFilter, setActiveFilter] = useState(0);
 
   const view = VIEWS[activeCategory];
 
@@ -196,14 +205,35 @@ export default function ProductSection() {
             </div>
           </div>
 
+          <div className="product-section__filter-bar">
+            <span className="product-section__cat-pill">Categories</span>
+            <div className="product-section__filters">
+              {FILTERS.map((f) => (
+                <button
+                  key={f.id}
+                  type="button"
+                  className={`product-section__filter-tab${activeFilter === f.id ? " product-section__filter-tab--active" : ""}`}
+                  onClick={() => {
+                    setActiveFilter(f.id);
+                    if (f.id >= 1 && f.id <= 3) {
+                      setActiveCategory(f.id);
+                      setActiveProduct(1);
+                    }
+                  }}
+                >
+                  {f.label}
+                  <span className="product-section__filter-count">({f.count})</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="product-section__content">
             <motion.aside
               className="product-section__sidebar"
               {...REVEAL}
               transition={revealTransition(0)}
             >
-              <span className="product-section__cat-pill">Categories</span>
-
               <ul className="product-section__cat-list">
                 {CATEGORIES.map((cat) => (
                   <CategoryItem
