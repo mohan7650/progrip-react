@@ -27,7 +27,7 @@ export default function ProductOrder({ product }) {
 
           <p className="po__sub">
             Add this fastener to your submittal package or order direct for your next
-            steel-framed build.
+            project.
           </p>
 
           <div className="btn-row po__btns">
