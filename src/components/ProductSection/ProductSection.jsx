@@ -153,11 +153,44 @@ function ProductCard({ product, isActive, onClick }) {
   );
 }
 
+const FILTER_GROUPS = [
+  {
+    id: "length",
+    label: "Screw Length",
+    options: ["2-1/4\"", "2-5/8\"", "3-1/4\"", "2-3/4\"", "3-3/4\""],
+  },
+  {
+    id: "pack",
+    label: "Pack Type",
+    options: ["Box", "Case", "Collated"],
+  },
+  {
+    id: "application",
+    label: "Application",
+    options: ["Drywall", "Framing", "Concrete/Cement", "Other"],
+  },
+];
+
 export default function ProductSection() {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState(1);
   const [activeProduct, setActiveProduct] = useState(1);
   const [activeFilter, setActiveFilter] = useState(0);
+
+  const initialChecked = () => {
+    const state = {};
+    FILTER_GROUPS.forEach((g) => {
+      g.options.forEach((opt) => { state[`${g.id}__${opt}`] = true; });
+    });
+    return state;
+  };
+  const [checked, setChecked] = useState(initialChecked);
+
+  const toggleCheck = (key) =>
+    setChecked((prev) => ({ ...prev, [key]: !prev[key] }));
+
+  const clearAll = () =>
+    setChecked((prev) => Object.fromEntries(Object.keys(prev).map((k) => [k, false])));
 
   const view = VIEWS[activeCategory];
 
@@ -234,16 +267,44 @@ export default function ProductSection() {
               {...REVEAL}
               transition={revealTransition(0)}
             >
-              <ul className="product-section__cat-list">
-                {CATEGORIES.map((cat) => (
-                  <CategoryItem
-                    key={cat.id}
-                    cat={cat}
-                    isActive={activeCategory === cat.id}
-                    onClick={() => { setActiveCategory(cat.id); setActiveProduct(1); }}
-                  />
-                ))}
-              </ul>
+              {FILTER_GROUPS.map((group) => (
+                <div key={group.id} className="ps-filter-group">
+                  <span className="ps-filter-group__label">{group.label}</span>
+                  <ul className="ps-filter-group__list">
+                    {group.options.map((opt) => {
+                      const key = `${group.id}__${opt}`;
+                      return (
+                        <li key={opt} className="ps-filter-group__item">
+                          <label className="ps-checkbox">
+                            <input
+                              type="checkbox"
+                              className="ps-checkbox__input"
+                              checked={!!checked[key]}
+                              onChange={() => toggleCheck(key)}
+                            />
+                            <span className="ps-checkbox__box" aria-hidden="true">
+                              {checked[key] && (
+                                <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                                  <path d="M1 4L3.5 6.5L9 1" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                              )}
+                            </span>
+                            <span className="ps-checkbox__text">{opt}</span>
+                          </label>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
+
+              <button
+                type="button"
+                className="ps-filter-clear"
+                onClick={clearAll}
+              >
+                Clear All Filters
+              </button>
             </motion.aside>
 
             <motion.div
