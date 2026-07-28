@@ -1,17 +1,28 @@
 /**
- * ScrewCanvas — procedural 3D drywall screw, tumbling around its long axis.
+ * ScrewCanvas — procedural 3D drywall screw, tumbling "in view" around its
+ * vertical axis (turntable), matching the reference frame sequence.
  *
- * Rotation axis: Y-axis (world-space), which sweeps the screw's shaft (X-axis)
- * so the ends alternately face the camera:
- *   0°   → side profile
- *   90°  → head disc faces camera (Phillips cross visible)
+ * Rotation axis: Y-axis (world-space vertical). The shaft is built along X, so
+ * spinning around Y keeps the screw HORIZONTAL and CENTERED on screen while its
+ * ends swing toward/away from the camera:
+ *
+ *   0°   → side profile (full length, threads visible)
+ *   90°  → head disc faces camera (Phillips cross visible, foreshortened to a disc)
  *   180° → opposite side profile
- *   270° → pointed tip faces camera
+ *   270° → pointed tip faces camera (foreshortened)
+ *
+ * Verified against the reference: across the sequence the screw's on-screen
+ * HEIGHT stays constant and its tilt stays horizontal, while its projected
+ * LENGTH shrinks to a round disc at the "end-on" moment — the exact signature
+ * of a Y-axis turntable. It never tips vertical and never leaves the frame.
+ *
+ * (An earlier iteration spun around Z — a flat "clock-hand" spin in the screen
+ *  plane. That is a DIFFERENT motion and is intentionally NOT used here.)
  *
  * Why not a flat PNG?
- *   A single PNG has zero depth data. CSS transforms can only squish/mirror it.
- *   At 90° you'd see a thin line, never the head face or tip. Genuine 3D content
- *   is required to show those views — hence this Three.js implementation.
+ *   A single PNG has zero depth data. At 90 deg you'd see a thin line, never the
+ *   head face or tip. Genuine 3D content is required to show those end-on views
+ *   — hence this Three.js implementation.
  */
 
 import { useRef, useMemo, useEffect } from "react";
@@ -21,9 +32,9 @@ import * as THREE from "three";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const TWO_PI     = Math.PI * 2;
-const SPEED      = TWO_PI / 4;          // 4 s per full revolution
-const TILT_Z     = (6.98 * Math.PI) / 180; // matches original -173.02° diagonal
+const TWO_PI = Math.PI * 2;
+const SPEED  = TWO_PI / 8;   // 8 s per full revolution — slow enough to read each face
+                             // (bump the divisor, e.g. TWO_PI / 12, to match a slower reference)
 
 // Screw proportions (scene units, approx real drywall screw 6×1-1/4")
 const SH_R  = 0.062;   // shaft radius
@@ -73,9 +84,10 @@ function Screw({ spinning, rotationY }) {
   useFrame((_, delta) => {
     if (!tumbleRef.current) return;
     if (rotationY !== undefined) {
-      // Controlled mode: external angle drives the rotation
+      // Controlled mode: external angle drives the turntable rotation
       tumbleRef.current.rotation.y = rotationY;
     } else if (!reduced && spinning) {
+      // Turntable spin: ends swing toward/away from the camera.
       tumbleRef.current.rotation.y += delta * SPEED;
     }
   });
@@ -89,14 +101,12 @@ function Screw({ spinning, rotationY }) {
   const slot  = { color: "#0b0b0b", metalness: 0.40, roughness: 0.70 };
 
   // All meshes are built with shaft running along X.
-  //   Tip  at −X end  (rotation.y = 3π/2 brings it toward camera)
-  //   Head at +X end  (rotation.y =  π/2 brings it toward camera)
+  //   Tip  at -X end  (rotation.y = 3pi/2 brings it toward camera)
+  //   Head at +X end  (rotation.y =  pi/2 brings it toward camera)
 
   return (
-    // Outer group: static cosmetic tilt matching original diagonal layout
-    <group rotation={[0, 0, TILT_Z]}>
-
-      {/* Tumble group — this is the only thing that moves */}
+    // No outer tilt — pure turntable, only Y rotates.
+    <>
       <group ref={tumbleRef}>
 
         {/* ── Shaft ─────────────────────────────────────────────── */}
@@ -105,9 +115,7 @@ function Screw({ spinning, rotationY }) {
           <meshStandardMaterial {...body} />
         </mesh>
 
-        {/* ── Tip — cone at −X end ──────────────────────────────── *
-         *  ConeGeometry tip is at +Y. After rotation.z = +π/2:
-         *  +Y → −X  so the sharp point ends up at the −X side.   */}
+        {/* ── Tip — cone at -X end ──────────────────────────────── */}
         <mesh
           position={[-(SH_L / 2) + TIP_L / 2, 0, 0]}
           rotation={[0, 0, Math.PI / 2]}
@@ -116,10 +124,7 @@ function Screw({ spinning, rotationY }) {
           <meshStandardMaterial {...body} />
         </mesh>
 
-        {/* ── Head taper — bugle shape at +X end ────────────────── *
-         *  CylinderGeometry(topR, bottomR, h).                      *
-         *  After rotation.z = π/2: +Y→−X, −Y→+X.                   *
-         *  So topR (small) is at −X side (inner), bottomR at +X.    */}
+        {/* ── Head taper — bugle shape at +X end ────────────────── */}
         <mesh
           position={[(SH_L / 2) - HD_H / 2, 0, 0]}
           rotation={[0, 0, Math.PI / 2]}
@@ -155,7 +160,7 @@ function Screw({ spinning, rotationY }) {
         </mesh>
 
       </group>
-    </group>
+    </>
   );
 }
 
@@ -173,16 +178,28 @@ export default function ScrewCanvas({ spinning = false, rotationY, style }) {
         display:       "block",
         pointerEvents: "none",
         zIndex:        2,
+        background:    "#000000",
         ...style,
       }}
-      gl={{ alpha: true, antialias: true }}
+      gl={{ alpha: false, antialias: true }}
       dpr={[1, 2]}
-      camera={{ position: [0, 1.5, 6.2], fov: 30 }}
+      // Head-on camera — the end-on frame reads as a clean round disc, matching
+      // the reference. (Raise Y to ~0.6 to look slightly down and see the top
+      // surface during the side-profile moments.)
+      camera={{ position: [0, 0, 5.5], fov: 32 }}
     >
-      <ambientLight intensity={0.28} />
-      <directionalLight position={[3, 5, 4]} intensity={1.6} color="#ffffff" />
-      <pointLight position={[-5, -1, -3]} intensity={0.55} color="#3a4fcc" />
-      <pointLight position={[0, -4, 2]}   intensity={0.16} color="#ffeecc" />
+      {/* Soft fill so the dark body has some base visibility */}
+      <ambientLight intensity={0.15} />
+
+      {/* Key light — upper right, sharp highlights on threads */}
+      <directionalLight position={[5, 6, 4]}  intensity={2.0} color="#ffffff" />
+
+      {/* Cool fill from left */}
+      <directionalLight position={[-4, 2, 3]} intensity={0.5} color="#b0c8ff" />
+
+      {/* Rim light from behind — outlines screw against black background */}
+      <pointLight position={[0, 0, -5]}       intensity={1.5} color="#ffffff" />
+
       <Environment preset="studio" />
       <Screw spinning={spinning} rotationY={rotationY} />
     </Canvas>

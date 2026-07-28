@@ -3,6 +3,17 @@ import { motion } from "framer-motion";
 import crosshair from "../../assets/images/crosshair.png";
 import "./ProductFeature.css";
 
+const FRAME_MODULES = import.meta.glob(
+  "../../assets/images/screw-360/frame-*.png",
+  { eager: true, import: "default" }
+);
+const FRAME_URLS = Object.keys(FRAME_MODULES)
+  .sort()
+  .map((k) => FRAME_MODULES[k]);
+const FRAME_COUNT = FRAME_URLS.length; // expect 204
+
+console.log("ProductFeature frames:", FRAME_COUNT);
+
 const REVEAL = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
@@ -12,7 +23,7 @@ const t = (delay = 0) => ({ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay });
 
 const STEP_DEGS = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330];
 
-export default function ProductFeature({ product }) {
+export default function ProductFeature({ product, useFrameSequence = false }) {
   const { feature, img, title } = product;
 
   const [angle, setAngle]           = useState(0);
@@ -92,13 +103,25 @@ export default function ProductFeature({ product }) {
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
           >
-            <img
-              src={img}
-              alt={title[0]}
-              className="pf__img"
-              style={{ transform: `rotate(${angle}deg)` }}
-              draggable={false}
-            />
+            {useFrameSequence && FRAME_COUNT > 0 ? (
+              <img
+                src={FRAME_URLS[
+                  ((Math.round((angle / 360) * FRAME_COUNT) % FRAME_COUNT)
+                    + FRAME_COUNT) % FRAME_COUNT
+                ]}
+                alt={title[0]}
+                className="pf__img"
+                draggable={false}
+              />
+            ) : (
+              <img
+                src={img}
+                alt={title[0]}
+                className="pf__img"
+                style={{ transform: `rotate(${angle}deg)` }}
+                draggable={false}
+              />
+            )}
 
             {showHint && (
               <div className="pf__drag-hint">

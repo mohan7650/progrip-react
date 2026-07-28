@@ -23,12 +23,14 @@ export default function ProductDetail() {
     );
   }
 
+  const useFrames = categoryId === "1" && productId === "1";
+
   return (
     <>
       <Navbar />
       <main>
         <ProductHero product={product} />
-        <ProductFeature product={product} />
+        <ProductFeature product={product} useFrameSequence={useFrames} />
         <ProductOrder product={product} />
         {/* Add more product detail components here */}
       </main>

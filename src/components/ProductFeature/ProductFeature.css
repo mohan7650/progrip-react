@@ -36,9 +36,9 @@
 .pf__img {
   position: relative;
   z-index: 1;
-  max-height: 340px;
+  max-height: 500px;
   width: auto;
-  max-width: 80%;
+  max-width: 95%;
   filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.7));
   transition: transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
   pointer-events: none;
@@ -160,7 +160,7 @@
 .pf__viewer {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 540px;
   cursor: grab;
   user-select: none;
   touch-action: none;
@@ -293,10 +293,10 @@
   }
 
   .pf__viewer {
-    height: 260px;
+    height: 340px;
   }
 
   .pf__img {
-    max-height: 220px;
+    max-height: 300px;
   }
 }
