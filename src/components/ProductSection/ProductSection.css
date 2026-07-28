@@ -199,6 +199,28 @@
   user-select: none;
 }
 
+/* .screw-main {
+  position: absolute;
+  top: 75px;
+  left: -35px;
+  z-index: 3;
+  width: 688.76px;
+  height: 213.58px;
+  object-fit: contain;
+  transform: rotate(-176deg) scaleX(-1);
+  transform-origin: center;
+  opacity: 1;
+  filter:
+    grayscale(0.85)
+    brightness(0.62)
+    contrast(1.48)
+    saturate(0.35)
+    drop-shadow(0 0 1px rgba(220, 220, 220, 0.42))
+    drop-shadow(0 8px 10px rgba(0, 0, 0, 0.72));
+  pointer-events: none;
+  user-select: none;
+} */
+
 /* Reflection */
 
 .screw-reflection {
