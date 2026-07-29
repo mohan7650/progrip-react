@@ -283,6 +283,7 @@
   display: inline-block;
   width: 0.8em;
   height: 0.8em;
+  color: var(--pg-red);
   vertical-align: middle;
   margin: 0 -0.15em;
   position: relative;

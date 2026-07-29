@@ -13,6 +13,45 @@
   position: relative;
 }
 
+.pf--scroll-story {
+  height: 700vh;
+  height: 700svh;
+  padding: 0;
+  overflow: clip;
+}
+
+.pf--scroll-story .pf__inner {
+  position: sticky;
+  top: 130px;
+  height: calc(100vh - 130px);
+  height: calc(100svh - 130px);
+}
+
+.pf--scroll-story .pf__content {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pf--scroll-story .pf__stats {
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  gap: 28px;
+}
+
+.pf--scroll-story .pf__stat {
+  padding: 0 0 0 14px;
+  border-right: none;
+  border-left: 3px solid var(--red);
+  background: transparent;
+}
+
+.pf--scroll-story .pf__stat-value {
+  color: var(--text);
+}
+
 /* ---- Media (left) ---- */
 .pf__media {
   position: relative;
@@ -288,6 +327,54 @@
     gap: 48px;
   }
 
+  .pf--scroll-story .pf__inner {
+    top: 82px;
+    height: calc(100vh - 82px);
+    height: calc(100svh - 82px);
+    grid-template-rows: minmax(230px, 42%) 1fr;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .pf--scroll-story .pf__content {
+    min-height: 0;
+  }
+
+  .pf--scroll-story .pf__viewer {
+    height: min(38vh, 300px);
+  }
+
+  .pf--scroll-story .pf__img {
+    max-height: min(35vh, 280px);
+  }
+
+  .pf--scroll-story .pf__angle-nums {
+    display: none;
+  }
+
+  .pf--scroll-story .pf__eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .pf--scroll-story .pf__heading {
+    font-size: clamp(1.7rem, 7vw, 2.25rem);
+    margin-bottom: 10px;
+  }
+
+  .pf--scroll-story .pf__desc {
+    font-size: var(--text-sm);
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+
+  .pf--scroll-story .pf__stat {
+    padding-left: 10px;
+  }
+
+  .pf--scroll-story .pf__stat-value {
+    font-size: var(--text-xl);
+  }
+
   .pf__scroll-indicator {
     display: none;
   }
@@ -298,5 +385,13 @@
 
   .pf__img {
     max-height: 300px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1280px) {
+  .pf--scroll-story .pf__inner {
+    top: 86.67px;
+    height: calc(100vh - 86.67px);
+    height: calc(100svh - 86.67px);
   }
 }
