@@ -3,12 +3,26 @@
    ============================================================ */
 
 .section-apps {
-  background: var(--bg, #191919);
+  background-color: var(--bg, #191919);
   overflow: hidden;
   position: relative;
   max-width: 1920px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* application_bg at 8% opacity — sits behind all content */
+.section-apps::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--app-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Background decorative overlay — responsive, centered, no rotation */
@@ -130,21 +144,18 @@
   min-width: 0;
 }
 
-/* Figma: 04 badge | 118×72 | Russo One/60px/w400 | bg #FFFFFF1F */
+/* 04 badge — inline after "SCREW" in the heading */
 .app-section-badge {
-  flex-shrink: 0;
-  width: 118px;
-  height: 72px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display, "Russo One", sans-serif);
   font-weight: 400;
-  font-size: 60px;
-  line-height: 72px;
+  font-size: inherit;
+  line-height: inherit;
   color: #fff;
   background: transparent;
-  align-self: center;
+  vertical-align: baseline;
 }
 
 .app-sub {

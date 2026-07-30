@@ -2,6 +2,7 @@ import ApplicationCard from "./ApplicationCard.jsx";
 import Reveal from "../Reveal.jsx";
 import "./Applications.css";
 import subtractImg from "../../assets/images/Subtract.png";
+import applicationBg from "../../assets/images/application_bg.png";
 import multiFamilyImage from "../../assets/images/MULTI-FAMILY.jpg";
 import commercialDrywallImage from "../../assets/images/COMMERCIAL DRYWALL.jpg";
 import renovationImage from "../../assets/images/RENOVATION.jpg";
@@ -123,16 +124,15 @@ const WIDE_CARDS = [
 
 export default function Applications() {
   return (
-    <section className="section section-apps" id="applications">
+    <section className="section section-apps" id="applications" style={{ '--app-bg': `url(${applicationBg})` }}>
       {/* Single unified container — both card rows share the same width/boundaries */}
       <div className="apps-container">
 
         {/* Section heading */}
         <div className="app-head">
 
-          {/* Right side: 04 badge + screw icon grouped together */}
+          {/* Right side: screw icon */}
           <div className="app-head-right" aria-hidden="true">
-            <div className="app-section-badge">04</div>
             <img src={subtractImg} alt="" width="150" height="150" />
           </div>
 
@@ -146,7 +146,7 @@ export default function Applications() {
               </Reveal>
               <Reveal delay={0.1}>
                 <h2 className="app-title">
-                  CHOOSE THE RIGHT SCREW
+                  CHOOSE THE RIGHT SCREW <span className="app-section-badge">04</span>
                   <br />
                   <span className="red">FOR YOUR APPLICATION</span>
                 </h2>
