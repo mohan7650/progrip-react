@@ -38,7 +38,7 @@ export default function Navbar() {
               ACCOUNT
             </Button>
 
-            <Button href="#order" variant="red" size="sm">
+            <Button href="#products" variant="red" size="sm">
               ORDER
             </Button>
           </div>
