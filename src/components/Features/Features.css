@@ -8,11 +8,10 @@
 .features {
   position: relative;
   width: 100%;
-  min-height: 1440px;
   overflow: hidden;
   color: #ffffff;
   padding-top: 96px;
-  padding-bottom: 120px;
+  padding-bottom: 96px;
 
   background:
     linear-gradient(
@@ -199,9 +198,8 @@
 
 @media (max-width: 1280px) {
   .features {
-    min-height: 960px;
     padding-top: 64px;
-    padding-bottom: 80px;
+    padding-bottom: 64px;
     background-size: cover;
     background-position: center top;
   }

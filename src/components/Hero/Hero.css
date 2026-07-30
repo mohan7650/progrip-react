@@ -278,6 +278,18 @@
   color: var(--pg-body);
 }
 
+/* Crosshair icon — inline between "Pro" and "Speed" in the hero title */
+.hero__crosshair {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  color: var(--pg-red);
+  vertical-align: middle;
+  margin: 0 -0.15em;
+  position: relative;
+  top: -0.05em;
+}
+
 /* ==========================================================================
    LAPTOP CHECKPOINT — max-width: 1280px
    1280 / 1920 = 0.6667. At exactly 1280px, --scale resolves to 0.6667px,
@@ -386,52 +398,20 @@
   }
 }
 
-/* ==========================================================================
-   Heading shimmer — moving light sweep across each title line
-   ========================================================================== */
-@keyframes heroTextShimmer {
-  0%        { background-position: 100% 0; }
-  50%, 100% { background-position: 0% 0;   }
-}
-
+/* Hero title colors */
 .hero__title-line {
   display: block;
-  color: transparent;
-  background-image: linear-gradient(
-    105deg,
-    #ffffff 0%,
-    #ffffff 38%,
-    #ff1f3d 48%,
-    #ffffff 58%,
-    #ffffff 100%
-  );
-  background-size: 300% 100%;
-  background-position: 100% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: heroTextShimmer 3s infinite ease-in-out;
+  color: var(--pg-white);
 }
 
-.hero__title-line:nth-child(1) { animation-delay: 0s;     }
-.hero__title-line:nth-child(2) { animation-delay: 0.18s;  }
-.hero__title-line:nth-child(3) { animation-delay: 0.36s;  }
+.hero__title-line:last-child {
+  color: var(--pg-red);
+}
 
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .hero__btn {
     transition: none;
-  }
-
-  .hero__title-line {
-    animation: none;
-    color: var(--pg-white);
-    background-clip: unset;
-    -webkit-background-clip: unset;
-    background-image: none;
-  }
-
-  .hero__title-line:last-child {
-    color: var(--pg-red);
   }
 }
 .hero__video {
