@@ -331,6 +331,9 @@
 /* Filter sidebar groups */
 
 .product-section__sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   overflow-y: auto;
   padding: clamp(24px, 2.29vw, 44px) clamp(16px, 1.25vw, 24px) clamp(28px, 2.7vw, 52px);
   border: 1px solid var(--ps-line);
@@ -474,6 +477,7 @@
 .ps-filter-clear {
   display: block;
   width: 100%;
+  flex-shrink: 0;
   margin-top: clamp(20px, 2.08vw, 32px);
   padding: 13px 0;
   border: 1px solid #ffffff;
