@@ -330,19 +330,92 @@
 
 /* Filter sidebar groups */
 
+.product-section__sidebar {
+  overflow-y: auto;
+  padding: clamp(24px, 2.29vw, 44px) clamp(16px, 1.25vw, 24px) clamp(28px, 2.7vw, 52px);
+  border: 1px solid var(--ps-line);
+  background: var(--ps-bg-panel);
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}
+
+.product-section__sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.product-section__sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.product-section__sidebar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+
 .ps-filter-group {
-  margin-bottom: clamp(24px, 1.77vw, 30px);
+  border-bottom: 1px solid #1e1e1e;
+  margin-bottom: 0;
+}
+
+.ps-filter-group__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.ps-filter-group__header:hover .ps-filter-group__label {
+  color: #ff3355;
 }
 
 .ps-filter-group__label {
-  display: block;
-  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: var(--ps-red);
   font-family: var(--ps-label);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  transition: color 0.15s ease;
+}
+
+.ps-filter-group__active-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--ps-red);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.ps-filter-group__chevron {
+  color: #666;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ps-filter-group__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0 0 14px 0;
+  list-style: none;
 }
 
 .ps-filter-group__list {
@@ -424,14 +497,13 @@
   display: grid;
   grid-template-columns: minmax(180px, 220px) 1fr minmax(180px, 230px);
   gap: clamp(20px, 1.67vw, 32px);
-  align-items: start;
+  align-items: stretch;
 }
 
 .product-section__cat-pill {
   display: block;
   width: 100%;
   max-width: 170px;
-  margin-bottom: 28px;
   padding: 8px 0;
   border: 1px solid #3a3a3a;
   border-radius: 999px;
