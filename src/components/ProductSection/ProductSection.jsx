@@ -267,16 +267,10 @@ export default function ProductSection() {
   const [activeProduct, setActiveProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedFilters, setSelectedFilters] = useState(() => ({ ...INITIAL_FILTERS }));
-  const [openGroups, setOpenGroups] = useState(
-    () => new Set(FILTER_GROUPS.slice(0, 4).map((g) => g.id)),
-  );
+  const [openGroup, setOpenGroup] = useState("length");
 
   const toggleGroupOpen = (groupId) => {
-    setOpenGroups((prev) => {
-      const next = new Set(prev);
-      next.has(groupId) ? next.delete(groupId) : next.add(groupId);
-      return next;
-    });
+    setOpenGroup((prev) => (prev === groupId ? null : groupId));
   };
 
   const toggleFilter = (groupId, value) => {
@@ -295,7 +289,6 @@ export default function ProductSection() {
 
   const clearAll = () => {
     setSelectedFilters({ ...INITIAL_FILTERS });
-    setActiveCategory(0);
     setActiveProduct(null);
     setCurrentPage(1);
   };
@@ -418,7 +411,7 @@ export default function ProductSection() {
               transition={revealTransition(0)}
             >
               {FILTER_GROUPS.map((group) => {
-                const isOpen = openGroups.has(group.id);
+                const isOpen = openGroup === group.id;
                 const activeCount = selectedFilters[group.id].length;
                 return (
                   <div key={group.id} className="ps-filter-group">
