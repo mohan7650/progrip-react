@@ -260,7 +260,6 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
               </div>
             )}
 
-            <div className="pf__angle-badge">{Math.round(displayDeg)}°</div>
           </div>
 
           {/* 30° step dots */}
