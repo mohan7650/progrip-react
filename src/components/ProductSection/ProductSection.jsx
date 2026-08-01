@@ -113,48 +113,109 @@ const FILTER_GROUPS = [
   {
     id: "length",
     label: "Screw Length",
-    options: ['2-1/4"', '2-5/8"', '3-1/4"', '2-3/4"', '3-3/4"'],
+    options: ['7/16"', '9/16"', '1/2"', '3/4"', '1"', '1-1/8"', '1-1/4"', '1-1/2"', '1-5/8"', '1-3/4"', '1-7/8"', '2"', '2-3/8"', '2-1/2"', '2-5/8"', '3"', '3-1/2"', '4"', '6"'],
   },
   {
-    id: "packType",
-    label: "Pack Type",
-    options: ["Box", "Case", "Collated"],
+    id: "gauge",
+    label: "Gauge / Diameter",
+    options: ["#6", "#7", "#8", "#10", '3/16"', '1/4"'],
+  },
+  {
+    id: "screwType",
+    label: "Screw / Product Type",
+    options: ["Drywall", "Framing", "Collated", "Laminating", "Cement Board", "Concrete", "Self-Drilling"],
+  },
+  {
+    id: "headType",
+    label: "Head Type",
+    options: ["Bugle", "Flat", "Hex Washer", "Pan Framer", "Wafer"],
   },
   {
     id: "application",
     label: "Application",
-    options: ["Drywall", "Framing", "Concrete/Cement", "Other"],
+    options: ["Drywall-to-Metal", "Metal-to-Metal", "Concrete", "Cement Board"],
+  },
+  {
+    id: "finish",
+    label: "Finish",
+    options: ["Phosphated", "Zinc", "Blue Ruspert", "Gray Ruspert"],
+  },
+  {
+    id: "threadType",
+    label: "Thread Type",
+    options: ["Fine", "Coarse", "High-Low"],
+  },
+  {
+    id: "pointType",
+    label: "Point Type",
+    options: ["Sharp Point", "Self-Drilling"],
+  },
+  {
+    id: "driveType",
+    label: "Drive Type",
+    options: ["#2 Phillips", "5/16 Hex"],
+  },
+  {
+    id: "packType",
+    label: "Pack Type",
+    options: ["Box", "Collated"],
+  },
+  {
+    id: "popular",
+    label: "Best Sellers",
+    options: ["Best Sellers Only"],
   },
 ];
 
 const PRODUCTS_PER_PAGE = 9;
 
 const INITIAL_FILTERS = Object.fromEntries(
-  FILTER_GROUPS.map((group) => [group.id, [...group.options]]),
+  FILTER_GROUPS.map((group) => [group.id, []]),
 );
 
-const getApplicationFilter = (product) => {
-  if (
-    product.application.includes("Drywall") ||
-    product.screwType.includes("Drywall") ||
-    product.screwType.includes("Laminating")
-  ) {
-    return "Drywall";
-  }
-
-  if (product.screwType.includes("Framing")) {
-    return "Framing";
-  }
-
-  if (
-    /Concrete|Cement/.test(product.application) ||
-    /Concrete|Cement/.test(product.screwType)
-  ) {
-    return "Concrete/Cement";
-  }
-
-  return "Other";
+const getScrewTypeCategories = (product) => {
+  const cats = new Set();
+  if (product.pointType === "Self-Drilling Point") cats.add("Self-Drilling");
+  if (product.screwType.includes("Collated")) cats.add("Collated");
+  if (product.screwType.includes("Laminating")) cats.add("Laminating");
+  if (product.screwType.includes("Concrete")) cats.add("Concrete");
+  if (product.screwType.includes("Cement Board")) cats.add("Cement Board");
+  if (product.screwType.includes("Framing")) cats.add("Framing");
+  if (product.screwType.includes("Drywall")) cats.add("Drywall");
+  return cats;
 };
+
+const getHeadTypeCategory = (product) => {
+  const h = product.headType;
+  if (h.includes("Pan Framer")) return "Pan Framer";
+  if (h.includes("Wafer")) return "Wafer";
+  if (h.includes("Hex Washer")) return "Hex Washer";
+  if (h.includes("Flat")) return "Flat";
+  return "Bugle";
+};
+
+const getApplicationCategory = (product) => {
+  const app = product.application;
+  if (app === "Metal to Metal") return "Metal-to-Metal";
+  if (app.includes("Cement Board")) return "Cement Board";
+  if (app.includes("Concrete")) return "Concrete";
+  return "Drywall-to-Metal";
+};
+
+const getFinishCategories = (product) => {
+  const f = product.finish;
+  if (f.includes("Gray Ruspert")) return ["Gray Ruspert"];
+  if (f.includes("Blue Ruspert")) return ["Blue Ruspert"];
+  if (f.includes("Zinc") && f.includes("Phosphated")) return ["Phosphated", "Zinc"];
+  if (f === "Zinc") return ["Zinc"];
+  return ["Phosphated"];
+};
+
+const getPointTypeCategory = (product) =>
+  product.pointType === "Self-Drilling Point" ? "Self-Drilling" : "Sharp Point";
+
+const getDriveTypeCategory = (product) =>
+  product.driveType.includes("HEX") ? "5/16 Hex" : "#2 Phillips";
 
 console.assert(PRODUCTS.length === 51);
 console.assert(PRODUCTS.filter((p) => p.categoryId === 1).length === 14);
@@ -205,11 +266,18 @@ export default function ProductSection() {
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeProduct, setActiveProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedFilters, setSelectedFilters] = useState(() => ({
-    length: [...INITIAL_FILTERS.length],
-    packType: [...INITIAL_FILTERS.packType],
-    application: [...INITIAL_FILTERS.application],
-  }));
+  const [selectedFilters, setSelectedFilters] = useState(() => ({ ...INITIAL_FILTERS }));
+  const [openGroups, setOpenGroups] = useState(
+    () => new Set(FILTER_GROUPS.slice(0, 4).map((g) => g.id)),
+  );
+
+  const toggleGroupOpen = (groupId) => {
+    setOpenGroups((prev) => {
+      const next = new Set(prev);
+      next.has(groupId) ? next.delete(groupId) : next.add(groupId);
+      return next;
+    });
+  };
 
   const toggleFilter = (groupId, value) => {
     setSelectedFilters((current) => {
@@ -226,36 +294,34 @@ export default function ProductSection() {
   };
 
   const clearAll = () => {
-    setSelectedFilters({
-      length: [],
-      packType: [],
-      application: [],
-    });
-
+    setSelectedFilters({ ...INITIAL_FILTERS });
     setActiveCategory(0);
     setActiveProduct(null);
     setCurrentPage(1);
   };
 
-  const filteredProducts = PRODUCTS.filter((product) => {
-    const categoryMatch =
-      activeCategory === 0 || product.categoryId === activeCategory;
-    const lengthMatch =
-      selectedFilters.length.length === 0 ||
-      selectedFilters.length.length === INITIAL_FILTERS.length.length ||
-      !INITIAL_FILTERS.length.includes(product.length) ||
-      selectedFilters.length.includes(product.length);
-    const packTypeMatch =
-      selectedFilters.packType.length === 0 ||
-      selectedFilters.packType.length === INITIAL_FILTERS.packType.length ||
-      selectedFilters.packType.includes(product.packType);
-    const applicationMatch =
-      selectedFilters.application.length === 0 ||
-      selectedFilters.application.length ===
-        INITIAL_FILTERS.application.length ||
-      selectedFilters.application.includes(getApplicationFilter(product));
+  const sel = selectedFilters;
 
-    return categoryMatch && lengthMatch && packTypeMatch && applicationMatch;
+  const filteredProducts = PRODUCTS.filter((product) => {
+    if (activeCategory !== 0 && product.categoryId !== activeCategory) return false;
+    if (sel.length.length > 0 && !sel.length.includes(product.length)) return false;
+    if (sel.gauge.length > 0 && !sel.gauge.includes(product.gauge)) return false;
+    if (sel.screwType.length > 0) {
+      const cats = getScrewTypeCategories(product);
+      if (!sel.screwType.some((t) => cats.has(t))) return false;
+    }
+    if (sel.headType.length > 0 && !sel.headType.includes(getHeadTypeCategory(product))) return false;
+    if (sel.application.length > 0 && !sel.application.includes(getApplicationCategory(product))) return false;
+    if (sel.finish.length > 0) {
+      const finishes = getFinishCategories(product);
+      if (!sel.finish.some((f) => finishes.includes(f))) return false;
+    }
+    if (sel.threadType.length > 0 && !sel.threadType.includes(product.threadType)) return false;
+    if (sel.pointType.length > 0 && !sel.pointType.includes(getPointTypeCategory(product))) return false;
+    if (sel.driveType.length > 0 && !sel.driveType.includes(getDriveTypeCategory(product))) return false;
+    if (sel.packType.length > 0 && !sel.packType.includes(product.packType)) return false;
+    if (sel.popular.includes("Best Sellers Only") && !product.popular) return false;
+    return true;
   });
 
   const totalPages = Math.max(
@@ -351,51 +417,63 @@ export default function ProductSection() {
               {...REVEAL}
               transition={revealTransition(0)}
             >
-              {FILTER_GROUPS.map((group) => (
-                <div key={group.id} className="ps-filter-group">
-                  <span className="ps-filter-group__label">{group.label}</span>
-                  <ul className="ps-filter-group__list">
-                    {group.options.map((option) => {
-                      const isChecked =
-                        selectedFilters[group.id].includes(option);
-                      return (
-                        <li key={option} className="ps-filter-group__item">
-                          <label className="ps-checkbox">
-                            <input
-                              type="checkbox"
-                              className="ps-checkbox__input"
-                              checked={isChecked}
-                              onChange={() => toggleFilter(group.id, option)}
-                            />
-                            <span
-                              className="ps-checkbox__box"
-                              aria-hidden="true"
-                            >
-                              {isChecked && (
-                                <svg
-                                  width="10"
-                                  height="8"
-                                  viewBox="0 0 10 8"
-                                  fill="none"
-                                >
-                                  <path
-                                    d="M1 4L3.5 6.5L9 1"
-                                    stroke="#fff"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  />
-                                </svg>
-                              )}
-                            </span>
-                            <span className="ps-checkbox__text">{option}</span>
-                          </label>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
+              {FILTER_GROUPS.map((group) => {
+                const isOpen = openGroups.has(group.id);
+                const activeCount = selectedFilters[group.id].length;
+                return (
+                  <div key={group.id} className="ps-filter-group">
+                    <button
+                      type="button"
+                      className="ps-filter-group__header"
+                      onClick={() => toggleGroupOpen(group.id)}
+                      aria-expanded={isOpen}
+                    >
+                      <span className="ps-filter-group__label">
+                        {group.label}
+                        {activeCount > 0 && (
+                          <span className="ps-filter-group__active-count">{activeCount}</span>
+                        )}
+                      </span>
+                      <span className="ps-filter-group__chevron" aria-hidden="true">
+                        {isOpen ? "−" : "+"}
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <ul className="ps-filter-group__list">
+                        {group.options.map((option) => {
+                          const isChecked = selectedFilters[group.id].includes(option);
+                          return (
+                            <li key={option} className="ps-filter-group__item">
+                              <label className="ps-checkbox">
+                                <input
+                                  type="checkbox"
+                                  className="ps-checkbox__input"
+                                  checked={isChecked}
+                                  onChange={() => toggleFilter(group.id, option)}
+                                />
+                                <span className="ps-checkbox__box" aria-hidden="true">
+                                  {isChecked && (
+                                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                                      <path
+                                        d="M1 4L3.5 6.5L9 1"
+                                        stroke="#fff"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                      />
+                                    </svg>
+                                  )}
+                                </span>
+                                <span className="ps-checkbox__text">{option}</span>
+                              </label>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </div>
+                );
+              })}
 
               <button
                 type="button"
