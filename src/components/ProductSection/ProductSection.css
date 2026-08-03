@@ -1,6 +1,6 @@
 /* ============================================================
    ProductSection.css
-   Static Product visual: three strips + main screw + reflection.
+   Static Product visual: three strips + floating 3D box cluster.
    ============================================================ */
 
 .product-section {
@@ -71,9 +71,9 @@
 .product-section__header {
   position: relative;
   z-index: 10;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-width: 280px;
-  max-width: clamp(380px, 44vw, 660px);
+  max-width: clamp(360px, 34vw, 520px);
 }
 
 .product-section__badge {
@@ -124,54 +124,28 @@
 }
 
 /* ============================================================
-   HERO BOXES — three cascading boxes stepping down + left,
-   front-most (blue) box on top, tucked toward the strips.
+   HERO STAGE
+   One shared coordinate space for the stripes + the three
+   floating 3D boxes, so the red box can overlap the stripes.
    ============================================================ */
 
-.product-section__hero-boxes {
+.product-section__hero-stage {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;   /* anchor every box to the right edge */
-  align-self: center;
-  flex-shrink: 0;
-  gap: 0;
-  z-index: 5;              /* sit in front of the stripes */
-  margin-right: -40px;     /* nudge cluster onto the first stripe — tune this */
-}
-
-.product-section__hero-box {
-  width: clamp(150px, 12vw, 210px);
-  height: auto;
-  display: block;
-  object-fit: contain;
-  filter: drop-shadow(0 22px 44px rgba(0, 0, 0, 0.6));
-}
-
-/* Staircase: overlap only, translateX handled by Framer Motion */
-.product-section__hero-box:nth-child(1) {
-  margin-bottom: -18px;
-  z-index: 1;
-}
-
-.product-section__hero-box:nth-child(2) {
-  margin-bottom: -18px;
-  z-index: 2;
-}
-
-.product-section__hero-box:nth-child(3) {
-  z-index: 3;
+  flex: 1 1 auto;
+  align-self: stretch;
+  min-height: clamp(380px, 32vw, 520px);
 }
 
 /* ============================================================
-   STATIC PRODUCT VISUAL
-   Figma group: 709.6 × 403.48 at 1920 design width.
-   The whole group scales together at desktop breakpoints.
+   BACKGROUND STRIPES — pinned to the far right, behind boxes.
+   Figma group scale is preserved via .product-visual transform.
    ============================================================ */
 
 .product-section__hero-media {
-  position: relative;
-  flex: 0 0 709.6px;
+  position: absolute;
+  top: 4%;
+  right: 0;
+  z-index: 1;
   width: 709.6px;
   height: 403.48px;
   overflow: visible;
@@ -180,24 +154,22 @@
 .product-visual {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   width: 709.6px;
   height: 403.48px;
   overflow: visible;
   transform: scale(1);
-  transform-origin: top left;
+  transform-origin: top right;
   pointer-events: none;
   user-select: none;
 }
-
-/* Three background strips */
 
 .product-strips {
   position: absolute;
   inset: 0;
   z-index: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;   /* hug the right edge */
   gap: 42px;
   width: 709.6px;
   height: 403.48px;
@@ -221,90 +193,53 @@
   background: #565656;
 }
 
-/* Main screw */
+/* ============================================================
+   FLOATING BOX CLUSTER
+   blue = top-left, red = mid-right (over stripes), green = front/bottom.
+   Tune top/left/right/width/rotate per box to taste.
+   NOTE: rotate() adds a slight "floating" tilt. If your PNG
+   renders are already angled, set transform: none on each box.
+   ============================================================ */
 
-
-
-.screw-main {
+.product-section__hero-boxes {
   position: absolute;
-  top: 75px;
-  left: -35px;
-  z-index: 3;
-  width: 688.76px;
-  height: 213.58px;
-  object-fit: contain;
-  transform: rotate(-176deg) scaleX(-1);
-  transform-origin: center;
-  opacity: 1;
-  filter: brightness(1.4) contrast(1.25) saturate(1.1) drop-shadow(0 4px 20px rgba(0,0,0,0.9)) drop-shadow(0 0 8px rgba(255,255,255,0.08));
+  inset: 0;
+  z-index: 5;
   pointer-events: none;
-  user-select: none;
 }
-/* .screw-main {
+
+.product-section__hero-box {
   position: absolute;
-  top: 75px;
-  left: -35px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 26px 44px rgba(0, 0, 0, 0.6));
+}
+
+/* blue — top, left of the cluster, slightly behind */
+.product-section__hero-box--blue {
+  top: 0;
+  left: 4%;
+  width: clamp(210px, 22vw, 330px);
   z-index: 3;
-  width: 688.76px;
-  height: 213.58px;
-  object-fit: contain;
-  transform: rotate(-176deg) scaleX(-1);
-  transform-origin: center;
-  opacity: 1;
-  filter: brightness(1.05) contrast(1.3) drop-shadow(0 6px 24px rgba(0,0,0,0.85));
-  pointer-events: none;
-  user-select: none;
-} */
+  transform: rotate(-3deg);
+}
 
-/* .screw-main {
-  position: absolute;
-  top: 75px;
-  left: -35px;
-  z-index: 3;
-  width: 688.76px;
-  height: 213.58px;
-  object-fit: contain;
-  transform: rotate(-176deg) scaleX(-1);
-  transform-origin: center;
-  opacity: 1;
-  filter:
-    grayscale(0.85)
-    brightness(0.62)
-    contrast(1.48)
-    saturate(0.35)
-    drop-shadow(0 0 1px rgba(220, 220, 220, 0.42))
-    drop-shadow(0 8px 10px rgba(0, 0, 0, 0.72));
-  pointer-events: none;
-  user-select: none;
-} */
+/* red — mid height, to the right of the blue box */
+.product-section__hero-box--red {
+  top: 10%;
+  left: calc(4% + clamp(210px, 22vw, 330px) - 20px);
+  width: clamp(220px, 23vw, 345px);
+  z-index: 2;
+  transform: rotate(-1deg);
+}
 
-/* Reflection */
-
-.screw-reflection {
-  position: absolute;
-  top: 180.44px;
-  left: -35px;
-  z-index: 0;
-  width: 688.76px;
-  height: 213.58px;
-  object-fit: contain;
-  transform: rotate(-176deg) scaleX(-1) scaleY(-1);
-  transform-origin: center;
-  opacity: 0.56;
-  pointer-events: none;
-  user-select: none;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.5) 38%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.5) 38%,
-    rgba(0, 0, 0, 0) 100%
-  );
+/* green — front-most, low and toward the left-center */
+.product-section__hero-box--green {
+  top: 46%;
+  left: 9%;
+  width: clamp(230px, 24vw, 360px);
+  z-index: 4;
+  transform: rotate(-5deg);
 }
 
 /* ============================================================
@@ -985,18 +920,12 @@
 }
 
 /* ============================================================
-   RESPONSIVE PRODUCT VISUAL
+   RESPONSIVE
    ============================================================ */
 
 @media (max-width: 1600px) {
-  .product-section__hero-media {
-    flex-basis: 591.33px;
-    width: 591.33px;
-    height: 336.23px;
-  }
-
   .product-visual {
-    transform: scale(0.833333);
+    transform: scale(0.86);
   }
 }
 
@@ -1012,14 +941,12 @@
     gap: clamp(32px, 3.125vw, 40px);
   }
 
-  .product-section__hero-media {
-    flex-basis: 473.07px;
-    width: 473.07px;
-    height: 268.99px;
+  .product-section__hero-stage {
+    min-height: clamp(340px, 30vw, 440px);
   }
 
   .product-visual {
-    transform: scale(0.666667);
+    transform: scale(0.7);
   }
 
   .product-section__heading {
@@ -1066,14 +993,8 @@
 }
 
 @media (max-width: 1200px) {
-  .product-section__hero-media {
-    flex-basis: 426px;
-    width: 426px;
-    height: 242px;
-  }
-
   .product-visual {
-    transform: scale(0.6);
+    transform: scale(0.62);
   }
 }
 
@@ -1081,44 +1002,37 @@
   .product-section__hero-row {
     flex-direction: column;
     align-items: stretch;
-    gap: 40px;
+    gap: 32px;
   }
 
   .product-section__header {
     max-width: 100%;
   }
 
-  /* Cascade centers itself on the stripe visual below the heading */
-  .product-section__hero-boxes {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-    align-self: center;
-    margin-right: 0;
-    margin-top: 8px;
-  }
-
-  .product-section__hero-box:nth-child(1),
-  .product-section__hero-box:nth-child(2),
-  .product-section__hero-box:nth-child(3) {
-    transform: none;
-    margin-bottom: 0;
-  }
-
-  .product-section__hero-box:nth-child(2) {
-    margin: 0 -07px;
-  }
-
-  .product-section__hero-media {
-    flex-basis: auto;
+  /* Stage becomes a full-width band under the heading;
+     boxes stay absolutely positioned within it. */
+  .product-section__hero-stage {
     width: 100%;
-    max-width: 473.07px;
-    height: 268.99px;
-    margin: 0 auto;
+    min-height: clamp(320px, 44vw, 420px);
   }
 
   .product-visual {
-    transform: scale(0.666667);
+    transform: scale(0.62);
+  }
+
+  .product-section__hero-box--blue {
+    left: 6%;
+    width: clamp(190px, 26vw, 300px);
+  }
+
+  .product-section__hero-box--red {
+    left: calc(6% + clamp(190px, 26vw, 300px) - 16px);
+    width: clamp(200px, 27vw, 310px);
+  }
+
+  .product-section__hero-box--green {
+    left: 12%;
+    width: clamp(210px, 28vw, 320px);
   }
 }
 
@@ -1156,11 +1070,8 @@
     letter-spacing: -1px;
   }
 
-  .product-section__hero-boxes {
-    display: none;
-  }
-
-  .product-section__hero-media {
+  /* Hide the hero visual entirely on phones */
+  .product-section__hero-stage {
     display: none;
   }
 
