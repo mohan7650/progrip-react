@@ -10,7 +10,7 @@ import screw03 from "../../assets/images/product-section/screw-03.png";
 import box04 from "../../assets/images/product-section/box-04.png";
 import box05 from "../../assets/images/product-section/box-05.png";
 import box06 from "../../assets/images/product-section/box-06.png";
-import greenBox from "../../assets/images/product-section/green_box.png";
+import greenBox from "../../assets/images/product-section/Green_box.png";
 import redBox from "../../assets/images/product-section/Red_box.png";
 import blueBox from "../../assets/images/product-section/Blue_box.png";
 import coarse01 from "../../assets/images/product-section/Coarse Thread Drywall Screw_01.png";
