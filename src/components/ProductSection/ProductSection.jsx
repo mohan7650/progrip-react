@@ -10,9 +10,9 @@ import screw03 from "../../assets/images/product-section/screw-03.png";
 import box04 from "../../assets/images/product-section/box-04.png";
 import box05 from "../../assets/images/product-section/box-05.png";
 import box06 from "../../assets/images/product-section/box-06.png";
-import greenBox from "../../assets/images/product-section/green_oneside.png";
-import redBox from "../../assets/images/product-section/Red_oneside.png";
-import blueBox from "../../assets/images/product-section/Blue_oneside.png";
+import greenBox from "../../assets/images/product-section/green_box.png";
+import redBox from "../../assets/images/product-section/Red_box.png";
+import blueBox from "../../assets/images/product-section/Blue_box.png";
 import coarse01 from "../../assets/images/product-section/Coarse Thread Drywall Screw_01.png";
 import coarse02 from "../../assets/images/product-section/Coarse Thread Drywall Screw_02.png";
 import coarse03 from "../../assets/images/product-section/Coarse Thread Drywall Screw_03.png";
@@ -367,43 +367,47 @@ export default function ProductSection() {
               </p>
             </motion.header>
 
-            <div className="product-section__hero-boxes">
-              <motion.img
-                className="product-section__hero-box"
-                src={greenBox}
-                alt="ProGrip Green Box"
-                initial={{ opacity: 0, y: -80, x: "-40%" }}
-                whileInView={{ opacity: 1, y: 0, x: "-40%" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-              />
-              <motion.img
-                className="product-section__hero-box"
-                src={redBox}
-                alt="ProGrip Red Box"
-                initial={{ opacity: 0, y: -80, x: "-75%" }}
-                whileInView={{ opacity: 1, y: 0, x: "-75%" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              />
-              <motion.img
-                className="product-section__hero-box"
-                src={blueBox}
-                alt="ProGrip Blue Box"
-                initial={{ opacity: 0, y: -80, x: "-110%" }}
-                whileInView={{ opacity: 1, y: 0, x: "-110%" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0, ease: "easeOut" }}
-              />
-            </div>
-
-            <div className="product-section__hero-media" aria-hidden="true">
-              <div className="product-visual">
-                <div className="product-strips">
-                  <span className="product-strip product-strip--red-left" />
-                  <span className="product-strip product-strip--gray" />
-                  <span className="product-strip product-strip--red-right" />
+            {/* Stage = one coordinate space that holds the stripes AND the
+                floating boxes so the red box can overlap the stripes. */}
+            <div className="product-section__hero-stage">
+              <div className="product-section__hero-media" aria-hidden="true">
+                <div className="product-visual">
+                  <div className="product-strips">
+                    <span className="product-strip product-strip--red-left" />
+                    <span className="product-strip product-strip--gray" />
+                    <span className="product-strip product-strip--red-right" />
+                  </div>
                 </div>
+              </div>
+
+              <div className="product-section__hero-boxes">
+                <motion.img
+                  className="product-section__hero-box product-section__hero-box--blue"
+                  src={blueBox}
+                  alt="ProGrip Metal Stud Screws Box"
+                  initial={{ opacity: 0, y: -60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: 1.0, ease: "easeOut" }}
+                />
+                <motion.img
+                  className="product-section__hero-box product-section__hero-box--red"
+                  src={redBox}
+                  alt="ProGrip Drywall Screws Box"
+                  initial={{ opacity: 0, y: -60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: 0.5, ease: "easeOut" }}
+                />
+                <motion.img
+                  className="product-section__hero-box product-section__hero-box--green"
+                  src={greenBox}
+                  alt="ProGrip Coarse Thread Screws Box"
+                  initial={{ opacity: 0, y: -60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
+                />
               </div>
             </div>
           </div>
