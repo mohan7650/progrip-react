@@ -124,6 +124,46 @@
 }
 
 /* ============================================================
+   HERO BOXES — three cascading boxes stepping down + left,
+   front-most (blue) box on top, tucked toward the strips.
+   ============================================================ */
+
+.product-section__hero-boxes {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;   /* anchor every box to the right edge */
+  align-self: center;
+  flex-shrink: 0;
+  gap: 0;
+  z-index: 5;              /* sit in front of the stripes */
+  margin-right: -40px;     /* nudge cluster onto the first stripe — tune this */
+}
+
+.product-section__hero-box {
+  width: clamp(150px, 12vw, 210px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 44px rgba(0, 0, 0, 0.6));
+}
+
+/* Staircase: overlap only, translateX handled by Framer Motion */
+.product-section__hero-box:nth-child(1) {
+  margin-bottom: -18px;
+  z-index: 1;
+}
+
+.product-section__hero-box:nth-child(2) {
+  margin-bottom: -18px;
+  z-index: 2;
+}
+
+.product-section__hero-box:nth-child(3) {
+  z-index: 3;
+}
+
+/* ============================================================
    STATIC PRODUCT VISUAL
    Figma group: 709.6 × 403.48 at 1920 design width.
    The whole group scales together at desktop breakpoints.
@@ -1048,6 +1088,27 @@
     max-width: 100%;
   }
 
+  /* Cascade centers itself on the stripe visual below the heading */
+  .product-section__hero-boxes {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    align-self: center;
+    margin-right: 0;
+    margin-top: 8px;
+  }
+
+  .product-section__hero-box:nth-child(1),
+  .product-section__hero-box:nth-child(2),
+  .product-section__hero-box:nth-child(3) {
+    transform: none;
+    margin-bottom: 0;
+  }
+
+  .product-section__hero-box:nth-child(2) {
+    margin: 0 -07px;
+  }
+
   .product-section__hero-media {
     flex-basis: auto;
     width: 100%;
@@ -1093,6 +1154,10 @@
     font-size: 36px;
     line-height: 42px;
     letter-spacing: -1px;
+  }
+
+  .product-section__hero-boxes {
+    display: none;
   }
 
   .product-section__hero-media {
