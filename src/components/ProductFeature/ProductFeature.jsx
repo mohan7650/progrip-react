@@ -4,7 +4,7 @@ import crosshair from "../../assets/images/crosshair.png";
 import "./ProductFeature.css";
 
 const FRAME_MODULES = import.meta.glob(
-  "../../assets/images/screw-360/frame-*.png",
+  "../../assets/images/product-section/Coarse 6x1-1_4 Screw/frame-*.webp",
   { eager: true, import: "default" }
 );
 const FRAME_URLS = Object.keys(FRAME_MODULES)
@@ -238,7 +238,7 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
                     + FRAME_COUNT) % FRAME_COUNT
                 ]}
                 alt={title[0]}
-                className="pf__img"
+                className="pf__img pf__img--frame"
                 draggable={false}
               />
             ) : (
