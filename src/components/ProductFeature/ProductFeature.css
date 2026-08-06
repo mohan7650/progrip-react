@@ -91,7 +91,7 @@
   max-height: none;
   max-width: none;
   object-fit: contain;
-  transform: scale(3);
+  transform: scale(2);
   transform-origin: center center;
   filter: none;
 }
@@ -272,9 +272,9 @@
 /* ---- Step dots ---- */
 .pf__angle-steps {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 
 .pf__angle-dot {

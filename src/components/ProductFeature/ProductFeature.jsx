@@ -5,12 +5,10 @@ import "./ProductFeature.css";
 
 const FRAME_MODULES = import.meta.glob(
   "../../assets/images/product-section/Coarse 6x1-1_4 Screw/frame-*.webp",
-  { eager: true, import: "default" }
+  { eager: false }
 );
-const FRAME_URLS = Object.keys(FRAME_MODULES)
-  .sort()
-  .map((k) => FRAME_MODULES[k]);
-const FRAME_COUNT = FRAME_URLS.length; // expect 204
+const FRAME_KEYS = Object.keys(FRAME_MODULES).sort();
+const FRAME_COUNT = FRAME_KEYS.length;
 
 const REVEAL = {
   initial: { opacity: 0, y: 40 },
@@ -100,12 +98,41 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
   const [angle, setAngle]           = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [showHint, setShowHint]     = useState(true);
+  const [frameUrls, setFrameUrls]   = useState([]);
+  const [loadProgress, setLoadProgress] = useState(0);
+  const [framesReady, setFramesReady]   = useState(false);
 
   const sectionRef   = useRef(null);
   const dragStartX   = useRef(0);
   const dragStartAng = useRef(0);
 
   const dismissHint = useCallback(() => setShowHint(false), []);
+
+  // Preload frames lazily in batches to avoid overwhelming the server
+  useEffect(() => {
+    if (!useFrameSequence || FRAME_COUNT === 0) return;
+    const urls = new Array(FRAME_COUNT);
+    let loaded = 0;
+    const BATCH = 10;
+    const loadBatch = (start) => {
+      const end = Math.min(start + BATCH, FRAME_COUNT);
+      const promises = FRAME_KEYS.slice(start, end).map((key, i) =>
+        FRAME_MODULES[key]().then((mod) => {
+          urls[start + i] = mod.default;
+          loaded++;
+          setLoadProgress(Math.round((loaded / FRAME_COUNT) * 100));
+          if (loaded >= FRAME_COUNT) {
+            setFrameUrls([...urls]);
+            setFramesReady(true);
+          }
+        })
+      );
+      Promise.all(promises).then(() => {
+        if (end < FRAME_COUNT) loadBatch(end);
+      });
+    };
+    loadBatch(0);
+  }, [useFrameSequence]);
 
   // Normalise to 0-359 for display
   const displayDeg = ((angle % 360) + 360) % 360;
@@ -232,15 +259,21 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
             onTouchEnd={onTouchEnd}
           >
             {useFrameSequence && FRAME_COUNT > 0 ? (
-              <img
-                src={FRAME_URLS[
-                  ((Math.round((angle / 360) * FRAME_COUNT) % FRAME_COUNT)
-                    + FRAME_COUNT) % FRAME_COUNT
-                ]}
-                alt={title[0]}
-                className="pf__img pf__img--frame"
-                draggable={false}
-              />
+              framesReady ? (
+                <img
+                  src={frameUrls[
+                    ((Math.round((angle / 360) * FRAME_COUNT) % FRAME_COUNT)
+                      + FRAME_COUNT) % FRAME_COUNT
+                  ]}
+                  alt={title[0]}
+                  className="pf__img pf__img--frame"
+                  draggable={false}
+                />
+              ) : (
+                <div className="pf__frame-loader">
+                  <div className="pf__frame-loader-bar" style={{ width: `${loadProgress}%` }} />
+                </div>
+              )
             ) : (
               <img
                 src={img}
@@ -260,20 +293,6 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
               </div>
             )}
 
-          </div>
-
-          {/* 30° step dots */}
-          <div className="pf__angle-steps" role="group" aria-label="Rotate to angle">
-            {STEP_DEGS.map((deg) => (
-              <button
-                key={deg}
-                className={`pf__angle-dot${activeStep === deg ? " pf__angle-dot--active" : ""}`}
-                onClick={() => snapTo(deg)}
-                aria-label={`View at ${deg} degrees`}
-                aria-pressed={activeStep === deg}
-                title={`${deg}°`}
-              />
-            ))}
           </div>
 
         </motion.div>
@@ -305,6 +324,20 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
                 <span className="pf__stat-value">{s.value}</span>
                 <span className="pf__stat-label">{s.label}</span>
               </div>
+            ))}
+          </div>
+
+          {/* 30° step dots */}
+          <div className="pf__angle-steps" role="group" aria-label="Rotate to angle">
+            {STEP_DEGS.map((deg) => (
+              <button
+                key={deg}
+                className={`pf__angle-dot${activeStep === deg ? " pf__angle-dot--active" : ""}`}
+                onClick={() => snapTo(deg)}
+                aria-label={`View at ${deg} degrees`}
+                aria-pressed={activeStep === deg}
+                title={`${deg}°`}
+              />
             ))}
           </div>
         </motion.div>
