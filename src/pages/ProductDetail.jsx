@@ -91,7 +91,9 @@ export default function ProductDetail() {
     );
   }
 
-  const useFrames = categoryId === "1" && productId === "1";
+  const useFrames = catalogProduct
+    ? catalogProduct.threadType === "Fine"
+    : !!product?.title?.join(" ").includes("Fine");
 
   return (
     <>
