@@ -257,21 +257,24 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
             onTouchEnd={onTouchEnd}
           >
             {useFrameSequence && FRAME_COUNT > 0 ? (
-              framesReady ? (
+              <>
                 <img
                   src={FRAME_URLS[
-                    ((Math.round((angle / 360) * FRAME_COUNT) % FRAME_COUNT)
-                      + FRAME_COUNT) % FRAME_COUNT
+                    framesReady
+                      ? ((Math.round((angle / 360) * FRAME_COUNT) % FRAME_COUNT) + FRAME_COUNT) % FRAME_COUNT
+                      : 0
                   ]}
                   alt={title[0]}
                   className="pf__img pf__img--frame"
                   draggable={false}
+                  style={framesReady ? undefined : { pointerEvents: "none" }}
                 />
-              ) : (
-                <div className="pf__frame-loader">
-                  <div className="pf__frame-loader-bar" style={{ width: `${loadProgress}%` }} />
-                </div>
-              )
+                {!framesReady && (
+                  <div className="pf__frame-loader">
+                    <div className="pf__frame-loader-bar" style={{ width: `${loadProgress}%` }} />
+                  </div>
+                )}
+              </>
             ) : (
               <img
                 src={img}
