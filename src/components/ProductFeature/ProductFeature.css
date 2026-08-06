@@ -269,6 +269,25 @@
   50%       { opacity: 1;   }
 }
 
+/* ---- Frame preload progress bar ---- */
+.pf__frame-loader {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: #1a1a1a;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.pf__frame-loader-bar {
+  height: 100%;
+  background: var(--red);
+  transition: width 0.12s linear;
+}
+
 /* ---- Step dots ---- */
 .pf__angle-steps {
   display: flex;
