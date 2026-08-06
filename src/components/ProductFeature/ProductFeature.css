@@ -84,6 +84,18 @@
   user-select: none;
 }
 
+/* WebP frame sequence images: zoom in to compensate for large canvas */
+.pf__img--frame {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  max-width: none;
+  object-fit: contain;
+  transform: scale(3);
+  transform-origin: center center;
+  filter: none;
+}
+
 /* ---- Content (right) ---- */
 .pf__eyebrow {
   display: inline-flex;
@@ -207,7 +219,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .pf__viewer--dragging {

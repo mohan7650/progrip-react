@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import "./Screw360Viewer.css";
 
 const frameModules = import.meta.glob(
-  "../../assets/images/screw-360/frame-*.png",
+  "../../assets/images/product-section/Coarse 6x1-1_4 Screw/frame-*.webp",
   { eager: true, import: "default" }
 );
 
