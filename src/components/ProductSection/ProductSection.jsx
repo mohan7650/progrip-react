@@ -236,7 +236,7 @@ const revealTransition = (delay = 0) => ({
   delay,
 });
 
-function ProductCard({ product, isActive, onClick }) {
+function ProductCard({ product, isActive, onClick, onMouseEnter }) {
   return (
     <button
       type="button"
@@ -244,6 +244,7 @@ function ProductCard({ product, isActive, onClick }) {
         isActive ? " product-section__card--active" : ""
       }`}
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
     >
       <span className="product-section__card-media">
         {product.popular && (
@@ -528,6 +529,7 @@ export default function ProductSection() {
                         key={product.stockCode}
                         product={product}
                         isActive={activeProduct === product.stockCode}
+                      onMouseEnter={() => setActiveProduct(product.stockCode)}
                       onClick={() => {
                         setActiveProduct(product.stockCode);
                         navigate(
