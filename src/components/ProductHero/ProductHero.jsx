@@ -6,10 +6,22 @@ import "./ProductHero.css";
 const REVEAL = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } };
 const t = (delay = 0) => ({ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay });
 
+function dispatchReady() {
+  window.dispatchEvent(new Event("app-image-ready"));
+}
+
 export default function ProductHero({ product }) {
   return (
     <section className="ph">
-      <img src={heroScrew} alt="" className="ph__bg" aria-hidden="true" />
+      <img
+        src={heroScrew}
+        alt=""
+        className="ph__bg"
+        aria-hidden="true"
+        fetchpriority="high"
+        onLoad={dispatchReady}
+        onError={dispatchReady}
+      />
       <div className="ph__overlay" aria-hidden="true" />
 
       <div className="container-wide ph__inner">
