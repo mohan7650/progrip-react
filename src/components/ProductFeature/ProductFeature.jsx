@@ -3,12 +3,29 @@ import { motion } from "framer-motion";
 import crosshair from "../../assets/images/crosshair.png";
 import "./ProductFeature.css";
 
-const FRAME_MODULES = import.meta.glob(
+const COARSE_MODULES = import.meta.glob(
   "../../assets/images/product-section/Coarse 6x1-1_4 Screw/frame-*.webp",
   { eager: true, import: "default" }
 );
-const FRAME_URLS = Object.keys(FRAME_MODULES).sort().map((k) => FRAME_MODULES[k]);
-const FRAME_COUNT = FRAME_URLS.length;
+const COARSE_URLS = Object.keys(COARSE_MODULES).sort().map((k) => COARSE_MODULES[k]);
+
+const FINE_MODULES = import.meta.glob(
+  "../../assets/images/product-section/Fine 6x1-1_4 Screw/frame-*.webp",
+  { eager: true, import: "default" }
+);
+const FINE_URLS = Object.keys(FINE_MODULES).sort().map((k) => FINE_MODULES[k]);
+
+const SELFDRILL_MODULES = import.meta.glob(
+  "../../assets/images/product-section/6x1-1_4 Self Drilling/frame-*.webp",
+  { eager: true, import: "default" }
+);
+const SELFDRILL_URLS = Object.keys(SELFDRILL_MODULES).sort().map((k) => SELFDRILL_MODULES[k]);
+
+const CEMENT_MODULES = import.meta.glob(
+  "../../assets/images/product-section/Sharp Point Cement Board Screw/frame-*.webp",
+  { eager: true, import: "default" }
+);
+const CEMENT_URLS = Object.keys(CEMENT_MODULES).sort().map((k) => CEMENT_MODULES[k]);
 
 const REVEAL = {
   initial: { opacity: 0, y: 40 },
@@ -92,8 +109,15 @@ const SCROLL_FEATURES = [
   },
 ];
 
-export default function ProductFeature({ product, useFrameSequence = false }) {
+export default function ProductFeature({ product, useFrameSequence = false, frameSet = "coarse" }) {
   const { feature, img, title } = product;
+
+  const FRAME_URLS =
+    frameSet === "fine" ? FINE_URLS :
+    frameSet === "selfdrill" ? SELFDRILL_URLS :
+    frameSet === "cement" ? CEMENT_URLS :
+    COARSE_URLS;
+  const FRAME_COUNT = FRAME_URLS.length;
 
   const [angle, setAngle]           = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -106,6 +130,12 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
   const dragStartAng = useRef(0);
 
   const dismissHint = useCallback(() => setShowHint(false), []);
+
+  // Reset load state when frame set changes
+  useEffect(() => {
+    setFramesReady(false);
+    setLoadProgress(0);
+  }, [frameSet]);
 
   // Preload actual image data in batches of 8 to avoid overwhelming the network
   useEffect(() => {
@@ -130,7 +160,7 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
     };
 
     preloadBatch(0);
-  }, [useFrameSequence]);
+  }, [useFrameSequence, FRAME_URLS, FRAME_COUNT]);
 
   // Normalise to 0-359 for display
   const displayDeg = ((angle % 360) + 360) % 360;

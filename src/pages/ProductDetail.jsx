@@ -91,16 +91,27 @@ export default function ProductDetail() {
     );
   }
 
-  const useFrames = catalogProduct
-    ? catalogProduct.threadType === "Fine"
+  const isFineThread = catalogProduct
+    ? catalogProduct.categoryId === 1
     : !!product?.title?.join(" ").includes("Fine");
+  const isCoarseThread = catalogProduct
+    ? catalogProduct.categoryId === 2
+    : !!product?.title?.join(" ").includes("Coarse");
+  const isSelfDrill = catalogProduct
+    ? catalogProduct.categoryId === 3
+    : !!product?.title?.join(" ").toLowerCase().includes("self drill");
+  const isCementBoard = catalogProduct
+    ? catalogProduct.categoryId === 4
+    : !!product?.title?.join(" ").toLowerCase().includes("cement");
+  const useFrames = isFineThread || isCoarseThread || isSelfDrill || isCementBoard;
+  const frameSet = isFineThread ? "fine" : isSelfDrill ? "selfdrill" : isCementBoard ? "cement" : "coarse";
 
   return (
     <>
       <Navbar />
       <main>
         <ProductHero product={product} />
-        <ProductFeature product={product} useFrameSequence={useFrames} />
+        <ProductFeature product={product} useFrameSequence={useFrames} frameSet={frameSet} />
         <ProductOrder product={product} />
         {/* Add more product detail components here */}
       </main>
