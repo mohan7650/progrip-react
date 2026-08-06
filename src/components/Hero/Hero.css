@@ -5,7 +5,7 @@
    Sources in the spec:
      Frame 37  (1792x578, vertical, gap 24) ... hero copy
      Frame 2   (1190x135, horizontal) ......... persona strip
-     Retângulo 7 (275x1106) x2 ................ slanted stripes
+     Retângulo 7 (275x1173) x2 ................ slanted stripes
 
    Responsive model
    ----------------
@@ -65,7 +65,7 @@
   position: absolute;
   top: calc(-93 * var(--scale));
   width: calc(275 * var(--scale));
-  height: calc(1106 * var(--scale));
+  height: calc(1173 * var(--scale)); /* -93 + 1173 = 1080 — reaches bottom of stage */
   opacity: 0.8;
   /* Parallelogram leaning left as it descends (measured from the export). */
   clip-path: polygon(46.5% 0, 95.3% 0, 48.7% 100%, 0 100%);
