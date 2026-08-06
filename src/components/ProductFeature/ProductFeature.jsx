@@ -5,10 +5,10 @@ import "./ProductFeature.css";
 
 const FRAME_MODULES = import.meta.glob(
   "../../assets/images/product-section/Coarse 6x1-1_4 Screw/frame-*.webp",
-  { eager: false }
+  { eager: true, import: "default" }
 );
-const FRAME_KEYS = Object.keys(FRAME_MODULES).sort();
-const FRAME_COUNT = FRAME_KEYS.length;
+const FRAME_URLS = Object.keys(FRAME_MODULES).sort().map((k) => FRAME_MODULES[k]);
+const FRAME_COUNT = FRAME_URLS.length;
 
 const REVEAL = {
   initial: { opacity: 0, y: 40 },
@@ -98,7 +98,6 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
   const [angle, setAngle]           = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [showHint, setShowHint]     = useState(true);
-  const [frameUrls, setFrameUrls]   = useState([]);
   const [loadProgress, setLoadProgress] = useState(0);
   const [framesReady, setFramesReady]   = useState(false);
 
@@ -108,30 +107,29 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
 
   const dismissHint = useCallback(() => setShowHint(false), []);
 
-  // Preload frames lazily in batches to avoid overwhelming the server
+  // Preload actual image data in batches of 8 to avoid overwhelming the network
   useEffect(() => {
     if (!useFrameSequence || FRAME_COUNT === 0) return;
-    const urls = new Array(FRAME_COUNT);
     let loaded = 0;
-    const BATCH = 10;
-    const loadBatch = (start) => {
+    const BATCH = 8;
+
+    const preloadBatch = (start) => {
       const end = Math.min(start + BATCH, FRAME_COUNT);
-      const promises = FRAME_KEYS.slice(start, end).map((key, i) =>
-        FRAME_MODULES[key]().then((mod) => {
-          urls[start + i] = mod.default;
+      let batchDone = 0;
+      for (let i = start; i < end; i++) {
+        const img = new Image();
+        img.onload = img.onerror = () => {
           loaded++;
+          batchDone++;
           setLoadProgress(Math.round((loaded / FRAME_COUNT) * 100));
-          if (loaded >= FRAME_COUNT) {
-            setFrameUrls([...urls]);
-            setFramesReady(true);
-          }
-        })
-      );
-      Promise.all(promises).then(() => {
-        if (end < FRAME_COUNT) loadBatch(end);
-      });
+          if (loaded >= FRAME_COUNT) setFramesReady(true);
+          if (batchDone === end - start && end < FRAME_COUNT) preloadBatch(end);
+        };
+        img.src = FRAME_URLS[i];
+      }
     };
-    loadBatch(0);
+
+    preloadBatch(0);
   }, [useFrameSequence]);
 
   // Normalise to 0-359 for display
@@ -261,7 +259,7 @@ export default function ProductFeature({ product, useFrameSequence = false }) {
             {useFrameSequence && FRAME_COUNT > 0 ? (
               framesReady ? (
                 <img
-                  src={frameUrls[
+                  src={FRAME_URLS[
                     ((Math.round((angle / 360) * FRAME_COUNT) % FRAME_COUNT)
                       + FRAME_COUNT) % FRAME_COUNT
                   ]}
