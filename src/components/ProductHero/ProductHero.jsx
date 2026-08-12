@@ -55,7 +55,7 @@ export default function ProductHero({ product }) {
 
           <div className="btn-row ph__btns">
             <button type="button" className="btn btn-red">Buy Now</button>
-            <button type="button" className="btn btn-outline">Build Submittal</button>
+            <button type="button" className="btn btn-outline">Build Submittals</button>
           </div>
         </motion.div>
       </div>

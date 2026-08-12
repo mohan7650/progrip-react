@@ -73,7 +73,7 @@ const PERSONAS = [
       "Better architect and inspector relationships",
       "Lower warranty risk on completed projects",
     ],
-    ctaLabel: "BUILD SUBMITTAL",
+    ctaLabel: "BUILD SUBMITTALS",
     ctaType: "red",
   },
 ];

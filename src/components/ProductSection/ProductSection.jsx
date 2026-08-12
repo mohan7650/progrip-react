@@ -590,7 +590,7 @@ export default function ProductSection() {
                       type="button"
                       className="product-section__btn product-section__btn--ghost"
                     >
-                      Build Submittal
+                      Build Submittals
                     </button>
                   </div>
                 </div>
