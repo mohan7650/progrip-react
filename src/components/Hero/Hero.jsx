@@ -93,8 +93,8 @@ function Hero() {
             <div className="hero__persona-text">
               <h2 className="hero__persona-title">The Contractor</h2>
               <p className="hero__persona-body">
-                Bidding a project and needs a product submittal in under 60
-                seconds.
+                Focused on job profitability and crew productivity. Values
+                quality products that reduce delays and rework costs.
               </p>
             </div>
           </li>
