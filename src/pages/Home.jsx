@@ -4,7 +4,7 @@ import ProductSection from "../components/ProductSection/ProductSection.jsx";
 import Features from "../components/Features/Features.jsx";
 import Testimonials from "../components/Testimonials/Testimonials.jsx";
 import Applications from "../components/Applications/Applications.jsx";
-//import ProSystem from "../components/ProSystem/ProSystem.jsx";
+import ProSystem from "../components/ProSystem/ProSystem.jsx";
 import Personas from "../components/Personas/Personas.jsx";
 import OrderSection from "../components/OrderSection/OrderSection.jsx";
 import CTA from "../components/CTA/CTA.jsx";
@@ -16,12 +16,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-         <ProductSection /> 
+        <ProductSection />
         <Features />
-        <Personas />
-        {/* <Testimonials /> */}
-        <Applications />
         {/* <ProSystem /> */}
+        <Personas />
+        <Applications />
         <OrderSection />
         <CTA />
       </main>
