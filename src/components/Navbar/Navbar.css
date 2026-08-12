@@ -46,7 +46,7 @@
 
 /* Right side group */
 .header-right {
-  width: 865px;
+  flex: 1 1 auto;
   height: 60px;
 
   display: flex;
@@ -57,13 +57,12 @@
 
 /* Nav links group */
 .main-nav {
-  width: 387px;
   height: 30px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+  justify-content: flex-end;
+  gap: 24px;
 }
 
 .main-nav a {
@@ -157,15 +156,14 @@
   }
 
   .header-right {
-    width: 576.67px;
+    flex: 1 1 auto;
     height: 40px;
     gap: 21.33px;
   }
 
   .main-nav {
-    width: 258px;
     height: 20px;
-    gap: 21.33px;
+    gap: 16px;
   }
 
   .main-nav a {
