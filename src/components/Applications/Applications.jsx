@@ -178,19 +178,6 @@ export default function Applications() {
           ))}
         </div>
 
-        {/* Brand guide note (Figma: 1440×158) */}
-        <Reveal>
-          <div className="details-row">
-            <h4>GRAPHICAL SYSTEM<br />DETAILS</h4>
-            <p>
-              And lastly we would like to see a few more graphical elements from the
-              ProGrip branding Guide into this website design. Specifically we would
-              like to see Thread texture, Reticle mark Targeting / action icon,
-              Split panel.
-            </p>
-          </div>
-        </Reveal>
-
       </div>
     </section>
   );
