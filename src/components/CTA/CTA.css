@@ -33,12 +33,33 @@
 
 /* Figma: Heading | 860x120 | Russo One/60px/w400 | align:CENTER */
 .cta-title {
-  font-family: var(--font-display, "Russo One", sans-serif);
-  font-weight: 400;
-  font-size: clamp(36px, 3.125vw, 60px);
+  font-family: "Russo One", sans-serif;
+  font-weight: 700;
+  font-size: clamp(36px, 4.5vw, 76px);
   line-height: 1;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   margin-bottom: 24px;
+}
+
+.cta-title-line {
+  display: block;
+  color: #ffffff;
+}
+
+.cta-title-line:last-child {
+  color: #cc1010;
+}
+
+.cta-crosshair {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  color: #cc1010;
+  vertical-align: middle;
+  margin: 0 -0.15em;
+  position: relative;
+  top: -0.05em;
 }
 
 /* Figma: Text | 860x21 | Inter/14px/w400 | align:CENTER */
