@@ -38,8 +38,8 @@ const PRO_CARDS = [
     items: [
       "Build a branded submittal PDF in under 60 seconds",
       "No account required to start \u2014 experience first",
-      "SDS, LEED, ISO docs always current, alwaysdownloadable",
-      "Spec ProGrip once \u2014 every sub on the job follows",
+      "SDS, LEED, ISO docs always current, always downloadable",
+      "Spec PROGRIP once \u2014 every sub on the job follows",
     ],
     ctaLabel: "Build Submittals \u2192",
   },

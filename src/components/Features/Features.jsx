@@ -7,7 +7,7 @@ const FEATURES = [
     index: "01",
     title: <>FASTER, MORE<br />STABLE INSTALLATION</>,
     text: "Designed for a faster, more stable installation experience. Precise point and recess geometry supports controlled driving and helps reduce screw wobble during installation.",
-    result: "Stable, controlled installation with  screw engagement.",
+    result: "Stable, controlled installation with consistent screw engagement.",
     stats: [
       "Faster and more stable installation",
       "Precise point and recess geometry",
@@ -28,7 +28,7 @@ const FEATURES = [
   {
     index: "03",
     title: <>QUALITY &<br />COMPLIANCE</>,
-    text: "ProGrip products are designed with applicable ASTM compliance in mind, supporting the technical requirements relevant to their intended applications.",
+    text: "PROGRIP products are designed with applicable ASTM compliance in mind, supporting the technical requirements relevant to their intended applications.",
     result: "Product quality supported by applicable compliance requirements.",
     stats: [
       "Applicable ASTM compliance",
@@ -39,7 +39,7 @@ const FEATURES = [
   {
     index: "04",
     title: <>PRECISION &<br />RELIABILITY</>,
-    text: "ProGrip combines precise point and recess geometry with reliable material engagement to support consistent product performance.",
+    text: "PROGRIP combines precise point and recess geometry with reliable material engagement to support consistent product performance.",
     result: "Purpose-built geometry focused on stability and dependable material.",
     stats: [
       "Precise point and recess geometry",

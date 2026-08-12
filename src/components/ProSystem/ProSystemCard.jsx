@@ -19,7 +19,7 @@ export default function ProSystemCard({ accent, eyebrow, title, desc, items, cta
           ))}
         </ul>
         <div className="pro-card__divider" />
-        <a href="#" className="pro-card__btn">{ctaLabel}</a>
+        <a href="#contact" className="pro-card__btn">{ctaLabel}</a>
       </div>
     </motion.article>
   );

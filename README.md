@@ -1,4 +1,4 @@
-# PRO+GRIP Screws — React (Vite)
+# PROGRIP Screws — React (Vite)
 
 Production-ready React conversion of the original HTML/CSS landing page.
 The UI is a 1:1 match with the source site — all layout, spacing, typography,
@@ -63,7 +63,7 @@ src/
   sizes (`sm`, `xs`) and the full-width `block` modifier.
 - `<SectionHead />` — the repeated eyebrow + title + ghost number + subtitle
   pattern used by sections 01–06.
-- `<Logo />` — the PRO+GRIP lockup used in the header and footer.
+- `<Logo />` — the PROGRIP lockup used in the header and footer.
 - `<FeatureCard />`, `<TestimonialCard />`, `<ApplicationCard />`,
   `<PersonaCard />`, `<OrderCard />` — one component per repeated card type,
   fed by data arrays in each section file.

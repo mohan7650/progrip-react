@@ -21,8 +21,8 @@ export default function Navbar() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a href="/" className="site-logo" aria-label="ProGrip Screws Home">
-          <img src={logo} alt="ProGrip Screws" />
+        <a href="/" className="site-logo" aria-label="PROGRIP Screws Home">
+          <img src={logo} alt="PROGRIP Screws" />
         </a>
 
         <div className="header-right">
@@ -35,7 +35,7 @@ export default function Navbar() {
           </nav>
 
           <div className="header-actions">
-            <Button href="#" variant="white" size="sm">
+            <Button href="#contact" variant="white" size="sm">
               ACCOUNT
             </Button>
 
