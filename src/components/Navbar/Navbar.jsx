@@ -7,7 +7,8 @@ const NAV_LINKS = [
   { label: "Products", href: "#products" },
   { label: "About", href: "#why" },
   { label: "Resources", href: "#applications" },
-  { label: "More", href: "#order",},
+  { label: "ProSystem", href: "#order" },
+  { label: "Contact Us", href: "#contact" },
 ];
 
 export default function Navbar() {
