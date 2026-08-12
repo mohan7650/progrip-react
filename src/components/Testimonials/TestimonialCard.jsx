@@ -38,7 +38,7 @@ export default function TestimonialCard({
           ))}
         </ul>
       </div>
-      <Button href="#" variant={ctaVariant} block>
+      <Button href="#contact" variant={ctaVariant} block>
         {ctaLabel}
       </Button>
     </article>

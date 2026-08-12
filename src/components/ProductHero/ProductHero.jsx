@@ -54,8 +54,8 @@ export default function ProductHero({ product }) {
           </ul>
 
           <div className="btn-row ph__btns">
-            <button type="button" className="btn btn-red">Buy Now</button>
-            <button type="button" className="btn btn-outline">Build Submittals</button>
+            <a href="#contact" className="btn btn-red">Buy Now</a>
+            <a href="#contact" className="btn btn-outline">Build Submittals</a>
           </div>
         </motion.div>
       </div>

@@ -29,7 +29,7 @@ function CrosshairIcon() {
 
 function Hero() {
   return (
-    <section className="hero" aria-label="Pro+Grip hero">
+    <section className="hero" aria-label="PROGRIP hero">
       <video className="hero__video" autoPlay muted loop playsInline preload="auto">
         <source src={heroVideo} type="video/mp4" />
       </video>
@@ -48,7 +48,7 @@ function Hero() {
           <h1 className="hero__title">
             <span className="hero__title-line">Pro Hold.</span>
             <span className="hero__title-line">Pro<CrosshairIcon />Speed.</span>
-            <span className="hero__title-line">Pro+Grip.</span>
+            <span className="hero__title-line">PRO GRIP.</span>
           </h1>
 
           <p className="hero__subtitle">
@@ -57,12 +57,12 @@ function Hero() {
           </p>
 
           <div className="hero__actions">
-            <button type="button" className="hero__btn hero__btn--primary">
+            <a href="#products" className="hero__btn hero__btn--primary">
               Order Now
-            </button>
-            <button type="button" className="hero__btn hero__btn--outline">
+            </a>
+            <a href="#contact" className="hero__btn hero__btn--outline">
               Build Submittals
-            </button>
+            </a>
           </div>
         </div>
 
@@ -72,7 +72,7 @@ function Hero() {
             <div className="hero__persona-text">
               <h2 className="hero__persona-title">The Installer</h2>
               <p className="hero__persona-body">
-                Pro Quality Screws that won&rsquo;t slow down or delay the job.
+                Pro Quality Screws that wonrsquo;t slow down or delay the job.
               </p>
             </div>
           </li>
@@ -82,8 +82,8 @@ function Hero() {
             <div className="hero__persona-text">
               <h2 className="hero__persona-title">The Distributor</h2>
               <p className="hero__persona-body">
-                Back office, managing 5 jobs and 3 suppliers from a spreadsheet.
-                And need a better solution.
+                Back office, managing 5 jobs and 3 suppliers from a
+                spreadsheet and needs a better solution.
               </p>
             </div>
           </li>

@@ -59,7 +59,7 @@ export default function PersonaCard({
         </ul>
 
         <a
-          href="#"
+          href="#contact"
           className={
             ctaType === "red"
               ? "persona-card__btn persona-card__btn--red"

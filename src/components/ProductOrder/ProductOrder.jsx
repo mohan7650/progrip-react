@@ -31,9 +31,9 @@ export default function ProductOrder({ product }) {
           </p>
 
           <div className="btn-row po__btns">
-            <button type="button" className="btn btn-red">Buy Now</button>
-            <button type="button" className="btn btn-outline">Build Submittals</button>
-            <button type="button" className="btn btn-outline">Download Spec Sheet</button>
+            <a href="#contact" className="btn btn-red">Buy Now</a>
+            <a href="#contact" className="btn btn-outline">Build Submittals</a>
+            <a href="#contact" className="btn btn-outline">Download Spec Sheet</a>
           </div>
         </motion.div>
 

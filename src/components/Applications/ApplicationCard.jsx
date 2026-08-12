@@ -96,14 +96,14 @@ export default function ApplicationCard({
       <div className="app-card__ctas">
         {wide ? (
           <div className="btn-row">
-            <Button href="#" variant="red">{primaryCta}</Button>
-            {secondaryCta && <Button href="#" variant="ghost">{secondaryCta}</Button>}
+            <Button href="#products" variant="red">{primaryCta}</Button>
+            {secondaryCta && <Button href="#contact" variant="ghost">{secondaryCta}</Button>}
           </div>
         ) : (
           <>
-            <Button href="#" variant="red" block>{primaryCta}</Button>
+            <Button href="#products" variant="red" block>{primaryCta}</Button>
             {secondaryCta && (
-              <Button href="#" variant="ghost" block>{secondaryCta}</Button>
+              <Button href="#contact" variant="ghost" block>{secondaryCta}</Button>
             )}
           </>
         )}

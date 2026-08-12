@@ -161,7 +161,7 @@ export default function Screw360Viewer() {
       <img
         className="screw360__frame"
         src={FRAME_URLS[frame]}
-        alt="Pro-Grip drywall screw — 360-degree product view"
+        alt="PROGRIP drywall screw — 360-degree product view"
         draggable={false}
       />
     </div>

@@ -49,7 +49,7 @@ const ORDER_FEATURES = [
   {
     category: "DISTRIBUTOR",
     title: "ACCOUNT SYSTEM",
-    text: "Role-based access built for how construction companies.",
+    text: "Role-based access built for how construction companies operate.",
     items: [
       "Admin, Buyer, Foreman, General roles",
       "Buyers create foreman sub-accounts",
@@ -94,12 +94,12 @@ export default function OrderSection() {
         <Reveal delay={0.15}>
           <div className="order-foot">
             <p className="order-foot-text">
-              "This is a dedicated section promoting web and app features.{" "}
+              Built around how your crew actually works.{" "}
               <span className="text-red">
-                The platform is not a feature — it's the retention strategy."
+                One platform, every job, every order.
               </span>
             </p>
-            <Button href="#" variant="red">ORDER NOW</Button>
+            <Button href="#products" variant="red">ORDER NOW</Button>
           </div>
         </Reveal>
       </div>
