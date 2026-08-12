@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import Button from "../Shared/Button.jsx";
 import "./ProductSection.css";
 
 import heroScrew from "../../assets/images/product-section/hero-screw-rotation.png";
@@ -364,6 +365,15 @@ export default function ProductSection() {
               <p className="product-section__subtitle">
                 The full range of Pro+Grip fasteners for every job
               </p>
+
+              <Button
+                href="#contact"
+                variant="red"
+                size="sm"
+                className="product-section__contact-btn"
+              >
+                CONTACT US
+              </Button>
             </motion.header>
 
             {/* Stage = one coordinate space that holds the stripes AND the
