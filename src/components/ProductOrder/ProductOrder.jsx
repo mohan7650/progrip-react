@@ -32,7 +32,7 @@ export default function ProductOrder({ product }) {
 
           <div className="btn-row po__btns">
             <button type="button" className="btn btn-red">Buy Now</button>
-            <button type="button" className="btn btn-outline">Build Submittal</button>
+            <button type="button" className="btn btn-outline">Build Submittals</button>
             <button type="button" className="btn btn-outline">Download Spec Sheet</button>
           </div>
         </motion.div>

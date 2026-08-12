@@ -39,7 +39,7 @@ export default function Navbar() {
             </Button>
 
             <Button href="#products" variant="red" size="sm">
-              BUILD A SUBMMITAL
+              BUILD SUBMITTALS
             </Button>
           </div>
 

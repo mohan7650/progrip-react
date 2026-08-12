@@ -61,7 +61,7 @@ function Hero() {
               Order Now
             </button>
             <button type="button" className="hero__btn hero__btn--outline">
-              Build a Submittal
+              Build Submittals
             </button>
           </div>
         </div>

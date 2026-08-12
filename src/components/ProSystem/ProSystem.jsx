@@ -41,7 +41,7 @@ const PRO_CARDS = [
       "SDS, LEED, ISO docs always current, alwaysdownloadable",
       "Spec ProGrip once \u2014 every sub on the job follows",
     ],
-    ctaLabel: "Build a Submittal \u2192",
+    ctaLabel: "Build Submittals \u2192",
   },
 ];
 
