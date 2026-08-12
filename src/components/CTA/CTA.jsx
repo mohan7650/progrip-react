@@ -5,7 +5,7 @@ import "./CTA.css";
 
 export default function CTA() {
   return (
-    <section className="cta-band">
+    <section className="cta-band" id="contact">
       <img className="cta-strip" src={ctaStrip} alt="" aria-hidden="true" />
       <div className="container cta-inner">
         <Reveal>
@@ -21,7 +21,7 @@ export default function CTA() {
         <Reveal delay={0.3}>
           <div className="btn-row center">
             <Button href="#" variant="red">Order</Button>
-            <Button href="#" variant="outline">Contact</Button>
+            <Button href="mailto:Info@pro-grip.com" variant="outline">Contact</Button>
           </div>
         </Reveal>
       </div>

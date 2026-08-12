@@ -123,6 +123,10 @@
   line-height: 1.5;
 }
 
+.product-section__contact-btn {
+  margin-top: clamp(20px, 2.08vw, 32px);
+}
+
 /* ============================================================
    HERO STAGE
    One shared coordinate space for the stripes + the three
