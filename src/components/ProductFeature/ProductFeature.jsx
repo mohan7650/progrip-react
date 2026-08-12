@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect, useLayoutEffect } from "react";
 import { motion } from "framer-motion";
 import crosshair from "../../assets/images/crosshair.png";
 import "./ProductFeature.css";
@@ -203,8 +203,10 @@ export default function ProductFeature({ product, useFrameSequence = false, fram
     return () => window.removeEventListener("mouseup", up);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!useFrameSequence) return undefined;
+
+    setAngle(0);
 
     let animationFrame = 0;
 
