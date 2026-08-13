@@ -159,7 +159,7 @@
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .ph__inner {
     grid-template-columns: 1fr;
     gap: 40px;

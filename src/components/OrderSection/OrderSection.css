@@ -26,7 +26,7 @@
 }
 
 /* ---------- Heading wrapper — 1280px ---------- */
-@media (max-width: 1280px) {
+@media (max-width: 1599px) {
   .section-order .section-head {
     width: 1280px;
     height: 120px;
@@ -189,7 +189,7 @@
 /* ----------------------------------------------
    RESPONSIVE — MOBILE (≤680px)
    ---------------------------------------------- */
-@media (max-width: 680px) {
+@media (max-width: 480px) {
   .order-grid { grid-template-columns: 1fr; }
   .section-order .container { gap: 48px; }
   .order-foot { flex-direction: column; align-items: flex-start; }
