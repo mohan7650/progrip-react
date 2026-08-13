@@ -13,6 +13,7 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [lang, setLang] = useState("en");
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -24,6 +25,21 @@ export default function Navbar() {
         <a href="/" className="site-logo" aria-label="PROGRIP Screws Home">
           <img src={logo} alt="PROGRIP Screws" />
         </a>
+
+        <button
+          type="button"
+          className="lang-toggle"
+          role="switch"
+          aria-checked={lang === "fr"}
+          aria-label="Toggle language between English and French Canadian"
+          onClick={() => setLang((l) => (l === "en" ? "fr" : "en"))}
+        >
+          <span className="lang-toggle-option">EN</span>
+          <span className="lang-toggle-track">
+            <span className="lang-toggle-thumb" />
+          </span>
+          <span className="lang-toggle-option">FR</span>
+        </button>
 
         <div className="header-right">
           <nav className={menuOpen ? "main-nav open" : "main-nav"}>
