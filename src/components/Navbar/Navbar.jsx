@@ -1,38 +1,40 @@
 import { useState } from "react";
 import logo from "../../assets/images/logo.png";
 import Button from "../Shared/Button.jsx";
+import { useTranslation } from "../../i18n/useTranslation.js";
 import "./Navbar.css";
-
-const NAV_LINKS = [
-  { label: "Products", href: "#products" },
-  { label: "About", href: "#why" },
-  { label: "Resources", href: "#applications" },
-  { label: "ProSystem", href: "#order" },
-  { label: "Contact Us", href: "#contact" },
-];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lang, setLang] = useState("en");
+  const { locale, setLocale, t } = useTranslation();
+  const isFrench = locale === "fr-CA";
+
+  const NAV_LINKS = [
+    { label: t.navbar.navLinks.products, href: "#products" },
+    { label: t.navbar.navLinks.about, href: "#why" },
+    { label: t.navbar.navLinks.resources, href: "#applications" },
+    { label: t.navbar.navLinks.proSystem, href: "#order" },
+    { label: t.navbar.navLinks.contactUs, href: "#contact" },
+  ];
 
   const closeMenu = () => {
     setMenuOpen(false);
   };
 
   return (
-    <header className="site-header">
+    <header className="site-header" data-lang={locale}>
       <div className="header-inner">
-        <a href="/" className="site-logo" aria-label="PROGRIP Screws Home">
-          <img src={logo} alt="PROGRIP Screws" />
+        <a href="/" className="site-logo" aria-label={t.navbar.homeAriaLabel}>
+          <img src={logo} alt={t.navbar.logoAlt} />
         </a>
 
         <button
           type="button"
           className="lang-toggle"
           role="switch"
-          aria-checked={lang === "fr"}
-          aria-label="Toggle language between English and French Canadian"
-          onClick={() => setLang((l) => (l === "en" ? "fr" : "en"))}
+          aria-checked={isFrench}
+          aria-label={t.navbar.langToggleAriaLabel}
+          onClick={() => setLocale(isFrench ? "en-CA" : "fr-CA")}
         >
           <span className="lang-toggle-option">EN</span>
           <span className="lang-toggle-track">
@@ -44,7 +46,7 @@ export default function Navbar() {
         <div className="header-right">
           <nav className={menuOpen ? "main-nav open" : "main-nav"}>
             {NAV_LINKS.map((link) => (
-              <a key={link.label} href={link.href} onClick={closeMenu}>
+              <a key={link.href} href={link.href} onClick={closeMenu}>
                 {link.label}
               </a>
             ))}
@@ -52,18 +54,18 @@ export default function Navbar() {
 
           <div className="header-actions">
             <Button href="#contact" variant="white" size="sm">
-              ACCOUNT
+              {t.navbar.account}
             </Button>
 
             <Button href="#products" variant="red" size="sm">
-              BUILD SUBMITTALS
+              {t.navbar.buildSubmittals}
             </Button>
           </div>
 
           <button
             type="button"
             className="nav-toggle"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-label={menuOpen ? t.navbar.closeMenu : t.navbar.openMenu}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
           >

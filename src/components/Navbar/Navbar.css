@@ -16,9 +16,12 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* 1920px FIGMA */
+/* 1920px FIGMA
+   width uses min() instead of a hard 1440px so the container itself can
+   never force horizontal overflow on viewports narrower than 1440+48px
+   (e.g. a 1440px browser window minus its scrollbar). */
 .header-inner {
-  width: 1440px;
+  width: min(1440px, calc(100% - 48px));
   height: 130px;
   margin: 0 auto;
 
@@ -26,6 +29,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 
 /* Logo */
 .site-logo,
@@ -121,10 +125,15 @@
   }
 }
 
-/* Right side group */
+/* Right side group.
+   padding-left reserves a fixed buffer so nav content can never visually
+   run into/under the language switch, even if header-right itself has to
+   shrink below its content's natural width at tighter viewports. */
 .header-right {
   flex: 1 1 auto;
+  min-width: 0;
   height: 60px;
+  padding-left: 24px;
 
   display: flex;
   align-items: center;
@@ -132,7 +141,10 @@
   gap: 32px;
 }
 
-/* Nav links group */
+/* Nav links group.
+   No min-width:0 here — the links must never compress below their own
+   content width, otherwise they can render underneath the language
+   switch instead of just being pushed further right. */
 .main-nav {
   height: 30px;
 
@@ -160,9 +172,11 @@
 
 
 
-/* Buttons group */
+/* Buttons group — width is intrinsic (auto) so it can grow to fit longer
+   fr-CA button text instead of forcing overflow past a fixed box. */
 .header-actions {
-  width: 446px;
+  width: auto;
+  min-width: 0;
   height: 60px;
 
   display: flex;
@@ -172,20 +186,23 @@
 
 .header-actions .btn,
 .header-actions a {
-  width: 215px;
+  min-width: 215px;
   height: 60px;
+  padding: 0 14px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   font-family: var(--font-cond, "Oswald", sans-serif);
-  font-size: 20px;
+  font-size: clamp(13px, 1vw, 20px);
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
 
   border-radius: 0;
 }
@@ -206,6 +223,160 @@
 /* Mobile icon hidden on desktop */
 .nav-toggle {
   display: none;
+}
+
+/* ============================================================
+   FR-CA DESKTOP ADAPTATION (>1500px only — see the fr-CA hamburger
+   fallback further below for 1500px and under)
+   French labels ("CRÉER DES DOSSIERS DE SOUMISSION", etc.) run longer
+   than their English equivalents. At the widest desktop sizes, widen the
+   container slightly and tighten spacing/typography so the full nav still
+   fits on one line without shrinking text to an illegible size.
+   ============================================================ */
+@media (min-width: 1501px) {
+  .site-header[data-lang="fr-CA"] .header-inner {
+    width: min(1750px, calc(100% - 48px));
+  }
+
+  .site-header[data-lang="fr-CA"] .header-right {
+    gap: clamp(16px, 2vw, 32px);
+  }
+
+  .site-header[data-lang="fr-CA"] .main-nav {
+    gap: clamp(12px, 1.2vw, 24px);
+  }
+
+  .site-header[data-lang="fr-CA"] .main-nav a {
+    font-size: clamp(15px, 1.1vw, 20px);
+  }
+
+  .site-header[data-lang="fr-CA"] .header-actions {
+    gap: 10px;
+  }
+
+  .site-header[data-lang="fr-CA"] .header-actions .btn,
+  .site-header[data-lang="fr-CA"] .header-actions a {
+    min-width: 0;
+    padding: 0 16px;
+    font-size: clamp(13px, 0.95vw, 18px);
+  }
+}
+
+/* ============================================================
+   FR-CA "LINKS-FIRST" HAMBURGER (840px–1500px)
+   Below the widest desktop sizes there isn't room for the nav links AND
+   the two CTA buttons on one line. Priority order for fr-CA is:
+     Logo > Language switcher > COMPTE > CRÉER DES DOSSIERS DE SOUMISSION > Hamburger
+   so only the plain nav links (PRODUITS, À PROPOS, ...) move into the
+   hamburger here — COMPTE and CRÉER DES DOSSIERS DE SOUMISSION stay
+   visible and inline, just tightened, for as long as they fit.
+   ============================================================ */
+@media (max-width: 1500px) and (min-width: 841px) {
+  .site-header[data-lang="fr-CA"] .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: auto;
+
+    background: #030904;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .site-header[data-lang="fr-CA"] .main-nav.open {
+    display: flex;
+  }
+
+  .site-header[data-lang="fr-CA"] .main-nav a {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .site-header[data-lang="fr-CA"] .nav-toggle {
+    display: block;
+    background: transparent;
+    border: 1px solid #333;
+    color: #fff;
+    font-size: 24px;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+
+  /* COMPTE / CRÉER DES DOSSIERS DE SOUMISSION stay visible and inline,
+     tightened so they keep fitting next to the logo, language switcher,
+     and hamburger icon. */
+  .site-header[data-lang="fr-CA"] .header-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .site-header[data-lang="fr-CA"] .header-actions .btn,
+  .site-header[data-lang="fr-CA"] .header-actions a {
+    min-width: 0;
+    padding: 0 12px;
+    font-size: clamp(12px, 1.6vw, 17px);
+  }
+}
+
+/* ============================================================
+   FR-CA FULL MOBILE FALLBACK (<=840px)
+   At this width even the tightened COMPTE + CRÉER DES DOSSIERS DE
+   SOUMISSION pair can no longer sit next to the logo, language switcher,
+   and hamburger icon without risking clipping or overlap. Fall back to
+   the site's existing mobile layout (buttons hidden, everything reachable
+   through the hamburger menu) — the same behavior en-CA already uses
+   below 900px.
+   ============================================================ */
+@media (max-width: 840px) {
+  .site-header[data-lang="fr-CA"] .header-actions {
+    display: none;
+  }
+
+  .site-header[data-lang="fr-CA"] .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: auto;
+
+    background: #030904;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .site-header[data-lang="fr-CA"] .main-nav.open {
+    display: flex;
+  }
+
+  .site-header[data-lang="fr-CA"] .main-nav a {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .site-header[data-lang="fr-CA"] .nav-toggle {
+    display: block;
+    background: transparent;
+    border: 1px solid #333;
+    color: #fff;
+    font-size: 24px;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
 }
 
 /* ============================================================
@@ -257,9 +428,12 @@
 
   .header-actions .btn,
   .header-actions a {
-    width: 143.33px;
+    min-width: 143.33px;
+    width: auto;
     height: 40px;
-    font-size: clamp(13px, 1.17vw, 15px);
+    padding: 0 10px;
+    font-size: clamp(10px, 1.17vw, 15px);
+    white-space: nowrap;
   }
 }
 
@@ -287,6 +461,11 @@
   .header-right {
     width: auto;
     height: auto;
+    /* Nav links are off-canvas here (only the hamburger icon renders
+       inline) — the desktop-only anti-overlap buffer isn't needed and
+       would otherwise crowd the hamburger against the language switch
+       on narrow phones. */
+    padding-left: 0;
     gap: 12px;
   }
 
@@ -330,5 +509,33 @@
     font-size: 24px;
     padding: 8px 14px;
     cursor: pointer;
+  }
+}
+
+/* ============================================================
+   SMALL PHONES
+   Logo (210px) + language switch + hamburger no longer fit comfortably
+   side by side below ~480px — shrink the logo and tighten the language
+   switch's spacing so the hamburger icon always has clear room and never
+   sits under/against the language switch.
+   ============================================================ */
+@media (max-width: 480px) {
+  .site-logo,
+  .logo {
+    width: 150px;
+    flex: 0 0 150px;
+  }
+
+  .lang-toggle {
+    margin-left: 10px;
+    gap: 6px;
+  }
+
+  .header-right {
+    gap: 8px;
+  }
+
+  .nav-toggle {
+    padding: 8px 10px;
   }
 }

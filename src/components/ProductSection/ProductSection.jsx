@@ -2,6 +2,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "../Shared/Button.jsx";
+import { useTranslation } from "../../i18n/useTranslation.js";
+import {
+  localizeTerm,
+  buildLocalizedProductName,
+  TERM_LABELS,
+  FILTER_GROUP_LABELS,
+  CATEGORY_TAB_LABELS,
+  CATEGORY_FIELD_LABELS,
+  APPLICATION_LABELS,
+  THREADTYPE_LABELS,
+} from "../../i18n/fieldDictionaries.js";
 import "./ProductSection.css";
 
 import heroScrew from "../../assets/images/product-section/hero-screw-rotation.png";
@@ -232,7 +243,9 @@ const revealTransition = (delay = 0) => ({
   delay,
 });
 
-function ProductCard({ product, isActive, onClick, onMouseEnter }) {
+function ProductCard({ product, isActive, onClick, onMouseEnter, locale, t }) {
+  const localizedName = buildLocalizedProductName(product, locale);
+  const localizedSubcategory = localizeTerm(CATEGORY_FIELD_LABELS, product.subcategory, locale);
   return (
     <button
       type="button"
@@ -244,15 +257,15 @@ function ProductCard({ product, isActive, onClick, onMouseEnter }) {
     >
       <span className="product-section__card-media">
         {product.popular && (
-          <span className="product-section__card-badge">Popular</span>
+          <span className="product-section__card-badge">{t.common.popular}</span>
         )}
-        <img src={product.image} alt={product.alt} />
+        <img src={product.image} alt={localizedName} />
       </span>
       <span className="product-section__card-content">
         <span className="product-section__card-code">{product.stockCode}</span>
-        <span className="product-section__card-caption">{product.name}</span>
+        <span className="product-section__card-caption">{localizedName}</span>
         <span className="product-section__card-meta">
-          {product.length} · {product.subcategory}
+          {product.length} · {localizedSubcategory}
         </span>
       </span>
     </button>
@@ -261,6 +274,7 @@ function ProductCard({ product, isActive, onClick, onMouseEnter }) {
 
 export default function ProductSection() {
   const navigate = useNavigate();
+  const { locale, t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeProduct, setActiveProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -299,7 +313,7 @@ export default function ProductSection() {
     if (sel.gauge.length > 0 && !sel.gauge.includes(product.gauge)) return false;
     if (sel.screwType.length > 0) {
       const cats = getScrewTypeCategories(product);
-      if (!sel.screwType.some((t) => cats.has(t))) return false;
+      if (!sel.screwType.some((type) => cats.has(type))) return false;
     }
     if (sel.headType.length > 0 && !sel.headType.includes(getHeadTypeCategory(product))) return false;
     if (sel.application.length > 0 && !sel.application.includes(getApplicationCategory(product))) return false;
@@ -347,18 +361,18 @@ export default function ProductSection() {
             >
               <span className="product-section__badge">
                 <i className="product-section__badge-dash" aria-hidden="true" />
-                Complete
+                {t.productCatalog.badge}
               </span>
 
               <h2 className="product-section__heading">
-                Products Built{" "}
+                {t.productCatalog.headingLine1}{" "}
                 <span className="product-section__heading-index">01</span>
                 <br />
-                For Speed.
+                {t.productCatalog.headingLine2}
               </h2>
 
               <p className="product-section__subtitle">
-                The full range of PROGRIP fasteners for every job
+                {t.productCatalog.subtitle}
               </p>
 
               <Button
@@ -367,7 +381,7 @@ export default function ProductSection() {
                 size="sm"
                 className="product-section__contact-btn"
               >
-                CONTACT US
+                {t.common.contactUs}
               </Button>
             </motion.header>
 
@@ -387,7 +401,7 @@ export default function ProductSection() {
               <motion.img
                 className="product-section__progrip-box"
                 src={proGripBox}
-                alt="PROGRIP Box"
+                alt={t.productCatalog.boxAlt}
                 initial={{ opacity: 0, y: -60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -397,7 +411,7 @@ export default function ProductSection() {
           </div>
 
           <div className="product-section__filter-bar">
-            <span className="product-section__cat-pill">Categories</span>
+            <span className="product-section__cat-pill">{t.productCatalog.categoriesLabel}</span>
             <div className="product-section__filters">
               {CATEGORY_TABS.map((tab) => (
                 <button
@@ -414,7 +428,7 @@ export default function ProductSection() {
                     setCurrentPage(1);
                   }}
                 >
-                  {tab.label}
+                  {localizeTerm(CATEGORY_TAB_LABELS, tab.label, locale)}
                   <span className="product-section__filter-count">
                     ({getCategoryCount(tab.id)})
                   </span>
@@ -441,7 +455,7 @@ export default function ProductSection() {
                       aria-expanded={isOpen}
                     >
                       <span className="ps-filter-group__label">
-                        {group.label}
+                        {localizeTerm(FILTER_GROUP_LABELS, group.id, locale)}
                         {activeCount > 0 && (
                           <span className="ps-filter-group__active-count">{activeCount}</span>
                         )}
@@ -476,7 +490,7 @@ export default function ProductSection() {
                                     </svg>
                                   )}
                                 </span>
-                                <span className="ps-checkbox__text">{option}</span>
+                                <span className="ps-checkbox__text">{localizeTerm(TERM_LABELS, option, locale)}</span>
                               </label>
                             </li>
                           );
@@ -492,7 +506,7 @@ export default function ProductSection() {
                 className="ps-filter-clear"
                 onClick={clearAll}
               >
-                Clear All Filters
+                {t.productCatalog.clearAllFilters}
               </button>
             </motion.aside>
 
@@ -503,16 +517,16 @@ export default function ProductSection() {
             >
               <div className="product-section__panel-label">
                 <i className="product-section__dot" aria-hidden="true" />
-                Interactive View
+                {t.productCatalog.interactiveView}
               </div>
 
               <span className="product-section__panel-index">
-                {filteredProducts.length} Products
+                {t.productCatalog.productsCount(filteredProducts.length)}
               </span>
 
               {filteredProducts.length > 0 && (
                 <span className="product-section__page-status">
-                  Page {currentPage} of {totalPages}
+                  {t.productCatalog.pageStatus(currentPage, totalPages)}
                 </span>
               )}
 
@@ -521,7 +535,7 @@ export default function ProductSection() {
                   <button
                     type="button"
                     className="product-section__pagination-button product-section__pagination-button--previous"
-                    aria-label="Show previous 9 products"
+                    aria-label={t.productCatalog.showPrevious}
                     disabled={currentPage === 1}
                     onClick={() => changePage(currentPage - 1)}
                   >
@@ -541,6 +555,8 @@ export default function ProductSection() {
                           `/product/${product.categoryId}/${product.id}`,
                         );
                       }}
+                      locale={locale}
+                      t={t}
                       />
                     ))}
                   </div>
@@ -548,7 +564,7 @@ export default function ProductSection() {
                   <button
                     type="button"
                     className="product-section__pagination-button product-section__pagination-button--next"
-                    aria-label="Show next 9 products"
+                    aria-label={t.productCatalog.showNext}
                     disabled={currentPage === totalPages}
                     onClick={() => changePage(currentPage + 1)}
                   >
@@ -559,7 +575,7 @@ export default function ProductSection() {
 
               {filteredProducts.length === 0 && (
                 <div className="product-section__empty">
-                  No products match the selected filters.
+                  {t.productCatalog.emptyState}
                 </div>
               )}
 
@@ -570,7 +586,7 @@ export default function ProductSection() {
                       {selectedProduct.stockCode}
                     </span>
                     <h3 className="product-section__details-title">
-                      {selectedProduct.name}
+                      {buildLocalizedProductName(selectedProduct, locale)}
                     </h3>
                     <span className="product-section__details-size">
                       {selectedProduct.gauge} × {selectedProduct.length}
@@ -579,13 +595,13 @@ export default function ProductSection() {
 
                   <div className="product-section__actions">
                     <a href="#contact" className="product-section__btn">
-                      Buy Now
+                      {t.common.buyNow}
                     </a>
                     <a
                       href="#contact"
                       className="product-section__btn product-section__btn--ghost"
                     >
-                      Build Submittals
+                      {t.common.buildSubmittals}
                     </a>
                   </div>
                 </div>
@@ -598,47 +614,47 @@ export default function ProductSection() {
               transition={revealTransition(0.3)}
             >
               <span className="product-section__highlights-title">
-                Product Details
+                {t.productCatalog.productDetails}
               </span>
 
               {selectedProduct ? (
                 <dl className="product-section__spec-list">
                   <div>
-                    <dt>Stock code</dt>
+                    <dt>{t.productCatalog.specLabels.stockCode}</dt>
                     <dd>{selectedProduct.stockCode}</dd>
                   </div>
                   <div>
-                    <dt>Gauge</dt>
+                    <dt>{t.productCatalog.specLabels.gauge}</dt>
                     <dd>{selectedProduct.gauge}</dd>
                   </div>
                   <div>
-                    <dt>Length</dt>
+                    <dt>{t.productCatalog.specLabels.length}</dt>
                     <dd>{selectedProduct.length}</dd>
                   </div>
                   <div>
-                    <dt>Application</dt>
-                    <dd>{selectedProduct.application}</dd>
+                    <dt>{t.productCatalog.specLabels.application}</dt>
+                    <dd>{localizeTerm(APPLICATION_LABELS, selectedProduct.application, locale)}</dd>
                   </div>
                   <div>
-                    <dt>Thread type</dt>
-                    <dd>{selectedProduct.threadType}</dd>
+                    <dt>{t.productCatalog.specLabels.threadType}</dt>
+                    <dd>{localizeTerm(THREADTYPE_LABELS, selectedProduct.threadType, locale)}</dd>
                   </div>
                   <div>
-                    <dt>Units per box</dt>
-                    <dd>{selectedProduct.unitsPerBox.toLocaleString()}</dd>
+                    <dt>{t.productCatalog.specLabels.unitsPerBox}</dt>
+                    <dd>{selectedProduct.unitsPerBox.toLocaleString(locale)}</dd>
                   </div>
                   <div>
-                    <dt>Weight per box</dt>
+                    <dt>{t.productCatalog.specLabels.weightPerBox}</dt>
                     <dd>
                       {selectedProduct.weightPerBox === "N/A"
-                        ? "N/A"
-                        : `${selectedProduct.weightPerBox} lbs`}
+                        ? t.common.notAvailable
+                        : `${selectedProduct.weightPerBox} ${t.common.weightUnit}`}
                     </dd>
                   </div>
                 </dl>
               ) : (
                 <p className="product-section__details-placeholder">
-                  Select a product to view its specifications.
+                  {t.productCatalog.detailsPlaceholder}
                 </p>
               )}
             </motion.aside>

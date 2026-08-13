@@ -7,76 +7,90 @@ import CTA from "../components/CTA/CTA.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import { PRODUCT_DETAILS } from "../data/products.js";
 import { PRODUCTS } from "../components/ProductSection/ProductSection.jsx";
+import { useTranslation } from "../i18n/useTranslation.js";
+import {
+  localizeTerm,
+  buildLocalizedProductName,
+  CATEGORY_FIELD_LABELS,
+  APPLICATION_LABELS,
+  SCREWTYPE_LABELS,
+  HEADTYPE_LABELS,
+  FINISH_LABELS,
+  POINTTYPE_LABELS,
+  THREADTYPE_LABELS,
+  PACKTYPE_LABELS,
+} from "../i18n/fieldDictionaries.js";
 
-const formatBoxWeight = (weight) =>
-  weight === "N/A" ? "N/A" : `${weight} lbs`;
+const formatBoxWeight = (weight, t) =>
+  weight === "N/A" ? t.common.notAvailable : `${weight} ${t.common.weightUnit}`;
 
-const createCatalogDetail = (product) => ({
-  badge: `${product.category} · ${product.stockCode}`,
-  title: [product.name],
+const createCatalogDetail = (product, locale, t) => ({
+  badge: `${localizeTerm(CATEGORY_FIELD_LABELS, product.category, locale)} · ${product.stockCode}`,
+  title: [buildLocalizedProductName(product, locale)],
   desc: [
-    product.application,
-    product.screwType,
-    product.headType,
-    product.finish,
+    localizeTerm(APPLICATION_LABELS, product.application, locale),
+    localizeTerm(SCREWTYPE_LABELS, product.screwType, locale),
+    localizeTerm(HEADTYPE_LABELS, product.headType, locale),
+    localizeTerm(FINISH_LABELS, product.finish, locale),
   ].join(" · "),
   specs: [
-    { label: "STOCK CODE", value: product.stockCode },
-    { label: "GAUGE", value: product.gauge },
-    { label: "LENGTH", value: product.length },
-    { label: "THREAD", value: product.threadType.toUpperCase() },
-    { label: "DRIVE", value: product.driveType },
+    { label: t.productDetail.specLabels.stockCode, value: product.stockCode },
+    { label: t.productDetail.specLabels.gauge, value: product.gauge },
+    { label: t.productDetail.specLabels.length, value: product.length },
+    { label: t.productDetail.specLabels.thread, value: product.threadType.toUpperCase() },
+    { label: t.productDetail.specLabels.drive, value: product.driveType },
   ],
   img: product.image,
   feature: {
-    eyebrow: product.application,
+    eyebrow: localizeTerm(APPLICATION_LABELS, product.application, locale),
     heading: `${product.gauge} × ${product.length}`,
-    headingRed: `${product.threadType} Thread`,
+    headingRed: `${localizeTerm(THREADTYPE_LABELS, product.threadType, locale)} Thread`,
     desc: [
-      product.pointType,
-      product.headType,
-      product.finish,
+      localizeTerm(POINTTYPE_LABELS, product.pointType, locale),
+      localizeTerm(HEADTYPE_LABELS, product.headType, locale),
+      localizeTerm(FINISH_LABELS, product.finish, locale),
       product.driveType,
     ].join(" · "),
     stats: [
       {
-        value: product.unitsPerBox.toLocaleString(),
-        label: "Units per box",
+        value: product.unitsPerBox.toLocaleString(locale),
+        label: t.productDetail.specLabels.unitsPerBox,
       },
       {
-        value: formatBoxWeight(product.weightPerBox),
-        label: "Weight per box",
+        value: formatBoxWeight(product.weightPerBox, t),
+        label: t.productDetail.specLabels.weightPerBox,
       },
     ],
   },
   packages: [
     {
       num: "01",
-      name: `${product.packType} · ${product.unitsPerBox.toLocaleString()} CT`,
-      desc: `Stock code: ${product.stockCode}`,
+      name: `${localizeTerm(PACKTYPE_LABELS, product.packType, locale)} · ${product.unitsPerBox.toLocaleString(locale)} CT`,
+      desc: `${t.productDetail.packages.stockCodePrefix} ${product.stockCode}`,
     },
     {
       num: "02",
-      name: product.subcategory,
-      desc: `Application: ${product.application}`,
+      name: localizeTerm(CATEGORY_FIELD_LABELS, product.subcategory, locale),
+      desc: `${t.productDetail.packages.applicationPrefix} ${localizeTerm(APPLICATION_LABELS, product.application, locale)}`,
     },
     {
       num: "03",
-      name: "Box Weight",
-      desc: formatBoxWeight(product.weightPerBox),
+      name: t.productDetail.packages.boxWeight,
+      desc: formatBoxWeight(product.weightPerBox, t),
     },
   ],
 });
 
 export default function ProductDetail() {
   const { categoryId, productId } = useParams();
+  const { locale, t } = useTranslation();
   const catalogProduct = PRODUCTS.find(
     (candidate) =>
       candidate.categoryId === Number(categoryId) &&
       candidate.id === Number(productId),
   );
   const product = catalogProduct
-    ? createCatalogDetail(catalogProduct)
+    ? createCatalogDetail(catalogProduct, locale, t)
     : PRODUCT_DETAILS[`${categoryId}-${productId}`];
 
   if (!product) {
@@ -84,7 +98,7 @@ export default function ProductDetail() {
       <>
         <Navbar />
         <main style={{ padding: "160px 24px", textAlign: "center", color: "var(--muted)" }}>
-          Product not found.
+          {t.productDetail.productNotFound}
         </main>
         <Footer />
       </>

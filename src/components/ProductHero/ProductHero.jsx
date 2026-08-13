@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import heroScrew from "../../assets/images/product-section/hero-screw.png";
 import crosshair from "../../assets/images/crosshair.png";
+import { useTranslation } from "../../i18n/useTranslation.js";
 import "./ProductHero.css";
 
 const REVEAL = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } };
@@ -11,6 +12,7 @@ function dispatchReady() {
 }
 
 export default function ProductHero({ product }) {
+  const { t } = useTranslation();
   return (
     <section className="ph">
       <img
@@ -54,8 +56,8 @@ export default function ProductHero({ product }) {
           </ul>
 
           <div className="btn-row ph__btns">
-            <a href="#contact" className="btn btn-red">Buy Now</a>
-            <a href="#contact" className="btn btn-outline">Build Submittals</a>
+            <a href="#contact" className="btn btn-red">{t.productDetail.buyNow}</a>
+            <a href="#contact" className="btn btn-outline">{t.productDetail.buildSubmittals}</a>
           </div>
         </motion.div>
       </div>

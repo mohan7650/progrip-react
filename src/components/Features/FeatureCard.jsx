@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export default function FeatureCard({ index, title, text, result, stats, delay = 0 }) {
+export default function FeatureCard({ index, title, text, result, resultLabel = "Result:", stats, delay = 0 }) {
   return (
     <motion.article
       className="why-card"
@@ -16,7 +16,7 @@ export default function FeatureCard({ index, title, text, result, stats, delay =
       <p className="why-card__text">{text}</p>
 
       <div className="why-card__result">
-        <strong>Result:</strong> {result}
+        <strong>{resultLabel}</strong> {result}
       </div>
 
       <ul className="why-card__stats">

@@ -1,27 +1,10 @@
 import logo from "../../assets/images/logo.png";
+import { useTranslation } from "../../i18n/useTranslation.js";
 import "./Footer.css";
 
-const FOOTER_COLUMNS = [
-  {
-    title: "Products",
-    links: [
-      { label: "Browse all", href: "#products" },
-      { label: "Metal studs", href: "#products" },
-      { label: "Drywall", href: "#products" },
-      { label: "Heavy duty", href: "#products" },
-      { label: "View all", href: "#products" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About Us", href: "#why" },
-      { label: "Resources", href: "#products" },
-      { label: "PRO System", href: "#order" },
-      { label: "Application Guide", href: "#applications" },
-      { label: "Contact Us", href: "#contact" },
-    ],
-  },
+const FOOTER_COLUMN_HREFS = [
+  ["#products", "#products", "#products", "#products", "#products"],
+  ["#why", "#products", "#order", "#applications", "#contact"],
 ];
 
 const SOCIAL_LINKS = [
@@ -72,33 +55,31 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const LEGAL_LINKS = ["Privacy Policy", "Terms of Service", "Cookies Settings"];
-
 export default function Footer() {
+  const { t } = useTranslation();
+  const f = t.footer;
+
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
         {/* Brand + newsletter */}
         <div className="footer-brand">
-          <img src={logo} alt="PROGRIP Screws" className="footer-logo" />
-          <p className="micro">Get updates on new products and job site tips.</p>
+          <img src={logo} alt={f.logoAlt} className="footer-logo" />
+          <p className="micro">{f.newsletterText}</p>
           <form className="subscribe" onSubmit={(event) => event.preventDefault()}>
-            <input type="email" placeholder="Your email" aria-label="Email address" />
-            <button className="btn btn-red btn-sm" type="submit">SUBSCRIBE</button>
+            <input type="email" placeholder={f.emailPlaceholder} aria-label={f.emailAriaLabel} />
+            <button className="btn btn-red btn-sm" type="submit">{f.subscribe}</button>
           </form>
-          <p className="micro dim">
-            By subscribing you agree to our Privacy Policy and consent to receive
-            updates from PROGRIP.
-          </p>
+          <p className="micro dim">{f.disclaimer}</p>
         </div>
 
         {/* Text link columns */}
-        {FOOTER_COLUMNS.map((column) => (
+        {f.columns.map((column, colIndex) => (
           <div className="footer-col" key={column.title}>
             <h6>{column.title}</h6>
-            {column.links.map((link) => (
-              <a href={link.href} key={link.label}>
-                {link.label}
+            {column.links.map((label, linkIndex) => (
+              <a href={FOOTER_COLUMN_HREFS[colIndex][linkIndex]} key={label}>
+                {label}
               </a>
             ))}
           </div>
@@ -106,7 +87,7 @@ export default function Footer() {
 
         {/* Social column with icons */}
         <div className="footer-col">
-          <h6>Follow us</h6>
+          <h6>{f.followUs}</h6>
           {SOCIAL_LINKS.map((social) => (
             <a
               href={social.href}
@@ -123,9 +104,9 @@ export default function Footer() {
       </div>
 
       <div className="container footer-legal">
-        <p>© 2026 PROGRIP. All rights reserved.</p>
+        <p>{f.copyright}</p>
         <div className="legal-links">
-          {LEGAL_LINKS.map((link) => (
+          {f.legalLinks.map((link) => (
             <a href="#" key={link}>
               {link}
             </a>

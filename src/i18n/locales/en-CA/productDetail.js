@@ -1,0 +1,31 @@
+export default {
+  productNotFound: "Product not found.",
+  buyNow: "Buy Now",
+  buildSubmittals: "Build Submittals",
+  downloadSpecSheet: "Download Spec Sheet",
+  scrollToRotate: "Scroll to rotate",
+  dragToRotate: "Drag to rotate",
+  scrollDown: "Scroll Down",
+  rotateToAngle: "Rotate to angle",
+  viewAtDegrees: (deg) => `View at ${deg} degrees`,
+  orderLikeAPro: "Order Like a Pro",
+  headingSpecIt: "Spec it.",
+  headingStockIt: "Stock it.",
+  headingDriveIt: "Drive it.",
+  orderSub:
+    "Add this fastener to your submittal package or order direct for your next project.",
+  specLabels: {
+    stockCode: "STOCK CODE",
+    gauge: "GAUGE",
+    length: "LENGTH",
+    thread: "THREAD",
+    drive: "DRIVE",
+    unitsPerBox: "Units per box",
+    weightPerBox: "Weight per box",
+  },
+  packages: {
+    stockCodePrefix: "Stock code:",
+    applicationPrefix: "Application:",
+    boxWeight: "Box Weight",
+  },
+};

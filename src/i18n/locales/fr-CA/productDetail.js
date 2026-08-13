@@ -1,0 +1,31 @@
+export default {
+  productNotFound: "Produit introuvable.",
+  buyNow: "Acheter maintenant",
+  buildSubmittals: "Créer des dossiers de soumission",
+  downloadSpecSheet: "Télécharger la fiche technique",
+  scrollToRotate: "Faites défiler pour faire pivoter",
+  dragToRotate: "Faites glisser pour faire pivoter",
+  scrollDown: "Faire défiler vers le bas",
+  rotateToAngle: "Faire pivoter à l'angle",
+  viewAtDegrees: (deg) => `Voir à ${deg} degrés`,
+  orderLikeAPro: "Commandez comme un pro",
+  headingSpecIt: "Spécifiez-le.",
+  headingStockIt: "Gardez-le en stock.",
+  headingDriveIt: "Vissez-le.",
+  orderSub:
+    "Ajoutez cette fixation à votre dossier de soumission ou commandez-la directement pour votre prochain projet.",
+  specLabels: {
+    stockCode: "CODE DE PRODUIT",
+    gauge: "CALIBRE",
+    length: "LONGUEUR",
+    thread: "FILET",
+    drive: "EMPREINTE",
+    unitsPerBox: "Unités par boîte",
+    weightPerBox: "Poids par boîte",
+  },
+  packages: {
+    stockCodePrefix: "Code de produit :",
+    applicationPrefix: "Application :",
+    boxWeight: "Poids de la boîte",
+  },
+};

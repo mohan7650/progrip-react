@@ -1,5 +1,6 @@
 import ApplicationCard from "./ApplicationCard.jsx";
 import Reveal from "../Reveal.jsx";
+import { useTranslation } from "../../i18n/useTranslation.js";
 import "./Applications.css";
 import subtractImg from "../../assets/images/Subtract.png";
 import applicationBg from "../../assets/images/application_bg.png";
@@ -123,6 +124,9 @@ const WIDE_CARDS = [
 ];
 
 export default function Applications() {
+  const { t } = useTranslation();
+  const a = t.applications;
+
   return (
     <section className="section section-apps" id="applications" style={{ '--app-bg': `url(${applicationBg})` }}>
       {/* Single unified container — both card rows share the same width/boundaries */}
@@ -141,14 +145,14 @@ export default function Applications() {
             <div className="app-head-content">
               <Reveal>
                 <p className="app-eyebrow">
-                  <span className="app-tick"></span> APPLICATION GUIDE
+                  <span className="app-tick"></span> {a.eyebrow}
                 </p>
               </Reveal>
               <Reveal delay={0.1}>
                 <h2 className="app-title">
-                  CHOOSE THE RIGHT SCREW <span className="app-section-badge">04</span>
+                  {a.titleLine1} <span className="app-section-badge">04</span>
                   <br />
-                  <span className="red">FOR YOUR APPLICATION</span>
+                  <span className="red">{a.titleLine2}</span>
                 </h2>
               </Reveal>
             </div>
@@ -156,25 +160,21 @@ export default function Applications() {
 
           {/* Figma: paragraph below header | Inter/18px */}
           <Reveal delay={0.2}>
-            <p className="app-sub">
-              Professional contractors match fasteners to substrates for optimal
-              performance and code compliance. Here's how to spec PROGRIP screws
-              across common construction applications.
-            </p>
+            <p className="app-sub">{a.sub}</p>
           </Reveal>
         </div>
 
         {/* Row 1 — 3 equal standard cards */}
         <div className="app-grid app-grid--3">
           {APP_CARDS.map((card, i) => (
-            <ApplicationCard key={card.imageAlt} {...card} delay={i * 0.15} />
+            <ApplicationCard key={card.imageAlt} {...card} fieldLabels={a.fieldLabels} delay={i * 0.15} />
           ))}
         </div>
 
         {/* Row 2 — 2 equal wide cards */}
         <div className="app-grid app-grid--2">
           {WIDE_CARDS.map((card, i) => (
-            <ApplicationCard key={card.imageAlt} {...card} delay={i * 0.15} />
+            <ApplicationCard key={card.imageAlt} {...card} fieldLabels={a.fieldLabels} delay={i * 0.15} />
           ))}
         </div>
 

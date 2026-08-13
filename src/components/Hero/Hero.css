@@ -147,9 +147,13 @@
   color: var(--pg-subtitle);
 }
 
-/* Actions: two 215x60 buttons, gap 24 */
+/* Actions: two buttons, min 215x60 (Figma), gap 24.
+   Buttons no longer have a hard-fixed width — they grow to fit their own
+   text (needed for longer fr-CA labels like "Créer des dossiers de
+   soumission") while keeping the Figma size as a floor for shorter labels. */
 .hero__actions {
   display: flex;
+  flex-wrap: wrap;
   gap: calc(24 * var(--scale));
 }
 
@@ -158,7 +162,8 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: calc(215 * var(--scale));
+  min-width: calc(215 * var(--scale));
+  width: auto;
   height: calc(60 * var(--scale));
   padding: calc(18 * var(--scale)) calc(28 * var(--scale));
   border: none;
@@ -361,9 +366,13 @@
   .hero__btn {
     width: 100%;
     max-width: 320px;
-    height: 52px;
-    padding: 14px 24px;
-    font-size: 16px;
+    height: auto;
+    min-height: 52px;
+    padding: 14px 20px;
+    font-size: clamp(13px, 4vw, 16px);
+    white-space: normal;
+    line-height: 1.2;
+    text-align: center;
   }
 
   .hero__personas {
