@@ -14,6 +14,10 @@
   border-bottom: 1px solid var(--border);
 }
 
+.footer-grid > * {
+  min-width: 0;
+}
+
 .footer-logo {
   height: 44px;
   width: auto;
@@ -26,6 +30,7 @@
 /* Subscribe input — Inter/13px/400 */
 .subscribe input {
   flex: 1;
+  min-width: 0;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 0;
@@ -108,9 +113,9 @@
 }
 
 /* ----------------------------------------------
-   RESPONSIVE — MOBILE (≤680px)
+   RESPONSIVE — MOBILE (≤480px)
    ---------------------------------------------- */
-@media (max-width: 680px) {
+@media (max-width: 480px) {
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-legal { flex-direction: column; align-items: flex-start; }
 }

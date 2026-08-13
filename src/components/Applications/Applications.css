@@ -433,7 +433,7 @@
 /* -------------------------------------------------------
    RESPONSIVE — MOBILE (≤680px)
    ------------------------------------------------------- */
-@media (max-width: 680px) {
+@media (max-width: 480px) {
   .apps-container { padding: 0 16px; }
   .app-head {
     padding-left: 0;

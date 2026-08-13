@@ -137,7 +137,7 @@
    Figma 1440 container becomes around 1200px for laptop
    ============================================================ */
 
-@media (max-width: 1280px) {
+@media (max-width: 1599px) {
   .site-header {
     height: 86.67px;
   }
@@ -190,7 +190,7 @@
    TABLET / MOBILE
    ============================================================ */
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .site-header {
     height: 82px;
   }
