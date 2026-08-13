@@ -46,9 +46,8 @@ function Hero() {
           </p>
 
           <h1 className="hero__title">
-            <span className="hero__title-line">Pro Hold.</span>
-            <span className="hero__title-line">Pro<CrosshairIcon />Speed.</span>
-            <span className="hero__title-line">PRO GRIP.</span>
+            <span className="hero__title-line">Built For Pros, Ready</span>
+            <span className="hero__title-line">For The Job! <CrosshairIcon /></span>
           </h1>
 
           <p className="hero__subtitle">
