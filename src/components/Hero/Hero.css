@@ -125,7 +125,7 @@
   margin: 0;
   font-family: var(--pg-font-heading);
   font-weight: 700;
-  font-size: calc(128 * var(--scale));
+  font-size: calc(88 * var(--scale));
   line-height: 1;
   letter-spacing: calc(0.5 * var(--scale));
   text-transform: uppercase;
@@ -285,7 +285,7 @@
   height: 0.8em;
   color: var(--pg-red);
   vertical-align: middle;
-  margin: 0 -0.15em;
+  margin: 0 0 0 0.06em;
   position: relative;
   top: -0.05em;
 }
