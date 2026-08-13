@@ -410,6 +410,12 @@
   color: var(--pg-red);
 }
 
+@media (max-width: 768px) {
+  .hero__title-line:last-child {
+    color: var(--pg-white);
+  }
+}
+
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .hero__btn {
