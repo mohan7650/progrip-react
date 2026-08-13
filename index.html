@@ -21,7 +21,7 @@
   <body>
     <div id="splash-screen">
       <div class="splash-inner">
-        <div class="splash-logo">PRO<span>+</span>GRIP</div>
+        <img class="splash-logo-img" src="/logo.png" alt="PRO+GRIP" />
         <div class="splash-bar"><div class="splash-bar-fill"></div></div>
       </div>
     </div>
@@ -50,15 +50,9 @@
         align-items: center;
         gap: 28px;
       }
-      .splash-logo {
-        font-family: 'Russo One', sans-serif;
-        font-size: clamp(2.5rem, 8vw, 5rem);
-        color: #fff;
-        letter-spacing: 0.04em;
-        line-height: 1;
-      }
-      .splash-logo span {
-        color: #e63329;
+      .splash-logo-img {
+        width: clamp(180px, 30vw, 320px);
+        height: auto;
       }
       .splash-bar {
         width: 180px;
