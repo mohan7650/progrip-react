@@ -94,3 +94,44 @@
 .cta-inner .btn-outline {
   box-shadow: 0px 2px 2px #050904;
 }
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  .cta-band {
+    min-height: unset;
+    padding: 72px 0;
+  }
+
+  .cta-strip {
+    right: -40px;
+    opacity: 0.5;
+  }
+
+  .cta-title {
+    font-size: clamp(32px, 9vw, 48px);
+    margin-bottom: 18px;
+  }
+
+  .cta-title-line:last-child {
+    color: #ffffff;
+  }
+
+  .cta-sub {
+    font-size: 13px;
+    line-height: 20px;
+    white-space: normal;
+    margin-bottom: 28px;
+  }
+
+  .cta-inner .btn-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .cta-inner .btn {
+    width: 100%;
+  }
+}
