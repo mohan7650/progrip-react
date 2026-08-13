@@ -362,7 +362,7 @@ export default function ProductSection() {
               </p>
 
               <Button
-                href="#contact"
+                href="mailto:info@progrip.com"
                 variant="red"
                 size="sm"
                 className="product-section__contact-btn"
