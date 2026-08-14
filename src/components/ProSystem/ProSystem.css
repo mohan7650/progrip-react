@@ -9,7 +9,8 @@
 .pro-system {
   position: relative;
   width: 100%;
-  min-height: 903px;
+  min-height: auto;
+  scroll-margin-top: 130px;
   padding: 112px 64px;
   background:
     linear-gradient(0deg, rgba(5, 9, 4, 0.35), rgba(5, 9, 4, 0.35)),
@@ -157,7 +158,7 @@
 .pro-card h3 {
   margin: 0 0 16px;
   font-family: var(--font-body, "Oswald", sans-serif);
-  font-size: 50px;
+  font-size: 42px;
   font-weight: 700;
   line-height: 1.0;
   text-transform: uppercase;
@@ -230,7 +231,8 @@
    ========================================================================== */
 @media (max-width: 1280px) {
   .pro-system {
-    min-height: 602px;
+    min-height: auto;
+    scroll-margin-top: 86.67px;
     padding: 75px 43px;
   }
 
@@ -313,6 +315,7 @@
 @media (max-width: 900px) {
   .pro-system {
     min-height: auto;
+    scroll-margin-top: 82px;
     padding: 72px 32px;
   }
   .pro-system__inner { gap: 48px; }
