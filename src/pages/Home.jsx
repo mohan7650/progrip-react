@@ -10,6 +10,7 @@ import ProSystem from "../components/ProSystem/ProSystem.jsx";
 import CTA from "../components/CTA/CTA.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 
+
 export default function Home() {
   return (
     <>
