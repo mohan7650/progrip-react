@@ -22,6 +22,16 @@ export default function Navbar() {
   return (
     <header className="site-header">
       <div className="header-inner">
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? "×" : "☰"}
+        </button>
+
         <a href="/" className="site-logo" aria-label="PROGRIP Screws Home">
           <img src={logo} alt="PROGRIP Screws" />
         </a>
@@ -59,16 +69,16 @@ export default function Navbar() {
               BUILD SUBMITTALS
             </Button>
           </div>
+        </div>
 
-          <button
-            type="button"
-            className="nav-toggle"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            {menuOpen ? "×" : "☰"}
-          </button>
+        <div className="header-actions-mobile">
+          <Button href="#products" variant="red" size="xs">
+            ORDER NOW
+          </Button>
+
+          <Button href="#products" variant="outline" size="xs">
+            BUILD &amp; SUBMITTAL
+          </Button>
         </div>
       </div>
     </header>

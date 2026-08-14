@@ -899,13 +899,7 @@
    RESPONSIVE
    ============================================================ */
 
-@media (max-width: 1600px) {
-  .product-visual {
-    transform: scale(0.86);
-  }
-}
-
-@media (max-width: 1280px) {
+@media (max-width: 1599px) {
   .product-section__wrap {
     padding-top: clamp(60px, 6.25vw, 80px);
     padding-right: clamp(24px, 3.125vw, 40px);
@@ -968,12 +962,6 @@
   }
 }
 
-@media (max-width: 1200px) {
-  .product-visual {
-    transform: scale(0.62);
-  }
-}
-
 @media (max-width: 1024px) {
   .product-section__hero-row {
     flex-direction: column;
@@ -996,9 +984,6 @@
     transform: scale(0.62);
   }
 
-}
-
-@media (max-width: 900px) {
   .product-section__content {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1009,7 +994,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .product-section__filter-bar {
     gap: 12px;
   }

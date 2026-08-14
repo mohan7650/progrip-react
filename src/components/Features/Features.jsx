@@ -40,7 +40,7 @@ const FEATURES = [
     index: "04",
     title: <>PRECISION &<br />RELIABILITY</>,
     text: "PROGRIP combines precise point and recess geometry with reliable material engagement to support consistent product performance.",
-    result: "Purpose-built geometry focused on stability and dependable material.",
+    result: "Purpose-built geometry focused on stability and material.",
     stats: [
       "Precise point and recess geometry",
       "Reduced screw wobble",
