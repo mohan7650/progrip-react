@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "../Shared/Button.jsx";
+import ContactModal from "../ContactModal/ContactModal.jsx";
 import "./ProductSection.css";
 
 import heroScrew from "../../assets/images/product-section/hero-screw-rotation.png";
@@ -361,14 +362,13 @@ export default function ProductSection() {
                 The full range of PROGRIP fasteners for every job
               </p>
 
-              <Button
-                href="mailto:info@progrip.com"
+              <ContactModal
                 variant="red"
                 size="sm"
                 className="product-section__contact-btn"
               >
                 CONTACT US
-              </Button>
+              </ContactModal>
             </motion.header>
 
             {/* Stage = one coordinate space that holds the stripes AND the
