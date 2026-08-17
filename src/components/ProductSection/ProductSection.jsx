@@ -594,6 +594,7 @@ export default function ProductSection() {
 
             <motion.aside
               className="product-section__highlights"
+              style={{ display: "none" }}
               {...REVEAL}
               transition={revealTransition(0.3)}
             >
