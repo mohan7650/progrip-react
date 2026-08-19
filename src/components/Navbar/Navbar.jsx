@@ -37,21 +37,6 @@ export default function Navbar() {
           <img src={logo} alt="PROGRIP Screws" />
         </a>
 
-        <button
-          type="button"
-          className="lang-toggle"
-          role="switch"
-          aria-checked={lang === "fr"}
-          aria-label="Toggle language between English and French Canadian"
-          onClick={() => setLang((l) => (l === "en" ? "fr" : "en"))}
-        >
-          <span className="lang-toggle-option">EN</span>
-          <span className="lang-toggle-track">
-            <span className="lang-toggle-thumb" />
-          </span>
-          <span className="lang-toggle-option">FR</span>
-        </button>
-
         <div className="header-right">
           <nav className={menuOpen ? "main-nav open" : "main-nav"}>
             {NAV_LINKS.map((link) => (
@@ -81,6 +66,21 @@ export default function Navbar() {
             BUILD &amp; SUBMITTAL
           </Button>
         </div>
+
+        <button
+          type="button"
+          className="lang-toggle"
+          role="switch"
+          aria-checked={lang === "fr"}
+          aria-label="Toggle language between English and French Canadian"
+          onClick={() => setLang((l) => (l === "en" ? "fr" : "en"))}
+        >
+          <span className="lang-toggle-option">EN</span>
+          <span className="lang-toggle-track">
+            <span className="lang-toggle-thumb" />
+          </span>
+          <span className="lang-toggle-option">FR</span>
+        </button>
       </div>
     </header>
   );
