@@ -129,6 +129,8 @@ export const PRODUCTS = [
       ? selfDrilling10x312
       : product.stockCode === "SDZ10400"
       ? selfDrilling10x4
+      : product.categoryId === 3
+      ? null
       : PRODUCT_IMAGES[index % PRODUCT_IMAGES.length],
   alt: product.name,
 }));
@@ -281,7 +283,7 @@ function ProductCard({ product, isActive, onClick, onMouseEnter }) {
         {product.popular && (
           <span className="product-section__card-badge">Popular</span>
         )}
-        <img src={product.image} alt={product.alt} />
+        {product.image && <img src={product.image} alt={product.alt} />}
       </span>
       <span className="product-section__card-content">
         <span className="product-section__card-code">{product.stockCode}</span>
