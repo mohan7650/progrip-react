@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import Button from "../Shared/Button.jsx";
 import "./ContactModal.css";
 
@@ -7,7 +8,7 @@ import "./ContactModal.css";
 // then swap YOUR_FORM_ID below for the id Formspree gives you.
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
-const INITIAL_FORM = { name: "", company: "", phone: "", description: "" };
+const INITIAL_FORM = { name: "", company: "", email: "", phone: "", description: "" };
 
 export default function ContactModal({ children, variant, size, className }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +56,7 @@ export default function ContactModal({ children, variant, size, className }) {
         {children}
       </Button>
 
-      {isOpen && (
+      {isOpen && createPortal(
         <div className="contact-modal-overlay" onClick={close}>
           <div
             className="contact-modal"
@@ -86,7 +87,7 @@ export default function ContactModal({ children, variant, size, className }) {
                 </p>
 
                 <label className="contact-modal-field">
-                  Name <span aria-hidden="true">*</span>
+                  <span>Name <span aria-hidden="true">*</span></span>
                   <input
                     type="text"
                     name="name"
@@ -98,7 +99,7 @@ export default function ContactModal({ children, variant, size, className }) {
                 </label>
 
                 <label className="contact-modal-field">
-                  Company Name <span aria-hidden="true">*</span>
+                  <span>Company Name <span aria-hidden="true">*</span></span>
                   <input
                     type="text"
                     name="company"
@@ -110,7 +111,19 @@ export default function ContactModal({ children, variant, size, className }) {
                 </label>
 
                 <label className="contact-modal-field">
-                  Phone Number <span aria-hidden="true">*</span>
+                  <span>Email <span aria-hidden="true">*</span></span>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                    autoComplete="email"
+                  />
+                </label>
+
+                <label className="contact-modal-field">
+                  <span>Phone Number <span aria-hidden="true">*</span></span>
                   <input
                     type="tel"
                     name="phone"
@@ -148,7 +161,8 @@ export default function ContactModal({ children, variant, size, className }) {
               </form>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

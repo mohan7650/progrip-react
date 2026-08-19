@@ -4,9 +4,10 @@
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(4px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 20px;
+  overflow-y: auto;
   z-index: 1000;
 }
 
@@ -14,6 +15,7 @@
   position: relative;
   width: 100%;
   max-width: 420px;
+  margin: auto;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
