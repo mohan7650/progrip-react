@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: "About", href: "#why" },
   { label: "Resources", href: "#applications" },
   { label: "ProSystem", href: "#order" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "#contact" },
 ];
 
