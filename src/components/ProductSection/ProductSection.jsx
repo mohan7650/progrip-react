@@ -19,6 +19,17 @@ import coarse03 from "../../assets/images/product-section/Coarse Thread Drywall 
 import coarse04 from "../../assets/images/product-section/Coarse Thread Drywall Screw_04.png";
 import coarse05 from "../../assets/images/product-section/Coarse Thread Drywall Screw_05.png";
 import coarse06 from "../../assets/images/product-section/Coarse Thread Drywall Screw_06.png";
+import selfDrilling6x716 from "../../assets/images/self drilling/6x7-16-self-drilling.png";
+import selfDrilling8x12 from "../../assets/images/self drilling/8x1-2-self-drilling.png";
+import selfDrilling10x34 from "../../assets/images/self drilling/10x3-4-self-drilling.png";
+import selfDrilling6x114 from "../../assets/images/self drilling/6x1-1-4-self-drilling.png";
+import selfDrilling6x158 from "../../assets/images/self drilling/6x1-5-8-self-drilling.png";
+import selfDrilling6x178 from "../../assets/images/self drilling/6x1-7-8-self-drilling.png";
+import selfDrilling8x238 from "../../assets/images/self drilling/8x2-3-8-self-drilling.png";
+import selfDrilling8x258 from "../../assets/images/self drilling/8x2-5-8-self-drilling.png";
+import selfDrilling8x3 from "../../assets/images/self drilling/8x3-self-drilling.png";
+import selfDrilling10x312 from "../../assets/images/self drilling/10x3-1-2-self-drilling.png";
+import selfDrilling10x4 from "../../assets/images/self drilling/10x4-self-drilling.png";
 
 const PRODUCT_IMAGES = [
   screw01,
@@ -95,7 +106,32 @@ export const PRODUCTS = [
       ? "Collated"
       : "Box",
   // Temporary image assignment until all 51 final product images are supplied.
-  image: PRODUCT_IMAGES[index % PRODUCT_IMAGES.length],
+  image:
+    product.stockCode === "SDZ6716"
+      ? selfDrilling6x716
+      : product.stockCode === "SDWZ812"
+      ? selfDrilling8x12
+      : product.stockCode === "SDWZ1034"
+      ? selfDrilling10x34
+      : product.stockCode === "SDZ6114"
+      ? selfDrilling6x114
+      : product.stockCode === "SDZ6158"
+      ? selfDrilling6x158
+      : product.stockCode === "SDZ6178"
+      ? selfDrilling6x178
+      : product.stockCode === "SDZ8238"
+      ? selfDrilling8x238
+      : product.stockCode === "SDZ8258"
+      ? selfDrilling8x258
+      : product.stockCode === "SDZ8300"
+      ? selfDrilling8x3
+      : product.stockCode === "SDZ10312"
+      ? selfDrilling10x312
+      : product.stockCode === "SDZ10400"
+      ? selfDrilling10x4
+      : product.categoryId === 3
+      ? null
+      : PRODUCT_IMAGES[index % PRODUCT_IMAGES.length],
   alt: product.name,
 }));
 
@@ -247,7 +283,7 @@ function ProductCard({ product, isActive, onClick, onMouseEnter }) {
         {product.popular && (
           <span className="product-section__card-badge">Popular</span>
         )}
-        <img src={product.image} alt={product.alt} />
+        {product.image && <img src={product.image} alt={product.alt} />}
       </span>
       <span className="product-section__card-content">
         <span className="product-section__card-code">{product.stockCode}</span>
