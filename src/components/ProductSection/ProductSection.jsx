@@ -5,49 +5,7 @@ import Button from "../Shared/Button.jsx";
 import ContactModal from "../ContactModal/ContactModal.jsx";
 import "./ProductSection.css";
 
-import heroScrew from "../../assets/images/product-section/hero-screw-rotation.png";
-import screw01 from "../../assets/images/product-section/screw-01.png";
-import screw02 from "../../assets/images/product-section/screw-02.png";
-import screw03 from "../../assets/images/product-section/screw-03.png";
-import box04 from "../../assets/images/product-section/box-04.png";
-import box05 from "../../assets/images/product-section/box-05.png";
-import box06 from "../../assets/images/product-section/box-06.png";
 import proGripBox from "../../assets/images/product-section/Pro Grip Box Image.png";
-import coarse01 from "../../assets/images/product-section/Coarse Thread Drywall Screw_01.png";
-import coarse02 from "../../assets/images/product-section/Coarse Thread Drywall Screw_02.png";
-import coarse03 from "../../assets/images/product-section/Coarse Thread Drywall Screw_03.png";
-import coarse04 from "../../assets/images/product-section/Coarse Thread Drywall Screw_04.png";
-import coarse05 from "../../assets/images/product-section/Coarse Thread Drywall Screw_05.png";
-import coarse06 from "../../assets/images/product-section/Coarse Thread Drywall Screw_06.png";
-import selfDrilling6x716 from "../../assets/images/self drilling/6x7-16-self-drilling.png";
-import selfDrilling8x12 from "../../assets/images/self drilling/8x1-2-self-drilling.png";
-import selfDrilling10x34 from "../../assets/images/self drilling/10x3-4-self-drilling.png";
-import selfDrilling6x114 from "../../assets/images/self drilling/6x1-1-4-self-drilling.png";
-import selfDrilling6x158 from "../../assets/images/self drilling/6x1-5-8-self-drilling.png";
-import selfDrilling6x178 from "../../assets/images/self drilling/6x1-7-8-self-drilling.png";
-import selfDrilling8x238 from "../../assets/images/self drilling/8x2-3-8-self-drilling.png";
-import selfDrilling8x258 from "../../assets/images/self drilling/8x2-5-8-self-drilling.png";
-import selfDrilling8x3 from "../../assets/images/self drilling/8x3-self-drilling.png";
-import selfDrilling10x312 from "../../assets/images/self drilling/10x3-1-2-self-drilling.png";
-import selfDrilling10x4 from "../../assets/images/self drilling/10x4-self-drilling.png";
-import selfDrilling10x114 from "../../assets/images/self drilling/10x1-1-4-self-drilling.png";
-import selfDrilling6x114Collated from "../../assets/images/self drilling/6x1-1-4-collated-self-drilling.png";
-import selfDrilling6x178Collated from "../../assets/images/self drilling/6x1-7-8-collated-self-drilling.png";
-
-const PRODUCT_IMAGES = [
-  screw01,
-  screw02,
-  screw03,
-  box04,
-  box05,
-  box06,
-  coarse01,
-  coarse02,
-  coarse03,
-  coarse04,
-  coarse05,
-  coarse06,
-];
 
 export const PRODUCTS = [
   { id: 1, stockCode: "DRP6100", name: 'PROGRIP #6 x 1" Fine Thread Drywall Screw', categoryId: 1, category: "Sharp Point - Fine Thread", subcategory: "Drywall Screws", application: "Drywall to Metal", screwType: "Drywall Screw", gauge: "#6", length: '1"', threadType: "Fine", pointType: "Sharp Point", headType: "Bugle Head", finish: "Phosphated", driveType: "#2 PHILLIPS", unitsPerBox: 10000, weightPerBox: "13.7", popular: false, slug: "/products/progrip-6-x-1-fine-thread-drywall-screw-drp6100" },
@@ -101,47 +59,13 @@ export const PRODUCTS = [
   { id: 49, stockCode: "MHDP316134", name: 'PROGRIP 3/16" x 1-3/4" Concrete Screw', categoryId: 4, category: "Concrete and Cement Board Screws", subcategory: "Concrete and Cement Board Screws", application: "Metal to Concrete", screwType: "Concrete Screw", gauge: '3/16"', length: '1-3/4"', threadType: "High-Low", pointType: "Sharp Point", headType: "Hex Washer Head with Phil/Slot", finish: "Blue Ruspert Coating (1000 HR Salt Spray Rated)", driveType: '5/16" HEX', unitsPerBox: 100, weightPerBox: "N/A", popular: false, slug: "/products/progrip-3-16-x-1-3-4-concrete-screw-mhdp316134" },
   { id: 50, stockCode: "MDP316114", name: 'PROGRIP 3/16" x 1-1/4" Concrete Screw', categoryId: 4, category: "Concrete and Cement Board Screws", subcategory: "Concrete and Cement Board Screws", application: "Metal to Concrete", screwType: "Concrete Screw", gauge: '3/16"', length: '1-1/4"', threadType: "High-Low", pointType: "Sharp Point", headType: "Flat Head", finish: "Blue Ruspert Coating (1000 HR Salt Spray Rated)", driveType: "#2 PHILLIPS", unitsPerBox: 100, weightPerBox: "N/A", popular: false, slug: "/products/progrip-3-16-x-1-1-4-concrete-screw-mdp316114" },
   { id: 51, stockCode: "MDP316134", name: 'PROGRIP 3/16" x 1-3/4" Concrete Screw', categoryId: 4, category: "Concrete and Cement Board Screws", subcategory: "Concrete and Cement Board Screws", application: "Metal to Concrete", screwType: "Concrete Screw", gauge: '3/16"', length: '1-3/4"', threadType: "High-Low", pointType: "Sharp Point", headType: "Flat Head", finish: "Blue Ruspert Coating (1000 HR Salt Spray Rated)", driveType: "#2 PHILLIPS", unitsPerBox: 100, weightPerBox: "N/A", popular: false, slug: "/products/progrip-3-16-x-1-3-4-concrete-screw-mdp316134" },
-].map((product, index) => ({
+].map((product) => ({
   ...product,
   packType:
     product.subcategory.includes("Collated") ||
     product.screwType.includes("Collated")
       ? "Collated"
       : "Box",
-  // Temporary image assignment until all 51 final product images are supplied.
-  image:
-    product.stockCode === "SDZ6716"
-      ? selfDrilling6x716
-      : product.stockCode === "SDWZ812"
-      ? selfDrilling8x12
-      : product.stockCode === "SDWZ1034" || product.stockCode === "SDHZ1034"
-      ? selfDrilling10x34
-      : product.stockCode === "SDZ6114"
-      ? selfDrilling6x114
-      : product.stockCode === "SDZ6158"
-      ? selfDrilling6x158
-      : product.stockCode === "SDZ6178"
-      ? selfDrilling6x178
-      : product.stockCode === "SDZ8238"
-      ? selfDrilling8x238
-      : product.stockCode === "SDZ8258"
-      ? selfDrilling8x258
-      : product.stockCode === "SDZ8300"
-      ? selfDrilling8x3
-      : product.stockCode === "SDZ10312"
-      ? selfDrilling10x312
-      : product.stockCode === "SDZ10400"
-      ? selfDrilling10x4
-      : product.stockCode === "SDHZ10114"
-      ? selfDrilling10x114
-      : product.stockCode === "SDZ6114S"
-      ? selfDrilling6x114Collated
-      : product.stockCode === "SDZ6178S"
-      ? selfDrilling6x178Collated
-      : product.categoryId === 3
-      ? null
-      : PRODUCT_IMAGES[index % PRODUCT_IMAGES.length],
-  alt: product.name,
 }));
 
 const CATEGORY_TABS = [
@@ -292,7 +216,6 @@ function ProductCard({ product, isActive, onClick, onMouseEnter }) {
         {product.popular && (
           <span className="product-section__card-badge">Popular</span>
         )}
-        {product.image && <img src={product.image} alt={product.alt} />}
       </span>
       <span className="product-section__card-content">
         <span className="product-section__card-code">{product.stockCode}</span>
