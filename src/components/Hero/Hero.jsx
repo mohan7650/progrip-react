@@ -45,7 +45,7 @@ function Hero() {
             <div className="hero__persona-text">
               <h2 className="hero__persona-title">The Installer</h2>
               <p className="hero__persona-body">
-                Pro Quality Screws that wonrsquo;t slow down or delay the job.
+                Pro Quality Screws that won't slow down or delay the job.
               </p>
             </div>
           </li>
