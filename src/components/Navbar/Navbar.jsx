@@ -12,7 +12,6 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lang, setLang] = useState("en");
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -64,21 +63,6 @@ export default function Navbar() {
             BUILD &amp; SUBMITTAL
           </Button>
         </div>
-
-        <button
-          type="button"
-          className="lang-toggle"
-          role="switch"
-          aria-checked={lang === "fr"}
-          aria-label="Toggle language between English and French Canadian"
-          onClick={() => setLang((l) => (l === "en" ? "fr" : "en"))}
-        >
-          <span className="lang-toggle-option">EN</span>
-          <span className="lang-toggle-track">
-            <span className="lang-toggle-thumb" />
-          </span>
-          <span className="lang-toggle-option">FR</span>
-        </button>
       </div>
     </header>
   );
