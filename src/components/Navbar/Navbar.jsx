@@ -4,10 +4,10 @@ import Button from "../Shared/Button.jsx";
 import "./Navbar.css";
 
 const NAV_LINKS = [
-  { label: "Products", href: "#products" },
-  { label: "About", href: "#why" },
+  { label: "Products", href: "/#products" },
+  { label: "About", href: "/#why" },
   { label: "Resources", href: "/blog" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -45,22 +45,22 @@ export default function Navbar() {
           </nav>
 
           <div className="header-actions">
-            <Button href="#contact" variant="white" size="sm">
+            <Button href="/#contact" variant="white" size="sm">
               ACCOUNT
             </Button>
 
-            <Button href="#products" variant="red" size="sm">
+            <Button href="/#products" variant="red" size="sm">
               BUILD SUBMITTALS
             </Button>
           </div>
         </div>
 
         <div className="header-actions-mobile">
-          <Button href="#products" variant="red" size="xs">
+          <Button href="/#products" variant="red" size="xs">
             ORDER NOW
           </Button>
 
-          <Button href="#products" variant="outline" size="xs">
+          <Button href="/#products" variant="outline" size="xs">
             BUILD &amp; SUBMITTAL
           </Button>
         </div>

@@ -5,21 +5,21 @@ const FOOTER_COLUMNS = [
   {
     title: "Products",
     links: [
-      { label: "Browse all", href: "#products" },
-      { label: "Metal studs", href: "#products" },
-      { label: "Drywall", href: "#products" },
-      { label: "Heavy duty", href: "#products" },
-      { label: "View all", href: "#products" },
+      { label: "Browse all", href: "/#products" },
+      { label: "Metal studs", href: "/#products" },
+      { label: "Drywall", href: "/#products" },
+      { label: "Heavy duty", href: "/#products" },
+      { label: "View all", href: "/#products" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Us", href: "#why" },
+      { label: "About Us", href: "/#why" },
       { label: "Resources", href: "/blog" },
-      { label: "PRO System", href: "#order" },
-      { label: "Application Guide", href: "#applications" },
-      { label: "Contact Us", href: "#contact" },
+      { label: "PRO System", href: "/#order" },
+      { label: "Application Guide", href: "/#applications" },
+      { label: "Contact Us", href: "/#contact" },
     ],
   },
 ];
