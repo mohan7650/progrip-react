@@ -30,6 +30,9 @@ import selfDrilling8x258 from "../../assets/images/self drilling/8x2-5-8-self-dr
 import selfDrilling8x3 from "../../assets/images/self drilling/8x3-self-drilling.png";
 import selfDrilling10x312 from "../../assets/images/self drilling/10x3-1-2-self-drilling.png";
 import selfDrilling10x4 from "../../assets/images/self drilling/10x4-self-drilling.png";
+import selfDrilling10x114 from "../../assets/images/self drilling/10x1-1-4-self-drilling.png";
+import selfDrilling6x114Collated from "../../assets/images/self drilling/6x1-1-4-collated-self-drilling.png";
+import selfDrilling6x178Collated from "../../assets/images/self drilling/6x1-7-8-collated-self-drilling.png";
 
 const PRODUCT_IMAGES = [
   screw01,
@@ -111,7 +114,7 @@ export const PRODUCTS = [
       ? selfDrilling6x716
       : product.stockCode === "SDWZ812"
       ? selfDrilling8x12
-      : product.stockCode === "SDWZ1034"
+      : product.stockCode === "SDWZ1034" || product.stockCode === "SDHZ1034"
       ? selfDrilling10x34
       : product.stockCode === "SDZ6114"
       ? selfDrilling6x114
@@ -129,6 +132,12 @@ export const PRODUCTS = [
       ? selfDrilling10x312
       : product.stockCode === "SDZ10400"
       ? selfDrilling10x4
+      : product.stockCode === "SDHZ10114"
+      ? selfDrilling10x114
+      : product.stockCode === "SDZ6114S"
+      ? selfDrilling6x114Collated
+      : product.stockCode === "SDZ6178S"
+      ? selfDrilling6x178Collated
       : product.categoryId === 3
       ? null
       : PRODUCT_IMAGES[index % PRODUCT_IMAGES.length],
