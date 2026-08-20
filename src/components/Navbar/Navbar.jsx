@@ -6,9 +6,7 @@ import "./Navbar.css";
 const NAV_LINKS = [
   { label: "Products", href: "#products" },
   { label: "About", href: "#why" },
-  { label: "Resources", href: "#applications" },
-  { label: "ProSystem", href: "#order" },
-  { label: "Blog", href: "/blog" },
+  { label: "Resources", href: "/blog" },
   { label: "Contact Us", href: "#contact" },
 ];
 
