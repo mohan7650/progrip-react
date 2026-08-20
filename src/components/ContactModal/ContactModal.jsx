@@ -3,10 +3,7 @@ import { createPortal } from "react-dom";
 import Button from "../Shared/Button.jsx";
 import "./ContactModal.css";
 
-// TODO: replace with your real Formspree endpoint.
-// Sign up at https://formspree.io with info@progrip.com, create a form,
-// then swap YOUR_FORM_ID below for the id Formspree gives you.
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/meajnzze";
 
 const INITIAL_FORM = { name: "", company: "", email: "", phone: "", description: "" };
 
