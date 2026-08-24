@@ -302,17 +302,19 @@
    (275->183, 1106->737, -93->-62, 1412->941, 1492->995).
    The scale stays fluid below 1280 so the layout never overflows.
    ========================================================================== */
-@media (max-width: 1280px) {
+@media (max-width: 1599px) {
   .hero {
     --scale: calc(100vw / 1920);
   }
 }
 
 /* ==========================================================================
-   MOBILE — below 768px the scaled desktop canvas is too small,
-   so switch to a natural stacked flow layout.
+   TABLET / MOBILE — below 1024px the scaled desktop canvas is too small,
+   so switch to a natural stacked flow layout. Font sizes below use clamp()
+   so the same structure scales fluidly from tablet (1024px) down to the
+   smallest mobile widths (320px) without a separate layout.
    ========================================================================== */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hero {
     height: auto;
     overflow: visible;
@@ -415,12 +417,6 @@
 
 .hero__title-line:last-child {
   color: var(--pg-red);
-}
-
-@media (max-width: 768px) {
-  .hero__title-line:last-child {
-    color: var(--pg-white);
-  }
 }
 
 /* Respect reduced-motion preferences */

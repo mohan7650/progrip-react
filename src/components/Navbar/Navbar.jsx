@@ -10,11 +10,10 @@ export default function Navbar() {
   const isFrench = locale === "fr-CA";
 
   const NAV_LINKS = [
-    { label: t.navbar.navLinks.products, href: "#products" },
-    { label: t.navbar.navLinks.about, href: "#why" },
-    { label: t.navbar.navLinks.resources, href: "#applications" },
-    { label: t.navbar.navLinks.proSystem, href: "#order" },
-    { label: t.navbar.navLinks.contactUs, href: "#contact" },
+    { label: t.navbar.navLinks.products, href: "/#products" },
+    { label: t.navbar.navLinks.about, href: "/#why" },
+    { label: t.navbar.navLinks.resources, href: "/blog" },
+    { label: t.navbar.navLinks.contactUs, href: "/#contact" },
   ];
 
   const closeMenu = () => {
@@ -24,6 +23,16 @@ export default function Navbar() {
   return (
     <header className="site-header" data-lang={locale}>
       <div className="header-inner">
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-label={menuOpen ? t.navbar.closeMenu : t.navbar.openMenu}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? "×" : "☰"}
+        </button>
+
         <a href="/" className="site-logo" aria-label={t.navbar.homeAriaLabel}>
           <img src={logo} alt={t.navbar.logoAlt} />
         </a>
@@ -53,24 +62,24 @@ export default function Navbar() {
           </nav>
 
           <div className="header-actions">
-            <Button href="#contact" variant="white" size="sm">
+            <Button href="/#contact" variant="white" size="sm">
               {t.navbar.account}
             </Button>
 
-            <Button href="#products" variant="red" size="sm">
+            <Button href="/#products" variant="red" size="sm">
               {t.navbar.buildSubmittals}
             </Button>
           </div>
+        </div>
 
-          <button
-            type="button"
-            className="nav-toggle"
-            aria-label={menuOpen ? t.navbar.closeMenu : t.navbar.openMenu}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            {menuOpen ? "×" : "☰"}
-          </button>
+        <div className="header-actions-mobile">
+          <Button href="/#products" variant="red" size="xs">
+            ORDER NOW
+          </Button>
+
+          <Button href="/#products" variant="outline" size="xs">
+            BUILD &amp; SUBMITTAL
+          </Button>
         </div>
       </div>
     </header>

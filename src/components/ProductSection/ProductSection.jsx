@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "../Shared/Button.jsx";
+import ContactModal from "../ContactModal/ContactModal.jsx";
 import { useTranslation } from "../../i18n/useTranslation.js";
 import {
   localizeTerm,
@@ -15,35 +16,7 @@ import {
 } from "../../i18n/fieldDictionaries.js";
 import "./ProductSection.css";
 
-import heroScrew from "../../assets/images/product-section/hero-screw-rotation.png";
-import screw01 from "../../assets/images/product-section/screw-01.png";
-import screw02 from "../../assets/images/product-section/screw-02.png";
-import screw03 from "../../assets/images/product-section/screw-03.png";
-import box04 from "../../assets/images/product-section/box-04.png";
-import box05 from "../../assets/images/product-section/box-05.png";
-import box06 from "../../assets/images/product-section/box-06.png";
 import proGripBox from "../../assets/images/product-section/Pro Grip Box Image.png";
-import coarse01 from "../../assets/images/product-section/Coarse Thread Drywall Screw_01.png";
-import coarse02 from "../../assets/images/product-section/Coarse Thread Drywall Screw_02.png";
-import coarse03 from "../../assets/images/product-section/Coarse Thread Drywall Screw_03.png";
-import coarse04 from "../../assets/images/product-section/Coarse Thread Drywall Screw_04.png";
-import coarse05 from "../../assets/images/product-section/Coarse Thread Drywall Screw_05.png";
-import coarse06 from "../../assets/images/product-section/Coarse Thread Drywall Screw_06.png";
-
-const PRODUCT_IMAGES = [
-  screw01,
-  screw02,
-  screw03,
-  box04,
-  box05,
-  box06,
-  coarse01,
-  coarse02,
-  coarse03,
-  coarse04,
-  coarse05,
-  coarse06,
-];
 
 export const PRODUCTS = [
   { id: 1, stockCode: "DRP6100", name: 'PROGRIP #6 x 1" Fine Thread Drywall Screw', categoryId: 1, category: "Sharp Point - Fine Thread", subcategory: "Drywall Screws", application: "Drywall to Metal", screwType: "Drywall Screw", gauge: "#6", length: '1"', threadType: "Fine", pointType: "Sharp Point", headType: "Bugle Head", finish: "Phosphated", driveType: "#2 PHILLIPS", unitsPerBox: 10000, weightPerBox: "13.7", popular: false, slug: "/products/progrip-6-x-1-fine-thread-drywall-screw-drp6100" },
@@ -97,16 +70,13 @@ export const PRODUCTS = [
   { id: 49, stockCode: "MHDP316134", name: 'PROGRIP 3/16" x 1-3/4" Concrete Screw', categoryId: 4, category: "Concrete and Cement Board Screws", subcategory: "Concrete and Cement Board Screws", application: "Metal to Concrete", screwType: "Concrete Screw", gauge: '3/16"', length: '1-3/4"', threadType: "High-Low", pointType: "Sharp Point", headType: "Hex Washer Head with Phil/Slot", finish: "Blue Ruspert Coating (1000 HR Salt Spray Rated)", driveType: '5/16" HEX', unitsPerBox: 100, weightPerBox: "N/A", popular: false, slug: "/products/progrip-3-16-x-1-3-4-concrete-screw-mhdp316134" },
   { id: 50, stockCode: "MDP316114", name: 'PROGRIP 3/16" x 1-1/4" Concrete Screw', categoryId: 4, category: "Concrete and Cement Board Screws", subcategory: "Concrete and Cement Board Screws", application: "Metal to Concrete", screwType: "Concrete Screw", gauge: '3/16"', length: '1-1/4"', threadType: "High-Low", pointType: "Sharp Point", headType: "Flat Head", finish: "Blue Ruspert Coating (1000 HR Salt Spray Rated)", driveType: "#2 PHILLIPS", unitsPerBox: 100, weightPerBox: "N/A", popular: false, slug: "/products/progrip-3-16-x-1-1-4-concrete-screw-mdp316114" },
   { id: 51, stockCode: "MDP316134", name: 'PROGRIP 3/16" x 1-3/4" Concrete Screw', categoryId: 4, category: "Concrete and Cement Board Screws", subcategory: "Concrete and Cement Board Screws", application: "Metal to Concrete", screwType: "Concrete Screw", gauge: '3/16"', length: '1-3/4"', threadType: "High-Low", pointType: "Sharp Point", headType: "Flat Head", finish: "Blue Ruspert Coating (1000 HR Salt Spray Rated)", driveType: "#2 PHILLIPS", unitsPerBox: 100, weightPerBox: "N/A", popular: false, slug: "/products/progrip-3-16-x-1-3-4-concrete-screw-mdp316134" },
-].map((product, index) => ({
+].map((product) => ({
   ...product,
   packType:
     product.subcategory.includes("Collated") ||
     product.screwType.includes("Collated")
       ? "Collated"
       : "Box",
-  // Temporary image assignment until all 51 final product images are supplied.
-  image: PRODUCT_IMAGES[index % PRODUCT_IMAGES.length],
-  alt: product.name,
 }));
 
 const CATEGORY_TABS = [
@@ -259,7 +229,6 @@ function ProductCard({ product, isActive, onClick, onMouseEnter, locale, t }) {
         {product.popular && (
           <span className="product-section__card-badge">{t.common.popular}</span>
         )}
-        <img src={product.image} alt={localizedName} />
       </span>
       <span className="product-section__card-content">
         <span className="product-section__card-code">{product.stockCode}</span>
@@ -375,14 +344,13 @@ export default function ProductSection() {
                 {t.productCatalog.subtitle}
               </p>
 
-              <Button
-                href="#contact"
+              <ContactModal
                 variant="red"
                 size="sm"
                 className="product-section__contact-btn"
               >
                 {t.common.contactUs}
-              </Button>
+              </ContactModal>
             </motion.header>
 
             {/* Stage = one coordinate space that holds the stripes AND the
@@ -610,6 +578,7 @@ export default function ProductSection() {
 
             <motion.aside
               className="product-section__highlights"
+              style={{ display: "none" }}
               {...REVEAL}
               transition={revealTransition(0.3)}
             >

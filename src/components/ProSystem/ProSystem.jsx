@@ -74,7 +74,7 @@ export default function ProSystem() {
 
             <Reveal delay={0.2}>
               <p className="pro-system__lead">
-                Three proven fasteners engineered for the work that matters
+                One professional system built for every role in the supply chain.
               </p>
             </Reveal>
           </div>

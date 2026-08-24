@@ -198,7 +198,7 @@
   color: #d0d0d0;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1599px) {
   .features {
     padding-top: 64px;
     padding-bottom: 64px;
@@ -267,7 +267,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .features {
     min-height: auto;
   }
@@ -290,7 +290,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .features {
     min-height: auto;
     padding: 64px 0;

@@ -1,4 +1,5 @@
 import Button from "../Shared/Button.jsx";
+import ContactModal from "../ContactModal/ContactModal.jsx";
 import Reveal from "../Reveal.jsx";
 import ctaStrip from "../../assets/images/cta_strip.png";
 import { useTranslation } from "../../i18n/useTranslation.js";
@@ -44,7 +45,7 @@ export default function CTA() {
         <Reveal delay={0.3}>
           <div className="btn-row center">
             <Button href="#products" variant="red">{c.order}</Button>
-            <Button href="mailto:info@progrip.com" variant="outline">{c.contact}</Button>
+            <ContactModal variant="outline">{c.contact}</ContactModal>
           </div>
         </Reveal>
       </div>

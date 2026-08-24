@@ -81,6 +81,6 @@
   :root { --section-pad: 72px; --gutter: 32px; }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 480px) {
   :root { --section-pad: 48px; --gutter: 20px; }
 }
