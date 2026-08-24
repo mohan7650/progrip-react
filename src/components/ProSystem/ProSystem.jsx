@@ -15,7 +15,7 @@ export default function ProSystem() {
       style={{ "--pro-bg": `url(${pro05Img})` }}
     >
       <div className="pro-system__inner">
-        <span className="pro-system__ghost-num" aria-hidden="true">05</span>
+        <span className="pro-system__ghost-num" aria-hidden="true">02</span>
 
         <div className="pro-system__head">
           <Reveal>

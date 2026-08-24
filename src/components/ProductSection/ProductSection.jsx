@@ -250,7 +250,7 @@ export default function ProductSection() {
   const [selectedFilters, setSelectedFilters] = useState(() => ({ ...INITIAL_FILTERS }));
   const [openGroup, setOpenGroup] = useState("length");
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [panelOpen, setPanelOpen] = useState(true);
+  const [panelOpen, setPanelOpen] = useState(false);
 
   const toggleGroupOpen = (groupId) => {
     setOpenGroup((prev) => (prev === groupId ? null : groupId));
@@ -324,6 +324,8 @@ export default function ProductSection() {
     <section className="product-section" id="products">
       <div className="product-section__wrap">
         <div className="product-section__inner">
+          <span className="product-section__ghost-num" aria-hidden="true">01</span>
+
           <div className="product-section__hero-row">
             <motion.header
               className="product-section__header"
@@ -336,8 +338,7 @@ export default function ProductSection() {
               </span>
 
               <h2 className="product-section__heading">
-                {t.productCatalog.headingLine1}{" "}
-                <span className="product-section__heading-index">01</span>
+                {t.productCatalog.headingLine1}
                 <br />
                 {t.productCatalog.headingLine2}
               </h2>

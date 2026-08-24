@@ -10,6 +10,8 @@ export default function Features() {
   return (
     <section className="features" id="why">
       <div className="features__inner">
+        <span className="features__ghost-num" aria-hidden="true">03</span>
+
         <Reveal>
           <div className="features__eyebrow">
             <span></span>
@@ -21,7 +23,7 @@ export default function Features() {
           <h2 className="features__title">
             {f.titleLine1}
             <br />
-            <strong>{f.titleLine2}</strong>&nbsp;<span className="features__num">02</span>
+            <strong>{f.titleLine2}</strong>
           </h2>
         </Reveal>
 
