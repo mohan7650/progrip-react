@@ -734,7 +734,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 215px;
+  min-width: 215px;
+  width: auto;
   height: 60px;
   padding: 0 24px;
   border: none;
@@ -947,9 +948,11 @@
   }
 
   .product-section__btn {
-    width: 170px;
+    min-width: 170px;
+    width: auto;
     height: 52px;
-    font-size: clamp(13px, 1.04vw, 15px);
+    padding: 0 18px;
+    font-size: clamp(12px, 1.04vw, 15px);
   }
 
   .product-section__actions {

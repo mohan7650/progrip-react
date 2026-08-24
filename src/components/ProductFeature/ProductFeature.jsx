@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect, useLayoutEffect } from "react";
 import { motion } from "framer-motion";
 import crosshair from "../../assets/images/crosshair.png";
+import { useTranslation } from "../../i18n/useTranslation.js";
 import "./ProductFeature.css";
 
 const COARSE_MODULES = import.meta.glob(
@@ -32,83 +33,13 @@ const REVEAL = {
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
 };
-const t = (delay = 0) => ({ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay });
+const revealTransition = (delay = 0) => ({ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay });
 
 const STEP_DEGS = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330];
 
-const SCROLL_FEATURES = [
-  {
-    eyebrow: "01 — Drive System",
-    heading: "BUILT TO RESIST",
-    headingRed: "CAM-OUT.",
-    desc: "A heat-treated Phillips #2 recess keeps the bit locked in under high torque, so the drive doesn't strip out mid-run on a 40-unit framing job.",
-    stats: [
-      { value: "30%", label: "Less cam-out vs. standard" },
-      { value: "HRC 52–56", label: "Drive hardness band" },
-    ],
-  },
-  {
-    eyebrow: "02 — Self-Drilling Point",
-    heading: "NO PRE-DRILL,",
-    headingRed: "NO WASTED STEP.",
-    desc: "The #3 point cuts through steel track and studs up to 20-gauge without a pilot hole, cutting install time on every run of the wall.",
-    stats: [
-      { value: "40%", label: "Less penetration force" },
-      { value: "20-GA", label: "Max steel gauge, self-drill" },
-    ],
-  },
-  {
-    eyebrow: "03 — Thread Geometry",
-    heading: "32 TPI, CUT FOR",
-    headingRed: "STEEL — NOT WOOD.",
-    desc: "Fine 32 threads-per-inch bite cleanly into thin-gauge steel track and studs, holding torque without stripping the substrate.",
-    stats: [
-      { value: "32", label: "Threads per inch" },
-      { value: "25–20 GA", label: "Rated steel range" },
-    ],
-  },
-  {
-    eyebrow: "04 — Material & Hardness",
-    heading: "EVERY BATCH,",
-    headingRed: "SAME HARDNESS.",
-    desc: 'Case-hardened carbon steel, 100% hardness-inspected per production lot — no "hot batch, cold batch" surprises on site.',
-    stats: [
-      { value: "0.3%", label: "Failure rate vs. 2–6% industry" },
-      { value: "100%", label: "Lots hardness-inspected" },
-    ],
-  },
-  {
-    eyebrow: "05 — Corrosion Protection",
-    heading: "ZINC-PLATED,",
-    headingRed: "RATED TO HOLD.",
-    desc: "A zinc-plated finish resists corrosion through storage, transport, and interior commercial installation conditions.",
-    stats: [
-      { value: "250+ HR", label: "Salt-spray rating" },
-      { value: "ZINC", label: "Electroplated finish" },
-    ],
-  },
-  {
-    eyebrow: "06 — Certified for Code",
-    heading: "INSPECTORS",
-    headingRed: "APPROVE IT.",
-    desc: "Manufactured in ISO 9001 and ISO 14001 certified facilities, with salt spray testing performed according to ASTM B117 for 24 hours with no red rust.",     stats: [
-      { value: "ISO 14001 ", label: "Quality management certified" },
-      { value: " ISO 9001", label: "Environmental management certified" },
-    ],
-  },
-  {
-    eyebrow: "07 — Into the Box",
-    heading: "READY FOR",
-    headingRed: "THE JOBSITE.",
-    desc: "Packed in contractor-grade cartons built for volume ordering — fewer trips to the supply truck, more screws driven per hour.",
-    stats: [
-      { value: "1,000", label: "Standard carton count" },
-      { value: "5,000", label: "Bulk carton count" },
-    ],
-  },
-];
-
 export default function ProductFeature({ product, useFrameSequence = false, frameSet = "coarse" }) {
+  const { t } = useTranslation();
+  const SCROLL_FEATURES = t.productFeature.steps;
   const { feature, img, title } = product;
 
   const FRAME_URLS =
@@ -271,7 +202,7 @@ export default function ProductFeature({ product, useFrameSequence = false, fram
       <div className="container-wide pf__inner">
 
         {/* ── Photo viewer (left) ──────────────────────────────────── */}
-        <motion.div className="pf__media" {...REVEAL} transition={t(0)}>
+        <motion.div className="pf__media" {...REVEAL} transition={revealTransition(0)}>
           <span className="pf__ghost-num">
             {useFrameSequence
               ? String(activeFeatureIndex + 1).padStart(2, "0")
@@ -321,7 +252,7 @@ export default function ProductFeature({ product, useFrameSequence = false, fram
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                   <path d="M7 12H3M3 12l3-3M3 12l3 3M17 12h4M21 12l-3-3M21 12l-3 3" />
                 </svg>
-                {useFrameSequence ? "Scroll to rotate" : "Drag to rotate"}
+                {useFrameSequence ? t.productDetail.scrollToRotate : t.productDetail.dragToRotate}
               </div>
             )}
 
@@ -360,13 +291,13 @@ export default function ProductFeature({ product, useFrameSequence = false, fram
           </div>
 
           {/* 30° step dots */}
-          <div className="pf__angle-steps" role="group" aria-label="Rotate to angle">
+          <div className="pf__angle-steps" role="group" aria-label={t.productDetail.rotateToAngle}>
             {STEP_DEGS.map((deg) => (
               <button
                 key={deg}
                 className={`pf__angle-dot${activeStep === deg ? " pf__angle-dot--active" : ""}`}
                 onClick={() => snapTo(deg)}
-                aria-label={`View at ${deg} degrees`}
+                aria-label={t.productDetail.viewAtDegrees(deg)}
                 aria-pressed={activeStep === deg}
                 title={`${deg}°`}
               />
@@ -375,7 +306,7 @@ export default function ProductFeature({ product, useFrameSequence = false, fram
         </motion.div>
 
         <div className="pf__scroll-indicator" aria-hidden="true">
-          <span className="pf__scroll-text">Scroll Down</span>
+          <span className="pf__scroll-text">{t.productDetail.scrollDown}</span>
           <span className="pf__scroll-line" />
         </div>
       </div>

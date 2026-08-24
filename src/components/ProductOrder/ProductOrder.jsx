@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import crosshair from "../../assets/images/crosshair.png";
+import { useTranslation } from "../../i18n/useTranslation.js";
 import "./ProductOrder.css";
 
 const REVEAL = {
@@ -10,30 +11,29 @@ const REVEAL = {
 const t = (delay = 0) => ({ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay });
 
 export default function ProductOrder({ product }) {
+  const { t: translate } = useTranslation();
+  const pd = translate.productDetail;
   return (
     <section className="po">
       <div className="container po__inner">
         <motion.div className="po__head" {...REVEAL} transition={t(0)}>
           <span className="po__eyebrow">
             <img src={crosshair} alt="" className="po__eyebrow-icon" aria-hidden="true" />
-            Order Like a Pro
+            {pd.orderLikeAPro}
           </span>
 
           <h2 className="po__heading">
-            Spec it.{" "}
-            <span className="po__heading-red">Stock it.</span>{" "}
-            Drive it.
+            {pd.headingSpecIt}{" "}
+            <span className="po__heading-red">{pd.headingStockIt}</span>{" "}
+            {pd.headingDriveIt}
           </h2>
 
-          <p className="po__sub">
-            Add this fastener to your submittal package or order direct for your next
-            project.
-          </p>
+          <p className="po__sub">{pd.orderSub}</p>
 
           <div className="btn-row po__btns">
-            <a href="#contact" className="btn btn-red">Buy Now</a>
-            <a href="#contact" className="btn btn-outline">Build Submittals</a>
-            <a href="#contact" className="btn btn-outline">Download Spec Sheet</a>
+            <a href="#contact" className="btn btn-red">{pd.buyNow}</a>
+            <a href="#contact" className="btn btn-outline">{pd.buildSubmittals}</a>
+            <a href="#contact" className="btn btn-outline">{pd.downloadSpecSheet}</a>
           </div>
         </motion.div>
 

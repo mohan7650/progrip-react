@@ -15,6 +15,14 @@ export default function ApplicationCard({
   typicalQuantities,
   primaryCta,
   secondaryCta,
+  fieldLabels = {
+    applicationType: "Application Type",
+    projectTypes: "Project Types",
+    recommendedProducts: "Recommended Products",
+    whyThisMatters: "Why This Matters",
+    proTip: "Pro Tip",
+    typicalQuantities: "Typical Quantities",
+  },
   delay = 0,
 }) {
   const cls = ["app-card", `app-card--${accent}`, wide ? "app-card--wide" : ""]
@@ -45,20 +53,20 @@ export default function ApplicationCard({
         )}
 
         {/* 02 — Application Type label (Figma: Container 395×26 pad:13,0,0,0 Arial/11/w700) */}
-        <p className="app-type-label">Application Type</p>
+        <p className="app-type-label">{fieldLabels.applicationType}</p>
 
         {/* 03 — Title (Figma: Heading 3 395×68 Russo One/32) */}
         <h3 className="app-card__title">{title}</h3>
 
         {/* 04 — Project Types (Figma: Container 395×82 pad:13,0,0,0 gap:7) */}
         <div className="app-section-group">
-          <p className="app-section-label">Project Types</p>
+          <p className="app-section-label">{fieldLabels.projectTypes}</p>
           <p className="app-card__desc">{projectTypes}</p>
         </div>
 
         {/* 05 — Recommended Products (Figma: Container pad:13,0,0,0 gap:7) */}
         <div className="app-products-block">
-          <p className="app-section-label">Recommended Products</p>
+          <p className="app-section-label">{fieldLabels.recommendedProducts}</p>
           <ul className="app-products">
             {products.map((product, i) => (
               <li key={i}>{product}</li>
@@ -69,7 +77,7 @@ export default function ApplicationCard({
         {/* 06 — Why This Matters (Figma: Container pad:13,0,13,0 gap:8) */}
         {whyMatters && (
           <div className="app-why-matters">
-            <p className="app-section-label app-section-label--accent">Why This Matters</p>
+            <p className="app-section-label app-section-label--accent">{fieldLabels.whyThisMatters}</p>
             <p className="app-card__desc">{whyMatters}</p>
           </div>
         )}
@@ -77,7 +85,7 @@ export default function ApplicationCard({
         {/* 07 — Pro Tip (Figma: VerticalBorder pad:0,0,0,19 gap:8 — left accent line) */}
         {proTip && (
           <div className="app-pro-tip">
-            <p className="app-section-label app-section-label--sm">Pro Tip</p>
+            <p className="app-section-label app-section-label--sm">{fieldLabels.proTip}</p>
             <p className="app-card__desc">{proTip}</p>
           </div>
         )}
@@ -85,7 +93,7 @@ export default function ApplicationCard({
         {/* 08 — Typical Quantities (Figma: Container pad:13,0,0,0 gap:7 Arial/11) */}
         {typicalQuantities && (
           <div className="app-quantities">
-            <p className="app-section-label app-section-label--sm">Typical Quantities</p>
+            <p className="app-section-label app-section-label--sm">{fieldLabels.typicalQuantities}</p>
             <p className="app-card__desc">{typicalQuantities}</p>
           </div>
         )}

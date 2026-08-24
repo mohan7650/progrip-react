@@ -2,6 +2,7 @@ import Button from "../Shared/Button.jsx";
 import ContactModal from "../ContactModal/ContactModal.jsx";
 import Reveal from "../Reveal.jsx";
 import ctaStrip from "../../assets/images/cta_strip.png";
+import { useTranslation } from "../../i18n/useTranslation.js";
 import "./CTA.css";
 
 function CrosshairIcon() {
@@ -24,26 +25,27 @@ function CrosshairIcon() {
 }
 
 export default function CTA() {
+  const { t } = useTranslation();
+  const c = t.cta;
+
   return (
     <section className="cta-band" id="contact">
       <img className="cta-strip" src={ctaStrip} alt="" aria-hidden="true" />
       <div className="container cta-inner">
         <Reveal>
           <h2 className="cta-title">
-            <span className="cta-title-line">Pro Hold.</span>
-            <span className="cta-title-line">Pro<CrosshairIcon />Speed.</span>
-            <span className="cta-title-line">PRO GRIP.</span>
+            <span className="cta-title-line">{c.titleLine1}</span>
+            <span className="cta-title-line">{c.titleLine2Prefix}<CrosshairIcon />{c.titleLine2Suffix}</span>
+            <span className="cta-title-line">{c.titleLine3}</span>
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
-          <p className="cta-sub">
-            PROGRIP screws are engineered to help you work faster, smarter, and with total confidence.
-          </p>
+          <p className="cta-sub">{c.sub}</p>
         </Reveal>
         <Reveal delay={0.3}>
           <div className="btn-row center">
-            <Button href="#products" variant="red">Order</Button>
-            <ContactModal variant="outline">Contact</ContactModal>
+            <Button href="#products" variant="red">{c.order}</Button>
+            <ContactModal variant="outline">{c.contact}</ContactModal>
           </div>
         </Reveal>
       </div>

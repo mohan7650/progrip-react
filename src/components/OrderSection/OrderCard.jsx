@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
 /** One platform-feature card in the "Order like a pro" grid. */
-export default function OrderCard({ category, title, text, items, delay = 0 }) {
-  const cat = category.toLowerCase();
+export default function OrderCard({ category, categoryClass, title, text, items, delay = 0 }) {
+  const cat = categoryClass || category.toLowerCase();
   return (
     <motion.div
       className={`o-card o-card--${cat}`}

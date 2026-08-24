@@ -1,9 +1,13 @@
 import heroVideo from "../../assets/video/Pro Grip Hero Video.mp4";
+import { useTranslation } from "../../i18n/useTranslation.js";
 import "./Hero.css";
 
 function Hero() {
+  const { t } = useTranslation();
+  const h = t.hero;
+
   return (
-    <section className="hero" aria-label="PROGRIP hero">
+    <section className="hero" aria-label={h.ariaLabel}>
       <video className="hero__video" autoPlay muted loop playsInline preload="auto">
         <source src={heroVideo} type="video/mp4" />
       </video>
@@ -15,26 +19,21 @@ function Hero() {
         <span className="hero__stripe hero__stripe--gray" aria-hidden="true" />
 
         <div className="hero__content">
-          <p className="hero__eyebrow">
-            Professional-grade fasteners + professional-grade platform
-          </p>
+          <p className="hero__eyebrow">{h.eyebrow}</p>
 
           <h1 className="hero__title">
-            <span className="hero__title-line">Built For Pros,</span>
-            <span className="hero__title-line">Ready For The Job!</span>
+            <span className="hero__title-line">{h.titleLine1}</span>
+            <span className="hero__title-line">{h.titleLine2}</span>
           </h1>
 
-          <p className="hero__subtitle">
-            Engineered for professionals who demand speed, reliability, and
-            control. Built to perform on every job site.
-          </p>
+          <p className="hero__subtitle">{h.subtitle}</p>
 
           <div className="hero__actions">
             <a href="#products" className="hero__btn hero__btn--primary">
-              Order Now
+              {h.orderNow}
             </a>
             <a href="#contact" className="hero__btn hero__btn--outline">
-              Build Submittals
+              {h.buildSubmittals}
             </a>
           </div>
         </div>
@@ -43,32 +42,24 @@ function Hero() {
           <li className="hero__persona hero__persona--installer">
             <span className="hero__persona-num">01</span>
             <div className="hero__persona-text">
-              <h2 className="hero__persona-title">The Installer</h2>
-              <p className="hero__persona-body">
-                Pro Quality Screws that won't slow down or delay the job.
-              </p>
+              <h2 className="hero__persona-title">{h.personas[0].title}</h2>
+              <p className="hero__persona-body">{h.personas[0].body}</p>
             </div>
           </li>
 
           <li className="hero__persona hero__persona--distributor">
             <span className="hero__persona-num">02</span>
             <div className="hero__persona-text">
-              <h2 className="hero__persona-title">The Distributor</h2>
-              <p className="hero__persona-body">
-                Back office, managing 5 jobs and 3 suppliers from a
-                spreadsheet and needs a better solution.
-              </p>
+              <h2 className="hero__persona-title">{h.personas[1].title}</h2>
+              <p className="hero__persona-body">{h.personas[1].body}</p>
             </div>
           </li>
 
           <li className="hero__persona hero__persona--contractor">
             <span className="hero__persona-num">03</span>
             <div className="hero__persona-text">
-              <h2 className="hero__persona-title">The Contractor</h2>
-              <p className="hero__persona-body">
-                Focused on job profitability and crew productivity. Values
-                quality products that reduce delays and rework costs.
-              </p>
+              <h2 className="hero__persona-title">{h.personas[2].title}</h2>
+              <p className="hero__persona-body">{h.personas[2].body}</p>
             </div>
           </li>
         </ul>
