@@ -19,9 +19,9 @@ export default function Features() {
 
         <Reveal delay={0.1}>
           <h2 className="features__title">
-            {f.titleLine1} <span className="features__num">02</span>
+            {f.titleLine1}
             <br />
-            <strong>{f.titleLine2}</strong>
+            <strong>{f.titleLine2}</strong>&nbsp;<span className="features__num">02</span>
           </h2>
         </Reveal>
 

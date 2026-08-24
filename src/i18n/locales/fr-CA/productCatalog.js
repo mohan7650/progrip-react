@@ -5,6 +5,7 @@ export default {
   subtitle: "La gamme complète de fixations PROGRIP pour chaque chantier",
   boxAlt: "Boîte PROGRIP",
   categoriesLabel: "Catégories",
+  filtersLabel: "Filtres",
   clearAllFilters: "Effacer tous les filtres",
   interactiveView: "Vue interactive",
   productsCount: (n) => `${n} produits`,

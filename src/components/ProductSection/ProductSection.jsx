@@ -249,6 +249,8 @@ export default function ProductSection() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedFilters, setSelectedFilters] = useState(() => ({ ...INITIAL_FILTERS }));
   const [openGroup, setOpenGroup] = useState("length");
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [panelOpen, setPanelOpen] = useState(true);
 
   const toggleGroupOpen = (groupId) => {
     setOpenGroup((prev) => (prev === groupId ? null : groupId));
@@ -411,71 +413,91 @@ export default function ProductSection() {
               {...REVEAL}
               transition={revealTransition(0)}
             >
-              {FILTER_GROUPS.map((group) => {
-                const isOpen = openGroup === group.id;
-                const activeCount = selectedFilters[group.id].length;
-                return (
-                  <div key={group.id} className="ps-filter-group">
-                    <button
-                      type="button"
-                      className="ps-filter-group__header"
-                      onClick={() => toggleGroupOpen(group.id)}
-                      aria-expanded={isOpen}
-                    >
-                      <span className="ps-filter-group__label">
-                        {localizeTerm(FILTER_GROUP_LABELS, group.id, locale)}
-                        {activeCount > 0 && (
-                          <span className="ps-filter-group__active-count">{activeCount}</span>
-                        )}
-                      </span>
-                      <span className="ps-filter-group__chevron" aria-hidden="true">
-                        {isOpen ? "−" : "+"}
-                      </span>
-                    </button>
-                    {isOpen && (
-                      <ul className="ps-filter-group__list">
-                        {group.options.map((option) => {
-                          const isChecked = selectedFilters[group.id].includes(option);
-                          return (
-                            <li key={option} className="ps-filter-group__item">
-                              <label className="ps-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="ps-checkbox__input"
-                                  checked={isChecked}
-                                  onChange={() => toggleFilter(group.id, option)}
-                                />
-                                <span className="ps-checkbox__box" aria-hidden="true">
-                                  {isChecked && (
-                                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                                      <path
-                                        d="M1 4L3.5 6.5L9 1"
-                                        stroke="#fff"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                      />
-                                    </svg>
-                                  )}
-                                </span>
-                                <span className="ps-checkbox__text">{localizeTerm(TERM_LABELS, option, locale)}</span>
-                              </label>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    )}
-                  </div>
-                );
-              })}
-
               <button
                 type="button"
-                className="ps-filter-clear"
-                onClick={clearAll}
+                className="product-section__sidebar-toggle"
+                onClick={() => setFiltersOpen((open) => !open)}
+                aria-expanded={filtersOpen}
               >
-                {t.productCatalog.clearAllFilters}
+                <span className="ps-filter-group__label">
+                  {t.productCatalog.filtersLabel}
+                </span>
+                <span className="ps-filter-group__chevron" aria-hidden="true">
+                  {filtersOpen ? "−" : "+"}
+                </span>
               </button>
+
+              <div
+                className={`product-section__sidebar-body${
+                  filtersOpen ? " is-open" : ""
+                }`}
+              >
+                {FILTER_GROUPS.map((group) => {
+                  const isOpen = openGroup === group.id;
+                  const activeCount = selectedFilters[group.id].length;
+                  return (
+                    <div key={group.id} className="ps-filter-group">
+                      <button
+                        type="button"
+                        className="ps-filter-group__header"
+                        onClick={() => toggleGroupOpen(group.id)}
+                        aria-expanded={isOpen}
+                      >
+                        <span className="ps-filter-group__label">
+                          {localizeTerm(FILTER_GROUP_LABELS, group.id, locale)}
+                          {activeCount > 0 && (
+                            <span className="ps-filter-group__active-count">{activeCount}</span>
+                          )}
+                        </span>
+                        <span className="ps-filter-group__chevron" aria-hidden="true">
+                          {isOpen ? "−" : "+"}
+                        </span>
+                      </button>
+                      {isOpen && (
+                        <ul className="ps-filter-group__list">
+                          {group.options.map((option) => {
+                            const isChecked = selectedFilters[group.id].includes(option);
+                            return (
+                              <li key={option} className="ps-filter-group__item">
+                                <label className="ps-checkbox">
+                                  <input
+                                    type="checkbox"
+                                    className="ps-checkbox__input"
+                                    checked={isChecked}
+                                    onChange={() => toggleFilter(group.id, option)}
+                                  />
+                                  <span className="ps-checkbox__box" aria-hidden="true">
+                                    {isChecked && (
+                                      <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                                        <path
+                                          d="M1 4L3.5 6.5L9 1"
+                                          stroke="#fff"
+                                          strokeWidth="2"
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                        />
+                                      </svg>
+                                    )}
+                                  </span>
+                                  <span className="ps-checkbox__text">{localizeTerm(TERM_LABELS, option, locale)}</span>
+                                </label>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                })}
+
+                <button
+                  type="button"
+                  className="ps-filter-clear"
+                  onClick={clearAll}
+                >
+                  {t.productCatalog.clearAllFilters}
+                </button>
+              </div>
             </motion.aside>
 
             <motion.div
@@ -483,97 +505,111 @@ export default function ProductSection() {
               {...REVEAL}
               transition={revealTransition(0.15)}
             >
-              <div className="product-section__panel-label">
+              <button
+                type="button"
+                className="product-section__panel-label"
+                onClick={() => setPanelOpen((open) => !open)}
+                aria-expanded={panelOpen}
+              >
                 <i className="product-section__dot" aria-hidden="true" />
                 {t.productCatalog.interactiveView}
-              </div>
-
-              <span className="product-section__panel-index">
-                {t.productCatalog.productsCount(filteredProducts.length)}
-              </span>
-
-              {filteredProducts.length > 0 && (
-                <span className="product-section__page-status">
-                  {t.productCatalog.pageStatus(currentPage, totalPages)}
+                <span className="ps-filter-group__chevron" aria-hidden="true">
+                  {panelOpen ? "−" : "+"}
                 </span>
-              )}
+              </button>
 
-              {filteredProducts.length > 0 && (
-                <div className="product-section__grid-shell">
-                  <button
-                    type="button"
-                    className="product-section__pagination-button product-section__pagination-button--previous"
-                    aria-label={t.productCatalog.showPrevious}
-                    disabled={currentPage === 1}
-                    onClick={() => changePage(currentPage - 1)}
-                  >
-                    ‹
-                  </button>
+              <div
+                className={`product-section__panel-body${
+                  panelOpen ? " is-open" : ""
+                }`}
+              >
+                <span className="product-section__panel-index">
+                  {t.productCatalog.productsCount(filteredProducts.length)}
+                </span>
 
-                  <div className="product-section__grid">
-                    {paginatedProducts.map((product) => (
-                      <ProductCard
-                        key={product.stockCode}
-                        product={product}
-                        isActive={activeProduct === product.stockCode}
-                      onMouseEnter={() => setActiveProduct(product.stockCode)}
-                      onClick={() => {
-                        setActiveProduct(product.stockCode);
-                        navigate(
-                          `/product/${product.categoryId}/${product.id}`,
-                        );
-                      }}
-                      locale={locale}
-                      t={t}
-                      />
-                    ))}
-                  </div>
+                {filteredProducts.length > 0 && (
+                  <span className="product-section__page-status">
+                    {t.productCatalog.pageStatus(currentPage, totalPages)}
+                  </span>
+                )}
 
-                  <button
-                    type="button"
-                    className="product-section__pagination-button product-section__pagination-button--next"
-                    aria-label={t.productCatalog.showNext}
-                    disabled={currentPage === totalPages}
-                    onClick={() => changePage(currentPage + 1)}
-                  >
-                    ›
-                  </button>
-                </div>
-              )}
-
-              {filteredProducts.length === 0 && (
-                <div className="product-section__empty">
-                  {t.productCatalog.emptyState}
-                </div>
-              )}
-
-              {selectedProduct && (
-                <div className="product-section__panel-footer">
-                  <div className="product-section__details">
-                    <span className="product-section__details-eyebrow">
-                      {selectedProduct.stockCode}
-                    </span>
-                    <h3 className="product-section__details-title">
-                      {buildLocalizedProductName(selectedProduct, locale)}
-                    </h3>
-                    <span className="product-section__details-size">
-                      {selectedProduct.gauge} × {selectedProduct.length}
-                    </span>
-                  </div>
-
-                  <div className="product-section__actions">
-                    <a href="#contact" className="product-section__btn">
-                      {t.common.buyNow}
-                    </a>
-                    <a
-                      href="#contact"
-                      className="product-section__btn product-section__btn--ghost"
+                {filteredProducts.length > 0 && (
+                  <div className="product-section__grid-shell">
+                    <button
+                      type="button"
+                      className="product-section__pagination-button product-section__pagination-button--previous"
+                      aria-label={t.productCatalog.showPrevious}
+                      disabled={currentPage === 1}
+                      onClick={() => changePage(currentPage - 1)}
                     >
-                      {t.common.buildSubmittals}
-                    </a>
+                      ‹
+                    </button>
+
+                    <div className="product-section__grid">
+                      {paginatedProducts.map((product) => (
+                        <ProductCard
+                          key={product.stockCode}
+                          product={product}
+                          isActive={activeProduct === product.stockCode}
+                        onMouseEnter={() => setActiveProduct(product.stockCode)}
+                        onClick={() => {
+                          setActiveProduct(product.stockCode);
+                          navigate(
+                            `/product/${product.categoryId}/${product.id}`,
+                          );
+                        }}
+                        locale={locale}
+                        t={t}
+                        />
+                      ))}
+                    </div>
+
+                    <button
+                      type="button"
+                      className="product-section__pagination-button product-section__pagination-button--next"
+                      aria-label={t.productCatalog.showNext}
+                      disabled={currentPage === totalPages}
+                      onClick={() => changePage(currentPage + 1)}
+                    >
+                      ›
+                    </button>
                   </div>
-                </div>
-              )}
+                )}
+
+                {filteredProducts.length === 0 && (
+                  <div className="product-section__empty">
+                    {t.productCatalog.emptyState}
+                  </div>
+                )}
+
+                {selectedProduct && (
+                  <div className="product-section__panel-footer">
+                    <div className="product-section__details">
+                      <span className="product-section__details-eyebrow">
+                        {selectedProduct.stockCode}
+                      </span>
+                      <h3 className="product-section__details-title">
+                        {buildLocalizedProductName(selectedProduct, locale)}
+                      </h3>
+                      <span className="product-section__details-size">
+                        {selectedProduct.gauge} × {selectedProduct.length}
+                      </span>
+                    </div>
+
+                    <div className="product-section__actions">
+                      <a href="#contact" className="product-section__btn">
+                        {t.common.buyNow}
+                      </a>
+                      <a
+                        href="#contact"
+                        className="product-section__btn product-section__btn--ghost"
+                      >
+                        {t.common.buildSubmittals}
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
             </motion.div>
 
             <motion.aside

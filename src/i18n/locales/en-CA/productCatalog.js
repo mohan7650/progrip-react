@@ -5,6 +5,7 @@ export default {
   subtitle: "The full range of PROGRIP fasteners for every job",
   boxAlt: "PROGRIP Box",
   categoriesLabel: "Categories",
+  filtersLabel: "Filters",
   clearAllFilters: "Clear All Filters",
   interactiveView: "Interactive View",
   productsCount: (n) => `${n} Products`,
