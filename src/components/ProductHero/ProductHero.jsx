@@ -5,7 +5,7 @@ import { useTranslation } from "../../i18n/useTranslation.js";
 import "./ProductHero.css";
 
 const REVEAL = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } };
-const t = (delay = 0) => ({ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay });
+const revealTransition = (delay = 0) => ({ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay });
 
 function dispatchReady() {
   window.dispatchEvent(new Event("app-image-ready"));
@@ -27,7 +27,7 @@ export default function ProductHero({ product }) {
       <div className="ph__overlay" aria-hidden="true" />
 
       <div className="container-wide ph__inner">
-        <motion.div className="ph__left" {...REVEAL} transition={t(0)}>
+        <motion.div className="ph__left" {...REVEAL} transition={revealTransition(0)}>
           <span className="ph__badge">
             <img src={crosshair} alt="" className="ph__badge-icon" aria-hidden="true" />
             {product.badge}
@@ -43,7 +43,7 @@ export default function ProductHero({ product }) {
           </h1>
         </motion.div>
 
-        <motion.div className="ph__right" {...REVEAL} transition={t(0.15)}>
+        <motion.div className="ph__right" {...REVEAL} transition={revealTransition(0.15)}>
           <p className="ph__desc">{product.desc}</p>
 
           <ul className="ph__specs">

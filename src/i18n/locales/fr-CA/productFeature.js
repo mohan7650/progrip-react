@@ -54,10 +54,10 @@ export default {
       eyebrow: "06 — Conforme aux normes",
       heading: "LES INSPECTEURS",
       headingRed: "L'APPROUVENT.",
-      desc: "Conforme à la norme ASTM C954 pour les vis autoperceuses pour acier, avec documentation ICC-ES disponible pour les dossiers de soumission d'applications porteuses.",
+      desc: "Fabriquées dans des installations certifiées ISO 9001 et ISO 14001, avec essais au brouillard salin réalisés selon la norme ASTM B117 pendant 24 heures, sans rouille rouge.",
       stats: [
-        { value: "C954", label: "Conforme à l'ASTM" },
-        { value: "ICC-ES", label: "Rapport d'évaluation au dossier" },
+        { value: "ISO 14001", label: "Certifiée en gestion de la qualité" },
+        { value: "ISO 9001", label: "Certifiée en gestion environnementale" },
       ],
     },
     {

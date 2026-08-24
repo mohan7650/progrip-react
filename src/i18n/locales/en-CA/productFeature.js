@@ -54,10 +54,10 @@ export default {
       eyebrow: "06 — Certified for Code",
       heading: "INSPECTORS",
       headingRed: "APPROVE IT.",
-      desc: "Compliant with ASTM C954 for steel drill screws, with ICC-ES documentation available for load-bearing submittal packages.",
+      desc: "Manufactured in ISO 9001 and ISO 14001 certified facilities, with salt spray testing performed according to ASTM B117 for 24 hours with no red rust.",
       stats: [
-        { value: "C954", label: "ASTM compliant" },
-        { value: "ICC-ES", label: "Evaluation report on file" },
+        { value: "ISO 14001", label: "Quality management certified" },
+        { value: "ISO 9001", label: "Environmental management certified" },
       ],
     },
     {

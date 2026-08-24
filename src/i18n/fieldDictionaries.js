@@ -11,7 +11,7 @@ export const TERM_LABELS = {
   "Sharp Point - Coarse Thread": { "en-CA": "Sharp Point - Coarse Thread", "fr-CA": "Pointe acérée - gros filet" },
   // Approved standardized customer-visible English form is "Self-Drilling"
   // (hyphenated) regardless of which internal spelling variant is present.
-  "Self Drilling": { "en-CA": "Self-Drilling", "fr-CA": "Autoperceuses" },
+  "Self Drilling": { "en-CA": "Self Drilling", "fr-CA": "Autoperceuses" },
   "Self-Drilling": { "en-CA": "Self-Drilling", "fr-CA": "Autoperceuse" },
   "Drywall": { "en-CA": "Drywall", "fr-CA": "Cloison sèche" },
   "Framing": { "en-CA": "Framing", "fr-CA": "Ossature" },

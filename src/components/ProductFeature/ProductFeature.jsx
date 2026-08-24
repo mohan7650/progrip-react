@@ -33,7 +33,7 @@ const REVEAL = {
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
 };
-const t = (delay = 0) => ({ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay });
+const revealTransition = (delay = 0) => ({ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay });
 
 const STEP_DEGS = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330];
 
@@ -202,7 +202,7 @@ export default function ProductFeature({ product, useFrameSequence = false, fram
       <div className="container-wide pf__inner">
 
         {/* ── Photo viewer (left) ──────────────────────────────────── */}
-        <motion.div className="pf__media" {...REVEAL} transition={t(0)}>
+        <motion.div className="pf__media" {...REVEAL} transition={revealTransition(0)}>
           <span className="pf__ghost-num">
             {useFrameSequence
               ? String(activeFeatureIndex + 1).padStart(2, "0")
