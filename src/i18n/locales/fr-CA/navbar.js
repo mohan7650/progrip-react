@@ -11,6 +11,8 @@ export default {
   },
   account: "COMPTE",
   buildSubmittals: "CRÉER DES DOSSIERS DE SOUMISSION",
+  orderNow: "COMMANDER",
+  buildSubmittalMobile: "SOUMISSION",
   closeMenu: "Fermer le menu",
   openMenu: "Ouvrir le menu",
 };

@@ -74,11 +74,11 @@ export default function Navbar() {
 
         <div className="header-actions-mobile">
           <Button href="/#products" variant="red" size="xs">
-            ORDER NOW
+            {t.navbar.orderNow}
           </Button>
 
           <Button href="/#products" variant="outline" size="xs">
-            BUILD &amp; SUBMITTAL
+            {t.navbar.buildSubmittalMobile}
           </Button>
         </div>
       </div>
