@@ -1,8 +1,8 @@
 export default {
   badge: "Complet",
-  headingLine1: "Des produits conçus",
-  headingLine2: "pour la rapidité.",
-  subtitle: "La gamme complète de fixations PROGRIP pour chaque chantier",
+  headingLine1: "CONÇUES POUR",
+  headingLine2: "ALLER PLUS VITE.",
+  subtitle: "Toute la gamme de fixations PROGRIP. Pour chaque chantier.",
   boxAlt: "Boîte PROGRIP",
   categoriesLabel: "Catégories",
   filtersLabel: "Filtres",
@@ -14,7 +14,7 @@ export default {
   showNext: "Afficher les 9 produits suivants",
   emptyState: "Aucun produit ne correspond aux filtres sélectionnés.",
   productDetails: "Détails du produit",
-  detailsPlaceholder: "Sélectionnez un produit pour voir ses spécifications.",
+  detailsPlaceholder: "Sélectionnez un produit pour afficher ses caractéristiques.",
   specLabels: {
     stockCode: "Code de produit",
     gauge: "Calibre",

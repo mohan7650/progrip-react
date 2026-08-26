@@ -1,9 +1,9 @@
 export default {
-  buyNow: "Acheter maintenant",
-  buildSubmittals: "Créer des dossiers de soumission",
-  orderNow: "COMMANDER MAINTENANT",
+  buyNow: "Acheter",
+  buildSubmittals: "Créer des fiches techniques",
+  orderNow: "COMMANDER",
   contactUs: "NOUS JOINDRE",
-  popular: "Populaire",
-  notAvailable: "S.O.",
+  popular: "Populaires",
+  notAvailable: "S. O.",
   weightUnit: "lb",
 };

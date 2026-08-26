@@ -1,6 +1,6 @@
 export default {
   logoAlt: "Vis PROGRIP",
-  newsletterText: "Recevez des nouvelles sur les nouveaux produits et des conseils pour le chantier.",
+  newsletterText: "Recevez nos nouveautés produits et nos conseils pour le chantier.",
   emailPlaceholder: "Votre courriel",
   emailAriaLabel: "Adresse courriel",
   subscribe: "S'ABONNER",

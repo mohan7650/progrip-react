@@ -1,7 +1,7 @@
 export default {
   productNotFound: "Produit introuvable.",
-  buyNow: "Acheter maintenant",
-  buildSubmittals: "Créer des dossiers de soumission",
+  buyNow: "Acheter",
+  buildSubmittals: "Créer des fiches techniques",
   downloadSpecSheet: "Télécharger la fiche technique",
   scrollToRotate: "Faites défiler pour faire pivoter",
   dragToRotate: "Faites glisser pour faire pivoter",
