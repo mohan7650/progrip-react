@@ -231,11 +231,6 @@
   display: none;
 }
 
-/* Mobile action buttons hidden on desktop */
-.header-actions-mobile {
-  display: none;
-}
-
 /* ============================================================
    FR-CA DESKTOP ADAPTATION (>1500px only — see the fr-CA hamburger
    fallback further below for 1500px and under)
@@ -270,131 +265,6 @@
     min-width: 0;
     padding: 0 16px;
     font-size: clamp(13px, 0.95vw, 18px);
-  }
-}
-
-/* ============================================================
-   FR-CA "LINKS-FIRST" HAMBURGER (840px–1500px)
-   Below the widest desktop sizes there isn't room for the nav links AND
-   the two CTA buttons on one line. Priority order for fr-CA is:
-     Logo > Language switcher > COMPTE > CRÉER DES DOSSIERS DE SOUMISSION > Hamburger
-   so only the plain nav links (PRODUITS, À PROPOS, ...) move into the
-   hamburger here — COMPTE and CRÉER DES DOSSIERS DE SOUMISSION stay
-   visible and inline, just tightened, for as long as they fit.
-   ============================================================ */
-@media (max-width: 1500px) and (min-width: 841px) {
-  .site-header[data-lang="fr-CA"] .main-nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-
-    width: 100%;
-    height: auto;
-
-    background: #030904;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    padding: 24px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-  }
-
-  .site-header[data-lang="fr-CA"] .main-nav.open {
-    display: flex;
-  }
-
-  .site-header[data-lang="fr-CA"] .main-nav a {
-    font-size: 22px;
-    line-height: 30px;
-  }
-
-  .site-header[data-lang="fr-CA"] .nav-toggle {
-    display: block;
-    background: transparent;
-    border: 1px solid #333;
-    color: #fff;
-    font-size: 24px;
-    padding: 8px 14px;
-    cursor: pointer;
-  }
-
-  /* COMPTE / CRÉER DES DOSSIERS DE SOUMISSION stay visible and inline,
-     tightened so they keep fitting next to the logo, language switcher,
-     and hamburger icon. */
-  .site-header[data-lang="fr-CA"] .header-actions {
-    display: flex;
-    gap: 8px;
-  }
-
-  .site-header[data-lang="fr-CA"] .header-actions .btn,
-  .site-header[data-lang="fr-CA"] .header-actions a {
-    min-width: 0;
-    padding: 0 12px;
-    font-size: clamp(12px, 1.6vw, 17px);
-  }
-
-  /* header-actions stays visible inline in this range (above), so the
-     separate mobile action buttons (which the base <=1024px rule would
-     otherwise also switch on) must stay off, or both button pairs render
-     at once. */
-  .site-header[data-lang="fr-CA"] .header-actions-mobile {
-    display: none;
-  }
-}
-
-/* ============================================================
-   FR-CA FULL MOBILE FALLBACK (<=840px)
-   At this width even the tightened COMPTE + CRÉER DES DOSSIERS DE
-   SOUMISSION pair can no longer sit next to the logo, language switcher,
-   and hamburger icon without risking clipping or overlap. Fall back to
-   the site's existing mobile layout (buttons hidden, everything reachable
-   through the hamburger menu) — the same behavior en-CA already uses
-   below 900px.
-   ============================================================ */
-@media (max-width: 840px) {
-  .site-header[data-lang="fr-CA"] .header-actions {
-    display: none;
-  }
-
-  .site-header[data-lang="fr-CA"] .main-nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-
-    width: 100%;
-    height: auto;
-
-    background: #030904;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    padding: 24px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-  }
-
-  .site-header[data-lang="fr-CA"] .main-nav.open {
-    display: flex;
-  }
-
-  .site-header[data-lang="fr-CA"] .main-nav a {
-    font-size: 22px;
-    line-height: 30px;
-  }
-
-  .site-header[data-lang="fr-CA"] .nav-toggle {
-    display: block;
-    background: transparent;
-    border: 1px solid #333;
-    color: #fff;
-    font-size: 24px;
-    padding: 8px 14px;
-    cursor: pointer;
   }
 }
 
@@ -485,7 +355,13 @@
   }
 
   .header-inner {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 16px 0;
+  }
+
+  .site-header {
+    height: auto;
   }
 
   .site-logo,
@@ -505,14 +381,15 @@
   }
 
   .header-right {
-    width: auto;
+    width: 100%;
     height: auto;
+    flex-wrap: wrap;
     /* Nav links are off-canvas here (only the hamburger icon renders
        inline) — the desktop-only anti-overlap buffer isn't needed and
        would otherwise crowd the hamburger against the language switch
        on narrow phones. */
     padding-left: 0;
-    flex: 0 0 auto;
+    flex: 1 1 100%;
     gap: 12px;
   }
 
@@ -544,8 +421,28 @@
     line-height: 30px;
   }
 
+  /* Same two actions/wording as desktop, wrapped onto their own full-width
+     row directly in the header bar (not hidden, not replaced) with smaller
+     text so both stay visible without opening the hamburger. */
   .header-actions {
-    display: none;
+    order: 3;
+    flex-basis: 100%;
+    width: 100%;
+    justify-content: stretch;
+    height: auto;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .header-actions .btn,
+  .header-actions a {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 40px;
+    padding: 0 6px;
+    font-size: clamp(10px, 3vw, 13px);
+    white-space: normal;
+    line-height: 1.1;
   }
 
   .nav-toggle {
@@ -558,42 +455,6 @@
     font-size: 22px;
     padding: 0;
     cursor: pointer;
-  }
-
-  .header-actions-mobile {
-    display: flex;
-    align-items: center;
-    flex: 0 0 auto;
-    min-width: 0;
-    gap: 4px;
-  }
-
-  .header-actions-mobile .btn {
-    height: 30px;
-    padding: 0 clamp(4px, 1.5vw, 8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-cond, "Oswald", sans-serif);
-    font-size: clamp(8px, 2.4vw, 10px);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 0;
-    white-space: nowrap;
-  }
-
-  .header-actions-mobile .btn-red {
-    background: #d90d12;
-    color: #ffffff;
-    border: 1px solid #d90d12;
-  }
-
-  .header-actions-mobile .btn-outline {
-    background: transparent;
-    color: #ffffff;
-    border: 1px solid #ffffff;
   }
 }
 
@@ -634,23 +495,5 @@
 
   .nav-toggle {
     padding: 8px 8px;
-  }
-
-  .header-actions-mobile {
-    gap: 3px;
-    min-width: 0;
-    flex: 1 1 auto;
-  }
-
-  .header-actions-mobile .btn {
-    flex: 1 1 0;
-    min-width: 0;
-    height: 26px;
-    padding: 0 4px;
-    font-size: clamp(7px, 2.2vw, 9px);
-    white-space: normal;
-    line-height: 1.05;
-    text-align: center;
-    overflow-wrap: break-word;
   }
 }

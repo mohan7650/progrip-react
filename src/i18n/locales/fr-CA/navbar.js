@@ -11,8 +11,6 @@ export default {
   },
   account: "MON COMPTE",
   buildSubmittals: "CRÉER DES FICHES TECHNIQUES",
-  orderNow: "COMMANDER",
-  buildSubmittalMobile: "SOUMISSION",
   closeMenu: "Fermer le menu",
   openMenu: "Ouvrir le menu",
 };

@@ -1,8 +1,8 @@
 export default {
   ariaLabel: "PROGRIP hero",
   eyebrow: "Professional-grade fasteners + professional-grade platform",
-  titleLine1: "Built For Pros, Ready",
-  titleLine2: "For The Job!",
+  titleLine1: "Built For Pros,",
+  titleLine2: "Ready For The Job!",
   subtitle:
     "Engineered for professionals who demand speed, reliability, and control. Built to perform on every job site.",
   orderNow: "Order Now",
