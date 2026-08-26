@@ -1,0 +1,16 @@
+export default {
+  closeAriaLabel: "Fermer",
+  successTitle: "Merci!",
+  successBody: "Nous avons bien reçu votre message et communiquerons avec vous sous peu.",
+  title: "Nous joindre",
+  sub: "Parlez-nous un peu de vous et nous communiquerons avec vous.",
+  nameLabel: "Nom",
+  companyLabel: "Nom de l'entreprise",
+  emailLabel: "Courriel",
+  phoneLabel: "Numéro de téléphone",
+  descriptionLabel: "Description",
+  descriptionPlaceholder: "Dites-nous ce que vous recherchez...",
+  errorMessage: "Une erreur est survenue. Veuillez réessayer.",
+  sending: "Envoi en cours...",
+  send: "Envoyer",
+};

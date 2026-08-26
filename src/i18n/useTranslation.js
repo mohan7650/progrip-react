@@ -13,6 +13,7 @@ import enProductCatalog from "./locales/en-CA/productCatalog.js";
 import enProductDetail from "./locales/en-CA/productDetail.js";
 import enProductFeature from "./locales/en-CA/productFeature.js";
 import enProSystem from "./locales/en-CA/proSystem.js";
+import enContactModal from "./locales/en-CA/contactModal.js";
 
 import frCommon from "./locales/fr-CA/common.js";
 import frNavbar from "./locales/fr-CA/navbar.js";
@@ -26,6 +27,7 @@ import frProductCatalog from "./locales/fr-CA/productCatalog.js";
 import frProductDetail from "./locales/fr-CA/productDetail.js";
 import frProductFeature from "./locales/fr-CA/productFeature.js";
 import frProSystem from "./locales/fr-CA/proSystem.js";
+import frContactModal from "./locales/fr-CA/contactModal.js";
 
 const DICTIONARIES = {
   "en-CA": {
@@ -41,6 +43,7 @@ const DICTIONARIES = {
     productDetail: enProductDetail,
     productFeature: enProductFeature,
     proSystem: enProSystem,
+    contactModal: enContactModal,
   },
   "fr-CA": {
     common: frCommon,
@@ -55,6 +58,7 @@ const DICTIONARIES = {
     productDetail: frProductDetail,
     productFeature: frProductFeature,
     proSystem: frProSystem,
+    contactModal: frContactModal,
   },
 };
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import Button from "../Shared/Button.jsx";
+import { useTranslation } from "../../i18n/useTranslation.js";
 import "./ContactModal.css";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/meajnzze";
@@ -8,6 +9,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/meajnzze";
 const INITIAL_FORM = { name: "", company: "", email: "", phone: "", description: "" };
 
 export default function ContactModal({ children, variant, size, className }) {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState("idle");
   const [form, setForm] = useState(INITIAL_FORM);
@@ -66,25 +68,25 @@ export default function ContactModal({ children, variant, size, className }) {
               type="button"
               className="contact-modal-close"
               onClick={close}
-              aria-label="Close"
+              aria-label={t.contactModal.closeAriaLabel}
             >
               ×
             </button>
 
             {status === "success" ? (
               <div className="contact-modal-success">
-                <h3 id="contact-modal-title">Thanks!</h3>
-                <p>We've received your message and will get back to you shortly.</p>
+                <h3 id="contact-modal-title">{t.contactModal.successTitle}</h3>
+                <p>{t.contactModal.successBody}</p>
               </div>
             ) : (
               <form className="contact-modal-form" onSubmit={handleSubmit}>
-                <h3 id="contact-modal-title">Contact Us</h3>
+                <h3 id="contact-modal-title">{t.contactModal.title}</h3>
                 <p className="contact-modal-sub">
-                  Tell us a bit about you and we'll be in touch.
+                  {t.contactModal.sub}
                 </p>
 
                 <label className="contact-modal-field">
-                  <span>Name <span aria-hidden="true">*</span></span>
+                  <span>{t.contactModal.nameLabel} <span aria-hidden="true">*</span></span>
                   <input
                     type="text"
                     name="name"
@@ -96,7 +98,7 @@ export default function ContactModal({ children, variant, size, className }) {
                 </label>
 
                 <label className="contact-modal-field">
-                  <span>Company Name <span aria-hidden="true">*</span></span>
+                  <span>{t.contactModal.companyLabel} <span aria-hidden="true">*</span></span>
                   <input
                     type="text"
                     name="company"
@@ -108,7 +110,7 @@ export default function ContactModal({ children, variant, size, className }) {
                 </label>
 
                 <label className="contact-modal-field">
-                  <span>Email <span aria-hidden="true">*</span></span>
+                  <span>{t.contactModal.emailLabel} <span aria-hidden="true">*</span></span>
                   <input
                     type="email"
                     name="email"
@@ -120,7 +122,7 @@ export default function ContactModal({ children, variant, size, className }) {
                 </label>
 
                 <label className="contact-modal-field">
-                  <span>Phone Number <span aria-hidden="true">*</span></span>
+                  <span>{t.contactModal.phoneLabel} <span aria-hidden="true">*</span></span>
                   <input
                     type="tel"
                     name="phone"
@@ -132,11 +134,11 @@ export default function ContactModal({ children, variant, size, className }) {
                 </label>
 
                 <label className="contact-modal-field">
-                  Description
+                  {t.contactModal.descriptionLabel}
                   <textarea
                     name="description"
                     rows={4}
-                    placeholder="Tell us what you're looking for..."
+                    placeholder={t.contactModal.descriptionPlaceholder}
                     value={form.description}
                     onChange={handleChange}
                   />
@@ -144,7 +146,7 @@ export default function ContactModal({ children, variant, size, className }) {
 
                 {status === "error" && (
                   <p className="contact-modal-error">
-                    Something went wrong. Please try again.
+                    {t.contactModal.errorMessage}
                   </p>
                 )}
 
@@ -153,7 +155,7 @@ export default function ContactModal({ children, variant, size, className }) {
                   className="contact-modal-submit"
                   disabled={status === "submitting"}
                 >
-                  {status === "submitting" ? "Sending..." : "Send"}
+                  {status === "submitting" ? t.contactModal.sending : t.contactModal.send}
                 </button>
               </form>
             )}
