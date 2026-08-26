@@ -3,7 +3,7 @@ import { useTranslation } from "../../i18n/useTranslation.js";
 import "./Hero.css";
 
 function Hero() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const h = t.hero;
 
   return (
@@ -21,7 +21,7 @@ function Hero() {
         <div className="hero__content">
           <p className="hero__eyebrow">{h.eyebrow}</p>
 
-          <h1 className="hero__title">
+          <h1 className={`hero__title${locale === "fr-CA" ? " hero__title--fr" : ""}`}>
             <span className="hero__title-line">{h.titleLine1}</span>
             <span className="hero__title-line">{h.titleLine2}</span>
           </h1>

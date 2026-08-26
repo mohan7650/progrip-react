@@ -16,12 +16,11 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* 1920px FIGMA
-   width uses min() instead of a hard 1440px so the container itself can
-   never force horizontal overflow on viewports narrower than 1440+48px
-   (e.g. a 1440px browser window minus its scrollbar). */
+/* width uses min() instead of a hard 1200px so the container itself can
+   never force horizontal overflow on viewports narrower than 1200+48px
+   (e.g. a 1200px browser window minus its scrollbar). */
 .header-inner {
-  width: min(1440px, calc(100% - 48px));
+  width: min(1200px, calc(100% - 48px));
   height: 130px;
   margin: 0 auto;
 
