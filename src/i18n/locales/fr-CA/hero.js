@@ -9,7 +9,7 @@ export default {
   buildSubmittals: "Créer des fiches techniques",
   personas: [
     {
-      title: "L'installateur",
+      title: "L’installateur",
       body: "Des vis de qualité professionnelle conçues pour faire avancer le chantier, sans compromis.",
     },
     {
@@ -17,8 +17,8 @@ export default {
       body: "Au bureau, il jongle avec plusieurs chantiers, plusieurs fournisseurs et trop de feuilles de calcul. PROGRIP lui simplifie la tâche.",
     },
     {
-      title: "L'entrepreneur",
-      body: "Mise sur la rentabilité de ses chantiers et la productivité de ses équipes. Pour lui, des produits fiables signifient moins de retards, moins de reprises et plus d'efficacité.",
+      title: "L’entrepreneur",
+      body: "Mise sur la rentabilité de ses chantiers et la productivité de ses équipes. Pour lui, des produits fiables signifient moins de retards, moins de reprises et plus d’efficacité.",
     },
   ],
 };

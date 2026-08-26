@@ -5,7 +5,7 @@ export default {
   title: "Nous joindre",
   sub: "Parlez-nous un peu de vous et nous communiquerons avec vous.",
   nameLabel: "Nom",
-  companyLabel: "Nom de l'entreprise",
+  companyLabel: "Nom de l’entreprise",
   emailLabel: "Courriel",
   phoneLabel: "Numéro de téléphone",
   descriptionLabel: "Description",

@@ -1,14 +1,14 @@
 export default {
-  eyebrow: "GUIDE D'APPLICATION",
+  eyebrow: "GUIDE D’APPLICATION",
   titleLine1: "CHOISISSEZ LA BONNE VIS",
   titleLine2: "POUR VOTRE APPLICATION",
   sub:
-    "Les entrepreneurs professionnels adaptent les fixations aux substrats afin d'obtenir une performance optimale et de respecter les codes. Voici comment spécifier les vis PROGRIP pour des applications de construction courantes.",
+    "Les pros savent que la bonne fixation commence par le bon choix de vis pour chaque matériau. Voici comment choisir les vis PROGRIP adaptées aux applications les plus courantes sur le chantier, pour une performance optimale et une installation conforme aux exigences applicables.",
   fieldLabels: {
-    applicationType: "Type d'application",
+    applicationType: "Type d’application",
     projectTypes: "Types de projets",
     recommendedProducts: "Produits recommandés",
-    whyThisMatters: "Pourquoi c'est important",
+    whyThisMatters: "Pourquoi c’est important",
     proTip: "Conseil de pro",
     typicalQuantities: "Quantités typiques",
   },

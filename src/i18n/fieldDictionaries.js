@@ -7,51 +7,54 @@
 // category tabs, and spec values.
 export const TERM_LABELS = {
   "All Products": { "en-CA": "All Products", "fr-CA": "Tous les produits" },
-  "Sharp Point - Fine Thread": { "en-CA": "Sharp Point - Fine Thread", "fr-CA": "Pointe acérée - filet fin" },
-  "Sharp Point - Coarse Thread": { "en-CA": "Sharp Point - Coarse Thread", "fr-CA": "Pointe acérée - gros filet" },
+  "Sharp Point - Fine Thread": { "en-CA": "Sharp Point - Fine Thread", "fr-CA": "Pointu - filet fin" },
+  "Sharp Point - Coarse Thread": { "en-CA": "Sharp Point - Coarse Thread", "fr-CA": "Pointu - filet grossier" },
   // Approved standardized customer-visible English form is "Self-Drilling"
   // (hyphenated) regardless of which internal spelling variant is present.
-  "Self Drilling": { "en-CA": "Self Drilling", "fr-CA": "Autoperceuses" },
-  "Self-Drilling": { "en-CA": "Self-Drilling", "fr-CA": "Autoperceuse" },
+  "Self Drilling": { "en-CA": "Self Drilling", "fr-CA": "Autoperçante" },
+  "Self-Drilling": { "en-CA": "Self-Drilling", "fr-CA": "Autoperçante" },
   "Drywall": { "en-CA": "Drywall", "fr-CA": "Cloison sèche" },
-  "Framing": { "en-CA": "Framing", "fr-CA": "Ossature" },
+  "Framing": { "en-CA": "Framing", "fr-CA": "Charpente" },
   "Collated": { "en-CA": "Collated", "fr-CA": "En bande" },
   "Laminating": { "en-CA": "Laminating", "fr-CA": "Laminage" },
-  "Cement Board": { "en-CA": "Cement Board", "fr-CA": "Panneau de ciment" },
+  "Cement Board": { "en-CA": "Cement Board", "fr-CA": "Panneau de fibrociment" },
   "Concrete": { "en-CA": "Concrete", "fr-CA": "Béton" },
   "Bugle": { "en-CA": "Bugle", "fr-CA": "Tête trompette" },
-  "Flat": { "en-CA": "Flat", "fr-CA": "Plate" },
-  "Hex Washer": { "en-CA": "Hex Washer", "fr-CA": "Hexagonale à rondelle" },
-  "Pan Framer": { "en-CA": "Pan Framer", "fr-CA": "Cylindrique pour ossature" },
+  "Flat": { "en-CA": "Flat", "fr-CA": "Tête plate" },
+  "Hex Washer": { "en-CA": "Hex Washer", "fr-CA": "Tête hexagonale à rondelle" },
+  "Pan Framer": { "en-CA": "Pan Framer", "fr-CA": "Tête bombée pour charpente" },
   "Wafer": { "en-CA": "Wafer", "fr-CA": "Wafer" },
   "Drywall-to-Metal": { "en-CA": "Drywall-to-Metal", "fr-CA": "Cloison sèche sur métal" },
   "Metal-to-Metal": { "en-CA": "Metal-to-Metal", "fr-CA": "Métal sur métal" },
-  "Phosphated": { "en-CA": "Phosphated", "fr-CA": "Phosphatée" },
+  "Phosphated": { "en-CA": "Phosphated", "fr-CA": "Phosphate" },
   "Zinc": { "en-CA": "Zinc", "fr-CA": "Zinc" },
   "Blue Ruspert": { "en-CA": "Blue Ruspert", "fr-CA": "Ruspert bleu" },
   "Gray Ruspert": { "en-CA": "Gray Ruspert", "fr-CA": "Ruspert gris" },
   "Fine": { "en-CA": "Fine", "fr-CA": "Fin" },
-  "Coarse": { "en-CA": "Coarse", "fr-CA": "Gros" },
-  "High-Low": { "en-CA": "High-Low", "fr-CA": "Haut-bas" },
-  "Sharp Point": { "en-CA": "Sharp Point", "fr-CA": "Pointe acérée" },
-  "#2 Phillips": { "en-CA": "#2 Phillips", "fr-CA": "#2 Phillips" },
-  "5/16 Hex": { "en-CA": "5/16 Hex", "fr-CA": "5/16 hexagonal" },
+  "Coarse": { "en-CA": "Coarse", "fr-CA": "Grossier" },
+  "High-Low": { "en-CA": "High-Low", "fr-CA": "High-Low" },
+  // Product Catalog filter/category context uses "Pointu" (approved doc,
+  // Product Catalog table). See POINTTYPE_LABELS for the final-glossary
+  // "Pointe acérée" form used in descriptive/spec contexts.
+  "Sharp Point": { "en-CA": "Sharp Point", "fr-CA": "Pointu" },
+  "#2 Phillips": { "en-CA": "#2 Phillips", "fr-CA": "Phillips #2" },
+  "5/16 Hex": { "en-CA": "5/16 Hex", "fr-CA": "Hexagonal 5/16”" },
   "Box": { "en-CA": "Box", "fr-CA": "Boîte" },
   "Best Sellers Only": { "en-CA": "Best Sellers Only", "fr-CA": "Meilleures ventes seulement" },
 };
 
 // Filter group ids -> group label
 export const FILTER_GROUP_LABELS = {
-  length: { "en-CA": "Screw Length", "fr-CA": "Longueur de la vis" },
+  length: { "en-CA": "Screw Length", "fr-CA": "Longueur de vis" },
   gauge: { "en-CA": "Gauge / Diameter", "fr-CA": "Calibre / diamètre" },
-  screwType: { "en-CA": "Screw / Product Type", "fr-CA": "Type de vis / produit" },
+  screwType: { "en-CA": "Screw / Product Type", "fr-CA": "Type de vis" },
   headType: { "en-CA": "Head Type", "fr-CA": "Type de tête" },
   application: { "en-CA": "Application", "fr-CA": "Application" },
-  finish: { "en-CA": "Finish", "fr-CA": "Finition" },
+  finish: { "en-CA": "Finish", "fr-CA": "Revêtement" },
   threadType: { "en-CA": "Thread Type", "fr-CA": "Type de filet" },
   pointType: { "en-CA": "Point Type", "fr-CA": "Type de pointe" },
-  driveType: { "en-CA": "Drive Type", "fr-CA": "Type d'empreinte" },
-  packType: { "en-CA": "Pack Type", "fr-CA": "Type d'emballage" },
+  driveType: { "en-CA": "Drive Type", "fr-CA": "Type d’empreinte" },
+  packType: { "en-CA": "Pack Type", "fr-CA": "Type d’emballage" },
   popular: { "en-CA": "Best Sellers", "fr-CA": "Meilleures ventes" },
 };
 
@@ -63,7 +66,7 @@ export const CATEGORY_TAB_LABELS = {
   "Sharp Point - Fine Thread": TERM_LABELS["Sharp Point - Fine Thread"],
   "Sharp Point - Coarse Thread": TERM_LABELS["Sharp Point - Coarse Thread"],
   "Self Drilling": TERM_LABELS["Self Drilling"],
-  "Concrete & Cement Board": { "en-CA": "Concrete & Cement Board", "fr-CA": "Béton et panneaux de ciment" },
+  "Concrete & Cement Board": { "en-CA": "Concrete & Cement Board", "fr-CA": "Béton et Béton léger" },
 };
 
 // product.category / product.subcategory display values
@@ -73,7 +76,7 @@ export const CATEGORY_FIELD_LABELS = {
   "Self Drilling": TERM_LABELS["Self Drilling"],
   "Concrete and Cement Board Screws": { "en-CA": "Concrete and Cement Board Screws", "fr-CA": "Vis pour béton et panneaux de ciment" },
   "Drywall Screws": { "en-CA": "Drywall Screws", "fr-CA": "Vis à cloison sèche" },
-  "Framing Screws": { "en-CA": "Framing Screws", "fr-CA": "Vis d'ossature" },
+  "Framing Screws": { "en-CA": "Framing Screws", "fr-CA": "Vis d’ossature" },
   "Collated Screws": { "en-CA": "Collated Screws", "fr-CA": "Vis en bande" },
   "Laminated": { "en-CA": "Laminated", "fr-CA": "Laminage" },
 };
@@ -93,9 +96,9 @@ export const APPLICATION_LABELS = {
 export const SCREWTYPE_LABELS = {
   "Drywall Screw": { "en-CA": "Drywall Screw", "fr-CA": "Vis à cloison sèche" },
   "Collated Drywall Screw": { "en-CA": "Collated Drywall Screw", "fr-CA": "Vis à cloison sèche en bande" },
-  "Framing Screw": { "en-CA": "Framing Screw", "fr-CA": "Vis d'ossature" },
+  "Framing Screw": { "en-CA": "Framing Screw", "fr-CA": "Vis d’ossature" },
   "Self-Drilling Drywall Screw": { "en-CA": "Self-Drilling Drywall Screw", "fr-CA": "Vis à cloison sèche autoperceuse" },
-  "Self-Drilling Framing Screw": { "en-CA": "Self-Drilling Framing Screw", "fr-CA": "Vis d'ossature autoperceuse" },
+  "Self-Drilling Framing Screw": { "en-CA": "Self-Drilling Framing Screw", "fr-CA": "Vis d’ossature autoperceuse" },
   "Collated Self-Drilling Drywall Screw": { "en-CA": "Collated Self-Drilling Drywall Screw", "fr-CA": "Vis à cloison sèche autoperceuse en bande" },
   "Laminating Screw": { "en-CA": "Laminating Screw", "fr-CA": "Vis de laminage" },
   "Cement Board Screw": { "en-CA": "Cement Board Screw", "fr-CA": "Vis pour panneau de ciment" },
@@ -104,7 +107,9 @@ export const SCREWTYPE_LABELS = {
 
 // product.pointType display values
 export const POINTTYPE_LABELS = {
-  "Sharp Point": TERM_LABELS["Sharp Point"],
+  // Final-glossary context ("Sharp Point" → "Pointe acérée"), distinct from
+  // the Product Catalog filter/category context in TERM_LABELS ("Pointu").
+  "Sharp Point": { "en-CA": "Sharp Point", "fr-CA": "Pointe acérée" },
   "Self-Drilling Point": { "en-CA": "Self-Drilling Point", "fr-CA": "Pointe autoperceuse" },
 };
 
@@ -115,7 +120,7 @@ export const HEADTYPE_LABELS = {
   "Flat Head with Ribs": { "en-CA": "Flat Head with Ribs", "fr-CA": "Tête plate avec nervures" },
   "Hex Washer Head": { "en-CA": "Hex Washer Head", "fr-CA": "Tête hexagonale à rondelle" },
   "Hex Washer Head with Phil/Slot": { "en-CA": "Hex Washer Head with Phil/Slot", "fr-CA": "Tête hexagonale à rondelle Phillips/fendue" },
-  "Pan Framer Head": { "en-CA": "Pan Framer Head", "fr-CA": "Tête cylindrique pour ossature" },
+  "Pan Framer Head": { "en-CA": "Pan Framer Head", "fr-CA": "Tête bombée pour charpente" },
   "Wafer Head - Modified Truss": { "en-CA": "Wafer Head - Modified Truss", "fr-CA": "Tête wafer modifiée type camion" },
 };
 
@@ -166,12 +171,12 @@ export function localizeTerm(dictionary, value, locale) {
 export const PRODUCT_NAME_DESCRIPTOR_LABELS = {
   "Fine Thread Drywall": { "en-CA": "Fine Thread Drywall", "fr-CA": "à cloison sèche à filet fin" },
   "Coarse Thread Drywall": { "en-CA": "Coarse Thread Drywall", "fr-CA": "à cloison sèche à gros filet" },
-  "Sharp Point Framing": { "en-CA": "Sharp Point Framing", "fr-CA": "d'ossature à pointe acérée" },
+  "Sharp Point Framing": { "en-CA": "Sharp Point Framing", "fr-CA": "d’ossature à pointe acérée" },
   "Collated Fine Thread Drywall": { "en-CA": "Collated Fine Thread Drywall", "fr-CA": "à cloison sèche à filet fin en bande" },
   "Collated Coarse Thread Drywall": { "en-CA": "Collated Coarse Thread Drywall", "fr-CA": "à cloison sèche à gros filet en bande" },
   "Laminated Drywall": { "en-CA": "Laminated Drywall", "fr-CA": "à cloison sèche pour laminage" },
   "Self-Drilling Drywall": { "en-CA": "Self-Drilling Drywall", "fr-CA": "à cloison sèche autoperceuse" },
-  "Self-Drilling Framing": { "en-CA": "Self-Drilling Framing", "fr-CA": "d'ossature autoperceuse" },
+  "Self-Drilling Framing": { "en-CA": "Self-Drilling Framing", "fr-CA": "d’ossature autoperceuse" },
   "Collated Self-Drilling Drywall": { "en-CA": "Collated Self-Drilling Drywall", "fr-CA": "à cloison sèche autoperceuse en bande" },
   "Sharp Point Cement Board": { "en-CA": "Sharp Point Cement Board", "fr-CA": "pour panneau de ciment à pointe acérée" },
   "Self-Drilling Cement Board": { "en-CA": "Self-Drilling Cement Board", "fr-CA": "pour panneau de ciment autoperceuse" },

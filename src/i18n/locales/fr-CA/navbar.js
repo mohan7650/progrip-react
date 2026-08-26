@@ -1,7 +1,7 @@
 export default {
   homeAriaLabel: "Accueil - Vis PROGRIP",
   logoAlt: "Vis PROGRIP",
-  langToggleAriaLabel: "Passer de l'anglais au français",
+  langToggleAriaLabel: "Passer de l’anglais au français",
   navLinks: {
     products: "Produits",
     about: "À propos",
