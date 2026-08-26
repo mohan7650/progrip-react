@@ -69,7 +69,7 @@
   --section-pad: 112px;      /* Figma section vertical padding */
   --gutter: 64px;            /* Figma frame side padding (full-bleed sections) */
   --container: 1200px;       /* persona + standard content column */
-  --container-wide: 1440px;  /* Figma product-grid width */
+  --container-wide: 1200px;  /* capped to match --container at wide viewports */
 
   --radius: 4px;
   --radius-lg: 8px;          /* Figma image / card radius */

@@ -41,7 +41,7 @@
 .features__inner {
   position: relative;
   z-index: 1;
-  width: 1440px;
+  width: 1200px;
   max-width: calc(100% - 128px);
   margin: 0 auto;
 }

@@ -132,6 +132,10 @@
   color: var(--pg-white);
 }
 
+.hero__title--fr {
+  font-size: calc(72 * var(--scale));
+}
+
 .hero__title-accent {
   color: var(--pg-red);
 }
@@ -350,6 +354,10 @@
   .hero__title {
     font-size: clamp(40px, 13vw, 72px);
     line-height: 1.02;
+  }
+
+  .hero__title--fr {
+    font-size: clamp(34px, 11vw, 60px);
   }
 
   .hero__subtitle {

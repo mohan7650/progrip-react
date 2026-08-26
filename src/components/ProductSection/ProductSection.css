@@ -50,7 +50,7 @@
 .product-section__inner {
   position: relative;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@
 
 .product-section__ghost-num {
   position: absolute;
-  top: -0.15em;
+  top: -.50em;
   right: 0;
   z-index: 1;
   font-family: 'Russo One', sans-serif;
@@ -96,6 +96,7 @@
   align-items: center;
   gap: 10px;
   margin-bottom: clamp(20px, 1.67vw, 32px);
+  margin-left: calc(-50vw + 50%);
   padding: 6px 16px 6px 12px;
   background: #2e2e2e;
   color: #ffffff;
@@ -218,7 +219,7 @@
 .product-section__progrip-box {
   position: absolute;
   top: 0%;
-  left: 5%;
+  left: 14%;
   transform: translateY(-50%);
   width: clamp(360px, 68%, 760px);
   /* Fixed to the English source image's own ratio (2100x1500 = 1.4:1) so
