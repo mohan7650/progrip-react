@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "../Shared/Button.jsx";
 import ContactModal from "../ContactModal/ContactModal.jsx";
@@ -243,7 +242,6 @@ function ProductCard({ product, isActive, onClick, onMouseEnter, locale, t }) {
 }
 
 export default function ProductSection() {
-  const navigate = useNavigate();
   const { locale, t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeProduct, setActiveProduct] = useState(null);
@@ -558,9 +556,6 @@ export default function ProductSection() {
                         onMouseEnter={() => setActiveProduct(product.stockCode)}
                         onClick={() => {
                           setActiveProduct(product.stockCode);
-                          navigate(
-                            `/product/${product.categoryId}/${product.id}`,
-                          );
                         }}
                         locale={locale}
                         t={t}
