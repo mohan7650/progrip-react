@@ -1,24 +1,24 @@
 export default {
   ariaLabel: "Bannière principale PROGRIP",
-  eyebrow: "Fixations de qualité professionnelle + plateforme de qualité professionnelle",
-  titleLine1: "Conçu pour les pros, prêt",
-  titleLine2: "pour le chantier!",
+  eyebrow: "Fixations professionnelles + plateforme conçue pour les pros",
+  titleLine1: "Conçu pour les pros.",
+  titleLine2: "Prêt pour le chantier.",
   subtitle:
-    "Conçu pour les professionnels qui exigent rapidité, fiabilité et maîtrise. Pensé pour performer sur chaque chantier.",
-  orderNow: "Commander maintenant",
-  buildSubmittals: "Créer des dossiers de soumission",
+    "Conçu pour les professionnels qui exigent rapidité, fiabilité et maîtrise. Une performance sur laquelle compter, chantier après chantier.",
+  orderNow: "Commander",
+  buildSubmittals: "Créer des fiches techniques",
   personas: [
     {
       title: "L'installateur",
-      body: "Des vis de qualité professionnelle qui ne ralentissent pas le travail et ne retardent pas le chantier.",
+      body: "Des vis de qualité professionnelle conçues pour faire avancer le chantier, sans compromis.",
     },
     {
       title: "Le distributeur",
-      body: "Au bureau, il gère 5 chantiers et 3 fournisseurs à partir d'une feuille de calcul et a besoin d'une meilleure solution.",
+      body: "Au bureau, il jongle avec plusieurs chantiers, plusieurs fournisseurs et trop de feuilles de calcul. PROGRIP lui simplifie la tâche.",
     },
     {
       title: "L'entrepreneur",
-      body: "Axé sur la rentabilité des chantiers et la productivité des équipes. Il privilégie des produits de qualité qui réduisent les retards et les coûts de reprise.",
+      body: "Mise sur la rentabilité de ses chantiers et la productivité de ses équipes. Pour lui, des produits fiables signifient moins de retards, moins de reprises et plus d'efficacité.",
     },
   ],
 };

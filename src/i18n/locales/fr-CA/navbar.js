@@ -1,7 +1,7 @@
 export default {
   homeAriaLabel: "Accueil - Vis PROGRIP",
   logoAlt: "Vis PROGRIP",
-  langToggleAriaLabel: "Basculer la langue entre l'anglais et le français canadien",
+  langToggleAriaLabel: "Passer de l'anglais au français",
   navLinks: {
     products: "Produits",
     about: "À propos",
@@ -9,8 +9,8 @@ export default {
     proSystem: "ProSystem",
     contactUs: "Nous joindre",
   },
-  account: "COMPTE",
-  buildSubmittals: "CRÉER DES DOSSIERS DE SOUMISSION",
+  account: "MON COMPTE",
+  buildSubmittals: "CRÉER DES FICHES TECHNIQUES",
   orderNow: "COMMANDER",
   buildSubmittalMobile: "SOUMISSION",
   closeMenu: "Fermer le menu",

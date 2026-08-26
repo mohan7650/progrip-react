@@ -250,7 +250,9 @@ export default function ProductSection() {
   const [selectedFilters, setSelectedFilters] = useState(() => ({ ...INITIAL_FILTERS }));
   const [openGroup, setOpenGroup] = useState("length");
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [panelOpen, setPanelOpen] = useState(false);
+  const [panelOpen, setPanelOpen] = useState(
+    () => typeof window !== "undefined" && window.innerWidth > 1024
+  );
 
   const toggleGroupOpen = (groupId) => {
     setOpenGroup((prev) => (prev === groupId ? null : groupId));
