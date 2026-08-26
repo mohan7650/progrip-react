@@ -126,9 +126,16 @@
   }
 
   .cta-inner .btn-row {
+    gap: 14px;
+  }
+}
+
+/* Stack the buttons only on true mobile — keep them side by side on
+   tablet widths (681px–1024px). */
+@media (max-width: 680px) {
+  .cta-inner .btn-row {
     flex-direction: column;
     align-items: stretch;
-    gap: 14px;
   }
 
   .cta-inner .btn {

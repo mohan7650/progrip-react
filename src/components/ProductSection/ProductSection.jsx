@@ -17,6 +17,7 @@ import {
 import "./ProductSection.css";
 
 import proGripBox from "../../assets/images/product-section/Pro Grip Box Image.png";
+import proGripBoxCanadian from "../../assets/images/Pro Grip Canadian Box Product.png";
 
 export const PRODUCTS = [
   { id: 1, stockCode: "DRP6100", name: 'PROGRIP #6 x 1" Fine Thread Drywall Screw', categoryId: 1, category: "Sharp Point - Fine Thread", subcategory: "Drywall Screws", application: "Drywall to Metal", screwType: "Drywall Screw", gauge: "#6", length: '1"', threadType: "Fine", pointType: "Sharp Point", headType: "Bugle Head", finish: "Phosphated", driveType: "#2 PHILLIPS", unitsPerBox: 10000, weightPerBox: "13.7", popular: false, slug: "/products/progrip-6-x-1-fine-thread-drywall-screw-drp6100" },
@@ -373,7 +374,7 @@ export default function ProductSection() {
 
               <motion.img
                 className="product-section__progrip-box"
-                src={proGripBox}
+                src={locale === "fr-CA" ? proGripBoxCanadian : proGripBox}
                 alt={t.productCatalog.boxAlt}
                 initial={{ opacity: 0, y: -60 }}
                 whileInView={{ opacity: 1, y: 0 }}

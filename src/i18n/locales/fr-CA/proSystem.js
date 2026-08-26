@@ -1,10 +1,10 @@
 export default {
-  kicker: "Le système pro",
+  kicker: "Le système Pro",
   title: {
-    line1: "La bonne vis, exactement quand vous en avez besoin",
-    line2: "",
+    line1: "La bonne vis",
+    line2: "Au moment où vous en avez besoin",
   },
-  lead: "Un système professionnel conçu pour chaque intervenant de la chaîne d’approvisionnement.",
+  lead: "Trois fixations éprouvées conçues pour les travaux qui comptent",
   cards: [
     {
       accent: "green",
@@ -17,7 +17,7 @@ export default {
         "Recevoir la confirmation de livraison et l’heure d’arrivée prévue directement à l’écran",
         "Aucun prix à afficher — il suffit de commander",
       ],
-      ctaLabel: "Application pour installateurs →",
+      ctaLabel: "Application installateur →",
     },
     {
       accent: "blue",

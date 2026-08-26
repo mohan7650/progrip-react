@@ -4,7 +4,7 @@ export default {
     line1: "The right screw",
     line2: "Right when you need it",
   },
-  lead: "One professional system built for every role in the supply chain.",
+  lead: "Three proven fasteners engineered for the work that matters",
   cards: [
     {
       accent: "green",

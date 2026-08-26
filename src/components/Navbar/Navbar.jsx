@@ -71,16 +71,6 @@ export default function Navbar() {
             </Button>
           </div>
         </div>
-
-        <div className="header-actions-mobile">
-          <Button href="/#products" variant="red" size="xs">
-            {t.navbar.orderNow}
-          </Button>
-
-          <Button href="/#products" variant="outline" size="xs">
-            {t.navbar.buildSubmittalMobile}
-          </Button>
-        </div>
       </div>
     </header>
   );

@@ -1,9 +1,9 @@
 export default {
   eyebrow: "LE SYSTÈME DE COMMANDE PRO",
-  titleLine1: "COMMANDEZ COMME UN PRO, ",
-  titleLine2: "CHAQUE FOIS",
+  titleLine1: "COMMANDEZ COMME UN PRO.",
+  titleLine2: "CHAQUE FOIS.",
   sub:
-    "Une plateforme pensée pour la réalité de vos équipes - du contremaître qui commande sur son téléphone à 6 h le matin jusqu'à l'acheteur qui gère plusieurs chantiers depuis son bureau. Rapide, transparente et conçue pour que vos projets continuent d'avancer.",
+    "Une plateforme pensée pour la réalité de vos équipes - du contremaître qui commande sur son téléphone à 6 h le matin jusqu’à l’acheteur qui gère plusieurs chantiers depuis son bureau. Rapide, transparente et conçue pour que vos projets continuent d’avancer.",
   footTextPrefix: "PENSÉ POUR LA FAÇON DONT VOS ÉQUIPES TRAVAILLENT VRAIMENT.",
   footTextAccent: "UNE SEULE PLATEFORME. TOUS VOS CHANTIERS. TOUTES VOS COMMANDES.",
   orderNow: "COMMANDER",
@@ -16,10 +16,10 @@ export default {
     {
       category: "INSTALLER",
       title: "COMMANDE MOBILE",
-      text: "Recommandez en deux touchers, directement de votre téléphone - même d'une seule main.",
+      text: "Recommandez en deux touchers, directement de votre téléphone - même d’une seule main.",
       items: [
         "Votre dernière commande à un toucher",
-        "Demande de nouveaux SKU à l'acheteur",
+        "Demande de nouveaux SKU à l’acheteur",
         "Confirmation de livraison instantanée",
       ],
     },
@@ -40,7 +40,7 @@ export default {
       items: [
         "Aucun compte requis pour commencer",
         "Historique des projets enregistré",
-        "Lien direct partageable",
+        "Lien direct à partager",
       ],
     },
     {
@@ -56,11 +56,11 @@ export default {
     {
       category: "DISTRIBUTOR",
       title: "GESTION DES COMPTES",
-      text: "Des accès adaptés aux rôles et aux responsabilités de chacun dans l'entreprise.",
+      text: "Des accès adaptés aux rôles et aux responsabilités de chacun dans l’entreprise.",
       items: [
         "Rôles : administrateur, acheteur, contremaître et général",
         "Les acheteurs peuvent créer des sous-comptes pour les contremaîtres",
-        "Processus d'approbation propre à chaque entreprise",
+        "Processus d’approbation propre à chaque entreprise",
       ],
     },
     {

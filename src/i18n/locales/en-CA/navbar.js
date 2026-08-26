@@ -11,8 +11,6 @@ export default {
   },
   account: "ACCOUNT",
   buildSubmittals: "BUILD SUBMITTALS",
-  orderNow: "ORDER NOW",
-  buildSubmittalMobile: "BUILD & SUBMITTAL",
   closeMenu: "Close menu",
   openMenu: "Open menu",
 };

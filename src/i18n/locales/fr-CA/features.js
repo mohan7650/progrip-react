@@ -7,13 +7,13 @@ export default {
   resultLabel: "Résultat :",
   cards: [
     {
-      titleLine1: "INSTALLATION PLUS RAPIDE,",
-      titleLine2: "PLUS STABLE",
-      text: "Conçues pour une installation plus rapide et plus stable. La géométrie précise de la pointe et de l'empreinte favorise un vissage contrôlé et contribue à réduire l'oscillation de la vis pendant l'installation.",
+      titleLine1: "INSTALLATION PLUS RAPIDE.",
+      titleLine2: "PLUS STABLE.",
+      text: "Conçues pour une installation plus rapide et plus stable. La géométrie précise de la pointe et de l’empreinte favorise un vissage contrôlé et contribue à réduire l’oscillation de la vis pendant l’installation.",
       result: "Installation stable et contrôlée, avec une prise constante de la vis.",
       stats: [
         "Installation plus rapide et plus stable",
-        "Géométrie précise de la pointe et de l'empreinte",
+        "Géométrie précise de la pointe et de l’empreinte",
         "Oscillation réduite pendant le vissage",
       ],
     },
@@ -42,10 +42,10 @@ export default {
     {
       titleLine1: "PRÉCISION ET",
       titleLine2: "FIABILITÉ",
-      text: "PROGRIP combine une géométrie précise de la pointe et de l'empreinte à une prise fiable dans le matériau pour offrir une performance constante.",
+      text: "PROGRIP combine une géométrie précise de la pointe et de l’empreinte à une prise fiable dans le matériau pour offrir une performance constante.",
       result: "Une géométrie spécialement conçue pour favoriser stabilité et fiabilité.",
       stats: [
-        "Géométrie précise de la pointe et de l'empreinte",
+        "Géométrie précise de la pointe et de l’empreinte",
         "Oscillation réduite pendant le vissage",
         "Prise fiable dans le matériau",
       ],
