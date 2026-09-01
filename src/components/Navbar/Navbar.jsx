@@ -1,6 +1,7 @@
 import { useState } from "react";
 import logo from "../../assets/images/logo.png";
 import Button from "../Shared/Button.jsx";
+import ContactModal from "../ContactModal/ContactModal.jsx";
 import { useTranslation } from "../../i18n/useTranslation.js";
 import "./Navbar.css";
 
@@ -13,7 +14,6 @@ export default function Navbar() {
     { label: t.navbar.navLinks.products, href: "/#products" },
     { label: t.navbar.navLinks.about, href: "/#why" },
     { label: t.navbar.navLinks.resources, href: "/blog" },
-    { label: t.navbar.navLinks.contactUs, href: "/#contact" },
   ];
 
   const closeMenu = () => {
@@ -59,12 +59,13 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            <ContactModal asLink>{t.navbar.navLinks.contactUs}</ContactModal>
           </nav>
 
           <div className="header-actions">
-            <Button href="/#contact" variant="white" size="sm">
+            <ContactModal variant="white" size="sm">
               {t.navbar.account}
-            </Button>
+            </ContactModal>
 
             <Button href="/#products" variant="red" size="sm">
               {t.navbar.buildSubmittals}
