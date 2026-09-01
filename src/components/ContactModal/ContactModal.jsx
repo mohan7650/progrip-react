@@ -8,7 +8,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/meajnzze";
 
 const INITIAL_FORM = { name: "", company: "", email: "", phone: "", description: "" };
 
-export default function ContactModal({ children, variant, size, className }) {
+export default function ContactModal({ children, variant, size, className, asLink = false }) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState("idle");
@@ -51,9 +51,15 @@ export default function ContactModal({ children, variant, size, className }) {
 
   return (
     <>
-      <Button href="#" variant={variant} size={size} className={className} onClick={open}>
-        {children}
-      </Button>
+      {asLink ? (
+        <a href="/#contact" className={className} onClick={open}>
+          {children}
+        </a>
+      ) : (
+        <Button href="#" variant={variant} size={size} className={className} onClick={open}>
+          {children}
+        </Button>
+      )}
 
       {isOpen && createPortal(
         <div className="contact-modal-overlay" onClick={close}>
