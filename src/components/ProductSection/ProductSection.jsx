@@ -15,8 +15,8 @@ import {
 } from "../../i18n/fieldDictionaries.js";
 import "./ProductSection.css";
 
-import proGripBox from "../../assets/images/product-section/Pro Grip Box Image.png";
-import proGripBoxCanadian from "../../assets/images/Pro Grip Canadian Box Product.png";
+import proGripBox from "../../assets/images/3d boxes/Product Box Image US.png";
+import proGripBoxCanadian from "../../assets/images/3d boxes/Product Box Image Canada.png";
 
 export const PRODUCTS = [
   { id: 1, stockCode: "DRP6100", name: 'PROGRIP #6 x 1" Fine Thread Drywall Screw', categoryId: 1, category: "Sharp Point - Fine Thread", subcategory: "Drywall Screws", application: "Drywall to Metal", screwType: "Drywall Screw", gauge: "#6", length: '1"', threadType: "Fine", pointType: "Sharp Point", headType: "Bugle Head", finish: "Phosphated", driveType: "#2 PHILLIPS", unitsPerBox: 10000, weightPerBox: "13.7", popular: false, slug: "/products/progrip-6-x-1-fine-thread-drywall-screw-drp6100" },
