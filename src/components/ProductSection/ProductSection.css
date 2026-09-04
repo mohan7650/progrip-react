@@ -219,15 +219,13 @@
 .product-section__progrip-box {
   position: absolute;
   top: 0%;
-  left: 16%;
-  transform: translateY(-56%);
-  /* vw-based max (not a fixed px cap) so the cluster keeps its footprint on
-     very large / MacBook Pro-class screens instead of stalling out small. */
-  width: clamp(360px, 30vw, 900px);
-  /* Both locale box renders share the same source ratio (2550x3300px). Match
-     it so the 3-box cluster fills the frame instead of being letterboxed by
-     object-fit: contain inside a mismatched aspect-ratio box. */
-  aspect-ratio: 2550 / 3300;
+  left: 14%;
+  transform: translateY(-50%);
+  width: clamp(360px, 68%, 760px);
+  /* Fixed to the English source image's own ratio (2100x1500 = 1.4:1) so
+     the fr-CA box photo — a taller, more padded source file — renders at
+     the same visual footprint instead of stretching the layout taller. */
+  aspect-ratio: 1.4 / 1;
   height: auto;
   object-fit: contain;
   object-position: center;
