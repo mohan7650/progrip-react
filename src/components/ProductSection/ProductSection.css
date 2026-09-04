@@ -1091,6 +1091,52 @@
   }
 }
 
+/* Tablet portrait (e.g. iPad 768x1024) — keep the heading and the box/stripe
+   visual on one row instead of stacking, at a smaller scale than desktop.
+   Runs down to 481px (just above the 480px mobile cutoff that hides this
+   visual entirely) so there's no width where it overflows into the
+   Categories/filter bar below. */
+@media (min-width: 481px) and (max-width: 1024px) {
+  .product-section__hero-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .product-section__header {
+    max-width: clamp(200px, 32vw, 280px);
+    min-width: 0;
+  }
+
+  /* Keep the subtitle on one line at this width instead of wrapping. */
+  .product-section__subtitle {
+    max-width: none;
+    font-size: clamp(12px, 1.6vw, 16px);
+    white-space: nowrap;
+  }
+
+  .product-section__hero-stage {
+    width: auto;
+    min-height: clamp(180px, 40vw, 340px);
+  }
+
+  .product-visual {
+    transform: scale(0.55);
+  }
+
+  .product-section__progrip-box {
+    top: 0;
+    right: 140px;
+    height: clamp(180px, 36vw, 270px);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 599px) {
+  .product-section__progrip-box {
+    right: 75px;
+  }
+}
+
 @media (max-width: 480px) {
   .product-section__filter-bar {
     gap: 12px;
