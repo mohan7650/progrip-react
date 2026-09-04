@@ -218,15 +218,19 @@
 
 .product-section__progrip-box {
   position: absolute;
-  top: 0%;
-  left: 14%;
-  transform: translateY(-50%);
-  width: clamp(360px, 68%, 760px);
-  /* Fixed to the English source image's own ratio (2100x1500 = 1.4:1) so
-     the fr-CA box photo — a taller, more padded source file — renders at
-     the same visual footprint instead of stretching the layout taller. */
-  aspect-ratio: 1.4 / 1;
-  height: auto;
+  top: -32px;
+  /* Anchored from the RIGHT with a fixed px offset — same edge the stripe
+     graphic (.product-section__hero-media) is anchored from, at its own
+     fixed 709.6px size. Positioning both from the same fixed point keeps
+     the box sitting against the first stripe consistently at any screen
+     width, instead of drifting when it was positioned with `left: %`
+     against a stage whose width itself changes with the viewport. */
+  right: 269px;
+  /* Fixed px (not vw-clamped) so the cluster renders at the exact size
+     tuned at 1440px on every desktop width instead of scaling oddly. */
+  height: 480px;
+  width: auto;
+  aspect-ratio: 2550 / 3300;
   object-fit: contain;
   object-position: center;
   z-index: 5;
@@ -943,6 +947,15 @@
    RESPONSIVE
    ============================================================ */
 
+/* Large desktop / MacBook Pro-class screens (e.g. 3456x2234) — bump the box
+   cluster up in size a bit and nudge it toward the top of the stage. */
+@media (min-width: 2200px) {
+  .product-section__progrip-box {
+    top: -60px;
+    height: 560px;
+  }
+}
+
 @media (max-width: 1599px) {
   .product-section__wrap {
     padding-top: clamp(60px, 6.25vw, 80px);
@@ -1032,6 +1045,15 @@
 
   .product-visual {
     transform: scale(0.62);
+  }
+
+  /* Scale the box cluster down to match .product-visual's 0.62 scale so it
+     fits inside the shorter tablet stage instead of overflowing into the
+     Categories/filter bar below. */
+  .product-section__progrip-box {
+    top: 0;
+    right: 190px;
+    height: 360px;
   }
 
   .product-section__content {
