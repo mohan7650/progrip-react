@@ -248,7 +248,7 @@ function ProductCard({ product, isActive, onClick, onMouseEnter, locale, t }) {
     >
       <span className="product-section__card-media">
         {product.image && (
-          <img src={product.image} alt={localizedName} loading="lazy" />
+          <img src={product.image} alt={product.name} loading="lazy" />
         )}
         {product.popular && (
           <span className="product-section__card-badge">{t.common.popular}</span>
