@@ -239,27 +239,28 @@
    fits on one line without shrinking text to an illegible size.
    ============================================================ */
 @media (min-width: 1501px) {
-  .site-header[data-lang="fr-CA"] .header-right {
-    gap: clamp(10px, 0.6vw, 20px);
-  }
-
+  /* Nav links keep the same fixed 20px/24px sizing English uses in this
+     range, just tightened enough (smaller font + gap, both fixed — not
+     vw-based, so the offset stays constant across viewports) to make room
+     for the longer CTA label below. header-right/header-actions keep
+     English's own gaps (32px / 16px) and the account button keeps
+     English's 215px min-width unchanged. */
   .site-header[data-lang="fr-CA"] .main-nav {
-    gap: clamp(6px, 0.4vw, 12px);
+    gap: 10px;
   }
 
   .site-header[data-lang="fr-CA"] .main-nav a {
-    font-size: clamp(13px, 0.35vw, 16px);
+    font-size: 14px;
   }
 
-  /* The red CTA label ("CRÉER DES FICHES TECHNIQUES") is long enough that
-     scaling all the way to English's 20px max would overflow its own
-     button at wide viewports. Cap the growth and give the button a little
-     extra room instead, so it still reads as the "same button" as English
-     (same height/padding/shape) without the text spilling out. */
-  .site-header[data-lang="fr-CA"] .header-actions .btn,
-  .site-header[data-lang="fr-CA"] .header-actions a {
-    min-width: 230px;
-    font-size: clamp(13px, 0.7vw, 15px);
+  /* "CRÉER DES FICHES TECHNIQUES" is long enough that English's 215px
+     button floor isn't enough even at max font — give just the red CTA a
+     wider floor sized to its longest rendered width (fs 20px) so its
+     right edge lands at a fixed position instead of drifting with
+     viewport width, matching how English's fixed-width buttons behave. */
+  .site-header[data-lang="fr-CA"] .header-actions .btn-red,
+  .site-header[data-lang="fr-CA"] .header-actions a.red {
+    min-width: 320px;
   }
 }
 
