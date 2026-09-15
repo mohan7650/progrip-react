@@ -239,31 +239,27 @@
    fits on one line without shrinking text to an illegible size.
    ============================================================ */
 @media (min-width: 1501px) {
-  .site-header[data-lang="fr-CA"] .header-inner {
-    width: min(1750px, calc(100% - 48px));
-  }
-
   .site-header[data-lang="fr-CA"] .header-right {
-    gap: clamp(16px, 2vw, 32px);
+    gap: clamp(10px, 0.6vw, 20px);
   }
 
   .site-header[data-lang="fr-CA"] .main-nav {
-    gap: clamp(12px, 1.2vw, 24px);
+    gap: clamp(6px, 0.4vw, 12px);
   }
 
   .site-header[data-lang="fr-CA"] .main-nav a {
-    font-size: clamp(15px, 1.1vw, 20px);
+    font-size: clamp(13px, 0.35vw, 16px);
   }
 
-  .site-header[data-lang="fr-CA"] .header-actions {
-    gap: 10px;
-  }
-
+  /* The red CTA label ("CRÉER DES FICHES TECHNIQUES") is long enough that
+     scaling all the way to English's 20px max would overflow its own
+     button at wide viewports. Cap the growth and give the button a little
+     extra room instead, so it still reads as the "same button" as English
+     (same height/padding/shape) without the text spilling out. */
   .site-header[data-lang="fr-CA"] .header-actions .btn,
   .site-header[data-lang="fr-CA"] .header-actions a {
-    min-width: 0;
-    padding: 0 16px;
-    font-size: clamp(13px, 0.95vw, 18px);
+    min-width: 230px;
+    font-size: clamp(13px, 0.7vw, 15px);
   }
 }
 
