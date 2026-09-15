@@ -34,6 +34,26 @@ const PRODUCT_IMAGES = [
   coarse06,
 ];
 
+const productPhotoModules = import.meta.glob(
+  "../../assets/images/Products/*/PNG/*.png",
+  { eager: true, import: "default" },
+);
+
+const PRODUCT_IMAGE_BY_CODE = Object.fromEntries(
+  Object.entries(productPhotoModules).map(([path, src]) => [
+    path.split("/").pop().replace(/\.png$/i, ""),
+    src,
+  ]),
+);
+
+// DPRC10312 is a typo'd stock code for the same DRPC10312 product/photo.
+const PRODUCT_IMAGE_ALIASES = {
+  DPRC10312: "DRPC10312",
+};
+
+const getProductImage = (stockCode) =>
+  PRODUCT_IMAGE_BY_CODE[PRODUCT_IMAGE_ALIASES[stockCode] || stockCode];
+
 export const PRODUCTS = [
   { id: 1, stockCode: "DRP6100", name: 'PROGRIP #6 x 1" Fine Thread Drywall Screw', categoryId: 1, category: "Sharp Point - Fine Thread", subcategory: "Drywall Screws", application: "Drywall to Metal", screwType: "Drywall Screw", gauge: "#6", length: '1"', threadType: "Fine", pointType: "Sharp Point", headType: "Bugle Head", finish: "Phosphated", driveType: "#2 PHILLIPS", unitsPerBox: 10000, weightPerBox: "13.7", popular: false, slug: "/products/progrip-6-x-1-fine-thread-drywall-screw-drp6100" },
   { id: 2, stockCode: "DRP6118", name: 'PROGRIP #6 x 1-1/8" Fine Thread Drywall Screw', categoryId: 1, category: "Sharp Point - Fine Thread", subcategory: "Drywall Screws", application: "Drywall to Metal", screwType: "Drywall Screw", gauge: "#6", length: '1-1/8"', threadType: "Fine", pointType: "Sharp Point", headType: "Bugle Head", finish: "Phosphated", driveType: "#2 PHILLIPS", unitsPerBox: 10000, weightPerBox: "14.7", popular: true, slug: "/products/progrip-6-x-1-1-8-fine-thread-drywall-screw-drp6118" },
@@ -75,7 +95,7 @@ export const PRODUCTS = [
   { id: 38, stockCode: "SDHZ1034", name: 'PROGRIP #10 x 3/4" Self-Drilling Framing Screw', categoryId: 3, category: "Self Drilling", subcategory: "Framing Screws", application: "Metal to Metal", screwType: "Self-Drilling Framing Screw", gauge: "#10", length: '3/4"', threadType: "Fine", pointType: "Self-Drilling Point", headType: "Hex Washer Head", finish: "Zinc", driveType: '5/16" HEX', unitsPerBox: 6000, weightPerBox: "16.4", popular: true, slug: "/products/progrip-10-x-3-4-self-drilling-framing-screw-sdhz1034" },
   { id: 39, stockCode: "SDHZ10114", name: 'PROGRIP #10 x 1-1/4" Self-Drilling Framing Screw', categoryId: 3, category: "Self Drilling", subcategory: "Framing Screws", application: "Metal to Metal", screwType: "Self-Drilling Framing Screw", gauge: "#10", length: '1-1/4"', threadType: "Fine", pointType: "Self-Drilling Point", headType: "Hex Washer Head", finish: "Zinc", driveType: '5/16" HEX', unitsPerBox: 4000, weightPerBox: "15.22", popular: false, slug: "/products/progrip-10-x-1-1-4-self-drilling-framing-screw-sdhz10114" },
   { id: 40, stockCode: "SDZ6114S", name: 'PROGRIP #6 x 1-1/4" Collated Self-Drilling Drywall Screw', categoryId: 3, category: "Self Drilling", subcategory: "Collated Screws", application: "Drywall to Metal", screwType: "Collated Self-Drilling Drywall Screw", gauge: "#6", length: '1-1/4"', threadType: "Fine", pointType: "Self-Drilling Point", headType: "Bugle Head", finish: "Phosphated", driveType: "#2 PHILLIPS", unitsPerBox: 10000, weightPerBox: "N/A", popular: true, slug: "/products/progrip-6-x-1-1-4-collated-self-drilling-drywall-screw-sdz6114s" },
-  { id: 41, stockCode: "SDZ6178S", name: 'PROGRIP #6 x 1-7/8" Collated Self-Drilling Drywall Screw', categoryId: 3, category: "Self Drilling", subcategory: "Collated Screws", application: "Drywall to Metal", screwType: "Collated Self-Drilling Drywall Screw", gauge: "#6", length: '1-7/8"', threadType: "Fine", pointType: "Self-Drilling Point", headType: "Bugle Head", finish: "Phosphated", driveType: "#2 PHILLIPS", unitsPerBox: 10000, weightPerBox: "N/A", popular: false, slug: "/products/progrip-6-x-1-7-8-collated-self-drilling-drywall-screw-sdz6178s" },
+  { id: 41, stockCode: "SDZ6200S", name: 'PROGRIP #6 x 2" Collated Self-Drilling Drywall Screw', categoryId: 3, category: "Self Drilling", subcategory: "Collated Screws", application: "Drywall to Metal", screwType: "Collated Self-Drilling Drywall Screw", gauge: "#6", length: '2"', threadType: "Fine", pointType: "Self-Drilling Point", headType: "Bugle Head", finish: "Phosphated", driveType: "#2 PHILLIPS", unitsPerBox: 10000, weightPerBox: "N/A", popular: false, slug: "/products/progrip-6-x-2-collated-self-drilling-drywall-screw-sdz6200s" },
   { id: 42, stockCode: "CPS8114", name: 'PROGRIP #8 x 1-1/4" Sharp Point Cement Board Screw', categoryId: 4, category: "Concrete and Cement Board Screws", subcategory: "Concrete and Cement Board Screws", application: "Cement Board to Wood", screwType: "Cement Board Screw", gauge: "#8", length: '1-1/4"', threadType: "Coarse", pointType: "Sharp Point", headType: "Flat Head with Ribs", finish: "Gray Ruspert Coating (1500 HR Salt Spray Rated)", driveType: "#2 PHILLIPS", unitsPerBox: 5000, weightPerBox: "12.1", popular: false, slug: "/products/progrip-8-x-1-1-4-sharp-point-cement-board-screw-cps8114" },
   { id: 43, stockCode: "CPS8158", name: 'PROGRIP #8 x 1-5/8" Sharp Point Cement Board Screw', categoryId: 4, category: "Concrete and Cement Board Screws", subcategory: "Concrete and Cement Board Screws", application: "Cement Board to Wood", screwType: "Cement Board Screw", gauge: "#8", length: '1-5/8"', threadType: "Coarse", pointType: "Sharp Point", headType: "Flat Head with Ribs", finish: "Gray Ruspert Coating (1500 HR Salt Spray Rated)", driveType: "#2 PHILLIPS", unitsPerBox: 4000, weightPerBox: "12.04", popular: false, slug: "/products/progrip-8-x-1-5-8-sharp-point-cement-board-screw-cps8158" },
   { id: 44, stockCode: "CPSD8114", name: 'PROGRIP #8 x 1-1/4" Self-Drilling Cement Board Screw', categoryId: 4, category: "Concrete and Cement Board Screws", subcategory: "Concrete and Cement Board Screws", application: "Cement Board to Metal", screwType: "Cement Board Screw", gauge: "#8", length: '1-1/4"', threadType: "Coarse", pointType: "Self-Drilling Point", headType: "Flat Head with Ribs", finish: "Gray Ruspert Coating (1500 HR Salt Spray Rated)", driveType: "#2 PHILLIPS", unitsPerBox: 5000, weightPerBox: "12.85", popular: false, slug: "/products/progrip-8-x-1-1-4-self-drilling-cement-board-screw-cpsd8114" },
@@ -88,6 +108,7 @@ export const PRODUCTS = [
   { id: 51, stockCode: "MDP316134", name: 'PROGRIP 3/16" x 1-3/4" Concrete Screw', categoryId: 4, category: "Concrete and Cement Board Screws", subcategory: "Concrete and Cement Board Screws", application: "Metal to Concrete", screwType: "Concrete Screw", gauge: '3/16"', length: '1-3/4"', threadType: "High-Low", pointType: "Sharp Point", headType: "Flat Head", finish: "Blue Ruspert Coating (1000 HR Salt Spray Rated)", driveType: "#2 PHILLIPS", unitsPerBox: 100, weightPerBox: "N/A", popular: false, slug: "/products/progrip-3-16-x-1-3-4-concrete-screw-mdp316134" },
 ].map((product, index) => ({
   ...product,
+  image: getProductImage(product.stockCode),
   packType:
     product.subcategory.includes("Collated") ||
     product.screwType.includes("Collated")
@@ -243,6 +264,9 @@ function ProductCard({ product, isActive, onClick, onMouseEnter }) {
       onMouseEnter={onMouseEnter}
     >
       <span className="product-section__card-media">
+        {product.image && (
+          <img src={product.image} alt={localizedName} loading="lazy" />
+        )}
         {product.popular && (
           <span className="product-section__card-badge">Popular</span>
         )}
