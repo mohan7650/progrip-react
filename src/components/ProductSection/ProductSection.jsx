@@ -33,6 +33,8 @@ const PRODUCT_IMAGE_BY_CODE = Object.fromEntries(
 // DPRC10312 is a typo'd stock code for the same DRPC10312 product/photo.
 const PRODUCT_IMAGE_ALIASES = {
   DPRC10312: "DRPC10312",
+  MDP316134: "MHDP316134",
+  MDP316114: "MHDP316114",
 };
 
 const getProductImage = (stockCode) =>
