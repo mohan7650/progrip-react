@@ -117,6 +117,11 @@ const getCategoryCount = (categoryId) =>
 
 const FILTER_GROUPS = [
   {
+    id: "screwType",
+    label: "Screw / Product Type",
+    options: ["Drywall", "Framing", "Collated", "Laminating", "Cement Board", "Concrete", "Self-Drilling"],
+  },
+  {
     id: "length",
     label: "Screw Length",
     options: ['7/16"', '9/16"', '1/2"', '3/4"', '1"', '1-1/8"', '1-1/4"', '1-1/2"', '1-5/8"', '1-3/4"', '1-7/8"', '2"', '2-3/8"', '2-1/2"', '2-5/8"', '3"', '3-1/2"', '4"', '6"'],
@@ -125,11 +130,6 @@ const FILTER_GROUPS = [
     id: "gauge",
     label: "Gauge / Diameter",
     options: ["#6", "#7", "#8", "#10", '3/16"', '1/4"'],
-  },
-  {
-    id: "screwType",
-    label: "Screw / Product Type",
-    options: ["Drywall", "Framing", "Collated", "Laminating", "Cement Board", "Concrete", "Self-Drilling"],
   },
   {
     id: "headType",
@@ -273,7 +273,7 @@ export default function ProductSection() {
   const [activeProduct, setActiveProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedFilters, setSelectedFilters] = useState(() => ({ ...INITIAL_FILTERS }));
-  const [openGroup, setOpenGroup] = useState("length");
+  const [openGroup, setOpenGroup] = useState("screwType");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [panelOpen, setPanelOpen] = useState(
     () => typeof window !== "undefined" && window.innerWidth > 1024
