@@ -1,0 +1,79 @@
+.dp-why {
+  background: var(--bg-alt);
+  isolation: isolate;
+}
+
+/* Faint screw texture behind the section */
+.dp-why::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--why-texture) center / cover no-repeat;
+  opacity: 0.22;
+}
+
+.dp-why__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Leaves room for the product boxes in the top-right corner */
+.dp-why__intro {
+  max-width: min(900px, 76vw - 2 * var(--gutter));
+}
+
+.dp-why__boxes {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  z-index: 2;
+  width: clamp(220px, 23vw, 320px);
+  height: auto;
+  pointer-events: none;
+}
+
+.dp-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin: 56px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dp-pillar__title {
+  margin-bottom: 14px;
+  font-size: clamp(1.6rem, 2.5vw, var(--display-sm));
+}
+
+.dp-pillar .dp-body-copy {
+  max-width: 36ch;
+}
+
+.dp-why__screw {
+  right: 9%;
+  bottom: 28px;
+  width: clamp(110px, 12vw, 180px);
+}
+
+/* On phones the boxes leave the corner and sit above the heading */
+@media (max-width: 700px) {
+  .dp-why__boxes {
+    position: relative;
+    top: auto;
+    width: clamp(220px, 70vw, 320px);
+    margin: calc(var(--section-pad) * -0.6) 0 24px auto;
+  }
+
+  .dp-why__intro {
+    max-width: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .dp-pillars {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
