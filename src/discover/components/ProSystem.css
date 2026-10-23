@@ -1,0 +1,71 @@
+.dp-pro {
+  z-index: 2; /* lets the decorative screws overlap the next section */
+  background: var(--card-2);
+}
+
+.dp-pro__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.dp-personas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dp-persona {
+  --tone: var(--red);
+  padding: 36px 26px 32px;
+  border: 1.5px solid var(--tone);
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.14);
+}
+
+.dp-persona--green {
+  --tone: var(--accent-green);
+}
+
+.dp-persona--blue {
+  --tone: var(--accent-blue);
+}
+
+.dp-persona--red {
+  --tone: var(--red);
+}
+
+.dp-persona__title {
+  margin-bottom: 16px;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  color: var(--tone);
+}
+
+.dp-persona__kicker {
+  margin: 0 0 6px;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: var(--text-xl);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.dp-pro__screw-left {
+  top: -46px;
+  left: 1.5%;
+  width: clamp(140px, 15vw, 220px);
+}
+
+.dp-pro__screw-right {
+  right: 7%;
+  bottom: -70px;
+  width: clamp(180px, 20vw, 290px);
+}
+
+@media (max-width: 900px) {
+  .dp-personas {
+    grid-template-columns: 1fr;
+  }
+}
