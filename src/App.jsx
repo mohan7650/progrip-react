@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import MetaPixelPageView from "./components/MetaPixelPageView.jsx";
 import Home from "./pages/Home.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
 import { LocaleProvider } from "./i18n/LocaleContext.jsx";
@@ -11,6 +12,7 @@ export default function App() {
   return (
     <LocaleProvider>
       <ScrollToTop />
+      <MetaPixelPageView />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:categoryId/:productId" element={<ProductDetail />} />
